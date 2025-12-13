@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 import {
 	Card,
@@ -156,44 +156,59 @@ export default function ContactPage() {
 									</CardTitle>
 									<CardDescription>
 										Fill in the form and let us know what
-										you need  we use your details only to
-									<CardContent>
-										<ContactForm />
-									</CardContent>
-										</p>
-									</form>
+										you need – we use your details only to
+										respond to your enquiry.
+									</CardDescription>
+								</CardHeader>
+								<CardContent>
+									<ContactForm />
 								</CardContent>
 							</Card>
 						</div>
 
 						{/* Map Placeholder & Business Hours */}
 						<div className='space-y-6'>
-							{/* Map Placeholder */}
+							{/* Map Embed */}
 							<Card className='overflow-hidden'>
 								<CardHeader>
 									<CardTitle className='text-xl'>
 										Our Location
 									</CardTitle>
 									<CardDescription>
-										Use any map app with our factory address
-										to get directions.
+										Find us easily using Google Maps and get
+										directions straight to our factory.
 									</CardDescription>
 								</CardHeader>
 								<CardContent className='p-0'>
-									<div className='bg-muted h-64 flex items-center justify-center border-t'>
-										<div className='text-center px-4'>
-											<MapPin className='h-12 w-12 text-muted-foreground mx-auto mb-3' />
-											<p className='text-sm text-muted-foreground'>
-												Map placeholder  this is where a
-												live map or photo of our factory
-												would appear.
-											</p>
-											<p className='text-xs text-muted-foreground mt-2'>
-												Located along Abeokuta
-												Expressway, with easy access
-												from major parts of Lagos.
-											</p>
-										</div>
+									<div className='border-t'>
+										<iframe
+											src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7926.261100011551!2d3.3004211!3d6.6307033!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b918c1a8f0dbf%3A0x596f93e7caaf4a77!2sGOD%27S%20PROMISE%20ALUMINUM%20CONCEPT%20LTD!5e0!3m2!1sen!2sng!4v1765657509731!5m2!1sen!2sng'
+											width='100%'
+											height='320'
+											style={{ border: 0 }}
+											allowFullScreen
+											loading='lazy'
+											referrerPolicy='no-referrer-when-downgrade'
+											className='w-full h-64 md:h-80'
+											title="God's Promise Aluminium Concept Ltd location on map"
+										/>
+									</div>
+									<div className='px-6 py-4 text-sm text-muted-foreground'>
+										<p>
+											Tap the map to open directions in
+											your preferred maps app.
+										</p>
+										<p className='mt-2'>
+											<a
+												href='https://www.google.com/search?q=god%27s+promise+aluminium+concept+ltd&rlz=1C1ONGR_enNG1192NG1192&oq=gods+promise+alu&gs_lcrp=EgZjaHJvbWUqCAgBEAAYFhgeMgYIABBFGDkyCAgBEAAYFhgeMggIAhAAGBYYHjINCAMQABiGAxiABBiKBTINCAQQABiGAxiABBiKBTIGCAUQRRg9MgYIBhBFGD0yBggHEEUYPdIBCDk3OTBqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8&lqi=CiNnb2QncyBwcm9taXNlIGFsdW1pbml1bSBjb25jZXB0IGx0ZEiq0oCppLuAgAhaORAAEAEQAhADEAQYABgBGAIYAxgEIiNnb2QncyBwcm9taXNlIGFsdW1pbml1bSBjb25jZXB0IGx0ZJIBEnJvb2ZpbmdfY29udHJhY3Rvcg#rlimm=6444532215537683063&lrd=0x103b918c1a8f0dbf:0x596f93e7caaf4a77,3,,,,'
+												target='_blank'
+												rel='noopener'
+												className='font-medium text-primary hover:underline'
+											>
+												See reviews or leave a review on
+												Google
+											</a>
+										</p>
 									</div>
 								</CardContent>
 							</Card>
@@ -213,10 +228,10 @@ export default function ContactPage() {
 								<CardContent className='space-y-3'>
 									<div className='flex justify-between text-sm'>
 										<span className='text-muted-foreground'>
-											Monday  Friday
+											Monday – Friday
 										</span>
 										<span className='font-medium'>
-											8:00 AM  6:00 PM
+											8:00 AM – 6:00 PM
 										</span>
 									</div>
 									<div className='flex justify-between text-sm'>
@@ -224,7 +239,7 @@ export default function ContactPage() {
 											Saturday
 										</span>
 										<span className='font-medium'>
-											9:00 AM  4:00 PM
+											9:00 AM – 4:00 PM
 										</span>
 									</div>
 									<div className='flex justify-between text-sm'>
@@ -241,7 +256,7 @@ export default function ContactPage() {
 												Response time:
 											</span>{' '}
 											We aim to respond to enquiries
-											within 2 4 hours during business
+											within 2–4 hours during business
 											hours, or the next business day if
 											you contact us after closing time.
 										</p>

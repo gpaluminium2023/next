@@ -29,24 +29,33 @@ function applyThemeClass(name: ThemeName) {
 }
 
 export function ThemeToggle() {
-	const [current, setCurrent] = useState<ThemeName | null>(() => {
-		if (typeof window === 'undefined') return null;
-
-		const stored = localStorage.getItem(STORAGE_KEY) as ThemeName | null;
-		if (stored && themes[stored]) {
-			return stored;
-		}
-
-		const detected = (Object.entries(themes).find(([_, config]) =>
-			document.body.classList.contains(config.bodyClass)
-		)?.[0] || 'default') as ThemeName;
-
-		return detected;
-	});
+	const [current, setCurrent] = useState<ThemeName | null>(null);
+	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => {
-		if (typeof document === 'undefined' || !current) return;
-		applyThemeClass(current);
+		setMounted(true);
+
+		if (typeof window === 'undefined') return;
+
+		let next: ThemeName = 'default';
+		try {
+			const stored = localStorage.getItem(
+				STORAGE_KEY
+			) as ThemeName | null;
+			if (stored && themes[stored]) {
+				next = stored;
+			} else {
+				const detected = (Object.entries(themes).find(([_, config]) =>
+					document.body.classList.contains(config.bodyClass)
+				)?.[0] || 'default') as ThemeName;
+				next = detected;
+			}
+		} catch {
+			// ignore
+		}
+
+		setCurrent(next);
+		applyThemeClass(next);
 	}, []);
 
 	const handleClick = () => {
@@ -69,7 +78,7 @@ export function ThemeToggle() {
 		});
 	};
 
-	const label = current ? themes[current].label : 'Theme';
+	const label = mounted && current ? themes[current].label : 'Theme';
 
 	return (
 		<Button
