@@ -77,7 +77,7 @@ export function ThemeToggle() {
 			variant='outline'
 			size='sm'
 			onClick={handleClick}
-			className='hidden items-center gap-2 text-xs md:inline-flex'
+			className='inline-flex items-center gap-2 text-[11px] sm:text-xs'
 			aria-label={`Change colour theme (current: ${label})`}
 		>
 			<span className='inline-block h-2 w-2 rounded-full bg-primary' />
