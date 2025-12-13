@@ -405,7 +405,14 @@ export default function ProductsPage() {
 					<div className='flex flex-col items-center justify-center gap-4 text-sm text-muted-foreground sm:flex-row sm:gap-6'>
 						<div className='flex items-center gap-2'>
 							<MessageCircle className='h-4 w-4' />
-							<span>WhatsApp support (number to be added)</span>
+							<a
+								href='https://wa.me/2349150459964'
+								target='_blank'
+								rel='noopener'
+								className='hover:text-primary underline-offset-4 hover:underline'
+							>
+								WhatsApp support (+234 915 045 9964)
+							</a>
 						</div>
 						<Separator
 							orientation='vertical'

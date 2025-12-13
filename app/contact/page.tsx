@@ -8,10 +8,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
+import { ContactForm } from '@/components/contact-form';
 
 export const metadata: Metadata = {
 	title: 'Contact Us - Gods Promise Aluminium',
@@ -160,71 +157,9 @@ export default function ContactPage() {
 									<CardDescription>
 										Fill in the form and let us know what
 										you need  we use your details only to
-										respond to your enquiry.
-									</CardDescription>
-								</CardHeader>
-								<CardContent>
-									<form className='space-y-4'>
-										<div className='space-y-2'>
-											<Label htmlFor='name'>
-												Full Name *
-											</Label>
-											<Input
-												id='name'
-												placeholder='Enter your full name'
-												required
-											/>
-										</div>
-
-										<div className='space-y-2'>
-											<Label htmlFor='email'>
-												Email Address *
-											</Label>
-											<Input
-												id='email'
-												type='email'
-												placeholder='your.email@example.com'
-												required
-											/>
-										</div>
-
-										<div className='space-y-2'>
-											<Label htmlFor='phone'>
-												Phone Number *
-											</Label>
-											<Input
-												id='phone'
-												type='tel'
-												placeholder='e.g. 0915 045 9964'
-												required
-											/>
-										</div>
-
-										<div className='space-y-2'>
-											<Label htmlFor='message'>
-												Your Message *
-											</Label>
-											<Textarea
-												id='message'
-												placeholder='Tell us about your building, roof size (if known), and the products or services you are interested in.'
-												rows={5}
-												required
-											/>
-										</div>
-
-										<Button
-											type='submit'
-											className='w-full'
-											size='lg'
-										>
-											<Send className='h-4 w-4 mr-2' />
-											Send Message
-										</Button>
-
-										<p className='text-xs text-muted-foreground text-center'>
-											We respect your privacy and will
-											never share your information with
-											third parties.
+									<CardContent>
+										<ContactForm />
+									</CardContent>
 										</p>
 									</form>
 								</CardContent>
