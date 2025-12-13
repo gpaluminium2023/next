@@ -1,0 +1,117 @@
+import Link from 'next/link';
+
+import { Separator } from '@/components/ui/separator';
+
+export function SiteFooter() {
+	return (
+		<footer className='w-full border-t border-border bg-muted/30'>
+			<div className='mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8'>
+				<div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4'>
+					<div className='lg:col-span-2'>
+						<h3 className='text-lg font-semibold text-foreground'>
+							Gods Promise Aluminium
+						</h3>
+						<p className='mt-3 text-sm leading-relaxed text-muted-foreground'>
+							Nigeria&apos;s trusted provider of premium aluminium
+							roofing and construction materials. We help
+							homeowners, builders, and churches protect what
+							matters most with durable, beautiful roofs.
+						</p>
+					</div>
+
+					<div>
+						<h4 className='text-sm font-semibold text-foreground'>
+							Quick links
+						</h4>
+						<ul className='mt-3 space-y-2 text-sm'>
+							<li>
+								<Link
+									href='/'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Home
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/about'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									About us
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/services'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Services
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/contact'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Contact
+								</Link>
+							</li>
+						</ul>
+					</div>
+
+					<div>
+						<h4 className='text-sm font-semibold text-foreground'>
+							Products
+						</h4>
+						<ul className='mt-3 space-y-2 text-sm'>
+							<li>
+								<Link
+									href='/products#roofing'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Aluminium roofing sheets
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/products#stone-coated'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Stone coated tiles
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/products#accessories'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Roofing accessories
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/products'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									View all products
+								</Link>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<Separator className='bg-border' />
+
+			<div className='mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-8'>
+				<div className='flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row'>
+					<p>
+						© {new Date().getFullYear()} Gods Promise Aluminium.
+						Quality roofing, reliable service.
+					</p>
+					<p>Made in Nigeria 🇳🇬</p>
+				</div>
+			</div>
+		</footer>
+	);
+}
