@@ -4,6 +4,7 @@ import './globals.css';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { getActiveThemeForDate } from '@/lib/theme-config';
+import { PosthogProvider } from '@/components/posthog-provider';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -62,11 +63,13 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground ${theme.bodyClass}`}
 			>
-				<div className='flex min-h-screen flex-col'>
-					<SiteHeader />
-					<main className='flex-1'>{children}</main>
-					<SiteFooter />
-				</div>
+				<PosthogProvider>
+					<div className='flex min-h-screen flex-col'>
+						<SiteHeader />
+						<main className='flex-1'>{children}</main>
+						<SiteFooter />
+					</div>
+				</PosthogProvider>
 			</body>
 		</html>
 	);
