@@ -66,7 +66,7 @@ Upon completion of your order, visit our factory to cross-check all your orders 
 
 -   Address: 288 Abeokuta Expressway, Pleasure B/Stop, Iyana Ipaja, Lagos State, by Ilepo Way
 -   Email: godspromisealuminumconceptltd@gmail.com
--   Phone: 09150459964, 07040249854, 07060414466, 08146074077, 09025432004
+-   Phone: 09150459964, 07040249854, 07060414466, 08146074077
 
 ## Social Media
 

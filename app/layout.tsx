@@ -27,10 +27,10 @@ export const metadata: Metadata = {
 		type: 'website',
 		images: [
 			{
-				url: '/opengraph-image',
+				url: '/logo.jpeg',
 				width: 1200,
 				height: 630,
-				alt: 'Gods Promise Aluminium 1f31ff premium roofing in Nigeria',
+				alt: 'Gods Promise Aluminium logo',
 			},
 		],
 	},
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 		title: 'Gods Promise Aluminium',
 		description:
 			'Roofing sheets, stone-coated tiles and accessories supplied and installed across Nigeria.',
-		images: ['/twitter-image'],
+		images: ['/logo.jpeg'],
 	},
 	icons: {
 		icon: [

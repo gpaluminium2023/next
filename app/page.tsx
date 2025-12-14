@@ -19,7 +19,7 @@ export default function Home() {
 				{/* Hero */}
 				<section className='grid gap-10 lg:grid-cols-2 lg:items-center'>
 					<div className='space-y-6'>
-						<Badge className='border border-primary/20 bg-primary/5 text-primary-foreground/80'>
+						<Badge className='border border-primary/20 bg-primary/5 text-primary'>
 							🇳🇬 Proudly Nigerian Aluminium Experts
 						</Badge>
 						<h1 className='text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-foreground'>
@@ -209,7 +209,7 @@ export default function Home() {
 							</p>
 							<p className='opacity-90'>
 								09150459964 · 07040249854 · 07060414466 ·
-								08146074077 · 09025432004
+								08146074077
 							</p>
 						</div>
 					</div>

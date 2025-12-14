@@ -1,5 +1,15 @@
 import Link from 'next/link';
-import { Facebook, Instagram, Mail, MessageCircle } from 'lucide-react';
+import {
+	Facebook,
+	Ghost,
+	Hash,
+	Instagram,
+	Mail,
+	MessageCircle,
+	Music2,
+	Twitter,
+	Youtube,
+} from 'lucide-react';
 
 import { Separator } from '@/components/ui/separator';
 
@@ -7,7 +17,7 @@ export function SiteFooter() {
 	return (
 		<footer className='w-full border-t border-border bg-muted/30'>
 			<div className='mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8'>
-				<div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4'>
+				<div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5'>
 					<div className='lg:col-span-2'>
 						<h3 className='text-lg font-semibold text-foreground'>
 							Gods Promise Aluminium
@@ -106,7 +116,7 @@ export function SiteFooter() {
 						</h4>
 						<ul className='mt-3 space-y-2 text-sm'>
 							<li className='flex items-center gap-2 text-muted-foreground'>
-								<Mail className='h-4 w-4' />
+								<Mail className='h-4 w-4 shrink-0' />
 								<a
 									href='mailto:godspromisealuminumconceptltd@gmail.com'
 									className='transition-colors hover:text-foreground'
@@ -115,18 +125,18 @@ export function SiteFooter() {
 								</a>
 							</li>
 							<li className='flex items-center gap-2 text-muted-foreground'>
-								<MessageCircle className='h-4 w-4' />
+								<MessageCircle className='h-4 w-4 shrink-0' />
 								<a
 									href='https://wa.me/2349150459964'
 									target='_blank'
 									rel='noopener'
 									className='transition-colors hover:text-foreground'
 								>
-									WhatsApp: +234 5150459964
+									WhatsApp: +2345150459964
 								</a>
 							</li>
 							<li className='flex items-center gap-2 text-muted-foreground'>
-								<Instagram className='h-4 w-4' />
+								<Instagram className='h-4 w-4 shrink-0' />
 								<a
 									href='https://www.instagram.com/godspacltd?igsh=dWxybXJrOTBhbXJi'
 									target='_blank'
@@ -137,7 +147,7 @@ export function SiteFooter() {
 								</a>
 							</li>
 							<li className='flex items-center gap-2 text-muted-foreground'>
-								<Facebook className='h-4 w-4' />
+								<Facebook className='h-4 w-4 shrink-0' />
 								<a
 									href='https://www.facebook.com/share/1G88rStYo2/?mibextid=wwXIfr'
 									target='_blank'
@@ -145,6 +155,61 @@ export function SiteFooter() {
 									className='transition-colors hover:text-foreground'
 								>
 									Facebook
+								</a>
+							</li>
+							<li className='flex items-center gap-2 text-muted-foreground'>
+								<Twitter className='h-4 w-4 shrink-0' />
+								<a
+									href='https://x.com/GODSPACLTDROOF?t=og3JQ66r07ChmIkRYQbGkQ&s=09'
+									target='_blank'
+									rel='noopener'
+									className='transition-colors hover:text-foreground'
+								>
+									X (Twitter)
+								</a>
+							</li>
+							<li className='flex items-center gap-2 text-muted-foreground'>
+								<Youtube className='h-4 w-4 shrink-0' />
+								<a
+									href='https://youtube.com/@godspromisealuminumconceptltd?si=WoIqnLBIX-t9cX4s'
+									target='_blank'
+									rel='noopener'
+									className='transition-colors hover:text-foreground'
+								>
+									YouTube
+								</a>
+							</li>
+							<li className='flex items-center gap-2 text-muted-foreground'>
+								<Music2 className='h-4 w-4 shrink-0' />
+								<a
+									href='https://www.tiktok.com/@aluminiumroofing_sheet?_r=1&_t=ZS-92CKIi7JwU3'
+									target='_blank'
+									rel='noopener'
+									className='transition-colors hover:text-foreground'
+								>
+									TikTok
+								</a>
+							</li>
+							<li className='flex items-center gap-2 text-muted-foreground'>
+								<Hash className='h-4 w-4 shrink-0' />
+								<a
+									href='https://www.threads.com/@godspacltd'
+									target='_blank'
+									rel='noopener'
+									className='transition-colors hover:text-foreground'
+								>
+									Threads
+								</a>
+							</li>
+							<li className='flex items-center gap-2 text-muted-foreground'>
+								<Ghost className='h-4 w-4 shrink-0' />
+								<a
+									href='https://www.snapchat.com/add/godspacltd_2?share_id=6Rid9tirHwM&locale=en-US'
+									target='_blank'
+									rel='noopener'
+									className='transition-colors hover:text-foreground'
+								>
+									Snapchat
 								</a>
 							</li>
 						</ul>
@@ -163,6 +228,9 @@ export function SiteFooter() {
 					<p>Made in Nigeria 🇳🇬</p>
 				</div>
 			</div>
+
+			{/* Themed gradient bottom border */}
+			<div className='h-4 w-full bg-linear-to-r from-primary via-blue-500 to-primary' />
 		</footer>
 	);
 }

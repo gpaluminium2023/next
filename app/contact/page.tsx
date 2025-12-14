@@ -21,7 +21,6 @@ const PHONE_NUMBERS = [
 	'07040249854',
 	'07060414466',
 	'08146074077',
-	'09025432004',
 ];
 
 const EMAIL_ADDRESS = 'godspromisealuminumconceptltd@gmail.com';

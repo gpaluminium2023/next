@@ -25,4 +25,4 @@ Our well-trained and qualified roofers carry out effective and efficient install
 
 -   Address: 288 Abeokuta Expressway, Pleasure B/Stop, Iyana Ipaja, Lagos State, by Ilepo Way
 -   Email: godspromisealuminumconceptltd@gmail.com
--   Phone: 09150459964, 07040249854, 07060414466, 08146074077, 09025432004
+-   Phone: 09150459964, 07040249854, 07060414466, 08146074077
