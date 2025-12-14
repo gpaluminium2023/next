@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 
 import { Badge } from '@/components/ui/badge';
@@ -5,6 +6,34 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+
+export const metadata: Metadata = {
+	title: 'About Gods Promise Aluminium | Lagos-based aluminium roofing company in Nigeria',
+	description:
+		'Learn about Gods Promise Aluminium, a Lagos-based, Nigerian-owned aluminium roofing and building products company supplying roofing sheets, stone tiles and accessories to projects across Nigeria.',
+	openGraph: {
+		title: 'About Gods Promise Aluminium | Lagos-based aluminium roofing company in Nigeria',
+		description:
+			'Gods Promise Aluminium provides durable aluminium roofing sheets, stone-coated tiles and accessories for homes, churches and commercial buildings in Lagos and across Nigeria.',
+		url: 'https://godspromisealuminiumroofing.com/about',
+		type: 'article',
+		images: [
+			{
+				url: '/logo.jpeg',
+				width: 1200,
+				height: 630,
+				alt: 'Gods Promise Aluminium logo',
+			},
+		],
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'About Gods Promise Aluminium | Lagos-based aluminium roofing company in Nigeria',
+		description:
+			'Lagos-based aluminium roofing company supplying roofing sheets, stone-coated tiles and accessories for projects across Nigeria.',
+		images: ['/logo.jpeg'],
+	},
+};
 
 const stats = [
 	{ id: 1, value: '950+', label: 'Satisfied clients' },
@@ -78,16 +107,18 @@ export default function AboutPage() {
 							variant='secondary'
 							className='mb-1'
 						>
-							Trusted by builders and homeowners across Nigeria
+							Trusted by homeowners and builders in Lagos and
+							across Nigeria
 						</Badge>
 						<h1 className='text-balance text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl'>
 							About Gods Promise Aluminium
 						</h1>
 						<p className='text-pretty text-lg text-muted-foreground md:text-xl'>
-							We are a Nigerian-owned company providing durable
-							aluminium roofing, stone tiles, and accessories that
-							keep homes, churches, and businesses beautifully
-							protected.
+							We are a Lagos-based, Nigerian-owned aluminium
+							roofing and building products company, supplying
+							roofing sheets, stone tiles, and accessories that
+							keep homes, churches, and businesses across Nigeria
+							beautifully protected.
 						</p>
 					</div>
 				</div>
@@ -126,27 +157,29 @@ export default function AboutPage() {
 							</h2>
 							<div className='space-y-4 text-base leading-relaxed text-muted-foreground'>
 								<p>
-									Gods Promise Aluminium is a full-service
-									aluminium roofing and building materials
-									company. From our workshop in Nigeria, we
-									produce and supply roofing sheets, stone
-									coated tiles, and accessories for projects
-									of all sizes.
+									Gods Promise Aluminium is a Lagos-based
+									aluminium roofing and building products
+									company. From our workshop in Lagos, we
+									produce and supply roofing sheets,
+									stone-coated tiles, and accessories for
+									projects of all sizes across Nigeria.
 								</p>
 								<p>
 									Over the years we&apos;ve grown with our
 									customers, learning the challenges builders
-									and homeowners face and shaping our services
-									to meet them. We believe every structure
-									deserves a roof that is both strong and
-									beautiful.
+									and homeowners face in the Nigerian climate
+									and shaping our services to meet them. We
+									believe every structure deserves a roof that
+									is strong, beautiful, and built to last.
 								</p>
 								<p>
 									Whether you are covering a new home,
 									renovating a sanctuary, or completing a
 									commercial project, our team is ready to
 									guide you from product selection through to
-									delivery and installation support.
+									delivery and installation support, with
+									simple WhatsApp quoting and clear,
+									transparent pricing.
 								</p>
 							</div>
 						</div>

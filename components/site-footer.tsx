@@ -17,19 +17,18 @@ export function SiteFooter() {
 	return (
 		<footer className='w-full border-t border-border bg-muted/30'>
 			<div className='mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8'>
-				<div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5'>
-					<div className='lg:col-span-2'>
-						<h3 className='text-lg font-semibold text-foreground'>
-							Gods Promise Aluminium
-						</h3>
-						<p className='mt-3 text-sm leading-relaxed text-muted-foreground'>
-							Nigeria&apos;s trusted provider of premium aluminium
-							roofing and construction materials. We help
-							homeowners, builders, and churches protect what
-							matters most with durable, beautiful roofs.
-						</p>
-					</div>
-
+				<div className='mb-8'>
+					<h3 className='text-lg font-semibold text-foreground'>
+						Gods Promise Aluminium
+					</h3>
+					<p className='mt-3 text-sm leading-relaxed text-muted-foreground'>
+						Nigeria&apos;s trusted provider of premium aluminium
+						roofing and construction materials. We help homeowners,
+						builders, and churches protect what matters most with
+						durable, beautiful roofs.
+					</p>
+				</div>
+				<div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4'>
 					<div>
 						<h4 className='text-sm font-semibold text-foreground'>
 							Quick links
@@ -65,6 +64,22 @@ export function SiteFooter() {
 									className='text-muted-foreground transition-colors hover:text-foreground'
 								>
 									Contact
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/faq'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									FAQ
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/resources'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Resources
 								</Link>
 							</li>
 						</ul>
@@ -105,6 +120,70 @@ export function SiteFooter() {
 									className='text-muted-foreground transition-colors hover:text-foreground'
 								>
 									View all products
+								</Link>
+							</li>
+						</ul>
+					</div>
+
+					<div>
+						<h4 className='text-sm font-semibold text-foreground'>
+							More information
+						</h4>
+						<ul className='mt-3 space-y-2 text-sm'>
+							<li>
+								<Link
+									href='/pricing'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Pricing & quotes
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/delivery'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Delivery & coverage
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/projects'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Projects & case studies
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/dealers'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Dealers & partners
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/warranty'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Warranty & returns
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/terms'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Terms & conditions
+								</Link>
+							</li>
+							<li>
+								<Link
+									href='/privacy'
+									className='text-muted-foreground transition-colors hover:text-foreground'
+								>
+									Privacy policy
 								</Link>
 							</li>
 						</ul>
