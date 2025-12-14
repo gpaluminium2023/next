@@ -28,19 +28,36 @@ export async function generateMetadata({
 		};
 	}
 
+	const url = `https://godspromisealuminiumroofing.com/blog/${post.slug}`;
+	const imageUrl = post.imageSrc ?? '/logo.jpeg';
+	const imageAlt = post.imageAlt ?? `${post.title} - Gods Promise Aluminium`;
+
 	return {
 		title: `${post.title} | Gods Promise Aluminium`,
 		description: post.excerpt,
 		openGraph: {
 			title: `${post.title} | Gods Promise Aluminium`,
 			description: post.excerpt,
-			url: `https://godspromisealuminiumroofing.com/blog/${post.slug}`,
+			url,
 			type: 'article',
+			locale: 'en_NG',
+			siteName: 'Gods Promise Aluminium',
+			publishedTime: post.date,
+			images: [
+				{
+					url: imageUrl,
+					alt: imageAlt,
+				},
+			],
 		},
 		twitter: {
 			card: 'summary_large_image',
 			title: `${post.title} | Gods Promise Aluminium`,
 			description: post.excerpt,
+			images: [imageUrl],
+		},
+		alternates: {
+			canonical: url,
 		},
 	};
 }
