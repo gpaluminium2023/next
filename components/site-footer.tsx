@@ -257,7 +257,7 @@ export function SiteFooter() {
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Music2 className="h-4 w-4 shrink-0" />
                 <a
-                  href="https://www.tiktok.com/@aluminiumroofing_sheet?_r=1&_t=ZS-92CKIi7JwU3"
+                  href="https://www.tiktok.com/@godspromiseroofing_1"
                   target="_blank"
                   rel="noopener"
                   className="transition-colors hover:text-foreground"
