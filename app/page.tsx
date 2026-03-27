@@ -2,16 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import {
-	Card,
-	CardContent,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 
 export const metadata: Metadata = {
 	title: 'Aluminium roofing sheet manufacturer in Lagos, Nigeria | Gods Promise Aluminium',
@@ -43,324 +34,317 @@ export const metadata: Metadata = {
 
 export default function Home() {
 	return (
-		<div className='bg-linear-to-b from-primary/5 via-background to-background'>
-			<main className='mx-auto flex min-h-screen max-w-6xl flex-col gap-16 px-4 py-10 md:px-8 md:py-16'>
-				{/* Hero */}
-				<section className='grid gap-10 lg:grid-cols-2 lg:items-center'>
-					<div className='space-y-6'>
-						<Badge className='border border-primary/20 bg-primary/5 text-primary'>
-							🇳🇬 Lagos-based aluminium roofing manufacturer
-							serving all Nigeria
-						</Badge>
-						<h1 className='text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-foreground'>
-							Aluminium roofing sheet manufacturer in Lagos,
-							Nigeria.
-						</h1>
-						<p className='max-w-xl text-base md:text-lg text-muted-foreground'>
-							Gods Promise Aluminium is a Lagos-based aluminium
-							roofing and building products company serving
-							customers across Nigeria. We deliver durable,
-							rust-resistant roofing systems designed for the
-							Nigerian climate, with simple WhatsApp quoting and
-							reliable nationwide delivery.
+		<div>
+			{/* ── HERO ────────────────────────────────────────────────── */}
+			<section className="relative bg-primary text-primary-foreground">
+				<div className="h-1 w-full bg-accent" />
+				<div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
+					{/* Left: text */}
+					<div className="flex flex-col justify-center px-6 py-14 md:px-10 lg:py-24">
+						<p className="mb-4 font-heading text-xs font-bold uppercase tracking-[0.28em] text-accent">
+							Lagos · Nigeria
 						</p>
-						<div className='flex flex-wrap gap-3'>
+						<h1 className="font-heading text-5xl font-bold uppercase leading-none tracking-tight md:text-6xl lg:text-7xl">
+							We Build<br />
+							<span className="text-accent">Roofs</span><br />
+							That Last
+						</h1>
+						<p className="mt-6 max-w-md text-sm leading-relaxed text-primary-foreground/75">
+							Gods Promise Aluminium manufactures durable roofing sheets and stone-coated tiles right here in Lagos. Fast WhatsApp quotes, accurate gauges and nationwide delivery to every state.
+						</p>
+						<div className="mt-8 flex flex-wrap gap-3">
 							<Button
 								asChild
-								className='rounded-full px-6'
-								size='lg'
+								size="lg"
+								className="rounded-sm bg-accent font-heading font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90"
 							>
-								<Link href='/contact'>
-									Request WhatsApp quote
-								</Link>
+								<Link href="/contact">Get WhatsApp Quote</Link>
 							</Button>
 							<Button
 								asChild
-								className='rounded-full border px-6'
-								size='lg'
-								variant='outline'
+								size="lg"
+								variant="outline"
+								className="rounded-sm border-primary-foreground/30 bg-transparent font-heading font-bold uppercase tracking-wide text-primary-foreground hover:bg-primary-foreground/10"
 							>
-								<Link href='/products'>View products</Link>
+								<Link href="/products">View Products</Link>
 							</Button>
 						</div>
 					</div>
-
-					<Card className='overflow-hidden border-none shadow-lg pt-0'>
-						<div className='relative aspect-video w-full bg-slate-900/90 dark:bg-slate-900'>
-							<Image
-								src='/images/ceo-two.jpg'
-								alt='CEO of Gods Promise Aluminium in the factory, representing a business built on promise'
-								fill
-								className='object-cover'
-								sizes='(min-width: 1024px) 50vw, 100vw'
-								priority
-							/>
-							<div className='absolute inset-x-0 bottom-0 bg-linear-to-t from-black/70 to-transparent px-6 pb-5 pt-10 text-sm text-slate-100'>
-								<p className='text-xs uppercase tracking-[0.2em] text-primary'>
-									Projects across Nigeria
-								</p>
-								<p className='mt-1 text-sm'>
-									Long span, stone-coated tiles and flat
-									sheets designed for the Nigerian climate.
-								</p>
-							</div>
-						</div>
-						<CardHeader className='pb-3'>
-							<CardTitle className='text-base font-semibold tracking-tight'>
-								Why choose Gods Promise
-							</CardTitle>
-						</CardHeader>
-						<CardContent className='grid gap-3 text-sm'>
-							<ValueItem
-								title='Integrity'
-								description='We deliver exactly what we promise, every time.'
-								iconSrc='/icons/integrity.png'
-								iconAlt='Gears with checkmarks representing reliable processes'
-							/>
-							<ValueItem
-								title='Customer satisfaction'
-								description='Transparency, flexibility and accountability guide every customer interaction.'
-								iconSrc='/icons/excellence.png'
-								iconAlt='Hand reaching for a star representing customer success'
-							/>
-							<ValueItem
-								title='Accountability'
-								description='We keep detailed records and stand behind every product from our factory.'
-								iconSrc='/icons/accounting.png'
-								iconAlt='Calculator and coins representing transparent pricing and records'
-							/>
-							<ValueItem
-								title='Excellence'
-								description='Continuous improvement and a clear standard of operation to serve you better.'
-								iconSrc='/icons/trophy.png'
-								iconAlt='Trophy representing excellence and high standards'
-							/>
-						</CardContent>
-					</Card>
-				</section>
-
-				{/* Our core products */}
-				<section className='space-y-10'>
-					<div className='flex flex-col gap-3 text-center md:flex-row md:items-end md:justify-between md:text-left'>
-						<div>
-							<h2 className='text-2xl font-semibold text-foreground'>
-								Our core products
-							</h2>
-							<p className='mt-1 text-sm max-w-xl text-muted-foreground'>
-								All thicknesses and colours are available at
-								affordable prices for residential, commercial
-								and industrial projects.
+					{/* Right: CEO image */}
+					<div className="relative min-h-72 lg:min-h-[600px]">
+						<Image
+							src="/images/ceo-two.jpg"
+							alt="CEO of Gods Promise Aluminium in the factory, representing a business built on promise"
+							fill
+							className="object-cover"
+							sizes="(min-width: 1024px) 50vw, 100vw"
+							priority
+						/>
+						<div className="absolute inset-0 bg-linear-to-t from-primary/70 via-transparent to-transparent" />
+						<div className="absolute bottom-0 left-0 px-6 pb-6">
+							<p className="font-heading text-xs font-bold uppercase tracking-[0.22em] text-accent">
+								Projects Across Nigeria
 							</p>
+							<p className="mt-1 text-xs leading-relaxed text-primary-foreground/85">
+								Long span, stone-coated tiles and flat sheets designed for the Nigerian climate.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* ── STATS STRIP ─────────────────────────────────────────── */}
+			<section className="bg-secondary">
+				<div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-border md:grid-cols-4">
+					<StatItem value="15+" label="Years in Business" />
+					<StatItem value="500K+" label="Sheets Sold" />
+					<StatItem value="36" label="States Served" />
+					<StatItem value="1K+" label="Happy Customers" />
+				</div>
+			</section>
+
+			{/* ── PRODUCTS ────────────────────────────────────────────── */}
+			<section className="bg-background py-16">
+				<div className="mx-auto max-w-7xl px-6 md:px-10">
+					<div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+						<div>
+							<p className="mb-2 font-heading text-xs font-bold uppercase tracking-[0.28em] text-accent">
+								Our Products
+							</p>
+							<h2 className="font-heading text-3xl font-bold uppercase leading-none tracking-tight md:text-4xl">
+								Built for Nigeria’s Climate
+							</h2>
 						</div>
 						<Button
 							asChild
-							className='h-9 rounded-full px-4 text-xs md:text-sm'
-							variant='outline'
+							variant="outline"
+							className="self-start rounded-sm font-heading font-bold uppercase tracking-wide"
 						>
-							<Link href='/products'>View full product list</Link>
+							<Link href="/products">See Full Range</Link>
 						</Button>
 					</div>
-
-					<div className='grid gap-6 md:grid-cols-3'>
-						<ProductCard
-							badge='Roofing sheets'
-							title='Long span roofing sheets'
-							description='Durable profiles for homes, churches and commercial buildings, with accurate gauges and trusted colours.'
-							imageSrc='/core-products/roof1.jpg'
-							imageAlt='Example of a completed aluminium long span roofing sheet installation'
+					<div className="grid gap-1 md:grid-cols-3">
+						<ProductPanel
+							tag="Roofing Sheets"
+							title="Long Span Roofing Sheets"
+							description="Durable profiles for homes, churches and commercial buildings, with accurate gauges and trusted colours."
+							imageSrc="/core-products/roof1.jpg"
+							imageAlt="Long span aluminium roofing sheet installation"
+							href="/products"
 						/>
-						<ProductCard
-							badge='Stone tiles'
-							title='Stone coated roof tiles'
-							description='Shingle, Classic, Bond and more – combining aesthetics with long-lasting protection.'
-							imageSrc='/core-products/stonetiles.jpg'
-							imageAlt='Stone-coated roofing tiles installed on a building roof'
+						<ProductPanel
+							tag="Stone Tiles"
+							title="Stone Coated Roof Tiles"
+							description="Shingle, Classic, Bond and more — combining aesthetic appeal with long-lasting protection."
+							imageSrc="/core-products/stonetiles.jpg"
+							imageAlt="Stone-coated roofing tiles installed on a building roof"
+							href="/products"
 						/>
-						<ProductCard
-							badge='Flat sheets'
-							title='Aluminium flat sheets'
-							description='Versatile sheets in multiple thicknesses for custom fabrication and finishing.'
-							imageSrc='/core-products/flatsheet.jpg'
-							imageAlt='Stack of coloured aluminium flat sheets ready for fabrication'
+						<ProductPanel
+							tag="Flat Sheets"
+							title="Aluminium Flat Sheets"
+							description="Versatile sheets in multiple thicknesses for custom fabrication and finishing work."
+							imageSrc="/core-products/flatsheet.jpg"
+							imageAlt="Stack of coloured aluminium flat sheets ready for fabrication"
+							href="/products"
 						/>
 					</div>
-				</section>
+				</div>
+			</section>
 
-				{/* How it works */}
-				<section className='space-y-8'>
-					<div className='text-center space-y-2'>
-						<h2 className='text-2xl font-semibold text-foreground'>
-							Easy to get started
-						</h2>
-						<p className='text-sm max-w-xl mx-auto text-muted-foreground'>
-							Move from enquiry to verified delivery in three
-							simple steps.
-						</p>
-					</div>
-
-					<div className='relative'>
-						<div className='pointer-events-none absolute left-8 right-8 top-8 hidden h-px bg-slate-200 dark:bg-slate-800 lg:block' />
-						<div className='grid gap-6 lg:grid-cols-3 lg:gap-10'>
-							<StepCard
-								step='01'
-								title='Check products'
-								description='Browse our range of roofing sheets, stone tiles and flat sheets to confirm availability.'
-							/>
-							<StepCard
-								step='02'
-								title='Place order'
-								description='Contact us or visit our factory and our team will guide you through your order.'
-							/>
-							<StepCard
-								step='03'
-								title='Verify order'
-								description='Cross-check every item at our factory before transportation to your site.'
-							/>
-						</div>
-					</div>
-				</section>
-
-				{/* Contact strip / CTA */}
-				<section className='rounded-2xl border border-primary/10 bg-primary px-5 py-6 text-sm text-primary-foreground shadow-sm'>
-					<div className='flex flex-col gap-4 md:flex-row md:items-center md:justify-between'>
+			{/* ── VALUES ─────────────────────────────────────────────── */}
+			<section className="bg-primary py-16 text-primary-foreground">
+				<div className="mx-auto max-w-7xl px-6 md:px-10">
+					<div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
 						<div>
-							<p className='text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/80'>
-								Contact information
+							<p className="mb-2 font-heading text-xs font-bold uppercase tracking-[0.28em] text-accent">
+								Why Choose Us
 							</p>
-							<p className='mt-1 text-sm font-medium'>
-								Ready to start your roofing project? Talk to our
-								team today.
-							</p>
-							<p className='mt-1 text-xs opacity-90'>
-								288 Abeokuta Expressway, Pleasure B/Stop, Iyana
-								Ipaja, Lagos State (by Ilepo way)
-							</p>
+							<h2 className="font-heading text-3xl font-bold uppercase leading-none tracking-tight md:text-4xl">
+								Our Core Values
+							</h2>
 						</div>
-						<div className='space-y-1 text-xs md:text-right'>
-							<p className='opacity-90'>
-								godspromisealuminumconceptltd@gmail.com
+					</div>
+					<div className="grid divide-y divide-primary-foreground/10 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+						<ValuePanel
+							iconSrc="/icons/integrity.png"
+							iconAlt="Integrity icon"
+							title="Integrity"
+							description="We deliver exactly what we promise, every time — no shortcuts, no substitutions."
+						/>
+						<ValuePanel
+							iconSrc="/icons/excellence.png"
+							iconAlt="Customer satisfaction icon"
+							title="Customer Satisfaction"
+							description="Transparency, flexibility and accountability guide every customer interaction."
+						/>
+						<ValuePanel
+							iconSrc="/icons/accounting.png"
+							iconAlt="Accountability icon"
+							title="Accountability"
+							description="We stand behind every product that leaves our factory with full records and support."
+						/>
+						<ValuePanel
+							iconSrc="/icons/trophy.png"
+							iconAlt="Excellence icon"
+							title="Excellence"
+							description="Continuous improvement and a clear standard of operation at every level of service."
+						/>
+					</div>
+				</div>
+			</section>
+
+			{/* ── PROCESS ─────────────────────────────────────────────── */}
+			<section className="bg-secondary py-16">
+				<div className="mx-auto max-w-7xl px-6 md:px-10">
+					<div className="mb-12 text-center">
+						<p className="mb-2 font-heading text-xs font-bold uppercase tracking-[0.28em] text-accent">
+							How It Works
+						</p>
+						<h2 className="font-heading text-3xl font-bold uppercase leading-none tracking-tight md:text-4xl">
+							From Enquiry to Delivery
+						</h2>
+					</div>
+					<div className="grid gap-0 divide-y divide-border md:grid-cols-3 md:divide-x md:divide-y-0">
+						<StepPanel
+							step="01"
+							title="Check Products"
+							description="Browse our range of roofing sheets, stone tiles and flat sheets to confirm availability and pricing for your project."
+						/>
+						<StepPanel
+							step="02"
+							title="Place Your Order"
+							description="Contact us on WhatsApp or visit our Lagos factory. Our team will guide you through every step of the order."
+						/>
+						<StepPanel
+							step="03"
+							title="Verify & Receive"
+							description="Cross-check every item at our factory before transport. We ensure quality at the source before it reaches your site."
+						/>
+					</div>
+				</div>
+			</section>
+
+			{/* ── CTA STRIP ───────────────────────────────────────────── */}
+			<section className="bg-accent text-accent-foreground">
+				<div className="h-1 w-full bg-primary" />
+				<div className="mx-auto max-w-7xl px-6 py-14 md:px-10 md:py-20">
+					<div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+						<div>
+							<p className="mb-3 font-heading text-xs font-bold uppercase tracking-[0.28em] opacity-75">
+								288 Abeokuta Expressway, Iyana Ipaja, Lagos State
 							</p>
-							<p className='opacity-90'>
-								09150459964 · 07040249854 · 07060414466 ·
-								08146074077
+							<h2 className="font-heading text-3xl font-bold uppercase leading-none tracking-tight md:text-5xl lg:text-6xl">
+								Ready to Start<br />Your Project?
+							</h2>
+						</div>
+						<div className="flex flex-col gap-3 md:items-end">
+							<Button
+								asChild
+								size="lg"
+								className="rounded-sm bg-primary font-heading font-bold uppercase tracking-wide text-primary-foreground hover:bg-primary/90"
+							>
+								<Link href="/contact">Contact Us Today</Link>
+							</Button>
+							<p className="text-xs opacity-75">
+								09150459964 · 07040249854 · 07060414466 · 08146074077
 							</p>
 						</div>
 					</div>
-				</section>
-
-				<Separator className='mt-4' />
-			</main>
+				</div>
+			</section>
 		</div>
 	);
 }
 
-type ValueItemProps = {
-	title: string;
-	description: string;
-	iconSrc: string;
-	iconAlt: string;
-};
+// ── Sub-components ────────────────────────────────────────────────────────────
 
-function ValueItem({ title, description, iconSrc, iconAlt }: ValueItemProps) {
+function StatItem({ value, label }: { value: string; label: string }) {
 	return (
-		<div className='flex gap-3'>
-			<div className='mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary'>
-				<Image
-					src={iconSrc}
-					alt={iconAlt}
-					width={20}
-					height={20}
-					className='h-5 w-5'
-				/>
-			</div>
-			<div>
-				<p className='text-sm font-medium text-slate-900 dark:text-slate-50'>
-					{title}
-				</p>
-				<p className='text-xs text-slate-600 dark:text-slate-300'>
-					{description}
-				</p>
-			</div>
+		<div className="flex flex-col items-center justify-center gap-1 px-6 py-10 text-center">
+			<span className="font-heading text-4xl font-bold text-primary md:text-5xl">{value}</span>
+			<span className="font-heading text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+				{label}
+			</span>
 		</div>
 	);
 }
 
-type ProductCardProps = {
-	badge: string;
+type ProductPanelProps = {
+	tag: string;
 	title: string;
 	description: string;
 	imageSrc: string;
 	imageAlt: string;
+	href: string;
 };
 
-function ProductCard({
-	badge,
-	title,
-	description,
-	imageSrc,
-	imageAlt,
-}: ProductCardProps) {
+function ProductPanel({ tag, title, description, imageSrc, imageAlt, href }: ProductPanelProps) {
 	return (
-		<Card className='overflow-hidden border border-slate-200/70 bg-white/90 shadow-sm dark:border-slate-800/80 dark:bg-slate-900/80 p-0'>
-			<div className='relative aspect-video w-full bg-slate-100 dark:bg-slate-900/80'>
-				<Image
-					src={imageSrc}
-					alt={imageAlt}
-					fill
-					className='object-cover'
-					sizes='(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw'
-				/>
+		<Link
+			href={href}
+			className="group relative block overflow-hidden bg-primary" style={{ aspectRatio: '4/3' }}
+		>
+			<Image
+				src={imageSrc}
+				alt={imageAlt}
+				fill
+				className="object-cover transition-transform duration-500 group-hover:scale-105"
+				sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+			/>
+			<div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+			<div className="absolute left-0 right-0 top-0 px-4 pt-4">
+				<span className="bg-primary/85 px-2 py-0.5 font-heading text-xs font-bold uppercase tracking-[0.2em] text-accent">
+					{tag}
+				</span>
 			</div>
-			<CardHeader className='space-y-2 pb-3'>
-				<Badge
-					variant='secondary'
-					className='w-fit text-[11px] uppercase tracking-[0.16em]'
-				>
-					{badge}
-				</Badge>
-				<CardTitle className='text-base font-semibold leading-snug'>
-					{title}
-				</CardTitle>
-			</CardHeader>
-			<CardContent className='text-xs text-slate-600 dark:text-slate-300'>
-				{description}
-			</CardContent>
-			<CardFooter className='pt-3'>
-				<Button
-					asChild
-					variant='ghost'
-					size='sm'
-					className='ml-auto h-8 px-2 text-xs'
-				>
-					<Link href='/products'>Learn more</Link>
-				</Button>
-			</CardFooter>
-		</Card>
+			<div className="absolute bottom-0 left-0 right-0 px-4 pb-5">
+				<h3 className="font-heading text-lg font-bold uppercase leading-tight text-white">{title}</h3>
+				<p className="mt-1 text-xs leading-relaxed text-white/80">{description}</p>
+			</div>
+		</Link>
 	);
 }
 
-type StepCardProps = {
+type ValuePanelProps = {
+	iconSrc: string;
+	iconAlt: string;
+	title: string;
+	description: string;
+};
+
+function ValuePanel({ iconSrc, iconAlt, title, description }: ValuePanelProps) {
+	return (
+		<div className="flex flex-col gap-4 px-6 py-8">
+			<Image
+				src={iconSrc}
+				alt={iconAlt}
+				width={32}
+				height={32}
+				className="h-8 w-8 brightness-0 invert"
+			/>
+			<div>
+				<h3 className="font-heading text-sm font-bold uppercase tracking-wide">{title}</h3>
+				<p className="mt-1.5 text-xs leading-relaxed text-primary-foreground/65">{description}</p>
+			</div>
+		</div>
+	);
+}
+
+type StepPanelProps = {
 	step: string;
 	title: string;
 	description: string;
 };
 
-function StepCard({ step, title, description }: StepCardProps) {
+function StepPanel({ step, title, description }: StepPanelProps) {
 	return (
-		<Card className='relative border-none bg-white/90 shadow-sm dark:bg-slate-900/80'>
-			<CardHeader className='pb-2'>
-				<div className='flex items-center justify-center'>
-					<div className='flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground shadow-md'>
-						{step}
-					</div>
-				</div>
-				<CardTitle className='mt-3 text-center text-sm font-semibold'>
-					{title}
-				</CardTitle>
-			</CardHeader>
-			<CardContent className='px-6 pb-6 text-center text-xs text-slate-600 dark:text-slate-300'>
-				{description}
-			</CardContent>
-		</Card>
+		<div className="flex flex-col gap-4 px-6 py-10">
+			<span className="font-heading text-6xl font-bold leading-none text-accent">{step}</span>
+			<div>
+				<h3 className="font-heading text-base font-bold uppercase tracking-wide">{title}</h3>
+				<p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
+			</div>
+		</div>
 	);
 }

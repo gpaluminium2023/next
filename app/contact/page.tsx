@@ -1,292 +1,231 @@
 import type { Metadata } from 'next';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import Link from "next/link";
 
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from '@/components/ui/card';
-import { ContactForm } from '@/components/contact-form';
+import { ContactForm } from "@/components/contact-form";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-	title: 'Contact Us - Gods Promise Aluminium',
-	description:
-		'Get in touch with Gods Promise Aluminium. Contact us for quality aluminium roofing sheets, stone-coated tiles, and accessories in Nigeria.',
+  title: "Contact Us - Gods Promise Aluminium",
+  description:
+    "Get in touch with Gods Promise Aluminium. Contact us for quality aluminium roofing sheets, stone-coated tiles, and accessories in Nigeria.",
 };
 
 const PHONE_NUMBERS = [
-	'09150459964',
-	'07040249854',
-	'07060414466',
-	'08146074077',
+  "09150459964",
+  "07040249854",
+  "07060414466",
+  "08146074077",
 ];
 
-const EMAIL_ADDRESS = 'godspromisealuminumconceptltd@gmail.com';
+const EMAIL_ADDRESS = "godspromisealuminumconceptltd@gmail.com";
 
 const FACTORY_ADDRESS_LINES = [
-	'288 Abeokuta Expressway, Pleasure B/Stop',
-	'Iyana Ipaja, Lagos State',
-	'Nigeria',
+  "288 Abeokuta Expressway, Pleasure B/Stop",
+  "Iyana Ipaja, Lagos State",
+  "Nigeria",
 ];
 
 export default function ContactPage() {
-	return (
-		<div className='min-h-screen bg-background'>
-			{/* Hero Section */}
-			<section className='bg-gradient-to-b from-muted/50 to-background py-12 md:py-16'>
-				<div className='container px-4 mx-auto max-w-6xl'>
-					<div className='text-center max-w-2xl mx-auto'>
-						<h1 className='text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-balance mb-4'>
-							Get in Touch with Us
-						</h1>
-						<p className='text-muted-foreground text-base md:text-lg text-pretty'>
-							Have questions about our aluminium roofing sheets,
-							stone-coated tiles, or accessories? Reach out today
-							and our team will get back to you as quickly as
-							possible.
-						</p>
-					</div>
-				</div>
-			</section>
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Hero */}
+      <section className="bg-primary text-primary-foreground">
+        <div className="h-1 w-full bg-accent" />
+        <div className="container px-4 mx-auto max-w-6xl py-16 md:py-20">
+          <p className="text-accent text-xs uppercase tracking-widest font-heading font-bold mb-3">
+            Contact
+          </p>
+          <h1 className="font-heading uppercase font-bold text-4xl md:text-5xl lg:text-6xl text-balance mb-4">
+            Get in Touch
+          </h1>
+          <p className="text-primary-foreground/80 text-base md:text-lg max-w-2xl">
+            Have questions about our aluminium roofing sheets, stone-coated
+            tiles, or accessories? Reach out and our team will respond promptly.
+          </p>
+        </div>
+      </section>
 
-			{/* Contact Information Cards */}
-			<section className='py-12 md:py-16'>
-				<div className='container px-4 mx-auto max-w-6xl'>
-					<div className='grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12'>
-						{/* Phone Card */}
-						<Card className='hover:shadow-md transition-shadow'>
-							<CardHeader>
-								<div className='flex items-center gap-3'>
-									<div className='p-2 bg-primary/10 rounded-lg'>
-										<Phone className='h-5 w-5 text-primary' />
-									</div>
-									<CardTitle className='text-lg'>
-										Call Us
-									</CardTitle>
-								</div>
-								<CardDescription>
-									Talk directly with our team about your
-									project.
-								</CardDescription>
-							</CardHeader>
-							<CardContent className='space-y-1'>
-								{PHONE_NUMBERS.map((phone) => (
-									<a
-										key={phone}
-										href={`tel:${phone}`}
-										className='block text-sm hover:text-primary transition-colors tracking-wide'
-									>
-										{phone}
-									</a>
-								))}
-								<p className='text-xs text-muted-foreground pt-2'>
-									Available Monday to Saturday, 8:00 AM  6:00
-									PM
-								</p>
-							</CardContent>
-						</Card>
+      {/* Contact Info Row */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Phone */}
+            <div className="rounded-sm border border-border bg-card p-6">
+              <div className="flex h-12 w-12 items-center justify-center bg-accent mb-4">
+                <Phone className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="font-heading uppercase font-bold text-lg mb-1">
+                Call Us
+              </h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                Talk directly with our team about your project.
+              </p>
+              <div className="space-y-1">
+                {PHONE_NUMBERS.map((phone) => (
+                  <a
+                    key={phone}
+                    href={`tel:${phone}`}
+                    className="block text-sm font-medium hover:text-accent transition-colors tracking-wide"
+                  >
+                    {phone}
+                  </a>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground mt-3">
+                Mon &ndash; Sat, 8:00 AM &ndash; 6:00 PM
+              </p>
+            </div>
 
-						{/* Email Card */}
-						<Card className='hover:shadow-md transition-shadow'>
-							<CardHeader>
-								<div className='flex items-center gap-3'>
-									<div className='p-2 bg-primary/10 rounded-lg'>
-										<Mail className='h-5 w-5 text-primary' />
-									</div>
-									<CardTitle className='text-lg'>
-										Email Us
-									</CardTitle>
-								</div>
-								<CardDescription>
-									Send us your building details and
-									requirements.
-								</CardDescription>
-							</CardHeader>
-							<CardContent>
-								<a
-									href={`mailto:${EMAIL_ADDRESS}`}
-									className='text-sm hover:text-primary transition-colors break-words'
-								>
-									{EMAIL_ADDRESS}
-								</a>
-								<p className='text-xs text-muted-foreground pt-2'>
-									We typically respond within one business
-									day.
-								</p>
-							</CardContent>
-						</Card>
+            {/* Email */}
+            <div className="rounded-sm border border-border bg-card p-6">
+              <div className="flex h-12 w-12 items-center justify-center bg-accent mb-4">
+                <Mail className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="font-heading uppercase font-bold text-lg mb-1">
+                Email Us
+              </h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                Send us your building details and requirements.
+              </p>
+              <a
+                href={`mailto:${EMAIL_ADDRESS}`}
+                className="text-sm font-medium hover:text-accent transition-colors break-all"
+              >
+                {EMAIL_ADDRESS}
+              </a>
+              <p className="text-xs text-muted-foreground mt-3">
+                We respond within one business day.
+              </p>
+            </div>
 
-						{/* Address Card */}
-						<Card className='hover:shadow-md transition-shadow'>
-							<CardHeader>
-								<div className='flex items-center gap-3'>
-									<div className='p-2 bg-primary/10 rounded-lg'>
-										<MapPin className='h-5 w-5 text-primary' />
-									</div>
-									<CardTitle className='text-lg'>
-										Visit Our Factory
-									</CardTitle>
-								</div>
-								<CardDescription>
-									Walk in to discuss your roofing project in
-									person.
-								</CardDescription>
-							</CardHeader>
-							<CardContent>
-								<address className='text-sm not-italic text-muted-foreground leading-relaxed'>
-									{FACTORY_ADDRESS_LINES.map((line) => (
-										<div key={line}>{line}</div>
-									))}
-								</address>
-							</CardContent>
-						</Card>
-					</div>
+            {/* Address */}
+            <div className="rounded-sm border border-border bg-card p-6">
+              <div className="flex h-12 w-12 items-center justify-center bg-accent mb-4">
+                <MapPin className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="font-heading uppercase font-bold text-lg mb-1">
+                Visit Our Factory
+              </h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                Walk in to discuss your roofing project in person.
+              </p>
+              <address className="text-sm not-italic leading-relaxed">
+                {FACTORY_ADDRESS_LINES.map((line) => (
+                  <div key={line}>{line}</div>
+                ))}
+              </address>
+            </div>
+          </div>
+        </div>
+      </section>
 
-					{/* Main Content Grid */}
-					<div className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12'>
-						{/* Contact Form */}
-						<div>
-							<Card>
-								<CardHeader>
-									<CardTitle className='text-2xl'>
-										Send Us a Message
-									</CardTitle>
-									<CardDescription>
-										Fill in the form and let us know what
-										you need – we use your details only to
-										respond to your enquiry.
-									</CardDescription>
-								</CardHeader>
-								<CardContent>
-									<ContactForm />
-								</CardContent>
-							</Card>
-						</div>
+      {/* Form + Map */}
+      <section className="py-12 md:py-16">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            {/* Contact Form */}
+            <div>
+              <p className="text-accent text-xs uppercase tracking-widest font-heading font-bold mb-2">
+                Send a Message
+              </p>
+              <h2 className="font-heading uppercase font-bold text-2xl md:text-3xl mb-2">
+                Tell Us What You Need
+              </h2>
+              <p className="text-sm text-muted-foreground mb-6">
+                Fill in the form and we&apos;ll get back to you. We use your
+                details only to respond to your enquiry.
+              </p>
+              <ContactForm />
+            </div>
 
-						{/* Map Placeholder & Business Hours */}
-						<div className='space-y-6'>
-							{/* Map Embed */}
-							<Card className='overflow-hidden'>
-								<CardHeader>
-									<CardTitle className='text-xl'>
-										Our Location
-									</CardTitle>
-									<CardDescription>
-										Find us easily using Google Maps and get
-										directions straight to our factory.
-									</CardDescription>
-								</CardHeader>
-								<CardContent className='p-0'>
-									<div className='border-t'>
-										<iframe
-											src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7926.261100011551!2d3.3004211!3d6.6307033!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b918c1a8f0dbf%3A0x596f93e7caaf4a77!2sGOD%27S%20PROMISE%20ALUMINUM%20CONCEPT%20LTD!5e0!3m2!1sen!2sng!4v1765657509731!5m2!1sen!2sng'
-											width='100%'
-											height='320'
-											style={{ border: 0 }}
-											allowFullScreen
-											loading='lazy'
-											referrerPolicy='no-referrer-when-downgrade'
-											className='w-full h-64 md:h-80'
-											title="God's Promise Aluminium Concept Ltd location on map"
-										/>
-									</div>
-									<div className='px-6 py-4 text-sm text-muted-foreground'>
-										<p>
-											Tap the map to open directions in
-											your preferred maps app.
-										</p>
-										<p className='mt-2'>
-											<a
-												href='https://www.google.com/search?q=god%27s+promise+aluminium+concept+ltd&rlz=1C1ONGR_enNG1192NG1192&oq=gods+promise+alu&gs_lcrp=EgZjaHJvbWUqCAgBEAAYFhgeMgYIABBFGDkyCAgBEAAYFhgeMggIAhAAGBYYHjINCAMQABiGAxiABBiKBTINCAQQABiGAxiABBiKBTIGCAUQRRg9MgYIBhBFGD0yBggHEEUYPdIBCDk3OTBqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8&lqi=CiNnb2QncyBwcm9taXNlIGFsdW1pbml1bSBjb25jZXB0IGx0ZEiq0oCppLuAgAhaORAAEAEQAhADEAQYABgBGAIYAxgEIiNnb2QncyBwcm9taXNlIGFsdW1pbml1bSBjb25jZXB0IGx0ZJIBEnJvb2ZpbmdfY29udHJhY3Rvcg#rlimm=6444532215537683063&lrd=0x103b918c1a8f0dbf:0x596f93e7caaf4a77,3,,,,'
-												target='_blank'
-												rel='noopener'
-												className='font-medium text-primary hover:underline'
-											>
-												See reviews or leave a review on
-												Google
-											</a>
-										</p>
-									</div>
-								</CardContent>
-							</Card>
+            {/* Map + Hours */}
+            <div className="space-y-6">
+              {/* Map */}
+              <div>
+                <p className="text-accent text-xs uppercase tracking-widest font-heading font-bold mb-2">
+                  Our Location
+                </p>
+                <h2 className="font-heading uppercase font-bold text-2xl md:text-3xl mb-4">
+                  Find Us
+                </h2>
+                <div className="rounded-sm overflow-hidden border border-border">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7926.261100011551!2d3.3004211!3d6.6307033!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b918c1a8f0dbf%3A0x596f93e7caaf4a77!2sGOD%27S%20PROMISE%20ALUMINUM%20CONCEPT%20LTD!5e0!3m2!1sen!2sng!4v1765657509731!5m2!1sen!2sng"
+                    width="100%"
+                    height="320"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="God's Promise Aluminium Concept Ltd location on map"
+                  />
+                </div>
+              </div>
 
-							{/* Business Hours */}
-							<Card>
-								<CardHeader>
-									<div className='flex items-center gap-3'>
-										<div className='p-2 bg-primary/10 rounded-lg'>
-											<Clock className='h-5 w-5 text-primary' />
-										</div>
-										<CardTitle className='text-xl'>
-											Business Hours
-										</CardTitle>
-									</div>
-								</CardHeader>
-								<CardContent className='space-y-3'>
-									<div className='flex justify-between text-sm'>
-										<span className='text-muted-foreground'>
-											Monday – Friday
-										</span>
-										<span className='font-medium'>
-											8:00 AM – 6:00 PM
-										</span>
-									</div>
-									<div className='flex justify-between text-sm'>
-										<span className='text-muted-foreground'>
-											Saturday
-										</span>
-										<span className='font-medium'>
-											9:00 AM – 4:00 PM
-										</span>
-									</div>
-									<div className='flex justify-between text-sm'>
-										<span className='text-muted-foreground'>
-											Sunday
-										</span>
-										<span className='font-medium text-destructive'>
-											Closed
-										</span>
-									</div>
-									<div className='pt-3 border-t mt-4'>
-										<p className='text-xs text-muted-foreground'>
-											<span className='font-semibold text-foreground'>
-												Response time:
-											</span>{' '}
-											We aim to respond to enquiries
-											within 2–4 hours during business
-											hours, or the next business day if
-											you contact us after closing time.
-										</p>
-									</div>
-								</CardContent>
-							</Card>
-						</div>
-					</div>
-				</div>
-			</section>
+              {/* Business Hours */}
+              <div className="rounded-sm border border-border bg-card p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex h-10 w-10 items-center justify-center bg-accent">
+                    <Clock className="h-5 w-5 text-white" />
+                  </div>
+                  <h3 className="font-heading uppercase font-bold text-lg">
+                    Business Hours
+                  </h3>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">
+                      Monday &ndash; Friday
+                    </span>
+                    <span className="font-medium">8:00 AM &ndash; 6:00 PM</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Saturday</span>
+                    <span className="font-medium">9:00 AM &ndash; 4:00 PM</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Sunday</span>
+                    <span className="font-medium text-destructive">Closed</span>
+                  </div>
+                  <div className="pt-3 border-t">
+                    <p className="text-xs text-muted-foreground">
+                      We aim to respond within 2&ndash;4 hours during business
+                      hours, or the next business day after closing.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-			{/* Trust Section */}
-			<section className='py-12 bg-muted/30'>
-				<div className='container px-4 mx-auto max-w-4xl'>
-					<Card className='border-primary/20 bg-card/50'>
-						<CardContent className='pt-6 text-center'>
-							<h3 className='font-semibold text-lg mb-2'>
-								Why Contact Gods Promise Aluminium?
-							</h3>
-							<p className='text-sm text-muted-foreground text-balance'>
-								From taking accurate measurements to supplying
-								and installing your roof, we support you at
-								every step. Share your project details with us
-								and we&apos;ll recommend the right aluminium
-								roofing sheets, stone-coated tiles, and
-								accessories for your budget and design.
-							</p>
-						</CardContent>
-					</Card>
-				</div>
-			</section>
-		</div>
-	);
+      {/* CTA Strip */}
+      <section className="bg-secondary py-10">
+        <div className="container px-4 mx-auto max-w-4xl text-center">
+          <h3 className="font-heading uppercase font-bold text-xl mb-2">
+            Ready to Start Your Roofing Project?
+          </h3>
+          <p className="text-sm text-muted-foreground mb-6 text-balance">
+            From taking accurate measurements to supplying and installing your
+            roof, we support you at every step. Share your project details and
+            we&apos;ll recommend the right products for your budget.
+          </p>
+          <Button
+            asChild
+            className="rounded-sm bg-accent font-heading font-bold uppercase tracking-wide hover:bg-accent/90"
+          >
+            <Link
+              href="https://wa.me/2349150459964"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp Us Now
+            </Link>
+          </Button>
+        </div>
+      </section>
+    </div>
+  );
 }

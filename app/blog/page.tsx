@@ -3,11 +3,9 @@ import Image from 'next/image';
 
 import type { Metadata } from 'next';
 import { blogPosts } from '@/lib/blog-posts';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export const metadata: Metadata = {
-	title: 'Blog & resources | Gods Promise Aluminium',
+	title: 'Blog & Resources | Gods Promise Aluminium',
 	description:
 		'Aluminium roofing guides, price updates and practical resources for homeowners, builders and contractors in Lagos and across Nigeria.',
 };
@@ -18,30 +16,37 @@ export default function BlogIndexPage() {
 	);
 
 	return (
-		<div className='bg-linear-to-b from-primary/5 via-background to-background'>
-			<section className='py-12 md:py-20'>
-				<div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
-					<div className='mb-10 max-w-3xl space-y-3'>
-						<Badge variant='secondary'>Blog & resources</Badge>
-						<h1 className='text-3xl font-bold tracking-tight md:text-4xl'>
-							Aluminium roofing guides & price updates
-						</h1>
-						<p className='text-sm md:text-base text-muted-foreground'>
-							Practical articles to help you choose the right
-							aluminium roofing sheets, understand pricing in
-							Lagos and across Nigeria, and plan your next roofing
-							project with confidence.
-						</p>
-					</div>
+		<div className='min-h-screen bg-background'>
+			{/* Hero */}
+			<section className='bg-primary text-primary-foreground'>
+				<div className='h-1 w-full bg-accent' />
+				<div className='container px-4 mx-auto max-w-6xl py-16 md:py-20'>
+					<p className='text-accent text-xs uppercase tracking-widest font-heading font-bold mb-3'>
+						Blog &amp; Resources
+					</p>
+					<h1 className='font-heading uppercase font-bold text-4xl md:text-5xl lg:text-6xl text-balance mb-4'>
+						Roofing Guides &amp; Price Updates
+					</h1>
+					<p className='text-primary-foreground/80 text-base md:text-lg max-w-2xl'>
+						Practical articles to help you choose the right
+						aluminium roofing sheets, understand pricing in Lagos
+						and across Nigeria, and plan your next roofing project
+						with confidence.
+					</p>
+				</div>
+			</section>
 
+			{/* Posts grid */}
+			<section className='py-12 md:py-16'>
+				<div className='container px-4 mx-auto max-w-6xl'>
 					<div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
 						{sortedPosts.map((post) => (
-							<Card
+							<article
 								key={post.slug}
-								className='h-full transition-shadow hover:shadow-md pt-0'
+								className='group rounded-sm overflow-hidden border border-border bg-card h-full flex flex-col'
 							>
 								{post.imageSrc && (
-									<div className='relative h-40 w-full overflow-hidden rounded-t-lg border-b border-border/60 bg-muted'>
+									<div className='relative h-40 w-full overflow-hidden bg-muted'>
 										<Image
 											src={post.imageSrc}
 											alt={post.imageAlt ?? post.title}
@@ -51,36 +56,32 @@ export default function BlogIndexPage() {
 										/>
 									</div>
 								)}
-								<CardHeader className='pb-2'>
-									<CardTitle className='line-clamp-2 text-base md:text-lg'>
+								<div className='p-5 flex flex-col flex-1'>
+									<h2 className='font-heading font-bold text-base md:text-lg line-clamp-2 mb-2'>
 										<Link
 											href={`/blog/${post.slug}`}
-											className='hover:underline'
+											className='hover:text-accent transition-colors'
 										>
 											{post.title}
 										</Link>
-									</CardTitle>
-								</CardHeader>
-								<CardContent className='space-y-2 text-sm text-muted-foreground'>
-									<p className='line-clamp-3'>
+									</h2>
+									<p className='text-sm text-muted-foreground line-clamp-3 flex-1'>
 										{post.excerpt}
 									</p>
-									<p className='text-xs text-muted-foreground/80'>
-										<span>
-											{new Date(
-												post.date
-											).toLocaleDateString('en-NG', {
-												year: 'numeric',
-												month: 'short',
-												day: 'numeric',
-											})}
-										</span>
+									<p className='text-xs text-muted-foreground/70 mt-3'>
+										{new Date(
+											post.date
+										).toLocaleDateString('en-NG', {
+											year: 'numeric',
+											month: 'short',
+											day: 'numeric',
+										})}
 										{post.readingTimeMinutes && (
-											<span>{` • ${post.readingTimeMinutes} min read`}</span>
+											<span>{` · ${post.readingTimeMinutes} min read`}</span>
 										)}
 									</p>
-								</CardContent>
-							</Card>
+								</div>
+							</article>
 						))}
 					</div>
 				</div>

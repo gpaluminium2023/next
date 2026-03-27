@@ -1,12 +1,10 @@
 import type { Metadata } from 'next';
-
 import Link from 'next/link';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { blogPosts } from '@/lib/blog-posts';
 
 export const metadata: Metadata = {
-	title: 'Resources & guides | Gods Promise Aluminium',
+	title: 'Resources & Guides | Gods Promise Aluminium',
 	description:
 		'Aluminium roofing guides, FAQs and blog posts to help you choose the right roofing sheets and plan your project in Lagos and across Nigeria.',
 };
@@ -17,31 +15,35 @@ export default function ResourcesPage() {
 	);
 
 	return (
-		<div className='bg-gradient-to-b from-primary/5 via-background to-background'>
-			<section className='mx-auto max-w-6xl px-4 py-12 md:py-16 space-y-8'>
-				<div className='max-w-3xl space-y-2'>
-					<h1 className='text-3xl font-bold tracking-tight md:text-4xl'>
-						Resources & guides
+		<div className='min-h-screen bg-background'>
+			<section className='bg-primary text-primary-foreground'>
+				<div className='h-1 w-full bg-accent' />
+				<div className='container px-4 mx-auto max-w-6xl py-16 md:py-20'>
+					<p className='text-accent text-xs uppercase tracking-widest font-heading font-bold mb-3'>
+						Knowledge Base
+					</p>
+					<h1 className='font-heading uppercase font-bold text-4xl md:text-5xl text-balance'>
+						Resources &amp; Guides
 					</h1>
-					<p className='text-sm text-muted-foreground md:text-base'>
+				</div>
+			</section>
+
+			<section className='py-12 md:py-16'>
+				<div className='container px-4 mx-auto max-w-6xl'>
+					<p className='text-sm text-muted-foreground md:text-base mb-8'>
 						Start here for our key aluminium roofing guides, FAQs
 						and price-related articles.
 					</p>
-				</div>
-
-				<div className='grid gap-6 md:grid-cols-2'>
-					<Card>
-						<CardHeader>
-							<CardTitle className='text-base font-semibold'>
-								Help & support
-							</CardTitle>
-						</CardHeader>
-						<CardContent className='space-y-2 text-sm text-muted-foreground'>
-							<ul className='list-disc space-y-1 pl-5'>
+					<div className='grid gap-6 md:grid-cols-2'>
+						<div className='rounded-sm border border-border bg-card p-6'>
+							<h2 className='font-heading font-bold text-base mb-3'>
+								Help &amp; Support
+							</h2>
+							<ul className='list-disc space-y-1 pl-5 text-sm text-muted-foreground'>
 								<li>
 									<Link
 										href='/faq'
-										className='text-primary underline-offset-2 hover:underline'
+										className='text-accent underline-offset-2 hover:underline'
 									>
 										Frequently asked questions
 									</Link>
@@ -49,44 +51,40 @@ export default function ResourcesPage() {
 								<li>
 									<Link
 										href='/pricing'
-										className='text-primary underline-offset-2 hover:underline'
+										className='text-accent underline-offset-2 hover:underline'
 									>
-										Pricing & how quotes work
+										Pricing &amp; how quotes work
 									</Link>
 								</li>
 							</ul>
-						</CardContent>
-					</Card>
+						</div>
 
-					<Card>
-						<CardHeader>
-							<CardTitle className='text-base font-semibold'>
-								Latest articles
-							</CardTitle>
-						</CardHeader>
-						<CardContent className='space-y-2 text-sm text-muted-foreground'>
-							<ul className='space-y-1'>
+						<div className='rounded-sm border border-border bg-card p-6'>
+							<h2 className='font-heading font-bold text-base mb-3'>
+								Latest Articles
+							</h2>
+							<ul className='space-y-1 text-sm text-muted-foreground'>
 								{sortedPosts.slice(0, 3).map((post) => (
 									<li key={post.slug}>
 										<Link
 											href={`/blog/${post.slug}`}
-											className='text-primary underline-offset-2 hover:underline'
+											className='text-accent underline-offset-2 hover:underline'
 										>
 											{post.title}
 										</Link>
 									</li>
 								))}
 							</ul>
-							<p>
+							<p className='mt-2'>
 								<Link
 									href='/blog'
-									className='text-primary underline-offset-2 hover:underline'
+									className='text-sm text-accent underline-offset-2 hover:underline'
 								>
-									View all blog posts
+									View all blog posts →
 								</Link>
 							</p>
-						</CardContent>
-					</Card>
+						</div>
+					</div>
 				</div>
 			</section>
 		</div>

@@ -1,75 +1,49 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-	Factory,
-	Truck,
-	HardHat,
-	CheckCircle,
-	ArrowRight,
-	Phone,
+    Factory,
+    Truck,
+    HardHat,
+    CheckCircle,
+    ArrowRight,
+    Phone,
 } from 'lucide-react';
 
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 
 export default function ServicesPage() {
 	return (
 		<div className='min-h-screen'>
 			{/* Hero Section */}
-			<section className='relative bg-background py-16 md:py-24'>
-				<div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
-					<div className='mx-auto max-w-3xl text-center'>
-						<div className='mb-6 flex flex-wrap items-center justify-center gap-3'>
-							<Badge
-								variant='outline'
-								className='text-xs md:text-sm'
-							>
-								15+ Years of trusted service
-							</Badge>
-							<Badge
-								variant='outline'
-								className='text-xs md:text-sm'
-							>
-								1000+ roofs supplied & installed
-							</Badge>
-							<Badge
-								variant='outline'
-								className='text-xs md:text-sm'
-							>
-								Serving homes & projects across Nigeria
-							</Badge>
-						</div>
-
-						<h1 className='mb-6 text-balance text-3xl font-bold tracking-tight md:text-5xl lg:text-6xl'>
-							Complete Aluminium Roofing Services
-						</h1>
-
-						<p className='mx-auto max-w-2xl text-balance text-base text-muted-foreground md:text-lg'>
-							From production to transportation and installation,
-							Gods Promise Aluminium handles your roofing project
-							end-to-end so you get a durable, beautiful roof with
-							less stress.
-						</p>
-					</div>
+			<section className='bg-primary text-primary-foreground'>
+				<div className='mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24 lg:px-8'>
+					<p className='font-heading mb-3 text-xs font-bold uppercase tracking-widest text-accent'>
+						Our Services
+					</p>
+					<h1 className='font-heading mb-6 text-balance text-4xl font-bold uppercase md:text-5xl lg:text-6xl'>
+						Complete Aluminium Roofing Services
+					</h1>
+					<p className='max-w-2xl text-base text-primary-foreground/80 md:text-lg'>
+						From production to transportation and installation,
+						Gods Promise Aluminium handles your roofing project
+						end-to-end so you get a durable, beautiful roof with
+						less stress.
+					</p>
 				</div>
+				<div className='h-1 w-full bg-accent' />
 			</section>
 
 			{/* Services Grid */}
-			<section className='bg-muted/30 py-16 md:py-24'>
+			<section className='bg-secondary py-16 md:py-24'>
 				<div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
-					<div className='mb-12 text-center'>
-						<h2 className='mb-4 text-2xl font-bold md:text-4xl'>
+					<div className='mb-12'>
+						<p className='font-heading mb-2 text-xs font-bold uppercase tracking-widest text-accent'>
+							What We Offer
+						</p>
+						<h2 className='font-heading mb-4 text-2xl font-bold uppercase md:text-4xl'>
 							Our Core Services
 						</h2>
-						<p className='mx-auto max-w-2xl text-muted-foreground'>
+						<p className='max-w-2xl text-muted-foreground'>
 							Everything you need for a long-lasting aluminium
 							roof, delivered by one reliable team.
 						</p>
@@ -77,7 +51,7 @@ export default function ServicesPage() {
 
 					<div className='grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8'>
 						{/* Production Service */}
-						<Card className='border-2 transition-colors hover:border-primary/60 pt-0 overflow-clip rounded-2xl'>
+						<div className='overflow-hidden rounded-sm border border-border bg-card transition-colors hover:border-accent/60'>
 							<div className='relative aspect-video overflow-hidden border-b bg-muted'>
 								<Image
 									src='/images/production.jpg'
@@ -87,27 +61,22 @@ export default function ServicesPage() {
 									sizes='(min-width: 1024px) 33vw, (min-width: 768px) 33vw, 100vw'
 								/>
 							</div>
-							<CardHeader>
-								<div className='mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10'>
-									<Factory className='h-6 w-6 text-primary' />
+							<div className='p-5'>
+								<div className='mb-4 flex h-12 w-12 items-center justify-center bg-accent'>
+									<Factory className='h-6 w-6 text-accent-foreground' />
 								</div>
-								<CardTitle className='text-xl md:text-2xl'>
+								<h3 className='font-heading mb-1 text-xl font-bold uppercase md:text-2xl'>
 									Production
-								</CardTitle>
-								<CardDescription>
+								</h3>
+								<p className='mb-4 text-sm text-muted-foreground'>
 									Quality roofing sheets, cut to size
-								</CardDescription>
-							</CardHeader>
-							<CardContent className='space-y-4'>
-								<p className='text-sm text-muted-foreground'>
+								</p>
+								<p className='mb-4 text-sm text-muted-foreground'>
 									We produce different types of corrugations
 									using efficient equipment and quality
 									aluminium, including popular profiles for
 									Nigerian homes and projects.
 								</p>
-
-								<Separator />
-
 								<ul className='space-y-3 text-sm'>
 									{[
 										'Metral',
@@ -119,25 +88,23 @@ export default function ServicesPage() {
 											key={item}
 											className='flex items-start gap-2'
 										>
-											<CheckCircle className='mt-0.5 h-4 w-4 shrink-0 text-primary' />
-											<span>
-												{item} profiles available
-											</span>
+											<CheckCircle className='mt-0.5 h-4 w-4 shrink-0 text-accent' />
+											<span>{item} profiles available</span>
 										</li>
 									))}
 									<li className='flex items-start gap-2'>
-										<CheckCircle className='mt-0.5 h-4 w-4 shrink-0 text-primary' />
+										<CheckCircle className='mt-0.5 h-4 w-4 shrink-0 text-accent' />
 										<span>
 											Measured and cut to your exact roof
 											size
 										</span>
 									</li>
 								</ul>
-							</CardContent>
-						</Card>
+							</div>
+						</div>
 
 						{/* Transportation Service */}
-						<Card className='border-2 transition-colors hover:border-primary/60 pt-0 overflow-clip rounded-2xl'>
+						<div className='overflow-hidden rounded-sm border border-border bg-card transition-colors hover:border-accent/60'>
 							<div className='relative aspect-video overflow-hidden border-b bg-muted'>
 								<Image
 									src='/images/transportation.jpg'
@@ -147,51 +114,43 @@ export default function ServicesPage() {
 									sizes='(min-width: 1024px) 33vw, (min-width: 768px) 33vw, 100vw'
 								/>
 							</div>
-							<CardHeader>
-								<div className='mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10'>
-									<Truck className='h-6 w-6 text-primary' />
+							<div className='p-5'>
+								<div className='mb-4 flex h-12 w-12 items-center justify-center bg-accent'>
+									<Truck className='h-6 w-6 text-accent-foreground' />
 								</div>
-								<CardTitle className='text-xl md:text-2xl'>
+								<h3 className='font-heading mb-1 text-xl font-bold uppercase md:text-2xl'>
 									Transportation
-								</CardTitle>
-								<CardDescription>
+								</h3>
+								<p className='mb-4 text-sm text-muted-foreground'>
 									Safe and timely delivery
-								</CardDescription>
-							</CardHeader>
-							<CardContent className='space-y-4'>
-								<p className='text-sm text-muted-foreground'>
+								</p>
+								<p className='mb-4 text-sm text-muted-foreground'>
 									We arrange delivery of your roofing
 									materials from our factory directly to your
 									site, with careful handling throughout the
 									journey.
 								</p>
-
-								<Separator />
-
 								<ul className='space-y-3 text-sm'>
 									{[
 										'Reliable, experienced drivers',
 										'Secure loading and packaging',
 										'Delivery to your project location',
-									]
-										.concat([
-											'Support for residential and commercial projects',
-										])
-										.map((feature) => (
-											<li
-												key={feature}
-												className='flex items-start gap-2'
-											>
-												<CheckCircle className='mt-0.5 h-4 w-4 shrink-0 text-primary' />
-												<span>{feature}</span>
-											</li>
-										))}
+										'Support for residential and commercial projects',
+									].map((feature) => (
+										<li
+											key={feature}
+											className='flex items-start gap-2'
+										>
+											<CheckCircle className='mt-0.5 h-4 w-4 shrink-0 text-accent' />
+											<span>{feature}</span>
+										</li>
+									))}
 								</ul>
-							</CardContent>
-						</Card>
+							</div>
+						</div>
 
 						{/* Installation Service */}
-						<Card className='border-2 transition-colors hover:border-primary/60 pt-0 overflow-clip rounded-2xl'>
+						<div className='overflow-hidden rounded-sm border border-border bg-card transition-colors hover:border-accent/60'>
 							<div className='relative aspect-video overflow-hidden border-b bg-muted'>
 								<Image
 									src='/images/installation.jpg'
@@ -201,26 +160,21 @@ export default function ServicesPage() {
 									sizes='(min-width: 1024px) 33vw, (min-width: 768px) 33vw, 100vw'
 								/>
 							</div>
-							<CardHeader>
-								<div className='mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10'>
-									<HardHat className='h-6 w-6 text-primary' />
+							<div className='p-5'>
+								<div className='mb-4 flex h-12 w-12 items-center justify-center bg-accent'>
+									<HardHat className='h-6 w-6 text-accent-foreground' />
 								</div>
-								<CardTitle className='text-xl md:text-2xl'>
+								<h3 className='font-heading mb-1 text-xl font-bold uppercase md:text-2xl'>
 									Installation
-								</CardTitle>
-								<CardDescription>
+								</h3>
+								<p className='mb-4 text-sm text-muted-foreground'>
 									Professional on-site roofing work
-								</CardDescription>
-							</CardHeader>
-							<CardContent className='space-y-4'>
-								<p className='text-sm text-muted-foreground'>
+								</p>
+								<p className='mb-4 text-sm text-muted-foreground'>
 									Our well-trained roofers carry out effective
 									and efficient installation work so your roof
 									performs and looks great for years.
 								</p>
-
-								<Separator />
-
 								<ul className='space-y-3 text-sm'>
 									{[
 										'Qualified and supervised roofing teams',
@@ -232,13 +186,13 @@ export default function ServicesPage() {
 											key={feature}
 											className='flex items-start gap-2'
 										>
-											<CheckCircle className='mt-0.5 h-4 w-4 shrink-0 text-primary' />
+											<CheckCircle className='mt-0.5 h-4 w-4 shrink-0 text-accent' />
 											<span>{feature}</span>
 										</li>
 									))}
 								</ul>
-							</CardContent>
-						</Card>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -246,11 +200,14 @@ export default function ServicesPage() {
 			{/* Process Timeline */}
 			<section className='bg-background py-16 md:py-24'>
 				<div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
-					<div className='mb-12 text-center'>
-						<h2 className='mb-4 text-2xl font-bold md:text-4xl'>
+					<div className='mb-12'>
+						<p className='font-heading mb-2 text-xs font-bold uppercase tracking-widest text-accent'>
+							The Process
+						</p>
+						<h2 className='font-heading mb-4 text-2xl font-bold uppercase md:text-4xl'>
 							How We Work
 						</h2>
-						<p className='mx-auto max-w-2xl text-muted-foreground'>
+						<p className='max-w-2xl text-muted-foreground'>
 							A simple, supervised process from your first call to
 							a finished roof.
 						</p>
@@ -288,10 +245,10 @@ export default function ServicesPage() {
 								className='relative'
 							>
 								<div className='flex flex-col items-center text-center md:items-start md:text-left'>
-									<div className='mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground'>
+									<div className='mb-4 flex h-16 w-16 items-center justify-center bg-accent font-heading text-xl font-bold text-accent-foreground'>
 										{item.step}
 									</div>
-									<h3 className='mb-2 text-lg font-semibold'>
+									<h3 className='font-heading mb-2 text-lg font-bold uppercase'>
 										{item.title}
 									</h3>
 									<p className='text-sm text-muted-foreground'>
@@ -299,7 +256,7 @@ export default function ServicesPage() {
 									</p>
 								</div>
 								{index < 3 && (
-									<div className='absolute left-1/2 top-8 hidden h-0.5 w-full -translate-x-1/2 bg-muted md:block' />
+									<div className='absolute left-1/2 top-8 hidden h-0.5 w-full -translate-x-1/2 bg-border md:block' />
 								)}
 							</div>
 						))}
@@ -308,12 +265,15 @@ export default function ServicesPage() {
 			</section>
 
 			{/* Why Choose Us */}
-			<section className='bg-muted/30 py-16 md:py-24'>
+			<section className='bg-secondary py-16 md:py-24'>
 				<div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
 					<div className='grid grid-cols-1 items-center gap-10 lg:grid-cols-2'>
 						<div>
-							<h2 className='mb-6 text-2xl font-bold md:text-4xl'>
-								Why customers trust our services
+							<p className='font-heading mb-2 text-xs font-bold uppercase tracking-widest text-accent'>
+								Our Advantage
+							</p>
+							<h2 className='font-heading mb-6 text-2xl font-bold uppercase md:text-4xl'>
+								Why Customers Trust Our Services
 							</h2>
 							<p className='mb-8 text-muted-foreground'>
 								We combine good materials, careful supervision,
@@ -322,61 +282,47 @@ export default function ServicesPage() {
 							</p>
 
 							<div className='space-y-6'>
-								<div className='flex gap-4'>
-									<div className='flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10'>
-										<CheckCircle className='h-5 w-5 text-primary' />
+								{[
+									{
+										title: 'End-to-end support',
+										description:
+											'One team to handle production, transportation, and installation so you deal with fewer vendors.',
+									},
+									{
+										title: 'Well-supervised work',
+										description:
+											'All services are supervised so you get neat finishing, correct quantities, and reliable timelines.',
+									},
+									{
+										title: 'Experience with Nigerian projects',
+										description:
+											'From homes to larger sites, we understand local conditions, sites, and expectations.',
+									},
+								].map((item) => (
+									<div
+										key={item.title}
+										className='flex gap-4'
+									>
+										<div className='flex h-10 w-10 shrink-0 items-center justify-center bg-accent'>
+											<CheckCircle className='h-5 w-5 text-accent-foreground' />
+										</div>
+										<div>
+											<h3 className='font-heading mb-1 font-bold uppercase'>
+												{item.title}
+											</h3>
+											<p className='text-sm text-muted-foreground'>
+												{item.description}
+											</p>
+										</div>
 									</div>
-									<div>
-										<h3 className='mb-1 font-semibold'>
-											End-to-end support
-										</h3>
-										<p className='text-sm text-muted-foreground'>
-											One team to handle production,
-											transportation, and installation so
-											you deal with fewer vendors.
-										</p>
-									</div>
-								</div>
-
-								<div className='flex gap-4'>
-									<div className='flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10'>
-										<CheckCircle className='h-5 w-5 text-primary' />
-									</div>
-									<div>
-										<h3 className='mb-1 font-semibold'>
-											Well-supervised work
-										</h3>
-										<p className='text-sm text-muted-foreground'>
-											All services are supervised so you
-											get neat finishing, correct
-											quantities, and reliable timelines.
-										</p>
-									</div>
-								</div>
-
-								<div className='flex gap-4'>
-									<div className='flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10'>
-										<CheckCircle className='h-5 w-5 text-primary' />
-									</div>
-									<div>
-										<h3 className='mb-1 font-semibold'>
-											Experience with Nigerian projects
-										</h3>
-										<p className='text-sm text-muted-foreground'>
-											From homes to larger sites, we
-											understand local conditions, sites,
-											and expectations.
-										</p>
-									</div>
-								</div>
+								))}
 							</div>
 						</div>
 
 						<div className='relative'>
-							<div className='aspect-square overflow-hidden rounded-2xl bg-muted'>
-								{/* Placeholder imagery block */}
+							<div className='aspect-square overflow-hidden rounded-sm bg-muted'>
 								<div className='flex h-full w-full flex-col items-center justify-center gap-2 text-center'>
-									<div className='rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary'>
+									<div className='bg-accent/10 px-3 py-1 text-xs font-medium text-accent'>
 										Placeholder image
 									</div>
 									<p className='max-w-xs text-xs text-muted-foreground'>
@@ -387,11 +333,11 @@ export default function ServicesPage() {
 								</div>
 							</div>
 
-							<Card className='absolute bottom-6 left-6 right-6 shadow-lg md:bottom-10 md:left-10 md:right-auto'>
-								<CardContent className='p-4 md:p-5'>
+							<div className='absolute bottom-6 left-6 right-6 rounded-sm border border-border bg-card shadow-lg md:bottom-10 md:left-10 md:right-auto'>
+								<div className='p-4 md:p-5'>
 									<div className='grid grid-cols-3 gap-4 text-center text-xs md:text-sm'>
 										<div>
-											<div className='text-xl font-bold text-primary md:text-2xl'>
+											<div className='font-heading mb-1 text-xl font-bold text-accent md:text-2xl'>
 												15+
 											</div>
 											<div className='text-muted-foreground'>
@@ -399,7 +345,7 @@ export default function ServicesPage() {
 											</div>
 										</div>
 										<div>
-											<div className='text-xl font-bold text-primary md:text-2xl'>
+											<div className='font-heading mb-1 text-xl font-bold text-accent md:text-2xl'>
 												1000+
 											</div>
 											<div className='text-muted-foreground'>
@@ -407,7 +353,7 @@ export default function ServicesPage() {
 											</div>
 										</div>
 										<div>
-											<div className='text-xl font-bold text-primary md:text-2xl'>
+											<div className='font-heading mb-1 text-xl font-bold text-accent md:text-2xl'>
 												5+
 											</div>
 											<div className='text-muted-foreground'>
@@ -415,8 +361,8 @@ export default function ServicesPage() {
 											</div>
 										</div>
 									</div>
-								</CardContent>
-							</Card>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -425,10 +371,13 @@ export default function ServicesPage() {
 			{/* CTA Section */}
 			<section className='bg-primary py-16 text-primary-foreground md:py-24'>
 				<div className='mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8'>
-					<h2 className='mb-4 text-balance text-2xl font-bold md:text-4xl'>
-						Ready to discuss your roofing project?
+					<p className='font-heading mb-3 text-xs font-bold uppercase tracking-widest text-accent'>
+						Get Started
+					</p>
+					<h2 className='font-heading mb-4 text-balance text-2xl font-bold uppercase md:text-4xl'>
+						Ready to Discuss Your Roofing Project?
 					</h2>
-					<p className='mx-auto mb-8 max-w-2xl text-balance text-base text-primary-foreground/90 md:text-lg'>
+					<p className='mx-auto mb-8 max-w-2xl text-balance text-base text-primary-foreground/80 md:text-lg'>
 						Reach out for a free discussion about measurements,
 						profiles, and costing. We are happy to guide you before
 						you decide.
@@ -437,8 +386,7 @@ export default function ServicesPage() {
 					<div className='flex flex-col items-center justify-center gap-4 sm:flex-row'>
 						<Button
 							size='lg'
-							variant='secondary'
-							className='w-full sm:w-auto'
+							className='w-full rounded-sm bg-accent font-heading font-bold uppercase tracking-wide hover:bg-accent/90 sm:w-auto'
 							asChild
 						>
 							<Link href='/contact'>
@@ -450,7 +398,7 @@ export default function ServicesPage() {
 						<Button
 							size='lg'
 							variant='outline'
-							className='w-full border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 sm:w-auto'
+							className='w-full rounded-sm border-primary-foreground/30 bg-transparent font-heading font-bold uppercase tracking-wide text-primary-foreground hover:bg-primary-foreground/10 sm:w-auto'
 							asChild
 						>
 							<a href='tel:09150459964'>

@@ -1,10 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
 
 const factoryImages = [
 	'1.jpg',
@@ -22,12 +19,12 @@ const jobImages = ['residential-roofing.jpg'];
 
 const galleryImages = [
 	...jobImages.map((name) => ({
-		category: 'Completed roof',
+		category: 'Completed Roof',
 		src: `/gallery/jobs/${name}`,
 		alt: 'Completed aluminium roofing job supplied by Gods Promise Aluminium',
 	})),
 	...factoryImages.map((name, index) => ({
-		category: 'Factory & production',
+		category: 'Factory & Production',
 		src: `/gallery/factory/${name}`,
 		alt: `Inside the Gods Promise Aluminium factory and production area (${
 			index + 1
@@ -37,85 +34,60 @@ const galleryImages = [
 
 export default function GalleryPage() {
 	return (
-		<div className='bg-linear-to-b from-primary/5 via-background to-background'>
+		<div className='min-h-screen bg-background'>
 			{/* Hero */}
-			<section className='border-b bg-background/60 py-12 md:py-16'>
-				<div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
-					<div className='mx-auto max-w-3xl text-center space-y-4'>
-						<Badge
-							variant='secondary'
-							className='text-xs sm:text-sm'
-						>
-							Our work in the field
-						</Badge>
-						<h1 className='text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl'>
-							Project gallery & roof inspiration
-						</h1>
-						<p className='text-pretty text-sm text-muted-foreground sm:text-base lg:text-lg'>
-							Explore a selection of aluminium roofing,
-							stone-coated tiles, and accessories supplied and
-							installed by Gods Promise Aluminium across Nigeria.
-						</p>
-
-						<div className='flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground'>
-							<div className='flex items-center gap-2'>
-								<span className='inline-flex h-2 w-2 rounded-full bg-primary' />
-								<span>
-									1000+ projects supplied and installed
-								</span>
-							</div>
-							<Separator
-								orientation='vertical'
-								className='hidden h-4 sm:inline-flex'
-							/>
-							<div className='flex items-center gap-2'>
-								<span className='inline-flex h-2 w-2 rounded-full bg-primary/70' />
-								<span>
-									Roofs for homes, churches, and businesses
-								</span>
-							</div>
-						</div>
-					</div>
+			<section className='bg-primary text-primary-foreground'>
+				<div className='h-1 w-full bg-accent' />
+				<div className='container px-4 mx-auto max-w-6xl py-16 md:py-20'>
+					<p className='text-accent text-xs uppercase tracking-widest font-heading font-bold mb-3'>
+						Gallery
+					</p>
+					<h1 className='font-heading uppercase font-bold text-4xl md:text-5xl lg:text-6xl text-balance mb-4'>
+						Project Gallery
+					</h1>
+					<p className='text-primary-foreground/80 text-base md:text-lg max-w-2xl'>
+						Real photos from our factory floor and completed
+						roofing projects across Nigeria.
+					</p>
 				</div>
 			</section>
 
-			{/* Category tags (non-interactive chips) */}
-			<section className='border-b bg-muted/30 py-6'>
-				<div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
-					<div className='flex flex-wrap items-center gap-3 text-xs sm:text-sm'>
-						<span className='text-muted-foreground'>
-							Showing examples of:
-						</span>
-						<Badge variant='outline'>
-							Aluminium roofing sheets
-						</Badge>
-						<Badge variant='outline'>Stone-coated tiles</Badge>
-						<Badge variant='outline'>
-							Accessories & flat sheets
-						</Badge>
-						<Badge variant='outline'>Before & after</Badge>
+			{/* Stats strip */}
+			<section className='bg-secondary border-b border-border'>
+				<div className='container px-4 mx-auto max-w-6xl py-6'>
+					<div className='flex flex-wrap gap-6 text-sm'>
+						<div className='flex items-center gap-2'>
+							<div className='h-2 w-2 bg-accent' />
+							<span>1,000+ projects supplied and installed</span>
+						</div>
+						<div className='flex items-center gap-2'>
+							<div className='h-2 w-2 bg-accent' />
+							<span>Homes, churches, and commercial buildings</span>
+						</div>
+						<div className='flex items-center gap-2'>
+							<div className='h-2 w-2 bg-accent' />
+							<span>Lagos and across Nigeria</span>
+						</div>
 					</div>
 				</div>
 			</section>
 
 			{/* Gallery grid */}
-			<section className='py-10 md:py-16'>
-				<div className='mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
-					<div className='mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between'>
+			<section className='py-12 md:py-16'>
+				<div className='container px-4 mx-auto max-w-6xl'>
+					<div className='flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between mb-8'>
 						<div>
-							<h2 className='text-2xl font-semibold text-foreground sm:text-3xl'>
-								Recent roofs & supplied projects
-							</h2>
-							<p className='mt-1 max-w-xl text-sm text-muted-foreground sm:text-base'>
-								These photos show real shots from our factory
-								and completed roofing jobs supplied by Gods
-								Promise Aluminium.
+							<p className='text-accent text-xs uppercase tracking-widest font-heading font-bold mb-2'>
+								Our Work
 							</p>
+							<h2 className='font-heading uppercase font-bold text-2xl md:text-3xl'>
+								Recent Roofs &amp; Factory Shots
+							</h2>
 						</div>
 						<Button
 							asChild
 							variant='outline'
-							className='text-xs sm:text-sm'
+							className='rounded-sm text-xs sm:text-sm'
 						>
 							<Link href='/products'>View product details</Link>
 						</Button>
@@ -123,11 +95,11 @@ export default function GalleryPage() {
 
 					<div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
 						{galleryImages.map((item, index) => (
-							<Card
+							<div
 								key={item.src}
-								className='group flex h-full flex-col overflow-hidden border bg-card/90 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md pt-0'
+								className='group rounded-sm overflow-hidden border border-border bg-card'
 							>
-								<div className='relative aspect-[4/3] w-full overflow-hidden bg-muted'>
+								<div className='relative aspect-4/3 w-full overflow-hidden bg-muted'>
 									<Image
 										src={item.src}
 										alt={item.alt}
@@ -136,74 +108,52 @@ export default function GalleryPage() {
 										sizes='(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw'
 									/>
 								</div>
-								<CardHeader className='space-y-2 pb-2'>
-									<div className='flex items-start justify-between gap-2'>
-										<CardTitle className='text-sm font-semibold sm:text-base'>
+								<div className='p-4 flex items-center justify-between'>
+									<div>
+										<p className='font-heading uppercase font-bold text-xs tracking-widest text-accent'>
 											{item.category}
-										</CardTitle>
-										<Badge
-											variant='secondary'
-											className='shrink-0 text-[10px] uppercase tracking-[0.14em]'
-										>
-											Ref {index + 1}
-										</Badge>
+										</p>
+										<p className='text-xs text-muted-foreground mt-0.5 line-clamp-1'>
+											{item.alt}
+										</p>
 									</div>
-									<p className='text-xs text-muted-foreground sm:text-sm'>
-										{item.alt}
-									</p>
-								</CardHeader>
-								<CardContent className='mt-auto flex items-center justify-between border-t px-4 py-3 text-xs text-muted-foreground'>
-									<span>
-										{item.category === 'Completed roof'
-											? 'Site photo'
-											: 'Factory & production area'}
+									<span className='text-xs text-muted-foreground/60 shrink-0 ml-2'>
+										#{index + 1}
 									</span>
-									<span className='hidden text-[11px] uppercase tracking-[0.16em] text-primary/80 sm:inline'>
-										Project reference
-									</span>
-								</CardContent>
-							</Card>
+								</div>
+							</div>
 						))}
 					</div>
 				</div>
 			</section>
 
-			{/* CTA */}
-			<section className='bg-muted/40 py-10 md:py-16'>
-				<div className='mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8'>
-					<Card className='border bg-card/90 shadow-sm'>
-						<CardHeader className='space-y-2'>
-							<CardTitle className='text-xl font-semibold sm:text-2xl lg:text-3xl'>
-								Ready to add your project to this gallery?
-							</CardTitle>
-							<p className='text-sm text-muted-foreground sm:text-base'>
-								Share your building details, preferred roofing
-								profile, and estimated roof size. We&apos;ll
-								recommend the right aluminium roofing sheets,
-								stone-coated tiles, and accessories for your
-								project.
-							</p>
-						</CardHeader>
-						<CardContent>
-							<div className='flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4'>
-								<Button
-									asChild
-									size='lg'
-									className='w-full sm:w-auto'
-								>
-									<Link href='/contact'>Request a quote</Link>
-								</Button>
-								<Button
-									asChild
-									size='lg'
-									variant='outline'
-									className='w-full bg-transparent sm:w-auto'
-								>
-									<a href='tel:09150459964'>Call us now</a>
-								</Button>
-							</div>
-						</CardContent>
-					</Card>
+			{/* CTA Strip */}
+			<section className='bg-secondary py-10'>
+				<div className='container px-4 mx-auto max-w-4xl text-center'>
+					<h3 className='font-heading uppercase font-bold text-xl mb-2'>
+						Ready to Add Your Project to This Gallery?
+					</h3>
+					<p className='text-sm text-muted-foreground mb-6 text-balance'>
+						Share your building details, preferred roofing profile,
+						and estimated roof size. We&apos;ll recommend the right
+						aluminium roofing sheets, stone-coated tiles, and
+						accessories for your project.
+					</p>
+					<div className='flex flex-col sm:flex-row items-center justify-center gap-3'>
+						<Button
+							asChild
+							className='rounded-sm bg-accent font-heading font-bold uppercase tracking-wide hover:bg-accent/90 w-full sm:w-auto'
+						>
+							<Link href='/contact'>Request a Quote</Link>
+						</Button>
+						<Button
+							asChild
+							variant='outline'
+							className='rounded-sm w-full sm:w-auto'
+						>
+							<a href='tel:09150459964'>Call Us Now</a>
+						</Button>
+					</div>
 				</div>
 			</section>
 		</div>

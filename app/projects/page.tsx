@@ -1,22 +1,20 @@
 import type { Metadata } from 'next';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
 export const metadata: Metadata = {
-	title: 'Projects & case studies | Gods Promise Aluminium',
+	title: 'Projects & Case Studies | Gods Promise Aluminium',
 	description:
 		'A simple overview of sample aluminium roofing projects completed by Gods Promise Aluminium for homes, churches and commercial buildings in Lagos and across Nigeria.',
 };
 
 const sampleProjects = [
 	{
-		title: 'Residential bungalow roof in Lagos',
+		title: 'Residential Bungalow Roof in Lagos',
 		location: 'Alimosho, Lagos State',
 		description:
 			'Long span aluminium roofing sheets supplied and installed for a 3-bedroom bungalow, with on-site verification before dispatch.',
 	},
 	{
-		title: 'Church roofing project',
+		title: 'Church Roofing Project',
 		location: 'Ogun State',
 		description:
 			'Step-tile aluminium roofing sheets supplied for a new church auditorium, with guidance on thickness and quantity.',
@@ -25,33 +23,43 @@ const sampleProjects = [
 
 export default function ProjectsPage() {
 	return (
-		<div className='bg-gradient-to-b from-primary/5 via-background to-background'>
-			<section className='mx-auto max-w-6xl px-4 py-12 md:py-16 space-y-8'>
-				<div className='max-w-3xl space-y-2'>
-					<h1 className='text-3xl font-bold tracking-tight md:text-4xl'>
-						Projects & case studies
+		<div className='min-h-screen bg-background'>
+			<section className='bg-primary text-primary-foreground'>
+				<div className='h-1 w-full bg-accent' />
+				<div className='container px-4 mx-auto max-w-6xl py-16 md:py-20'>
+					<p className='text-accent text-xs uppercase tracking-widest font-heading font-bold mb-3'>
+						Portfolio
+					</p>
+					<h1 className='font-heading uppercase font-bold text-4xl md:text-5xl text-balance'>
+						Projects &amp; Case Studies
 					</h1>
-					<p className='text-sm text-muted-foreground md:text-base'>
+				</div>
+			</section>
+
+			<section className='py-12 md:py-16'>
+				<div className='container px-4 mx-auto max-w-6xl'>
+					<p className='text-sm text-muted-foreground md:text-base mb-8'>
 						A few examples of how customers have used our aluminium
 						roofing sheets and accessories on real projects.
 					</p>
-				</div>
-				<div className='grid gap-6 md:grid-cols-2'>
-					{sampleProjects.map((project) => (
-						<Card key={project.title}>
-							<CardHeader>
-								<CardTitle className='text-base font-semibold'>
+					<div className='grid gap-6 md:grid-cols-2'>
+						{sampleProjects.map((project) => (
+							<div
+								key={project.title}
+								className='rounded-sm border border-border bg-card p-6'
+							>
+								<h2 className='font-heading font-bold text-base mb-1'>
 									{project.title}
-								</CardTitle>
-							</CardHeader>
-							<CardContent className='text-sm text-muted-foreground space-y-1'>
-								<p className='font-medium'>
+								</h2>
+								<p className='text-xs font-heading uppercase tracking-widest text-accent mb-2'>
 									{project.location}
 								</p>
-								<p>{project.description}</p>
-							</CardContent>
-						</Card>
-					))}
+								<p className='text-sm text-muted-foreground'>
+									{project.description}
+								</p>
+							</div>
+						))}
+					</div>
 				</div>
 			</section>
 		</div>

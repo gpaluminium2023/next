@@ -94,7 +94,8 @@ export function getSeasonalThemeNameForDate(
 	return 'default';
 }
 
-export function getActiveThemeForDate(date?: Date): ThemeConfig {
-	const themeName = getSeasonalThemeNameForDate(date ?? new Date());
-	return themes[themeName];
+export function getActiveThemeForDate(_date?: Date): ThemeConfig {
+  // Auto-detection disabled. To re-enable seasonal themes, replace this with:
+  // return themes[getSeasonalThemeNameForDate(date ?? new Date())];
+  return themes["default"];
 }

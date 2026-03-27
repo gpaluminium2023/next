@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
 export const metadata: Metadata = {
-	title: 'Frequently asked questions | Gods Promise Aluminium',
+	title: 'Frequently Asked Questions | Gods Promise Aluminium',
 	description:
 		'Answers to common questions about aluminium roofing sheet prices, thickness, delivery and installation from Gods Promise Aluminium in Lagos, Nigeria.',
 };
@@ -21,31 +19,33 @@ const faqs = [
 
 export default function FaqPage() {
 	return (
-		<div className='bg-gradient-to-b from-primary/5 via-background to-background'>
-			<section className='mx-auto max-w-4xl px-4 py-12 md:py-16'>
-				<div className='mb-8 space-y-2 text-center'>
-					<h1 className='text-3xl font-bold tracking-tight md:text-4xl'>
-						Frequently asked questions
-					</h1>
-					<p className='text-sm text-muted-foreground md:text-base'>
-						Short answers to common questions about aluminium
-						roofing and working with Gods Promise Aluminium.
+		<div className='min-h-screen bg-background'>
+			<section className='bg-primary text-primary-foreground'>
+				<div className='h-1 w-full bg-accent' />
+				<div className='container px-4 mx-auto max-w-4xl py-16 md:py-20'>
+					<p className='text-accent text-xs uppercase tracking-widest font-heading font-bold mb-3'>
+						Support
 					</p>
+					<h1 className='font-heading uppercase font-bold text-4xl md:text-5xl text-balance'>
+						Frequently Asked Questions
+					</h1>
 				</div>
-				<div className='space-y-4'>
+			</section>
+
+			<section className='py-12 md:py-16'>
+				<div className='container px-4 mx-auto max-w-4xl space-y-4'>
 					{faqs.map((faq) => (
-						<Card key={faq.question}>
-							<CardHeader>
-								<CardTitle className='text-base font-semibold'>
-									{faq.question}
-								</CardTitle>
-							</CardHeader>
-							<CardContent>
-								<p className='text-sm text-muted-foreground'>
-									{faq.answer}
-								</p>
-							</CardContent>
-						</Card>
+						<div
+							key={faq.question}
+							className='rounded-sm border border-border bg-card p-6'
+						>
+							<h2 className='font-heading font-bold text-base mb-2'>
+								{faq.question}
+							</h2>
+							<p className='text-sm text-muted-foreground'>
+								{faq.answer}
+							</p>
+						</div>
 					))}
 				</div>
 			</section>
