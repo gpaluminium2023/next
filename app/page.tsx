@@ -285,6 +285,52 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── TESTIMONIALS ─────────────────────────────────────────── */}
+      <section className="bg-secondary">
+        <div className="mx-auto max-w-7xl px-6 py-14 md:px-10 md:py-20">
+          <p className="mb-3 font-heading text-xs font-bold uppercase tracking-[0.28em] text-accent">
+            What Our Customers Say
+          </p>
+          <h2 className="mb-10 font-heading text-3xl font-bold uppercase leading-none tracking-tight md:text-5xl">
+            Trusted by Builders
+            <br />
+            Across Nigeria
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <TestimonialCard
+              quote="I ordered 0.55mm long span sheets for my duplex in Lekki and the quality was exactly as promised. The thickness was verified right at the factory before loading. Very transparent company."
+              name="Engr. Adebayo K."
+              role="Building Contractor, Lagos"
+            />
+            <TestimonialCard
+              quote="We have been buying from Gods Promise for three estate projects now. Delivery is always on time and their pricing is the most competitive we have found for genuine aluminium sheets."
+              name="Mrs. Chidinma O."
+              role="Property Developer, Abuja"
+            />
+            <TestimonialCard
+              quote="The stone-coated tiles I got for my hotel project in Ibadan are beautiful. Two years later and they still look brand new. The noise reduction during heavy rain is remarkable."
+              name="Chief Emeka A."
+              role="Hotelier, Ibadan"
+            />
+            <TestimonialCard
+              quote="I was sceptical about ordering roofing sheets from Lagos to Port Harcourt but the delivery arrived in perfect condition within a week. Will definitely order again for my next project."
+              name="Mr. Uche N."
+              role="Homeowner, Port Harcourt"
+            />
+            <TestimonialCard
+              quote="Their team helped me calculate the exact quantity I needed for my church building so we did not overbuy. Honest advice and quality material — exactly what a first-time builder needs."
+              name="Pastor Olumide T."
+              role="Church Building Committee, Abeokuta"
+            />
+            <TestimonialCard
+              quote="What impressed me most was being able to visit the factory and watch my roofing sheets being produced. No hidden gauge tricks. What they say is what you get."
+              name="Alhaji Musa B."
+              role="Contractor, Kano"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA STRIP ───────────────────────────────────────────── */}
       <section className="bg-accent text-accent-foreground">
         <div className="h-1 w-full bg-primary" />
@@ -409,4 +455,28 @@ function StepPanel({ step, title, description }: StepPanelProps) {
 			</div>
 		</div>
 	);
+}
+
+function TestimonialCard({
+  quote,
+  name,
+  role,
+}: {
+  quote: string;
+  name: string;
+  role: string;
+}) {
+  return (
+    <div className="rounded-sm border border-border bg-card p-6">
+      <p className="text-sm leading-relaxed text-muted-foreground">
+        &ldquo;{quote}&rdquo;
+      </p>
+      <div className="mt-4 border-t border-border pt-4">
+        <p className="font-heading text-sm font-bold uppercase tracking-wide">
+          {name}
+        </p>
+        <p className="text-xs text-muted-foreground">{role}</p>
+      </div>
+    </div>
+  );
 }

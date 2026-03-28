@@ -232,6 +232,12 @@ export default function ProductsPage() {
                 <li>Strong against wind and harsh weather</li>
                 <li>Adds value and beauty to your building</li>
               </ul>
+              <Link
+                href="/products/stone-coated"
+                className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent transition-colors hover:text-accent/80"
+              >
+                View details <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
 

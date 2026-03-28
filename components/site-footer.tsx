@@ -207,7 +207,7 @@ export function SiteFooter() {
                   rel="noopener nofollow"
                   className="transition-colors hover:text-foreground"
                 >
-                  WhatsApp: +2345150459964
+                  WhatsApp: +2349150459964
                 </a>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
@@ -288,6 +288,17 @@ export function SiteFooter() {
                 </a>
               </li>
             </ul>
+
+            <div className="mt-4 border-t border-border pt-4">
+              <h4 className="text-sm font-semibold text-foreground">
+                Working hours
+              </h4>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+                <li>Mon – Fri: 8:00 AM – 5:00 PM</li>
+                <li>Saturday: 9:00 AM – 2:00 PM</li>
+                <li>Sunday: Closed</li>
+              </ul>
+            </div>
           </div>
         </div>
 
