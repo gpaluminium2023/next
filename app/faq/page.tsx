@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title:
     "Aluminium Roofing FAQs — Prices, Sizes & Installation | Gods Promise Aluminium",
   description:
-    "Answers to common questions about aluminium roofing sheet prices, thickness, delivery and installation from Gods Promise Aluminium in Lagos, Nigeria.",
+    "Answers to common questions about aluminium (aluminum) roofing sheet prices, thickness, delivery and installation from Gods Promise Aluminium in Ogun State, Nigeria.",
 };
 
 const faqs = [
@@ -50,6 +50,11 @@ const faqs = [
       "Yes. In addition to manufacturing and supplying roofing materials, we also provide professional roofing installation services through our experienced team. We can handle the full process from material supply to on-site installation for residential, commercial and religious buildings.",
   },
   {
+    question: "Where is your factory located?",
+    answer:
+      "Our aluminium roofing sheet factory is located at Km 38, Lagos-Abeokuta Expressway, Beside First Bank, Sango Ota, Ogun State, Nigeria. We are one of the leading aluminum roofing companies in Lagos and Ogun State. Customers from across Nigeria are welcome to visit, inspect products and place orders directly at our facility.",
+  },
+  {
     question:
       "What is the difference between aluminium roofing sheets and stone-coated tiles?",
     answer:
@@ -63,7 +68,7 @@ const faqs = [
 ];
 
 export default function FaqPage() {
-	return (
+  return (
     <div className="min-h-screen bg-background">
       <section className="bg-primary text-primary-foreground">
         <div className="h-1 w-full bg-accent" />
@@ -81,7 +86,7 @@ export default function FaqPage() {
         <div className="container px-4 mx-auto max-w-4xl space-y-4">
           <p className="text-sm text-muted-foreground md:text-base mb-4">
             Below are the questions we hear most often from homeowners, builders
-            and contractors who contact Gods Promise Aluminium about aluminium
+            and contractors who contact Gods Promise Aluminium about aluminum
             roofing sheets, pricing, delivery and installation in Lagos and
             across Nigeria. If your question is not answered here, please call
             or WhatsApp us on +234 915 045 9964 for a prompt response.

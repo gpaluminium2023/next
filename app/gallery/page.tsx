@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   title:
     "Project Gallery — Completed Roofing Jobs & Factory Tour | Gods Promise Aluminium",
   description:
-    "See completed aluminium roofing projects, factory production, and colour options from Gods Promise Aluminium. Real jobs across Lagos and Nigeria.",
+    "See completed aluminium roofing projects, factory production and colour options from Gods Promise Aluminium — one of the best roofing companies in Lagos, Nigeria.",
   openGraph: {
     title:
       "Project Gallery | Completed Roofing Jobs & Factory Tour | Gods Promise Aluminium",
     description:
-      "See completed aluminium roofing projects, factory production, and colour options from Gods Promise Aluminium. Real jobs across Lagos and Nigeria.",
+      "See completed aluminium roofing projects, factory production and colour options from Gods Promise Aluminium — one of the best roofing companies in Lagos, Nigeria.",
     url: "https://www.godspromisealuminiumroofing.com/gallery",
     type: "website",
   },

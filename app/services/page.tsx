@@ -17,12 +17,12 @@ export const metadata: Metadata = {
   title:
     "Roofing Services in Lagos — Supply, Delivery & Installation | Gods Promise Aluminium",
   description:
-    "Professional aluminium roofing services in Lagos and across Nigeria — supply, delivery, and expert installation of long span sheets, step tiles, and stone-coated tiles.",
+    "Professional roofing services from a trusted roofing company in Lagos — aluminium roofing sheet supply, delivery and expert installation of long span sheets, step tiles and stone-coated tiles across Nigeria.",
   openGraph: {
     title:
       "Roofing Services | Supply, Delivery & Installation | Gods Promise Aluminium",
     description:
-      "Professional aluminium roofing services in Lagos and across Nigeria — supply, delivery, and expert installation of long span sheets, step tiles, and stone-coated tiles.",
+      "Professional roofing services from a trusted roofing company in Lagos — supply, delivery and expert installation of aluminium long span sheets, step tiles and stone-coated tiles.",
     url: "https://www.godspromisealuminiumroofing.com/services",
     type: "website",
   },
@@ -41,9 +41,9 @@ export default function ServicesPage() {
             Complete Aluminium Roofing Services
           </h1>
           <p className="max-w-2xl text-base text-primary-foreground/80 md:text-lg">
-            From production to transportation and installation, Gods Promise
-            Aluminium handles your roofing project end-to-end so you get a
-            durable, beautiful roof with less stress.
+            As a full-service roofing company in Lagos, Gods Promise Aluminium
+            handles your project from production to delivery and installation —
+            so you get a durable, beautiful roof with less stress.
           </p>
         </div>
         <div className="h-1 w-full bg-accent" />
@@ -60,8 +60,9 @@ export default function ServicesPage() {
               Our Core Services
             </h2>
             <p className="max-w-2xl text-muted-foreground">
-              Everything you need for a long-lasting aluminium roof, delivered
-              by one reliable team.
+              Unlike many roofing companies in Lagos, we handle production,
+              delivery and installation under one roof — everything you need for
+              a long-lasting aluminium roof from one reliable team.
             </p>
           </div>
 

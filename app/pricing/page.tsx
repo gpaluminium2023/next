@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title:
     "Aluminium Roofing Sheet Prices in Lagos 2026 | Gods Promise Aluminium",
   description:
-    "Current 2026 prices for Long Span, Step Tiles, Metcopo and Gerard Stone Coated roofing sheets in Lagos. Get an instant quote from Gods Promise Aluminium.",
+    "2026 aluminium roofing sheet price list for Lagos — Long Span, Step Tiles, Metcopo and Gerard Stone Coated roofing sheets. Get an instant WhatsApp quote from Gods Promise Aluminium.",
 };
 
 const longSpanPrices = [

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
   title: "Contact Us — Get a Free Roofing Quote | Gods Promise Aluminium",
   description:
-    "Get in touch with Gods Promise Aluminium. Contact us for quality aluminium roofing sheets, stone-coated tiles, and accessories in Nigeria.",
+    "Contact Gods Promise Aluminium in Sango Ota, Ogun State for quality aluminium roofing sheets, stone-coated tiles and accessories. Free quotes for projects across Lagos and Nigeria.",
 };
 
 const PHONE_NUMBERS = [
@@ -41,8 +41,9 @@ export default function ContactPage() {
             Get in Touch
           </h1>
           <p className="text-primary-foreground/80 text-base md:text-lg max-w-2xl">
-            Have questions about our aluminium roofing sheets, stone-coated
-            tiles, or accessories? Reach out and our team will respond promptly.
+            Have questions about our aluminium (aluminum) roofing sheets,
+            stone-coated tiles or accessories? Contact our team in Ogun State
+            and we will respond promptly with a free quote.
           </p>
         </div>
       </section>

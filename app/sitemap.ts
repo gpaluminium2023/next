@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { blogPosts } from "@/lib/blog-posts";
+import { locations } from "@/lib/locations-data";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL ??
@@ -113,5 +114,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  const locationRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/locations`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...locations.map((loc) => ({
+      url: `${BASE_URL}/locations/${loc.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+  ];
+
+  return [...staticRoutes, ...blogRoutes, ...locationRoutes];
 }

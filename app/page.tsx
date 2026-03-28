@@ -6,13 +6,13 @@ import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
-  title: "Aluminium Roofing Manufacturer Lagos | Gods Promise Aluminium",
+  title: "Aluminium Roofing Company in Lagos | Gods Promise Aluminium",
   description:
-    "Gods Promise Aluminium is a Lagos-based aluminium roofing sheet manufacturer serving customers across Nigeria with durable, rust-resistant roofing systems, fast WhatsApp quotes and reliable nationwide delivery.",
+    "Gods Promise Aluminium is a leading aluminium roofing company in Lagos supplying durable roofing sheets, step tiles and stone-coated tiles across Nigeria. Fast WhatsApp quotes and nationwide delivery.",
   openGraph: {
-    title: "Aluminium Roofing Manufacturer Lagos | Gods Promise Aluminium",
+    title: "Aluminium Roofing Company in Lagos | Gods Promise Aluminium",
     description:
-      "Aluminium roofing sheets, stone-coated tiles and flat sheets designed for the Nigerian climate, supplied from Lagos to projects across Nigeria.",
+      "Lagos-based aluminium roofing company supplying roofing sheets, stone-coated tiles and flat sheets for projects across Nigeria.",
     url: "https://www.godspromisealuminiumroofing.com",
     type: "website",
     images: [
@@ -26,10 +26,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Aluminium roofing sheet manufacturer in Lagos, Nigeria | Gods Promise Aluminium",
+    title: "Aluminium Roofing Sheet Company in Lagos | Gods Promise Aluminium",
     description:
-      "Lagos-based aluminium roofing sheet manufacturer supplying roofing sheets, stone-coated tiles and accessories across Nigeria.",
+      "Lagos aluminium roofing company supplying roofing sheets, stone-coated tiles and accessories across Nigeria.",
     images: ["/logo.jpeg"],
   },
 };
@@ -54,9 +53,10 @@ export default function Home() {
               That Last
             </h1>
             <p className="mt-6 max-w-md text-sm leading-relaxed text-primary-foreground/75">
-              Gods Promise Aluminium manufactures durable roofing sheets and
-              stone-coated tiles right here in Lagos. Fast WhatsApp quotes,
-              accurate gauges and nationwide delivery to every state.
+              Gods Promise Aluminium is a trusted aluminium roofing company in
+              Lagos, manufacturing durable roofing sheets and stone-coated
+              tiles. Fast WhatsApp quotes, accurate gauges and delivery to every
+              state in Nigeria.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button

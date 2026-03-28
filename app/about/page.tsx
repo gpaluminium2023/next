@@ -6,13 +6,13 @@ import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
-  title: "About Gods Promise Aluminium | Lagos-Based Aluminium Roofing Company",
+  title: "About Gods Promise Aluminium | Roofing Sheet Manufacturer in Nigeria",
   description:
-    "Learn about Gods Promise Aluminium, a Lagos-based, Nigerian-owned aluminium roofing and building products company supplying roofing sheets, stone tiles and accessories to projects across Nigeria.",
+    "Gods Promise Aluminium is one of the best aluminium roofing sheet manufacturers in Nigeria, supplying roofing sheets, stone-coated tiles and accessories from our factory in Ogun State to projects across Lagos and Nigeria.",
   openGraph: {
-    title: "About Gods Promise Aluminium | Lagos Aluminium Roofing Company",
+    title: "About Gods Promise Aluminium | Roofing Sheet Manufacturer Nigeria",
     description:
-      "Gods Promise Aluminium provides durable aluminium roofing sheets, stone-coated tiles and accessories for homes, churches and commercial buildings in Lagos and across Nigeria.",
+      "Gods Promise Aluminium is a leading aluminium roofing sheet manufacturer in Nigeria, producing long span sheets, step tiles and stone-coated tiles for homes, churches and commercial buildings.",
     url: "https://www.godspromisealuminiumroofing.com/about",
     type: "article",
     images: [
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "About Gods Promise Aluminium | Lagos-based aluminium roofing company in Nigeria",
+      "About Gods Promise Aluminium | Aluminium Roofing Sheet Manufacturer Nigeria",
     description:
-      "Lagos-based aluminium roofing company supplying roofing sheets, stone-coated tiles and accessories for projects across Nigeria.",
+      "Aluminium roofing sheet manufacturer in Ogun State, Nigeria supplying roofing sheets, stone-coated tiles and accessories for projects across Lagos and Nigeria.",
     images: ["/logo.jpeg"],
   },
 };
@@ -109,9 +109,10 @@ export default function AboutPage() {
               About Gods Promise Aluminium
             </h1>
             <p className="text-balance text-lg text-primary-foreground/80 md:text-xl">
-              We produce and supply aluminium roofing sheets, stone-coated
-              tiles, and accessories that keep homes, churches, and businesses
-              across Nigeria beautifully protected.
+              One of the best aluminium roofing sheet manufacturers in Nigeria,
+              we produce and supply roofing sheets, stone-coated tiles and
+              accessories from our Ogun State factory to homes, churches and
+              businesses across Lagos and Nigeria.
             </p>
           </div>
         </div>
@@ -152,10 +153,11 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
                 <p>
-                  Gods Promise Aluminium is a Lagos-based aluminium roofing and
-                  building products company. From our workshop in Lagos, we
-                  produce and supply roofing sheets, stone-coated tiles, and
-                  accessories for projects of all sizes across Nigeria.
+                  Gods Promise Aluminium is one of the leading aluminium roofing
+                  sheet manufacturers in Nigeria. From our production facility
+                  in Sango Ota, Ogun State, we manufacture and supply roofing
+                  sheets, stone-coated tiles and accessories for projects of all
+                  sizes across Lagos and Nigeria.
                 </p>
                 <p>
                   Over the years we&apos;ve grown with our customers, learning

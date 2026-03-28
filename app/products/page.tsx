@@ -20,12 +20,12 @@ export const metadata: Metadata = {
   title:
     "Aluminium Roofing Sheets, Step Tiles & Stone-Coated Tiles | Buy Direct in Lagos",
   description:
-    "Buy aluminium long span roofing sheets, step tiles, Metcopo and Gerard stone-coated tiles direct from our Lagos factory. Wholesale & retail — call for today's prices.",
+    "Buy aluminium long span roofing sheets, flat aluminium roofing sheets, step tiles, Metcopo and Gerard stone-coated tiles direct from our factory. Wholesale & retail — call for today's prices.",
   openGraph: {
     title:
       "Aluminium Roofing Sheets & Stone-Coated Tiles | Gods Promise Aluminium Products",
     description:
-      "Browse our range of aluminium long span roofing sheets, step tiles, stone-coated tiles, and accessories. Quality roofing materials supplied across Lagos and Nigeria.",
+      "Browse our full range of aluminum roofing sheets, flat sheets, step tiles, stone-coated tiles and accessories. Quality roofing materials supplied across Lagos and Nigeria.",
     url: "https://www.godspromisealuminiumroofing.com/products",
     type: "website",
   },

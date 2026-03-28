@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/dealers" },
   title: "Become a Dealer or Partner | Gods Promise Aluminium",
   description:
-    "Information for dealers, distributors and roofing contractors interested in partnering with Gods Promise Aluminium.",
+    "Partner with Gods Promise Aluminium — aluminium roofing sheet manufacturer in Ogun State, Nigeria. Dealer and distributor opportunities for roofing contractors across Lagos and Nigeria.",
 };
 
 export default function DealersPage() {

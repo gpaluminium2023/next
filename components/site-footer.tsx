@@ -290,6 +290,41 @@ export function SiteFooter() {
             </ul>
           </div>
         </div>
+
+        {/* Location links */}
+        <div className="mt-8 border-t border-border pt-6">
+          <h4 className="text-sm font-semibold text-foreground mb-3">
+            Locations we serve
+          </h4>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+            {[
+              { name: "Lagos", slug: "lagos" },
+              { name: "Ogun", slug: "ogun" },
+              { name: "Abuja", slug: "abuja" },
+              { name: "Rivers", slug: "rivers" },
+              { name: "Oyo", slug: "oyo" },
+              { name: "Kano", slug: "kano" },
+              { name: "Edo", slug: "edo" },
+              { name: "Delta", slug: "delta" },
+              { name: "Kaduna", slug: "kaduna" },
+              { name: "Anambra", slug: "anambra" },
+            ].map((loc) => (
+              <Link
+                key={loc.slug}
+                href={`/locations/${loc.slug}`}
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {loc.name}
+              </Link>
+            ))}
+            <Link
+              href="/locations"
+              className="text-accent transition-colors hover:text-accent/80 font-medium"
+            >
+              All 36 states + FCT →
+            </Link>
+          </div>
+        </div>
       </div>
 
       <Separator className="bg-border" />
