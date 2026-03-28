@@ -83,6 +83,26 @@ export default function PricingPage() {
 
       <section className="py-12 md:py-16">
         <div className="container px-4 mx-auto max-w-4xl space-y-10">
+          {/* Intro text */}
+          <div className="grid gap-4 md:grid-cols-2 text-sm text-muted-foreground">
+            <p>
+              Gods Promise Aluminium supplies aluminium roofing sheets, step
+              tiles and stone-coated tiles at competitive factory prices. The
+              tables below show our current rates per square metre for each
+              product category and gauge thickness. Standard colours — wine,
+              blue, green, grey and brown — are included at the listed price
+              with no extra charge.
+            </p>
+            <p>
+              We offer two pricing tiers: our regular product line and a
+              caliper-verified standard range where gauge thickness is confirmed
+              by physical caliper measurement before dispatch. The
+              caliper-verified option is ideal for customers who require
+              certified accuracy for government projects, estate developments or
+              any build where precise specifications must be documented.
+            </p>
+          </div>
+
           {/* Long Span & Metral */}
           <div className="rounded-sm border border-border bg-card overflow-hidden">
             <div className="px-6 py-4 border-b border-border">
@@ -317,7 +337,7 @@ export default function PricingPage() {
               <a
                 href="https://wa.me/2349150459964"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
               >
                 Confirm Price on WhatsApp
               </a>

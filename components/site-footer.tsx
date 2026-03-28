@@ -204,7 +204,7 @@ export function SiteFooter() {
                 <a
                   href="https://wa.me/2349150459964"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener nofollow"
                   className="transition-colors hover:text-foreground"
                 >
                   WhatsApp: +2345150459964
@@ -215,7 +215,7 @@ export function SiteFooter() {
                 <a
                   href="https://www.instagram.com/godspacltd?igsh=dWxybXJrOTBhbXJi"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener nofollow"
                   className="transition-colors hover:text-foreground"
                 >
                   Instagram
@@ -226,7 +226,7 @@ export function SiteFooter() {
                 <a
                   href="https://www.facebook.com/share/1G88rStYo2/?mibextid=wwXIfr"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener nofollow"
                   className="transition-colors hover:text-foreground"
                 >
                   Facebook
@@ -237,7 +237,7 @@ export function SiteFooter() {
                 <a
                   href="https://x.com/GODSPACLTDROOF?t=og3JQ66r07ChmIkRYQbGkQ&s=09"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener nofollow"
                   className="transition-colors hover:text-foreground"
                 >
                   X (Twitter)
@@ -248,7 +248,7 @@ export function SiteFooter() {
                 <a
                   href="https://youtube.com/@godspromisealuminumconceptltd?si=WoIqnLBIX-t9cX4s"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener nofollow"
                   className="transition-colors hover:text-foreground"
                 >
                   YouTube
@@ -259,7 +259,7 @@ export function SiteFooter() {
                 <a
                   href="https://www.tiktok.com/@godspromiseroofing_1"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener nofollow"
                   className="transition-colors hover:text-foreground"
                 >
                   TikTok
@@ -270,7 +270,7 @@ export function SiteFooter() {
                 <a
                   href="https://www.threads.com/@godspacltd"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener nofollow"
                   className="transition-colors hover:text-foreground"
                 >
                   Threads
@@ -281,7 +281,7 @@ export function SiteFooter() {
                 <a
                   href="https://www.snapchat.com/add/godspacltd_2?share_id=6Rid9tirHwM&locale=en-US"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener nofollow"
                   className="transition-colors hover:text-foreground"
                 >
                   Snapchat

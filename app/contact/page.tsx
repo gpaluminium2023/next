@@ -219,7 +219,7 @@ export default function ContactPage() {
             <Link
               href="https://wa.me/2349150459964"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
             >
               WhatsApp Us Now
             </Link>

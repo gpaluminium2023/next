@@ -1,5 +1,6 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   CheckCircle2,
@@ -13,6 +14,21 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProductColors } from "@/components/product-colors";
+
+export const metadata: Metadata = {
+  title:
+    "Aluminium Roofing Sheets & Stone-Coated Tiles | Gods Promise Aluminium Products",
+  description:
+    "Browse our range of aluminium long span roofing sheets, step tiles, stone-coated tiles, and accessories. Quality roofing materials supplied across Lagos and Nigeria.",
+  openGraph: {
+    title:
+      "Aluminium Roofing Sheets & Stone-Coated Tiles | Gods Promise Aluminium Products",
+    description:
+      "Browse our range of aluminium long span roofing sheets, step tiles, stone-coated tiles, and accessories. Quality roofing materials supplied across Lagos and Nigeria.",
+    url: "https://www.godspromisealuminiumroofing.com/products",
+    type: "website",
+  },
+};
 
 export default function ProductsPage() {
   return (
@@ -95,18 +111,11 @@ export default function ProductsPage() {
                   </Badge>
                 </div>
               </div>
-              <ul className="space-y-2 text-sm">
-                {[
-                  "All thicknesses available",
-                  "Multiple standard colours",
-                  "Accurate measurement and cutting",
-                  "Suitable for residential and project work",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                    <span className="text-muted-foreground">{item}</span>
-                  </li>
-                ))}
+              <ul className="list-disc pl-5 space-y-1.5 text-sm text-muted-foreground marker:text-accent">
+                <li>All thicknesses available</li>
+                <li>Multiple standard colours</li>
+                <li>Accurate measurement and cutting</li>
+                <li>Suitable for residential and project work</li>
               </ul>
             </div>
           </div>
@@ -156,18 +165,11 @@ export default function ProductsPage() {
                   </Badge>
                 </div>
               </div>
-              <ul className="space-y-2 text-sm">
-                {[
-                  "Quiet and comfortable in rain",
-                  "Good heat and sound control",
-                  "Strong against wind and harsh weather",
-                  "Adds value and beauty to your building",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                    <span className="text-muted-foreground">{item}</span>
-                  </li>
-                ))}
+              <ul className="list-disc pl-5 space-y-1.5 text-sm text-muted-foreground marker:text-accent">
+                <li>Quiet and comfortable in rain</li>
+                <li>Good heat and sound control</li>
+                <li>Strong against wind and harsh weather</li>
+                <li>Adds value and beauty to your building</li>
               </ul>
             </div>
           </div>
@@ -216,18 +218,11 @@ export default function ProductsPage() {
                   </Badge>
                 </div>
               </div>
-              <ul className="space-y-2 text-sm">
-                {[
-                  "Corrosion-resistant materials",
-                  "Selected to match our roofing sheets",
-                  "Helps prevent leaks and future problems",
-                  "Available in project quantities",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                    <span className="text-muted-foreground">{item}</span>
-                  </li>
-                ))}
+              <ul className="list-disc pl-5 space-y-1.5 text-sm text-muted-foreground marker:text-accent">
+                <li>Corrosion-resistant materials</li>
+                <li>Selected to match our roofing sheets</li>
+                <li>Helps prevent leaks and future problems</li>
+                <li>Available in project quantities</li>
               </ul>
             </div>
           </div>
@@ -371,7 +366,7 @@ export default function ProductsPage() {
               <a
                 href="https://wa.me/2349150459964"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="underline-offset-4 hover:text-foreground hover:underline"
               >
                 WhatsApp support (+234 915 045 9964)
