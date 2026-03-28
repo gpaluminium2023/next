@@ -28,7 +28,7 @@ export async function generateMetadata({
 		};
 	}
 
-	const url = `https://godspromisealuminiumroofing.com/blog/${post.slug}`;
+	const url = `https://www.godspromisealuminiumroofing.com/blog/${post.slug}`;
 	const imageUrl = post.imageSrc ?? '/logo.jpeg';
 	const imageAlt = post.imageAlt ?? `${post.title} - Gods Promise Aluminium`;
 

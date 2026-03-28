@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "Gods Promise Aluminium",
     description:
       "Premium aluminium roofing sheets, stone-coated tiles and accessories for Nigerian projects.",
-    url: "https://godspromisealuminiumroofing.com",
+    url: "https://www.godspromisealuminiumroofing.com",
     type: "website",
     images: [
       {

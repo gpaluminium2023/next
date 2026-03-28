@@ -14,7 +14,7 @@ export const metadata: Metadata = {
       "About Gods Promise Aluminium | Lagos-based aluminium roofing company in Nigeria",
     description:
       "Gods Promise Aluminium provides durable aluminium roofing sheets, stone-coated tiles and accessories for homes, churches and commercial buildings in Lagos and across Nigeria.",
-    url: "https://godspromisealuminiumroofing.com/about",
+    url: "https://www.godspromisealuminiumroofing.com/about",
     type: "article",
     images: [
       {

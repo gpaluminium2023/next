@@ -2,7 +2,9 @@ import type { MetadataRoute } from 'next'
 
 import { blogPosts } from '@/lib/blog-posts'
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://godspromisealuminium.com'
+const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL ??
+  "https://www.godspromisealuminiumroofing.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
