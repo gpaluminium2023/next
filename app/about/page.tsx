@@ -10,8 +10,7 @@ export const metadata: Metadata = {
   description:
     "Learn about Gods Promise Aluminium, a Lagos-based, Nigerian-owned aluminium roofing and building products company supplying roofing sheets, stone tiles and accessories to projects across Nigeria.",
   openGraph: {
-    title:
-      "About Gods Promise Aluminium | Lagos-based aluminium roofing company in Nigeria",
+    title: "About Gods Promise Aluminium | Lagos Aluminium Roofing Company",
     description:
       "Gods Promise Aluminium provides durable aluminium roofing sheets, stone-coated tiles and accessories for homes, churches and commercial buildings in Lagos and across Nigeria.",
     url: "https://www.godspromisealuminiumroofing.com/about",
