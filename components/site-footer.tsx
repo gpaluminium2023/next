@@ -300,7 +300,23 @@ export function SiteFooter() {
             © {new Date().getFullYear()} Gods Promise Aluminium. Quality
             roofing, reliable service.
           </p>
-          <p>Made in Nigeria 🇳🇬</p>
+          <div className="flex items-center gap-3">
+            <a
+              href="/sitemap.xml"
+              className="transition-colors hover:text-foreground"
+            >
+              Sitemap
+            </a>
+            <span aria-hidden="true">·</span>
+            <a
+              href="/llms.txt"
+              className="transition-colors hover:text-foreground"
+            >
+              LLMs.txt
+            </a>
+            <span aria-hidden="true">·</span>
+            <span>Made in Nigeria 🇳🇬</span>
+          </div>
         </div>
       </div>
 
