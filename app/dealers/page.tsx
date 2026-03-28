@@ -87,6 +87,23 @@ export default function DealersPage() {
 
           <div className="rounded-sm border border-border bg-card p-6">
             <h2 className="font-heading font-bold text-base mb-2">
+              Areas We Currently Serve
+            </h2>
+            <div className="text-sm text-muted-foreground space-y-2">
+              <p>
+                We already work with partners in Lagos, Ogun, Oyo, Osun, Ondo,
+                Ekiti, Kwara, Edo, Delta, Rivers, Anambra and Enugu states.
+                However, we are actively looking to expand our dealer network
+                into the northern states and the Federal Capital Territory. If
+                you operate anywhere in Nigeria and are interested in supplying
+                quality aluminium roofing products, we would like to hear from
+                you.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-sm border border-border bg-card p-6">
+            <h2 className="font-heading font-bold text-base mb-2">
               How to Get Started
             </h2>
             <div className="text-sm text-muted-foreground space-y-2">

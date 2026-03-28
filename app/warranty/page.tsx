@@ -115,6 +115,23 @@ export default function WarrantyPage() {
 
           <div className="rounded-sm border border-border bg-card p-6">
             <h2 className="font-heading font-bold text-base mb-2">
+              Storage and Maintenance
+            </h2>
+            <div className="text-sm text-muted-foreground space-y-2">
+              <p>
+                To preserve the quality of your aluminium roofing sheets after
+                delivery, store them on a flat, dry surface away from direct
+                contact with the ground. Avoid stacking heavy objects on top of
+                the sheets and keep them covered with a tarpaulin or plastic
+                sheeting until installation begins. Proper storage prevents
+                unnecessary scratches, moisture damage and warping that could
+                affect performance after installation.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-sm border border-border bg-card p-6">
+            <h2 className="font-heading font-bold text-base mb-2">
               Returns and Complaints
             </h2>
             <div className="text-sm text-muted-foreground space-y-2">

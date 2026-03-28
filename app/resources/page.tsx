@@ -39,10 +39,17 @@ export default function ResourcesPage() {
             roofing sheet options, pricing factors and best practices for your
             project in Lagos and across Nigeria.
           </p>
-          <p className="text-sm text-muted-foreground mb-8">
+          <p className="text-sm text-muted-foreground mb-4">
             Browse the sections below to find answers to common questions,
             compare product options and read our latest articles on aluminium
             roofing.
+          </p>
+          <p className="text-sm text-muted-foreground mb-8">
+            Our resource library is regularly updated with new content based on
+            the questions and challenges our customers share with us. If you
+            cannot find what you are looking for, our team is always available
+            to provide personalised guidance by phone, WhatsApp or through the
+            contact form on our website.
           </p>
 
           <div className="grid gap-6 md:grid-cols-2">

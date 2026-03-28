@@ -109,6 +109,23 @@ export default function DeliveryPage() {
 
           <div className="rounded-sm border border-border bg-card p-6">
             <h2 className="font-heading font-bold text-base mb-2">
+              Packaging and Handling
+            </h2>
+            <div className="text-sm text-muted-foreground space-y-2">
+              <p>
+                All aluminium roofing sheets are carefully stacked and secured
+                before loading to prevent scratches, dents or bending during
+                transit. Long span sheets are bundled with protective separators
+                between layers while step-tile and stone-coated tiles are
+                palletised where possible. Our loading team follows a standard
+                procedure to make sure your materials arrive in the same
+                condition they left the factory.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-sm border border-border bg-card p-6">
+            <h2 className="font-heading font-bold text-base mb-2">
               Arrange Your Delivery
             </h2>
             <div className="text-sm text-muted-foreground space-y-2">

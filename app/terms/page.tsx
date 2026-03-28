@@ -148,6 +148,31 @@ export default function TermsPage() {
 
           <div className="space-y-2">
             <h2 className="font-heading font-bold text-base text-foreground">
+              Intellectual Property
+            </h2>
+            <p>
+              All trademarks, logos, product names and branding on this website
+              are the property of Gods Promise Aluminium unless otherwise
+              stated. You may not use our brand name or materials for commercial
+              purposes without prior written consent.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <h2 className="font-heading font-bold text-base text-foreground">
+              Governing Law
+            </h2>
+            <p>
+              These terms and conditions are governed by and construed in
+              accordance with the laws of the Federal Republic of Nigeria. Any
+              dispute arising from your use of this website or purchase of our
+              products shall be subject to the jurisdiction of the courts in
+              Lagos State, Nigeria.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <h2 className="font-heading font-bold text-base text-foreground">
               Changes to These Terms
             </h2>
             <p>

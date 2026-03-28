@@ -61,6 +61,38 @@ export default function BlogIndexPage() {
         </div>
       </section>
 
+      {/* Topics overview */}
+      <section className="bg-background border-b border-border">
+        <div className="container px-4 mx-auto max-w-6xl py-6">
+          <h2 className="font-heading font-bold text-base mb-3">
+            Topics We Cover
+          </h2>
+          <div className="grid gap-4 md:grid-cols-3 text-sm text-muted-foreground">
+            <p>
+              <strong className="text-foreground">Pricing updates</strong> — We
+              break down current aluminium roofing sheet prices in Lagos and
+              explain the factors behind price changes including coil costs,
+              exchange rates and seasonal demand so you know what to expect
+              before requesting a quote.
+            </p>
+            <p>
+              <strong className="text-foreground">Product comparisons</strong> —
+              Detailed comparisons of long span, step tile, Metcopo and
+              stone-coated profiles covering weight, durability, installation
+              complexity and overall cost per square metre to help you pick the
+              right option for your building.
+            </p>
+            <p>
+              <strong className="text-foreground">Installation tips</strong> —
+              Practical advice on roof preparation, correct overlapping
+              techniques, fastener selection and common mistakes that lead to
+              leaks or premature wear on aluminium roofing sheets in the
+              Nigerian climate.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Posts grid */}
       <section className="py-12 md:py-16">
         <div className="container px-4 mx-auto max-w-6xl">

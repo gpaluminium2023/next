@@ -64,36 +64,41 @@ const faqs = [
 
 export default function FaqPage() {
 	return (
-		<div className='min-h-screen bg-background'>
-			<section className='bg-primary text-primary-foreground'>
-				<div className='h-1 w-full bg-accent' />
-				<div className='container px-4 mx-auto max-w-4xl py-16 md:py-20'>
-					<p className='text-accent text-xs uppercase tracking-widest font-heading font-bold mb-3'>
-						Support
-					</p>
-					<h1 className='font-heading uppercase font-bold text-4xl md:text-5xl text-balance'>
-						Frequently Asked Questions
-					</h1>
-				</div>
-			</section>
+    <div className="min-h-screen bg-background">
+      <section className="bg-primary text-primary-foreground">
+        <div className="h-1 w-full bg-accent" />
+        <div className="container px-4 mx-auto max-w-4xl py-16 md:py-20">
+          <p className="text-accent text-xs uppercase tracking-widest font-heading font-bold mb-3">
+            Support
+          </p>
+          <h1 className="font-heading uppercase font-bold text-4xl md:text-5xl text-balance">
+            Frequently Asked Questions
+          </h1>
+        </div>
+      </section>
 
-			<section className='py-12 md:py-16'>
-				<div className='container px-4 mx-auto max-w-4xl space-y-4'>
-					{faqs.map((faq) => (
-						<div
-							key={faq.question}
-							className='rounded-sm border border-border bg-card p-6'
-						>
-							<h2 className='font-heading font-bold text-base mb-2'>
-								{faq.question}
-							</h2>
-							<p className='text-sm text-muted-foreground'>
-								{faq.answer}
-							</p>
-						</div>
-					))}
-				</div>
-			</section>
-		</div>
-	);
+      <section className="py-12 md:py-16">
+        <div className="container px-4 mx-auto max-w-4xl space-y-4">
+          <p className="text-sm text-muted-foreground md:text-base mb-4">
+            Below are the questions we hear most often from homeowners, builders
+            and contractors who contact Gods Promise Aluminium about aluminium
+            roofing sheets, pricing, delivery and installation in Lagos and
+            across Nigeria. If your question is not answered here, please call
+            or WhatsApp us on +234 915 045 9964 for a prompt response.
+          </p>
+          {faqs.map((faq) => (
+            <div
+              key={faq.question}
+              className="rounded-sm border border-border bg-card p-6"
+            >
+              <h2 className="font-heading font-bold text-base mb-2">
+                {faq.question}
+              </h2>
+              <p className="text-sm text-muted-foreground">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
 }

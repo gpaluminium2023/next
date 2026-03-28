@@ -124,6 +124,33 @@ export default function PrivacyPage() {
 
           <div className="space-y-2">
             <h2 className="font-heading font-bold text-base text-foreground">
+              Third-Party Links
+            </h2>
+            <p>
+              Our website may contain links to external platforms such as social
+              media pages, mapping services and messaging applications. These
+              third-party sites have their own privacy policies and we are not
+              responsible for how they collect or use your data. We encourage
+              you to review their privacy policies before sharing any personal
+              information through those platforms.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <h2 className="font-heading font-bold text-base text-foreground">
+              Children&apos;s Privacy
+            </h2>
+            <p>
+              Our website and services are intended for adults involved in
+              building and construction projects. We do not knowingly collect
+              personal data from children under the age of 18. If we become
+              aware that we have collected information from a minor, we will
+              take steps to delete it promptly.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <h2 className="font-heading font-bold text-base text-foreground">
               Changes to This Policy
             </h2>
             <p>

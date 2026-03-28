@@ -64,12 +64,21 @@ export default function ProjectsPage() {
 
       <section className="py-12 md:py-16">
         <div className="container px-4 mx-auto max-w-6xl">
-          <p className="text-sm text-muted-foreground md:text-base mb-8">
+          <p className="text-sm text-muted-foreground md:text-base mb-4">
             Over the years, Gods Promise Aluminium has supplied roofing
             materials for hundreds of residential, commercial, industrial and
             religious building projects across Lagos and other states in
             Nigeria. Below are some examples of how our customers have used our
             aluminium roofing sheets and accessories on real projects.
+          </p>
+          <p className="text-sm text-muted-foreground mb-8">
+            Each project demonstrates our ability to handle different building
+            types, order sizes and delivery logistics. From single-unit
+            bungalows in suburban Lagos to multi-unit estate developments and
+            large warehouse re-roofing jobs, we provide the same level of
+            attention to product quality and customer service. Contact us to
+            discuss how we can support your next roofing project with
+            factory-direct aluminium roofing sheets at competitive prices.
           </p>
           <div className="grid gap-6 md:grid-cols-2">
             {sampleProjects.map((project) => (
