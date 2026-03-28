@@ -19,6 +19,10 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.godspromisealuminiumroofing.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: "Gods Promise Aluminium",
   description:
     "Premium aluminium roofing and construction materials in Nigeria.",
@@ -72,6 +76,62 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "Gods Promise Aluminium Concept Limited",
+              image: "https://www.godspromisealuminiumroofing.com/logo.jpeg",
+              url: "https://www.godspromisealuminiumroofing.com",
+              telephone: "+2349150459964",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress:
+                  "Km 38, Lagos-Abeokuta Expressway, Beside First Bank",
+                addressLocality: "Sango Ota",
+                addressRegion: "Ogun State",
+                addressCountry: "NG",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 6.7,
+                longitude: 3.25,
+              },
+              openingHoursSpecification: [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                  ],
+                  opens: "08:00",
+                  closes: "18:00",
+                },
+              ],
+              sameAs: [
+                "https://www.instagram.com/godspacltd/",
+                "https://www.facebook.com/profile.php?id=100063619451498",
+                "https://www.youtube.com/@godspromisealuminiumconcep3aborig",
+                "https://www.tiktok.com/@godspacltd",
+              ],
+              description:
+                "Lagos-based manufacturer and supplier of aluminium roofing sheets, step tiles, stone-coated tiles and roofing accessories for projects across Nigeria.",
+              priceRange: "₦₦",
+              areaServed: {
+                "@type": "Country",
+                name: "Nigeria",
+              },
+            }),
+          }}
+        />
+      </head>
       <body
         className={`${barlowCondensed.variable} ${dmSans.variable} antialiased bg-background text-foreground`}
       >

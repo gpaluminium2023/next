@@ -16,10 +16,11 @@ import { Button } from "@/components/ui/button";
 import { ProductColors } from "@/components/product-colors";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/products" },
   title:
-    "Aluminium Roofing Sheets & Stone-Coated Tiles | Gods Promise Aluminium Products",
+    "Aluminium Roofing Sheets, Step Tiles & Stone-Coated Tiles | Buy Direct in Lagos",
   description:
-    "Browse our range of aluminium long span roofing sheets, step tiles, stone-coated tiles, and accessories. Quality roofing materials supplied across Lagos and Nigeria.",
+    "Buy aluminium long span roofing sheets, step tiles, Metcopo and Gerard stone-coated tiles direct from our Lagos factory. Wholesale & retail — call for today's prices.",
   openGraph: {
     title:
       "Aluminium Roofing Sheets & Stone-Coated Tiles | Gods Promise Aluminium Products",
@@ -31,8 +32,68 @@ export const metadata: Metadata = {
 };
 
 export default function ProductsPage() {
+  const productsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Gods Promise Aluminium Products",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        item: {
+          "@type": "Product",
+          name: "Aluminium Long Span Roofing Sheet",
+          description:
+            "0.45mm and 0.55mm aluminium long span roofing sheets manufactured in Lagos. Available in custom lengths up to 6m. Rust-proof and lightweight.",
+          brand: { "@type": "Brand", name: "Gods Promise Aluminium" },
+          category: "Roofing Sheets",
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        item: {
+          "@type": "Product",
+          name: "Aluminium Step Tile Roofing Sheet",
+          description:
+            "Step tile profile aluminium roofing sheets with realistic tile appearance. Available in 0.45mm and 0.55mm thickness in various colours.",
+          brand: { "@type": "Brand", name: "Gods Promise Aluminium" },
+          category: "Roofing Sheets",
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        item: {
+          "@type": "Product",
+          name: "Metcopo Aluminium Roofing Sheet",
+          description:
+            "Metcopo profile aluminium roofing sheets with bold tile design. Manufactured in 0.45mm and 0.55mm gauges for residential and commercial roofing.",
+          brand: { "@type": "Brand", name: "Gods Promise Aluminium" },
+          category: "Roofing Sheets",
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        item: {
+          "@type": "Product",
+          name: "Gerard Stone Coated Roofing Tile",
+          description:
+            "Premium stone-coated steel roofing tiles by Gerard. Available in Classic, Milano, Heritage, Shingle and Roman profiles with 50-year warranty.",
+          brand: { "@type": "Brand", name: "Gerard" },
+          category: "Stone Coated Tiles",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productsJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">

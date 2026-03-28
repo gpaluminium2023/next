@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Warranty & Returns | Gods Promise Aluminium',
-	description:
-		'Overview of product warranty, quality checks and returns process for aluminium roofing sheets supplied by Gods Promise Aluminium.',
+  alternates: { canonical: "/warranty" },
+  title: "Roofing Warranty & Returns Policy | Gods Promise Aluminium",
+  description:
+    "Overview of product warranty, quality checks and returns process for aluminium roofing sheets supplied by Gods Promise Aluminium.",
 };
 
 export default function WarrantyPage() {

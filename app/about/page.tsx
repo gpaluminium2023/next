@@ -5,8 +5,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title:
-    "About Gods Promise Aluminium | Lagos-based aluminium roofing company in Nigeria",
+  alternates: { canonical: "/about" },
+  title: "About Gods Promise Aluminium | Lagos-Based Aluminium Roofing Company",
   description:
     "Learn about Gods Promise Aluminium, a Lagos-based, Nigerian-owned aluminium roofing and building products company supplying roofing sheets, stone tiles and accessories to projects across Nigeria.",
   openGraph: {

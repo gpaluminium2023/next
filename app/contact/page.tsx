@@ -6,7 +6,8 @@ import { ContactForm } from "@/components/contact-form";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Contact Us - Gods Promise Aluminium",
+  alternates: { canonical: "/contact" },
+  title: "Contact Us — Get a Free Roofing Quote | Gods Promise Aluminium",
   description:
     "Get in touch with Gods Promise Aluminium. Contact us for quality aluminium roofing sheets, stone-coated tiles, and accessories in Nigeria.",
 };

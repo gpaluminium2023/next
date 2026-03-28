@@ -5,8 +5,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/gallery" },
   title:
-    "Project Gallery | Completed Roofing Jobs & Factory Tour | Gods Promise Aluminium",
+    "Project Gallery — Completed Roofing Jobs & Factory Tour | Gods Promise Aluminium",
   description:
     "See completed aluminium roofing projects, factory production, and colour options from Gods Promise Aluminium. Real jobs across Lagos and Nigeria.",
   openGraph: {

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Privacy Policy | Gods Promise Aluminium',
-	description:
-		'How Gods Promise Aluminium handles personal information collected through this website, contact forms and WhatsApp enquiries.',
+  alternates: { canonical: "/privacy" },
+  title: "Privacy Policy | Gods Promise Aluminium",
+  description:
+    "How Gods Promise Aluminium handles personal information collected through this website, contact forms and WhatsApp enquiries.",
 };
 
 export default function PrivacyPage() {

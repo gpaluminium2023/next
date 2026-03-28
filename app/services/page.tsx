@@ -13,8 +13,9 @@ import {
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/services" },
   title:
-    "Roofing Services | Supply, Delivery & Installation | Gods Promise Aluminium",
+    "Roofing Services in Lagos — Supply, Delivery & Installation | Gods Promise Aluminium",
   description:
     "Professional aluminium roofing services in Lagos and across Nigeria — supply, delivery, and expert installation of long span sheets, step tiles, and stone-coated tiles.",
   openGraph: {

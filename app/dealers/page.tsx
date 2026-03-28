@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Dealers & Partners | Gods Promise Aluminium',
-	description:
-		'Information for dealers, distributors and roofing contractors interested in partnering with Gods Promise Aluminium.',
+  alternates: { canonical: "/dealers" },
+  title: "Become a Dealer or Partner | Gods Promise Aluminium",
+  description:
+    "Information for dealers, distributors and roofing contractors interested in partnering with Gods Promise Aluminium.",
 };
 
 export default function DealersPage() {

@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Frequently Asked Questions | Gods Promise Aluminium',
-	description:
-		'Answers to common questions about aluminium roofing sheet prices, thickness, delivery and installation from Gods Promise Aluminium in Lagos, Nigeria.',
+  alternates: { canonical: "/faq" },
+  title:
+    "Aluminium Roofing FAQs — Prices, Sizes & Installation | Gods Promise Aluminium",
+  description:
+    "Answers to common questions about aluminium roofing sheet prices, thickness, delivery and installation from Gods Promise Aluminium in Lagos, Nigeria.",
 };
 
 const faqs = [

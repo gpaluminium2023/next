@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Delivery & Coverage Areas | Gods Promise Aluminium',
-	description:
-		'Information about how Gods Promise Aluminium delivers aluminium roofing sheets from Lagos to projects across Nigeria, including typical timelines and requirements.',
+  alternates: { canonical: "/delivery" },
+  title: "Fast Roofing Sheet Delivery Across Nigeria | Gods Promise Aluminium",
+  description:
+    "Same-day Lagos delivery & nationwide shipping of aluminium roofing sheets, step tiles and stone-coated tiles. Track your order from our factory to your site.",
 };
 
 export default function DeliveryPage() {

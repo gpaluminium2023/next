@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Terms & Conditions | Gods Promise Aluminium',
-	description:
-		'Basic terms and conditions for using this website and purchasing aluminium roofing products from Gods Promise Aluminium.',
+  alternates: { canonical: "/terms" },
+  title: "Terms & Conditions | Gods Promise Aluminium",
+  description:
+    "Basic terms and conditions for using this website and purchasing aluminium roofing products from Gods Promise Aluminium.",
 };
 
 export default function TermsPage() {

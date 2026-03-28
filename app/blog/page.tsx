@@ -5,9 +5,11 @@ import type { Metadata } from 'next';
 import { blogPosts } from '@/lib/blog-posts';
 
 export const metadata: Metadata = {
-	title: 'Blog & Resources | Gods Promise Aluminium',
-	description:
-		'Aluminium roofing guides, price updates and practical resources for homeowners, builders and contractors in Lagos and across Nigeria.',
+  alternates: { canonical: "/blog" },
+  title:
+    "Aluminium Roofing Blog — Prices, Guides & Tips | Gods Promise Aluminium",
+  description:
+    "Aluminium roofing guides, price updates and practical resources for homeowners, builders and contractors in Lagos and across Nigeria.",
 };
 
 export default function BlogIndexPage() {

@@ -4,9 +4,10 @@ import Link from 'next/link';
 import { blogPosts } from '@/lib/blog-posts';
 
 export const metadata: Metadata = {
-	title: 'Resources & Guides | Gods Promise Aluminium',
-	description:
-		'Aluminium roofing guides, FAQs and blog posts to help you choose the right roofing sheets and plan your project in Lagos and across Nigeria.',
+  alternates: { canonical: "/resources" },
+  title: "Roofing Guides, Manuals & Resources | Gods Promise Aluminium",
+  description:
+    "Aluminium roofing guides, FAQs and blog posts to help you choose the right roofing sheets and plan your project in Lagos and across Nigeria.",
 };
 
 export default function ResourcesPage() {

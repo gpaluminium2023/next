@@ -5,8 +5,9 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/" },
   title:
-    "Aluminium roofing sheet manufacturer in Lagos, Nigeria | Gods Promise Aluminium",
+    "Aluminium Roofing Sheet Manufacturer in Lagos, Nigeria | Gods Promise Aluminium",
   description:
     "Gods Promise Aluminium is a Lagos-based aluminium roofing sheet manufacturer serving customers across Nigeria with durable, rust-resistant roofing systems, fast WhatsApp quotes and reliable nationwide delivery.",
   openGraph: {

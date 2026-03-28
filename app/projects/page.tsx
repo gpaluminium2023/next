@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Projects & Case Studies | Gods Promise Aluminium',
-	description:
-		'A simple overview of sample aluminium roofing projects completed by Gods Promise Aluminium for homes, churches and commercial buildings in Lagos and across Nigeria.',
+  alternates: { canonical: "/projects" },
+  title:
+    "Completed Roofing Projects in Lagos & Nigeria | Gods Promise Aluminium",
+  description:
+    "A simple overview of sample aluminium roofing projects completed by Gods Promise Aluminium for homes, churches and commercial buildings in Lagos and across Nigeria.",
 };
 
 const sampleProjects = [
