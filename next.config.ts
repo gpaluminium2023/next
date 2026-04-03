@@ -3,6 +3,15 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+    ],
+  },
+
   // Redirect old .html URLs to clean paths
   async redirects() {
     return [
@@ -24,6 +33,11 @@ const nextConfig: NextConfig = {
       {
         source: "/contact.html",
         destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/blog/aluminum-roofing-sheet-price-lagos-2025",
+        destination: "/blog/aluminum-roofing-sheet-price-lagos",
         permanent: true,
       },
     ];

@@ -178,6 +178,18 @@ export default function ProductsPage() {
                 <li>Accurate measurement and cutting</li>
                 <li>Suitable for residential and project work</li>
               </ul>
+              <div className="mt-4 flex items-center gap-1.5 rounded-sm border border-accent/30 bg-accent/5 px-3 py-2">
+                <span className="font-heading text-lg font-bold text-accent">
+                  From &#8358;4,300
+                </span>
+                <span className="text-xs text-muted-foreground">/sqm</span>
+                <Link
+                  href="/pricing"
+                  className="ml-auto text-xs font-semibold text-accent hover:underline"
+                >
+                  View full price list
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -232,6 +244,18 @@ export default function ProductsPage() {
                 <li>Strong against wind and harsh weather</li>
                 <li>Adds value and beauty to your building</li>
               </ul>
+              <div className="mt-4 flex items-center gap-1.5 rounded-sm border border-accent/30 bg-accent/5 px-3 py-2">
+                <span className="font-heading text-lg font-bold text-accent">
+                  From &#8358;4,750
+                </span>
+                <span className="text-xs text-muted-foreground">/piece</span>
+                <Link
+                  href="/products/stone-coated"
+                  className="ml-auto text-xs font-semibold text-accent hover:underline"
+                >
+                  See profiles &amp; prices
+                </Link>
+              </div>
               <Link
                 href="/products/stone-coated"
                 className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent transition-colors hover:text-accent/80"

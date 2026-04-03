@@ -49,6 +49,69 @@ export default function ServicesPage() {
         <div className="h-1 w-full bg-accent" />
       </section>
 
+      {/* Services at a glance — shown immediately after hero */}
+      <section className="border-b border-border bg-background">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 divide-y divide-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            {[
+              {
+                icon: Factory,
+                label: "Production",
+                detail: "Long span · Step tile · Metcopo · Normal",
+                price: "From ₦4,300/sqm",
+                link: "/pricing",
+              },
+              {
+                icon: Truck,
+                label: "Delivery",
+                detail: "Lagos & nationwide — factory to your site",
+                price: "Contact for delivery rate",
+                link: "/delivery",
+              },
+              {
+                icon: HardHat,
+                label: "Installation",
+                detail: "Supervised professional roofers on-site",
+                price: "Contact for installation quote",
+                link: "/contact",
+              },
+            ].map(({ icon: Icon, label, detail, price, link }) => (
+              <a
+                key={label}
+                href={link}
+                className="group flex items-start gap-4 px-6 py-5 transition-colors hover:bg-accent/5"
+              >
+                <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center bg-accent">
+                  <Icon className="h-5 w-5 text-accent-foreground" />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-heading text-sm font-bold uppercase tracking-wide">
+                    {label}
+                  </p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    {detail}
+                  </p>
+                  <p className="mt-1 font-heading text-sm font-bold text-accent">
+                    {price}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+          <div className="border-t border-border py-4 text-center">
+            <a
+              href="https://wa.me/2349150459964?text=Hello%2C%20I%27d%20like%20to%20discuss%20my%20roofing%20project."
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-2.5 font-heading text-sm font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90"
+            >
+              <Phone className="h-4 w-4" />
+              WhatsApp Us for a Free Quote
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Services Grid */}
       <section className="bg-secondary py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

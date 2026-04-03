@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import type { Metadata } from 'next';
-import { blogPosts } from '@/lib/blog-posts';
+import { blogPosts } from "@/lib/blog-posts";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/blog" },
@@ -13,11 +13,9 @@ export const metadata: Metadata = {
 };
 
 export default function BlogIndexPage() {
-	const sortedPosts = [...blogPosts].sort((a, b) =>
-		a.date < b.date ? 1 : -1
-	);
+  const posts = blogPosts;
 
-	return (
+  return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
       <section className="bg-primary text-primary-foreground">
@@ -97,7 +95,7 @@ export default function BlogIndexPage() {
       <section className="py-12 md:py-16">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {sortedPosts.map((post) => (
+            {posts.map((post) => (
               <article
                 key={post.slug}
                 className="group rounded-sm overflow-hidden border border-border bg-card h-full flex flex-col"

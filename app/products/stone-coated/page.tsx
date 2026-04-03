@@ -286,34 +286,7 @@ export default function StoneCoatedPage() {
         </div>
       </section>
 
-      {/* Advantages */}
-      <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-          <p className="font-heading mb-2 text-xs font-bold uppercase tracking-widest text-accent">
-            Why Choose Stone-Coated
-          </p>
-          <h2 className="font-heading mb-10 text-2xl font-bold uppercase sm:text-3xl lg:text-4xl">
-            Key Advantages
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {advantages.map((adv) => (
-              <div key={adv.title} className="flex flex-col gap-4 p-6">
-                <adv.icon className="h-8 w-8 text-accent" />
-                <div>
-                  <h3 className="font-heading text-sm font-bold uppercase tracking-wide">
-                    {adv.title}
-                  </h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-primary-foreground/65">
-                    {adv.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Profiles */}
+      {/* Profiles — shown first so visitors see what's available immediately */}
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <p className="font-heading mb-2 text-xs font-bold uppercase tracking-widest text-accent">
           Available Profiles
@@ -349,6 +322,50 @@ export default function StoneCoatedPage() {
             </div>
           ))}
         </div>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a
+            href="https://wa.me/2349150459964?text=Hello%2C%20I%27m%20interested%20in%20stone-coated%20roofing%20tiles.%20Please%20send%20me%20current%20prices."
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-2.5 font-heading text-sm font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90"
+          >
+            <MessageCircle className="h-4 w-4" />
+            Get WhatsApp Quote
+          </a>
+          <Link
+            href="/pricing"
+            className="inline-flex items-center gap-2 rounded-sm border border-border px-5 py-2.5 font-heading text-sm font-bold uppercase tracking-wide hover:border-accent/60"
+          >
+            View Full Price List
+          </Link>
+        </div>
+      </section>
+
+      {/* Advantages */}
+      <section className="bg-primary text-primary-foreground">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+          <p className="font-heading mb-2 text-xs font-bold uppercase tracking-widest text-accent">
+            Why Choose Stone-Coated
+          </p>
+          <h2 className="font-heading mb-10 text-2xl font-bold uppercase sm:text-3xl lg:text-4xl">
+            Key Advantages
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {advantages.map((adv) => (
+              <div key={adv.title} className="flex flex-col gap-4 p-6">
+                <adv.icon className="h-8 w-8 text-accent" />
+                <div>
+                  <h3 className="font-heading text-sm font-bold uppercase tracking-wide">
+                    {adv.title}
+                  </h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-primary-foreground/65">
+                    {adv.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Pricing Summary */}
@@ -381,11 +398,31 @@ export default function StoneCoatedPage() {
               </thead>
               <tbody>
                 {[
-                  { profile: "Shingle", price: "₦4,750", coverage: "~0.42 m²/piece" },
-                  { profile: "Bond", price: "₦4,750", coverage: "~0.42 m²/piece" },
-                  { profile: "Classic", price: "₦4,900", coverage: "~0.42 m²/piece" },
-                  { profile: "Milano", price: "₦5,100", coverage: "~0.40 m²/piece" },
-                  { profile: "Roman", price: "₦5,200", coverage: "~0.38 m²/piece" },
+                  {
+                    profile: "Shingle",
+                    price: "₦4,750",
+                    coverage: "~0.42 m²/piece",
+                  },
+                  {
+                    profile: "Bond",
+                    price: "₦4,750",
+                    coverage: "~0.42 m²/piece",
+                  },
+                  {
+                    profile: "Classic",
+                    price: "₦4,900",
+                    coverage: "~0.42 m²/piece",
+                  },
+                  {
+                    profile: "Milano",
+                    price: "₦5,100",
+                    coverage: "~0.40 m²/piece",
+                  },
+                  {
+                    profile: "Roman",
+                    price: "₦5,200",
+                    coverage: "~0.38 m²/piece",
+                  },
                 ].map((row) => (
                   <tr
                     key={row.profile}
@@ -405,8 +442,8 @@ export default function StoneCoatedPage() {
           </div>
           <p className="mt-4 text-xs text-muted-foreground">
             Prices are per piece and exclude delivery. Accessories (ridge caps,
-            hip tiles, valley troughs, starter kits) add approximately 15–20%
-            to total material cost. Prices updated January 2026.
+            hip tiles, valley troughs, starter kits) add approximately 15–20% to
+            total material cost. Prices updated January 2026.
           </p>
         </div>
       </section>
