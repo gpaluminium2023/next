@@ -1691,9 +1691,6 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
-
-  // ─── C8: GERARD STONE-COATED TILES ────────────────────────────────────────
-
   {
     slug: "gerard-stone-coated-tiles-price-nigeria-2026",
     title:
@@ -1836,9 +1833,6 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
-
-  // ─── POST 6: PRICE PER SQM ────────────────────────────────────────────────
-
   {
     slug: "aluminum-roofing-sheet-price-per-sqm-nigeria",
     title: "Aluminum Roofing Sheet Price Per Square Metre in Nigeria (2026)",
@@ -1968,9 +1962,6 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
-
-  // ─── POST 7: 0.45MM VS 0.55MM ─────────────────────────────────────────────
-
   {
     slug: "roofing-sheet-gauge-thickness-price-difference",
     title:

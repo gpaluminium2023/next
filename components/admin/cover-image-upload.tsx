@@ -46,7 +46,7 @@ export function CoverImageUpload({
         </div>
       ) : (
         <CldUploadWidget
-          uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+          signatureEndpoint="/api/cloudinary/sign"
           options={{
             folder: "gpa-blog",
             multiple: false,
@@ -66,7 +66,9 @@ export function CoverImageUpload({
             >
               <ImagePlus className="h-8 w-8 opacity-50" />
               <span>Click to upload cover image</span>
-              <span className="text-xs opacity-60">PNG, JPG, WebP · max 5 MB</span>
+              <span className="text-xs opacity-60">
+                PNG, JPG, WebP · max 5 MB
+              </span>
             </button>
           )}
         </CldUploadWidget>
