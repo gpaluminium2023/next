@@ -20,33 +20,163 @@ export const metadata: Metadata = {
   },
 };
 
-const factoryImages = [
-  "1.jpg",
-  "3.jpg",
-  "4.jpg",
-  "5.jpg",
-  "6.jpg",
-  "7.jpg",
-  "8.jpg",
-  "9.jpg",
-  "10.jpg",
-];
-
-const jobImages = ["residential-roofing.jpg"];
-
 const galleryImages = [
-  ...jobImages.map((name) => ({
+  // Completed Roofs
+  {
     category: "Completed Roof",
-    src: `/gallery/jobs/${name}`,
-    alt: "Completed aluminium roofing job supplied by Gods Promise Aluminium",
-  })),
-  ...factoryImages.map((name, index) => ({
+    src: "/gallery/latest/completed-roof.jpeg",
+    alt: "Completed aluminium roofing project by Gods Promise Aluminium",
+  },
+  {
+    category: "Completed Roof",
+    src: "/gallery/latest/another-roof-completed.jpeg",
+    alt: "Another completed aluminium roof installation in Nigeria",
+  },
+  {
+    category: "Completed Roof",
+    src: "/gallery/latest/another-bungalow-roof-completed.jpeg",
+    alt: "Bungalow with completed aluminium roofing by Gods Promise Aluminium",
+  },
+  {
+    category: "Completed Roof",
+    src: "/gallery/latest/bungalow-roofing-just-completed.jpeg",
+    alt: "Just completed bungalow roofing project in Lagos",
+  },
+  {
+    category: "Completed Roof",
+    src: "/gallery/latest/another-roofing-job-completed.jpeg",
+    alt: "Finished roofing job supplied by Gods Promise Aluminium",
+  },
+  {
+    category: "Completed Roof",
+    src: "/gallery/latest/roof-view-of-just-roofed-building.jpeg",
+    alt: "Roof view of a freshly roofed building with aluminium sheets",
+  },
+  // Roofing In Progress
+  {
+    category: "Roofing In Progress",
+    src: "/gallery/latest/roofing-in-progress.jpeg",
+    alt: "Aluminium roofing installation in progress",
+  },
+  {
+    category: "Roofing In Progress",
+    src: "/gallery/latest/roofing-in-progress-side-view.jpeg",
+    alt: "Side view of an aluminium roofing installation in progress",
+  },
+  {
+    category: "Roofing In Progress",
+    src: "/gallery/latest/roofing-in-progress-with-workers.jpeg",
+    alt: "Workers installing aluminium roofing sheets on site",
+  },
+  {
+    category: "Roofing In Progress",
+    src: "/gallery/latest/another-roofing.jpeg",
+    alt: "Another roofing project underway with Gods Promise Aluminium sheets",
+  },
+  {
+    category: "Roofing In Progress",
+    src: "/gallery/latest/another-roof-in-progress.jpeg",
+    alt: "Roof installation in progress on a residential building",
+  },
+  {
+    category: "Roofing In Progress",
+    src: "/gallery/latest/flat-roof-in-progress.jpeg",
+    alt: "Flat roof aluminium sheet installation in progress",
+  },
+  {
+    category: "Roofing In Progress",
+    src: "/gallery/latest/bungalow-roofing.jpeg",
+    alt: "Bungalow roofing in progress with aluminium sheets",
+  },
+  {
+    category: "Roofing In Progress",
+    src: "/gallery/latest/another-bungalow.jpeg",
+    alt: "Another bungalow roofing project in progress",
+  },
+  // Stone-Coated Tiles
+  {
+    category: "Stone-Coated Tiles",
+    src: "/gallery/latest/another-stone-tiles.jpeg",
+    alt: "Stone-coated roofing tiles installation by Gods Promise Aluminium",
+  },
+  {
+    category: "Stone-Coated Tiles",
+    src: "/gallery/latest/another-stone-tiles-roof.jpeg",
+    alt: "Building with stone-coated tile roofing",
+  },
+  {
+    category: "Stone-Coated Tiles",
+    src: "/gallery/latest/another-stontiles-roof.jpeg",
+    alt: "Stone-coated tile roof close-up",
+  },
+  {
+    category: "Stone-Coated Tiles",
+    src: "/gallery/latest/stonetiles-in-progress.jpeg",
+    alt: "Stone-coated tile roofing installation in progress",
+  },
+  {
+    category: "Stone-Coated Tiles",
+    src: "/gallery/latest/stone-tiles-roofing-in-progress.jpeg",
+    alt: "Stone tiles being installed on a residential roof",
+  },
+  // Roof Structure & Close-ups
+  {
+    category: "Roof Structure",
+    src: "/gallery/latest/roof-closeup-shot.jpeg",
+    alt: "Close-up of aluminium roofing sheet profile and finish",
+  },
+  {
+    category: "Roof Structure",
+    src: "/gallery/latest/building-with-roof-skeleton.jpeg",
+    alt: "Building with roof timber skeleton ready for sheeting",
+  },
+  {
+    category: "Roof Structure",
+    src: "/gallery/latest/just-the-roof-skeleton.jpeg",
+    alt: "Roof timber framework before aluminium sheet installation",
+  },
+  {
+    category: "Roof Structure",
+    src: "/gallery/latest/roof-wood-skeleton-closeup.jpeg",
+    alt: "Close-up of roof wood framework and purlins",
+  },
+  // Factory & Production
+  {
     category: "Factory & Production",
-    src: `/gallery/factory/${name}`,
-    alt: `Inside the Gods Promise Aluminium factory and production area (${
-      index + 1
-    })`,
-  })),
+    src: "/gallery/latest/corrugation-machine.jpeg",
+    alt: "Corrugation machine at Gods Promise Aluminium factory",
+  },
+  {
+    category: "Factory & Production",
+    src: "/gallery/latest/flatsheet-coils-on-a-truck.jpeg",
+    alt: "Flatsheet aluminium coils loaded on a delivery truck",
+  },
+  {
+    category: "Factory & Production",
+    src: "/gallery/latest/flatsheet-sample-cuts.jpeg",
+    alt: "Sample cuts of aluminium flatsheets at the factory",
+  },
+  // Team & Leadership
+  {
+    category: "Team & Leadership",
+    src: "/gallery/latest/daniel-ceo.jpeg",
+    alt: "Daniel, CEO of Gods Promise Aluminium",
+  },
+  {
+    category: "Team & Leadership",
+    src: "/gallery/latest/ceo-at-the-office-on-his-pc.jpeg",
+    alt: "CEO at the Gods Promise Aluminium office",
+  },
+  {
+    category: "Team & Leadership",
+    src: "/gallery/latest/ceo-with-asian-client.jpeg",
+    alt: "CEO of Gods Promise Aluminium with international client",
+  },
+  {
+    category: "Team & Leadership",
+    src: "/gallery/latest/ceo--asian-client-and-staff.jpeg",
+    alt: "Gods Promise Aluminium CEO, client and staff at the factory",
+  },
 ];
 
 export default function GalleryPage() {

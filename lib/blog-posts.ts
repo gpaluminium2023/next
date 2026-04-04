@@ -36,9 +36,9 @@ export const blogPosts: BlogPost[] = [
 <p>Ready for a quote? <a href="/contact">Contact us</a> via WhatsApp on 09150459964 or visit our factory at Km 38, Lagos-Abeokuta Expressway, Sango Ota, Ogun State. <a href="/delivery">Nationwide delivery</a> is available.</p>
 `.trim(),
     date: "2026-01-15",
-    imageSrc: "/gallery/factory/6.jpg",
+    imageSrc: "/gallery/latest/flatsheet-sample-cuts.jpeg",
     imageAlt:
-      "Aluminium roofing sheets and production line at Gods Promise Aluminium factory in Lagos.",
+      "Aluminium flatsheet sample cuts showing different profiles at Gods Promise Aluminium factory in Lagos.",
     readingTimeMinutes: 8,
     featured: true,
   },
@@ -59,9 +59,9 @@ export const blogPosts: BlogPost[] = [
 <p>At Gods Promise Aluminium, we manufacture long span sheets, step tiles and Metcopo profiles in-house at our Lagos factory and also supply Gerard stone-coated tiles imported from New Zealand. <a href="/contact">Contact us</a> via WhatsApp on 09150459964 for a quote tailored to your project.</p>
 `.trim(),
     date: "2025-04-15",
-    imageSrc: "/gallery/factory/5.jpg",
+    imageSrc: "/gallery/latest/another-stone-tiles.jpeg",
     imageAlt:
-      "Different types of aluminium roofing sheets at Gods Promise Aluminium factory in Lagos.",
+      "Different types of aluminium and stone-coated roofing sheets at Gods Promise Aluminium.",
     readingTimeMinutes: 7,
   },
   {
@@ -103,9 +103,9 @@ export const blogPosts: BlogPost[] = [
 <p>Our recommendation: choose long span if budget and coverage area are your main concerns. Choose step tile for mid-range residential projects where you want a premium look without premium pricing. Choose Metcopo for commercial or statement residential projects where a bold, distinctive roof profile is the goal. Whatever you decide, ensure you are getting genuine thickness by buying from a trusted manufacturer. At Gods Promise Aluminium, every sheet is produced to the stated gauge and customers are welcome to verify at our factory before dispatch. <a href="/contact">Call or WhatsApp us</a> on 09150459964.</p>
 `.trim(),
     date: "2025-08-10",
-    imageSrc: "/gallery/factory/3.jpg",
+    imageSrc: "/gallery/latest/corrugation-machine.jpeg",
     imageAlt:
-      "Comparison of longspan, step tile and Metcopo aluminium roofing sheet profiles at the factory.",
+      "Corrugation machine producing aluminium roofing sheet profiles at Gods Promise Aluminium factory.",
     readingTimeMinutes: 8,
   },
   {
@@ -396,9 +396,9 @@ export const blogPosts: BlogPost[] = [
 <p><a href="/contact">Contact us</a> · <a href="/pricing">View 2026 price list</a> · <a href="/delivery">Delivery information</a></p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/gallery/factory/6.jpg",
+    imageSrc: "/gallery/latest/completed-roof.jpeg",
     imageAlt:
-      "Roofing sheets ready for dispatch at Gods Promise Aluminium factory — 4-bedroom duplex cost guide Nigeria 2026",
+      "Completed aluminium roofing on a duplex — 4-bedroom duplex roofing cost guide Nigeria 2026",
     readingTimeMinutes: 11,
     featured: true,
     faq: [
@@ -564,9 +564,9 @@ export const blogPosts: BlogPost[] = [
 <p><a href="/pricing">View our current 2026 factory price list</a> or <a href="/contact">WhatsApp us on 09150459964</a> for a same-day written quote valid for 7 days.</p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/gallery/factory/5.jpg",
+    imageSrc: "/gallery/latest/flatsheet-coils-on-a-truck.jpeg",
     imageAlt:
-      "Aluminium coil and roofing sheets at Gods Promise Aluminium factory — price trend Nigeria 2024 to 2026",
+      "Aluminium flatsheet coils loaded for delivery — roofing price trend Nigeria 2024 to 2026",
     readingTimeMinutes: 10,
     featured: false,
     faq: [
@@ -748,9 +748,9 @@ export const blogPosts: BlogPost[] = [
 <p><a href="/pricing">See our 2026 price list by gauge</a> · <a href="/blog/cost-to-roof-4-bedroom-duplex-nigeria-2026">Cost guide: 4-bedroom duplex roofing</a></p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/gallery/factory/3.jpg",
+    imageSrc: "/gallery/latest/roof-closeup-shot.jpeg",
     imageAlt:
-      "Measuring gauge of aluminium roofing sheets at Gods Promise Aluminium factory — 0.45mm vs 0.55mm comparison",
+      "Close-up of aluminium roofing sheet profile — 0.45mm vs 0.55mm gauge comparison",
     readingTimeMinutes: 10,
     featured: false,
     faq: [
@@ -918,9 +918,9 @@ export const blogPosts: BlogPost[] = [
 <p>The data above reflects April 2026 conditions. For a written, date-locked quote specific to your project, <a href="/contact">contact us</a> via WhatsApp on 09150459964. We respond within 2 hours during business hours and can deliver anywhere in Nigeria. <a href="/pricing">View our full price list</a>.</p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/gallery/factory/5.jpg",
+    imageSrc: "/gallery/latest/another-roofing-job-completed.jpeg",
     imageAlt:
-      "Aluminium roofing sheets and accessories at Gods Promise Aluminium factory — building materials cost Lagos 2026",
+      "Completed roofing project by Gods Promise Aluminium — building materials cost Lagos 2026",
     readingTimeMinutes: 10,
     faq: [
       {
@@ -1043,9 +1043,9 @@ export const blogPosts: BlogPost[] = [
 <p><strong>To order:</strong> WhatsApp us your roof area (m²), preferred length, and colour to <strong>09150459964</strong>. We will confirm stock, cut-to-length lead time (usually 24–48 hours), and arrange delivery. <a href="/contact">Contact us</a> · <a href="/delivery">Delivery zones</a> · <a href="/pricing">Full price list</a></p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/gallery/factory/3.jpg",
+    imageSrc: "/gallery/latest/roofing-in-progress.jpeg",
     imageAlt:
-      "0.55mm long span aluminium roofing sheets at Gods Promise Aluminium factory Lagos",
+      "0.55mm long span aluminium roofing sheet installation in progress in Lagos",
     readingTimeMinutes: 7,
     faq: [
       {
@@ -1190,9 +1190,9 @@ export const blogPosts: BlogPost[] = [
 <p>Send your roof area, sheet type, gauge, and delivery address to <strong>09150459964</strong> on WhatsApp. We will send a written, itemised quote within 2 hours during business hours. <a href="/contact">Contact us</a> · <a href="/pricing">Interactive pricing page</a></p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/gallery/factory/6.jpg",
+    imageSrc: "/gallery/latest/roofing-in-progress-side-view.jpeg",
     imageAlt:
-      "All gauges of aluminium roofing sheets at Gods Promise Aluminium factory Nigeria — 2026 price list",
+      "Aluminium roofing sheet installation side view — 2026 price list Nigeria",
     readingTimeMinutes: 8,
     faq: [
       {
@@ -1346,9 +1346,9 @@ export const blogPosts: BlogPost[] = [
 <p>WhatsApp your roof area, gauge preference, and colour choice to <strong>09150459964</strong> — we'll confirm stock and send a written quote within 2 hours. <a href="/contact">Contact us</a> · <a href="/delivery">Delivery info</a> · <a href="/pricing">Full price list</a></p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/gallery/factory/4.jpg",
+    imageSrc: "/gallery/latest/bungalow-roofing.jpeg",
     imageAlt:
-      "Step tile aluminium roofing sheets at Gods Promise Aluminium factory Lagos — 2026 price guide",
+      "Bungalow with step tile aluminium roofing sheets — 2026 price guide Lagos",
     readingTimeMinutes: 8,
     faq: [
       {
@@ -1505,9 +1505,9 @@ export const blogPosts: BlogPost[] = [
 <p>To order, WhatsApp your roof area (m²), required length, gauge, and delivery address to <strong>09150459964</strong>. We will send a written, itemised quote and confirm lead time (typically 24–72 hours for cut-to-length orders). <a href="/contact">Contact us</a> · <a href="/delivery">Delivery zones</a> · <a href="/pricing">Full price list</a></p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/gallery/factory/2.jpg",
+    imageSrc: "/gallery/latest/another-roof-completed.jpeg",
     imageAlt:
-      "Metcopo aluminium roofing sheets at Gods Promise Aluminium factory — price per metre Nigeria 2026",
+      "Completed Metcopo aluminium roofing project — price per metre Nigeria 2026",
     readingTimeMinutes: 8,
     faq: [
       {
@@ -1656,9 +1656,9 @@ export const blogPosts: BlogPost[] = [
 <p>To get started, WhatsApp your roof area, sheet type, and preferred gauge to <strong>09150459964</strong>. We will send a written quote within 2 hours. <a href="/contact">Contact us</a> · <a href="/pricing">View price list</a> · <a href="/delivery">Delivery zones</a></p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/gallery/factory/1.jpg",
+    imageSrc: "/gallery/latest/another-bungalow-roof-completed.jpeg",
     imageAlt:
-      "Buying roofing sheets factory direct at Gods Promise Aluminium Lagos — save 15–25% vs market price",
+      "Bungalow roofed with factory-direct aluminium sheets from Gods Promise Aluminium Lagos",
     readingTimeMinutes: 9,
     faq: [
       {
@@ -1797,9 +1797,9 @@ export const blogPosts: BlogPost[] = [
 <p><a href="/contact">Contact us</a> · <a href="/pricing">Aluminium roofing price list</a> · <a href="/products/stone-coated">Stone coated roofing products</a> · <a href="/blog/cost-of-roofing-a-3-bedroom-house-lagos">Cost to roof a 3-bedroom house in Lagos</a></p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/gallery/stone-coated/1.jpg",
+    imageSrc: "/gallery/latest/another-stone-tiles-roof.jpeg",
     imageAlt:
-      "Gerard stone coated roofing tiles installed on a duplex in Lagos Nigeria — 2026 authorized dealer price guide",
+      "Stone-coated roofing tiles installed on a building in Lagos Nigeria — 2026 authorized dealer price guide",
     readingTimeMinutes: 9,
     faq: [
       {
