@@ -6,7 +6,13 @@ import { prisma } from "@/lib/prisma";
 
 export const auth = betterAuth({
   appName: "GPA Admin",
+  baseURL: process.env.BETTER_AUTH_URL,
   database: prismaAdapter(prisma, { provider: "postgresql" }),
+
+  trustedOrigins: [
+    "https://www.godspromisealuminiumroofing.com",
+    "https://godspromisealuminiumroofing.com",
+  ],
 
   emailAndPassword: {
     enabled: true,
@@ -20,7 +26,7 @@ export const auth = betterAuth({
 
   session: {
     expiresIn: 60 * 60 * 24 * 7, // 7 days
-    updateAge: 60 * 60 * 24,     // refresh after 1 day
+    updateAge: 60 * 60 * 24, // refresh after 1 day
   },
 
   advanced: {
