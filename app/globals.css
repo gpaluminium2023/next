@@ -126,3 +126,22 @@
 		font-family: var(--font-heading), sans-serif;
 	}
 }
+
+/* Blog callout boxes (Quick Answer / Short Answer) */
+.blog-callout {
+	background: var(--secondary);
+	border-left: 4px solid var(--accent);
+	color: var(--foreground);
+	padding: 1rem 1.25rem;
+	border-radius: 4px;
+	margin-bottom: 1.5rem;
+}
+
+/* Blog inline code-style blocks */
+.blog-code-block {
+	background: var(--muted);
+	color: var(--foreground);
+	padding: 0.75rem 1rem;
+	border-radius: 4px;
+	font-family: var(--font-mono), monospace;
+}

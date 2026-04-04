@@ -5,6 +5,7 @@ import './globals.css';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from "@/components/site-footer";
 import { PosthogProvider } from '@/components/posthog-provider';
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const barlowCondensed = Barlow_Condensed({
   variable: "--font-heading",
@@ -149,6 +150,7 @@ export default function RootLayout({
             </div>
           </PosthogProvider>
         </ThemeProvider>
+        <GoogleAnalytics gaId="G-ZFRS3K0XR5" />
       </body>
     </html>
   );

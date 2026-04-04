@@ -257,7 +257,7 @@ export const blogPosts: BlogPost[] = [
       "As of 2026, roofing a 4-bedroom duplex in Nigeria costs between ₦1.4 million and ₦4.2 million depending on material choice, gauge, and location. This guide breaks it all down — materials, labour, accessories, hidden costs, and how to get an accurate quote.",
     body: [],
     bodyHtml: `
-<div style="background:#fef9ec;border-left:4px solid #d4a017;padding:1rem 1.25rem;border-radius:4px;margin-bottom:1.5rem">
+<div class="blog-callout">
   <strong>Quick Answer (2026):</strong> Roofing a standard 4-bedroom duplex in Nigeria costs approximately <strong>₦1.4M – ₦4.2M</strong> all-in (materials + labour + accessories), depending on sheet type and gauge. Long span 0.45mm is the most affordable option; stone-coated steel is the premium tier.
 </div>
 
@@ -449,7 +449,7 @@ export const blogPosts: BlogPost[] = [
       "Aluminium roofing sheet prices in Nigeria have risen sharply since 2022. This data-driven guide tracks price movement from 2024 to April 2026, explains the key drivers behind the increases, and provides a forecast for the rest of 2026.",
     body: [],
     bodyHtml: `
-<div style="background:#fef9ec;border-left:4px solid #d4a017;padding:1rem 1.25rem;border-radius:4px;margin-bottom:1.5rem">
+<div class="blog-callout">
   <strong>Key Finding:</strong> Long span aluminium roofing sheet prices in Nigeria rose by approximately <strong>62–75%</strong> between January 2024 and April 2026, driven primarily by naira depreciation and rising global aluminium coil costs. The rate of increase has slowed since Q3 2025.
 </div>
 
@@ -607,7 +607,7 @@ export const blogPosts: BlogPost[] = [
       "0.55mm aluminium roofing sheets last 20–40% longer than 0.45mm in Nigerian conditions and cost only 15–25% more. This technical guide breaks down the real difference in lifespan, performance in Lagos and coastal zones, and how to calculate the true cost-per-year for each gauge.",
     body: [],
     bodyHtml: `
-<div style="background:#fef9ec;border-left:4px solid #d4a017;padding:1rem 1.25rem;border-radius:4px;margin-bottom:1.5rem">
+<div class="blog-callout">
   <strong>Quick Answer:</strong> In Nigerian conditions, <strong>0.45mm</strong> aluminium sheets last approximately <strong>15–25 years</strong> with proper installation; <strong>0.55mm</strong> sheets last <strong>25–40 years</strong>. The cost premium for 0.55mm is 15–25% — but over the roof&apos;s lifetime, the cost-per-year is often lower than 0.45mm.
 </div>
 
@@ -797,7 +797,7 @@ export const blogPosts: BlogPost[] = [
       "A comprehensive reference guide to roofing material costs in Lagos in 2026. Covers aluminium long span, step tile, Metcopo, stone-coated tiles, ridges, gutters, and installation labour — with data sourced directly from a Lagos manufacturer.",
     body: [],
     bodyHtml: `
-<div style="background:#fef9ec;border-left:4px solid #d4a017;padding:1rem 1.25rem;border-radius:4px;margin-bottom:1.5rem">
+<div class="blog-callout">
   <strong>Quick Reference (April 2026 — Lagos Market):</strong><br/>
   Long span aluminium: <strong>₦3,500 – ₦6,500/m²</strong> · Step tile: <strong>₦5,200 – ₦7,200/m²</strong> · Stone-coated tiles: <strong>₦4,750 – ₦6,500/piece</strong> · Roofing labour: <strong>₦280,000 – ₦900,000</strong> (full install, 3–5 bedroom)
 </div>
@@ -957,7 +957,7 @@ export const blogPosts: BlogPost[] = [
       "The 0.55mm long span aluminium roofing sheet is the go-to choice for duplexes, commercial buildings, and coastal properties in Lagos. This guide covers the exact 2026 price, how it compares to 0.45mm, how many sheets you need, and how to buy direct from the factory.",
     body: [],
     bodyHtml: `
-<div style="background:#fef9ec;border-left:4px solid #d4a017;padding:1rem 1.25rem;border-radius:4px;margin-bottom:1.5rem">
+<div class="blog-callout">
   <strong>Current Price (April 2026):</strong> 0.55mm long span aluminium roofing sheets start from <strong>₦5,800 – ₦6,500 per m²</strong> at the Gods Promise Aluminium factory, Sango Ota, Lagos. WhatsApp <strong>09150459964</strong> for a same-day quote.
 </div>
 
@@ -1083,7 +1083,7 @@ export const blogPosts: BlogPost[] = [
       "A complete, structured price list for every aluminium roofing sheet gauge and profile available in Nigeria in 2026 — long span, step tile, Metcopo, and stone-coated tiles — with factory-direct prices from Gods Promise Aluminium, Lagos.",
     body: [],
     bodyHtml: `
-<div style="background:#fef9ec;border-left:4px solid #d4a017;padding:1rem 1.25rem;border-radius:4px;margin-bottom:1.5rem">
+<div class="blog-callout">
   <strong>Updated:</strong> April 2026 · <strong>Source:</strong> Factory-direct pricing, Gods Promise Aluminium, Km 38 Lagos-Abeokuta Expressway, Sango Ota · <strong>Quote:</strong> WhatsApp <strong>09150459964</strong>
 </div>
 
@@ -1235,7 +1235,7 @@ export const blogPosts: BlogPost[] = [
       "Step tile aluminium roofing sheets combine the decorative look of clay tiles with the lightweight durability of aluminium. This guide covers the exact 2026 factory price in Lagos, how step tile compares to long span, quantity calculation, and how to buy direct.",
     body: [],
     bodyHtml: `
-<div style="background:#fef9ec;border-left:4px solid #d4a017;padding:1rem 1.25rem;border-radius:4px;margin-bottom:1.5rem">
+<div class="blog-callout">
   <strong>Current Price (April 2026):</strong> Step tile aluminium roofing sheets cost <strong>₦5,200 – ₦7,200 per m²</strong> at factory gate, Gods Promise Aluminium, Sango Ota. WhatsApp <strong>09150459964</strong> for a same-day quote with your roof area.
 </div>
 
@@ -1390,7 +1390,7 @@ export const blogPosts: BlogPost[] = [
       "Metcopo aluminium roofing sheets have the deepest, boldest profile of any standard aluminium roofing option in Nigeria — popular for commercial buildings, schools, churches, and high-end residential projects. This guide covers the exact 2026 price per metre, coverage calculation, and how it compares to long span and step tile.",
     body: [],
     bodyHtml: `
-<div style="background:#fef9ec;border-left:4px solid #d4a017;padding:1rem 1.25rem;border-radius:4px;margin-bottom:1.5rem">
+<div class="blog-callout">
   <strong>Current Price (April 2026):</strong> Metcopo roofing sheets cost <strong>₦5,500 – ₦7,500 per m²</strong> at factory gate, Gods Promise Aluminium, Sango Ota. Per linear metre (0.9m effective width): <strong>₦4,950 – ₦6,750/lm</strong>. WhatsApp <strong>09150459964</strong> for a written quote.
 </div>
 
@@ -1549,7 +1549,7 @@ export const blogPosts: BlogPost[] = [
       "Buying roofing sheets directly from a manufacturer in Lagos can save 15–25% compared to building material markets. This guide explains exactly how the factory-direct process works, what to verify before you pay, and how to get your order delivered anywhere in Nigeria.",
     body: [],
     bodyHtml: `
-<div style="background:#fef9ec;border-left:4px solid #d4a017;padding:1rem 1.25rem;border-radius:4px;margin-bottom:1.5rem">
+<div class="blog-callout">
   <strong>The Short Answer:</strong> Call or WhatsApp the factory directly on <strong>09150459964</strong>, give your roof area and sheet type, and we'll send a written quote within 2 hours. No middleman margin. No guessing on gauge. Delivery anywhere in Nigeria.
 </div>
 
@@ -1703,7 +1703,7 @@ export const blogPosts: BlogPost[] = [
       "Gerard stone coated tiles are among the most recognized stone-coated roofing brands in Nigeria. This guide covers 2026 dealer prices, available profiles, how Gerard compares to other brands, and what to budget for supply and installation.",
     body: [],
     bodyHtml: `
-<div style="background:#fef9ec;border-left:4px solid #d4a017;padding:1rem 1.25rem;border-radius:4px;margin-bottom:1.5rem">
+<div class="blog-callout">
   <strong>Quick Price Guide:</strong> Gerard stone coated tiles in Nigeria typically range from <strong>₦4,500 – ₦7,500 per m²</strong> (supply only) depending on profile and thickness. For a 3-bedroom bungalow (120–160 m²), budget ₦540,000 – ₦1,200,000 for tiles alone. Contact us on <strong>09150459964</strong> for current availability and pricing.
 </div>
 
@@ -1843,7 +1843,7 @@ export const blogPosts: BlogPost[] = [
       "Knowing the price per square metre of aluminum roofing sheets is the fastest way to estimate your roofing budget in Nigeria. This guide gives current 2026 rates for all gauges, profiles, and colours — with a simple formula to calculate your exact material cost.",
     body: [],
     bodyHtml: `
-<div style="background:#fef9ec;border-left:4px solid #d4a017;padding:1rem 1.25rem;border-radius:4px;margin-bottom:1.5rem">
+<div class="blog-callout">
   <strong>2026 Price Summary:</strong> Aluminum roofing sheets in Nigeria range from <strong>₦3,200 – ₦7,500 per m²</strong> depending on gauge (0.45mm or 0.55mm) and profile. For a quick quote on your specific roof size, WhatsApp <strong>09150459964</strong>.
 </div>
 
@@ -1872,14 +1872,14 @@ export const blogPosts: BlogPost[] = [
 
 <p>Use this simple formula:</p>
 
-<p style="background:#f4f4f4;padding:0.75rem 1rem;border-radius:4px;font-family:monospace">
+<p class="blog-code-block">
   Material cost = Roof area (m²) × 1.12 × Price per m²
 </p>
 
 <p>The <strong>1.12 multiplier</strong> adds 12% for wastage from cuts, overlaps, and offcuts. This is a standard allowance for all corrugated profile sheets.</p>
 
 <p><strong>Example:</strong> A 3-bedroom bungalow with a 140 m² roof using 0.55mm long span at ₦6,000/m²:</p>
-<p style="background:#f4f4f4;padding:0.75rem 1rem;border-radius:4px;font-family:monospace">
+<p class="blog-code-block">
   140 × 1.12 × ₦6,000 = <strong>₦940,800</strong>
 </p>
 
@@ -1974,7 +1974,7 @@ export const blogPosts: BlogPost[] = [
       "The choice between 0.45mm and 0.55mm aluminium roofing sheets is one of the most common questions Nigerian buyers face. This guide breaks down the price difference, lifespan gap, performance in heavy rainfall, and which gauge is right for each building type.",
     body: [],
     bodyHtml: `
-<div style="background:#fef9ec;border-left:4px solid #d4a017;padding:1rem 1.25rem;border-radius:4px;margin-bottom:1.5rem">
+<div class="blog-callout">
   <strong>Quick Answer:</strong> 0.55mm sheets cost roughly <strong>₦2,000–₦3,000 more per m²</strong> than 0.45mm — about 50–70% more for a typical roof. For a building you plan to own long-term, 0.55mm pays back within 5–8 years in avoided repairs and longer replacement cycles. For short-term or rental builds, 0.45mm is serviceable if correctly installed.
 </div>
 
