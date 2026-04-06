@@ -65,13 +65,16 @@ These are the **data points** that Nigerian real estate bloggers, Punch, Guardia
 
 ### To-Do Items
 
-- [ ] **Add `FAQPage` JSON-LD schema** to every blog post with FAQ sections
-- [ ] **Add `Article` JSON-LD schema** to blog/[slug] pages (publishedTime, author, publisher)
-- [ ] **Add `BreadcrumbList` schema** to all pages for enhanced SERP display
-- [ ] **Verify LCP < 2.5s** — Audit all hero images use `next/image` with `priority` prop
-- [ ] **Add year to pricing page title** — Ensure title includes "2026" and is updated annually
-- [ ] **Update existing blog post #1** slug from `aluminum-roofing-sheet-price-lagos-2025` to `aluminum-roofing-sheet-price-lagos` (redirect the old URL) and update the content body for 2026 prices
+- [x] **Add `FAQPage` JSON-LD schema** to every blog post with FAQ sections ✅
+- [x] **Add `Article` JSON-LD schema** to blog/[slug] pages (publishedTime, author, publisher) ✅
+- [x] **Add `BreadcrumbList` schema** to all pages for enhanced SERP display ✅
+- [x] **Verify LCP < 2.5s** — Hero images use `next/image` with `priority` prop ✅
+- [x] **Add year to pricing page title** — Title includes "2026" ✅
+- [x] **Update existing blog post #1** slug renamed to `aluminum-roofing-sheet-price-lagos` (year-agnostic), content updated for 2026 ✅
+- [x] **Add `LocalBusiness` JSON-LD schema** on all pages via layout.tsx (name, address, geo, hours, social profiles) ✅
 - [ ] **Ensure first 100 words** of every page contain the primary keyword naturally
+- [ ] **Add `sameAs` social links to Organization schema** in Article JSON-LD (Google uses these for Knowledge Panel)
+- [ ] **Add sticky WhatsApp CTA to all pages** (currently only on /pricing)
 
 ---
 
@@ -211,47 +214,47 @@ Update these existing posts with links to the new stat pages (creates a two-way 
 
 These are the highest-priority new posts. They serve Phase 4 (link building) and Phase 1 (journalist keywords).
 
-| # | Slug | Title | Target Keyword | Type |
-|---|---|---|---|---|
-| S1 | `cost-to-roof-4-bedroom-duplex-nigeria-2026` | How Much Does It Cost to Roof a 4-Bedroom Duplex in Nigeria in 2026? | cost to roof a 4-bedroom duplex Nigeria 2026 | Stat page |
-| S2 | `aluminium-roofing-price-trend-nigeria` | Aluminium Roofing Sheet Price Trend in Nigeria (2024–2026) | aluminium roofing sheet price trend Nigeria | Data page |
-| S3 | `roofing-sheet-lifespan-045mm-vs-055mm` | How Long Do 0.45mm and 0.55mm Roofing Sheets Last? (Lifespan Comparison) | lifespan 0.45mm vs 0.55mm aluminium roofing sheets | Stat page |
-| S4 | `cost-of-building-materials-lagos-2026-roofing` | Cost of Building Materials in Lagos 2026 — Roofing Section | cost of building materials Lagos 2026 | Stat page |
-| S5 | `roofing-cost-calculator-nigeria` | Free Roofing Cost Calculator for Nigerian Homes (2026) | roofing cost calculator Nigeria | Interactive tool |
+| # | Slug | Title | Target Keyword | Type | Status |
+|---|---|---|---|---|---|
+| S1 | `cost-to-roof-4-bedroom-duplex-nigeria-2026` | How Much Does It Cost to Roof a 4-Bedroom Duplex in Nigeria in 2026? | cost to roof a 4-bedroom duplex Nigeria 2026 | Stat page | ✅ Published |
+| S2 | `aluminium-roofing-price-trend-nigeria` | Aluminium Roofing Sheet Price Trend in Nigeria (2024–2026) | aluminium roofing sheet price trend Nigeria | Data page | ✅ Published |
+| S3 | `roofing-sheet-lifespan-045mm-vs-055mm` | How Long Do 0.45mm and 0.55mm Roofing Sheets Last? (Lifespan Comparison) | lifespan 0.45mm vs 0.55mm aluminium roofing sheets | Stat page | ✅ Published |
+| S4 | `cost-of-building-materials-lagos-2026-roofing` | Cost of Building Materials in Lagos 2026 — Roofing Section | cost of building materials Lagos 2026 | Stat page | ✅ Published |
+| S5 | `roofing-cost-calculator-nigeria` | Free Roofing Cost Calculator for Nigerian Homes (2026) | roofing cost calculator Nigeria | Interactive tool | ⬜ Not started |
 
 ### Tier 2: Long-Tail Commercial Posts (Buyer Intent)
 
 These target contractors and homeowners ready to purchase. Publish after the stat pages are live.
 
-| # | Slug | Title | Target Keyword |
-|---|---|---|---|
-| C1 | `055mm-long-span-aluminium-roofing-sheet-price-lagos` | Price of 0.55mm Long Span Aluminium Roofing Sheets in Lagos (2026) | 0.55mm long span aluminium roofing sheets price Lagos |
-| C2 | `step-tile-aluminium-roofing-sheet-price-lagos-2026` | Step Tile Aluminium Roofing Sheet Price in Lagos (2026 Factory Direct) | step tile aluminium roofing sheet price Lagos |
-| C3 | `metcopo-roofing-sheet-price-per-metre-nigeria` | Metcopo Roofing Sheet Price Per Metre in Nigeria (2026 Update) | Metcopo roofing sheet price per metre Nigeria |
-| C4 | `buy-roofing-sheets-factory-direct-lagos` | How to Buy Roofing Sheets Factory Direct in Lagos (Save 15–25%) | buy roofing sheets factory direct Lagos |
-| C5 | `stone-coated-roof-tiles-installation-cost-lagos` | Stone Coated Roof Tiles Installation Cost in Lagos (Materials + Labour) | stone coated tiles installation cost Lagos |
-| C6 | `bulk-aluminium-roofing-sheets-wholesale-price-nigeria` | Bulk Aluminium Roofing Sheets Wholesale Price in Nigeria (2026) | bulk aluminium roofing sheets wholesale price Nigeria |
-| C7 | `cost-of-roofing-a-5-bedroom-duplex-lagos` | Cost of Roofing a 5-Bedroom Duplex in Lagos (2026 Full Breakdown) | cost of roofing 5 bedroom duplex Lagos |
-| C8 | `gerard-stone-coated-tiles-price-nigeria-2026` | Gerard Stone Coated Roofing Tiles Price in Nigeria (2026 Authorized Dealer) | Gerard stone coated tiles price Nigeria 2026 |
-| C9 | `aluminium-roofing-sheets-delivery-to-abuja-from-lagos` | Aluminium Roofing Sheets Delivery to Abuja From Lagos (Cost & Timeline) | aluminium roofing sheets delivery Abuja |
-| C10 | `roofing-sheet-price-list-all-gauges-nigeria-2026` | Aluminium Roofing Sheet Price List — All Gauges & Profiles (Nigeria 2026) | aluminium roofing sheet price list Nigeria 2026 |
+| # | Slug | Title | Target Keyword | Status |
+|---|---|---|---|---|
+| C1 | `055mm-long-span-aluminium-roofing-sheet-price-lagos` | Price of 0.55mm Long Span Aluminium Roofing Sheets in Lagos (2026) | 0.55mm long span aluminium roofing sheets price Lagos | ✅ Published |
+| C2 | `step-tile-aluminium-roofing-sheet-price-lagos-2026` | Step Tile Aluminium Roofing Sheet Price in Lagos (2026 Factory Direct) | step tile aluminium roofing sheet price Lagos | ✅ Published |
+| C3 | `metcopo-roofing-sheet-price-per-metre-nigeria` | Metcopo Roofing Sheet Price Per Metre in Nigeria (2026 Update) | Metcopo roofing sheet price per metre Nigeria | ✅ Published |
+| C4 | `buy-roofing-sheets-factory-direct-lagos` | How to Buy Roofing Sheets Factory Direct in Lagos (Save 15–25%) | buy roofing sheets factory direct Lagos | ✅ Published |
+| C5 | `stone-coated-roof-tiles-installation-cost-lagos` | Stone Coated Roof Tiles Installation Cost in Lagos (Materials + Labour) | stone coated tiles installation cost Lagos | ✅ Published |
+| C6 | `bulk-aluminium-roofing-sheets-wholesale-price-nigeria` | Bulk Aluminium Roofing Sheets Wholesale Price in Nigeria (2026) | bulk aluminium roofing sheets wholesale price Nigeria | ⬜ Not started |
+| C7 | `cost-of-roofing-a-5-bedroom-duplex-lagos` | Cost of Roofing a 5-Bedroom Duplex in Lagos (2026 Full Breakdown) | cost of roofing 5 bedroom duplex Lagos | ⬜ Not started |
+| C8 | `gerard-stone-coated-tiles-price-nigeria-2026` | Gerard Stone Coated Roofing Tiles Price in Nigeria (2026 Authorized Dealer) | Gerard stone coated tiles price Nigeria 2026 | ✅ Published |
+| C9 | `aluminium-roofing-sheets-delivery-to-abuja-from-lagos` | Aluminium Roofing Sheets Delivery to Abuja From Lagos (Cost & Timeline) | aluminium roofing sheets delivery Abuja | ⬜ Not started |
+| C10 | `roofing-sheet-price-list-all-gauges-nigeria-2026` | Aluminium Roofing Sheet Price List — All Gauges & Profiles (Nigeria 2026) | aluminium roofing sheet price list Nigeria 2026 | ✅ Published |
 
 ### Tier 3: Topical Authority Posts (Fill Gaps in Existing Plan)
 
 These fill gaps the existing 70-post plan doesn't cover, especially for 2026-specific queries.
 
-| # | Slug | Title | Target Keyword |
-|---|---|---|---|
-| T1 | `how-exchange-rate-affects-roofing-sheet-prices-nigeria` | How the Dollar-Naira Exchange Rate Affects Roofing Sheet Prices in Nigeria | exchange rate roofing sheet prices Nigeria |
-| T2 | `complete-guide-to-roof-accessories-nigeria` | Complete Guide to Roof Accessories in Nigeria (Ridge Caps, Flashing, Gutters & More) | roof accessories Nigeria guide |
-| T3 | `roofing-a-bungalow-vs-duplex-cost-difference-nigeria` | Roofing a Bungalow vs Duplex — Cost Difference Explained (Nigeria 2026) | roofing bungalow vs duplex cost Nigeria |
-| T4 | `how-to-verify-aluminium-roofing-sheet-thickness` | How to Verify Aluminium Roofing Sheet Thickness Before Buying | verify aluminium roofing sheet thickness |
-| T5 | `aluminium-roofing-sheet-colour-options-lagos` | Aluminium Roofing Sheet Colour Options Available in Lagos (With Photos) | aluminium roofing sheet colours Lagos |
-| T6 | `why-you-should-avoid-cheap-roofing-sheets-nigeria` | Why You Should Avoid Cheap Roofing Sheets in Nigeria (False Economy) | cheap roofing sheets Nigeria warning |
-| T7 | `roofing-materials-checklist-for-nigerian-contractors` | Roofing Materials Checklist for Nigerian Contractors (Print & Use) | roofing materials checklist Nigeria |
-| T8 | `how-long-does-it-take-to-roof-a-house-in-nigeria` | How Long Does It Take to Roof a House in Nigeria? (Timeline by Building Type) | how long to roof a house Nigeria |
-| T9 | `best-roofing-sheet-for-lagos-island-coastal-weather` | Best Roofing Sheet for Lagos Island & Coastal Areas (Salt Air Resistant) | best roofing sheet Lagos Island coastal |
-| T10 | `aluminium-vs-stone-coated-total-cost-of-ownership` | Aluminium vs Stone-Coated Tiles: Total Cost of Ownership Over 20 Years | aluminium vs stone coated total cost ownership |
+| # | Slug | Title | Target Keyword | Status |
+|---|---|---|---|---|
+| T1 | `how-exchange-rate-affects-roofing-sheet-prices-nigeria` | How the Dollar-Naira Exchange Rate Affects Roofing Sheet Prices in Nigeria | exchange rate roofing sheet prices Nigeria | ⬜ Not started |
+| T2 | `complete-guide-to-roof-accessories-nigeria` | Complete Guide to Roof Accessories in Nigeria (Ridge Caps, Flashing, Gutters & More) | roof accessories Nigeria guide | ⬜ Not started |
+| T3 | `roofing-a-bungalow-vs-duplex-cost-difference-nigeria` | Roofing a Bungalow vs Duplex — Cost Difference Explained (Nigeria 2026) | roofing bungalow vs duplex cost Nigeria | ⬜ Not started |
+| T4 | `how-to-verify-aluminium-roofing-sheet-thickness` | How to Verify Aluminium Roofing Sheet Thickness Before Buying | verify aluminium roofing sheet thickness | ⬜ Not started |
+| T5 | `aluminium-roofing-sheet-colour-options-lagos` | Aluminium Roofing Sheet Colour Options Available in Lagos (With Photos) | aluminium roofing sheet colours Lagos | ⬜ Not started |
+| T6 | `why-you-should-avoid-cheap-roofing-sheets-nigeria` | Why You Should Avoid Cheap Roofing Sheets in Nigeria (False Economy) | cheap roofing sheets Nigeria warning | ⬜ Not started |
+| T7 | `roofing-materials-checklist-for-nigerian-contractors` | Roofing Materials Checklist for Nigerian Contractors (Print & Use) | roofing materials checklist Nigeria | ⬜ Not started |
+| T8 | `how-long-does-it-take-to-roof-a-house-in-nigeria` | How Long Does It Take to Roof a House in Nigeria? (Timeline by Building Type) | how long to roof a house Nigeria | ⬜ Not started |
+| T9 | `best-roofing-sheet-for-lagos-island-coastal-weather` | Best Roofing Sheet for Lagos Island & Coastal Areas (Salt Air Resistant) | best roofing sheet Lagos Island coastal | ⬜ Not started |
+| T10 | `aluminium-vs-stone-coated-total-cost-of-ownership` | Aluminium vs Stone-Coated Tiles: Total Cost of Ownership Over 20 Years | aluminium vs stone coated total cost ownership | ⬜ Not started |
 
 ---
 
@@ -259,12 +262,12 @@ These fill gaps the existing 70-post plan doesn't cover, especially for 2026-spe
 
 ### Posts to Update (Content Refresh)
 
-| Existing Post | Update Required |
-|---|---|
-| #1: `aluminum-roofing-sheet-price-lagos-2025` | **Rename slug** to `-lagos` (year-agnostic), update all 2025 prices → 2026, add internal links to new stat pages, add `FAQPage` schema |
-| #3: `stone-coated-roofing-sheet-prices-lagos` | Refresh prices for March 2026, add link to Gerard stat post (C8), add links to stat page (S1) |
-| #4: `longspan-vs-steptile-vs-metcopo-comparison` | Add 2026 price updates in comparison table, link to lifespan stat page (S3) |
-| #7 (planned): `roofing-sheet-gauge-thickness-price-difference` | Integrate data from stat page S3, cross-link both ways |
+| Existing Post | Update Required | Status |
+|---|---|---|
+| #1: `aluminum-roofing-sheet-price-lagos` | ~~Rename slug~~ ✅, update prices → 2026 ✅, internal links ✅, FAQPage schema ✅ | ✅ Done |
+| #3: `stone-coated-roofing-sheet-prices-lagos` | Refresh prices for March 2026, add link to Gerard stat post (C8), add links to stat page (S1) | ⬜ Pending |
+| #4: `longspan-vs-steptile-vs-metcopo-comparison` | Add 2026 price updates in comparison table, link to lifespan stat page (S3) | ⬜ Pending |
+| #7: `roofing-sheet-gauge-thickness-price-difference` | ~~Write post~~ ✅, integrate data from stat page S3, cross-link both ways | ⬜ Partial |
 
 ### Posts to Prioritize from Existing Plan (Reorder)
 
@@ -298,6 +301,52 @@ The existing plan's priority queue should be adjusted. **Publish these first** b
 | **Month 3+** | Resume existing plan priority queue | Continue with remaining 70-post plan interspersed with Tier 3 posts |
 
 **Ongoing**: Publish 2 posts/week for first 2 months, then 1 post/week from month 3 onwards.
+
+---
+
+## Phase 6: Google Ads Synergy (Insight from April 2026 Campaign Setup)
+
+Google Ads crawls the website URL you provide and extracts business info, product tags, images, and social media links from your footer. Optimise your site to feed Google's ad generation engine better:
+
+### On-Site Changes for Better Ad Quality Score
+
+| Action | Why | Status |
+|---|---|---|
+| Add visible price snippets to landing page `<title>` tags | Google can generate price extensions automatically | ⬜ |
+| Ensure H1 on each landing page matches ad keyword groups | Higher relevance → higher ad rank → lower CPC | ⬜ |
+| Add product-specific pages with structured data (`Product` schema + `offers`) | Enables rich product ads | ✅ /products |
+| Keep `LocalBusiness` JSON-LD complete (phone, address, hours, geo) | Enables location + call extensions | ✅ layout.tsx |
+| Footer social links (Instagram, YouTube, X, TikTok) | Google Ads uses these for image/content suggestions | ✅ site-footer.tsx |
+
+### Google Ads Product/Service Tags (Use All 20)
+
+Current: Roofing, Building Materials & Supplies, Aluminum, Sheet & Plate Metal, Metals (5/20)
+
+Add these 15:
+1. Long Span Roofing Sheets
+2. Step Tile Roofing
+3. Metcopo Roofing Sheets
+4. Stone Coated Tiles
+5. Gerard Roofing Tiles
+6. Roofing Installation
+7. Roof Accessories
+8. Custom Cutting
+9. Factory Direct Roofing
+10. Roofing Delivery Lagos
+11. Aluminium Coils
+12. Ridge Caps & Gutters
+13. Roofing Sheets Nigeria
+14. Corrugated Roofing
+15. Oven-Baked Aluminium
+
+### Ad Extensions Checklist
+
+- [ ] **Sitelinks**: Pricing, Products, Gallery, Contact
+- [ ] **Callout**: "Factory Direct Prices", "Free Quotes", "Nationwide Delivery"
+- [ ] **Structured snippets**: Types → "Long Span, Step Tile, Metcopo, Stone-Coated"
+- [ ] **Call extension**: 09150459964
+- [ ] **Location extension**: Link Google Business Profile
+- [ ] **Image extensions**: Select ALL web pages including social media profiles
 
 ---
 

@@ -918,9 +918,9 @@ export const blogPosts: BlogPost[] = [
 <p>The data above reflects April 2026 conditions. For a written, date-locked quote specific to your project, <a href="/contact">contact us</a> via WhatsApp on 09150459964. We respond within 2 hours during business hours and can deliver anywhere in Nigeria. <a href="/pricing">View our full price list</a>.</p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/gallery/latest/another-roofing-job-completed.jpeg",
+    imageSrc: "/gallery/latest/building-with-roof-skeleton.jpeg",
     imageAlt:
-      "Completed roofing project by Gods Promise Aluminium — building materials cost Lagos 2026",
+      "Building under construction with roof timber skeleton — cost of building materials Lagos 2026",
     readingTimeMinutes: 10,
     faq: [
       {
@@ -1043,9 +1043,9 @@ export const blogPosts: BlogPost[] = [
 <p><strong>To order:</strong> WhatsApp us your roof area (m²), preferred length, and colour to <strong>09150459964</strong>. We will confirm stock, cut-to-length lead time (usually 24–48 hours), and arrange delivery. <a href="/contact">Contact us</a> · <a href="/delivery">Delivery zones</a> · <a href="/pricing">Full price list</a></p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/gallery/latest/roofing-in-progress.jpeg",
+    imageSrc: "/gallery/latest/roofing-in-progress-with-workers.jpeg",
     imageAlt:
-      "0.55mm long span aluminium roofing sheet installation in progress in Lagos",
+      "Workers installing 0.55mm long span aluminium roofing sheets on site in Lagos",
     readingTimeMinutes: 7,
     faq: [
       {
@@ -1656,9 +1656,9 @@ export const blogPosts: BlogPost[] = [
 <p>To get started, WhatsApp your roof area, sheet type, and preferred gauge to <strong>09150459964</strong>. We will send a written quote within 2 hours. <a href="/contact">Contact us</a> · <a href="/pricing">View price list</a> · <a href="/delivery">Delivery zones</a></p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/gallery/latest/another-bungalow-roof-completed.jpeg",
+    imageSrc: "/gallery/latest/daniel-ceo.jpeg",
     imageAlt:
-      "Bungalow roofed with factory-direct aluminium sheets from Gods Promise Aluminium Lagos",
+      "Daniel, CEO of Gods Promise Aluminium — buy roofing sheets factory direct in Lagos",
     readingTimeMinutes: 9,
     faq: [
       {
@@ -1926,9 +1926,9 @@ export const blogPosts: BlogPost[] = [
 <p>WhatsApp: <strong>09150459964</strong> · <a href="/contact">Contact form</a> · <a href="/pricing">View price list</a> · <a href="/delivery">Delivery zones</a></p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/images/roofing-price-per-sqm.jpg",
+    imageSrc: "/gallery/latest/roof-view-of-just-roofed-building.jpeg",
     imageAlt:
-      "Aluminum roofing sheet price per square metre Nigeria 2026 — long span, step tile, metcopo rate card",
+      "Roof view of a freshly roofed building — aluminum roofing sheet price per square metre Nigeria 2026",
     readingTimeMinutes: 6,
     faq: [
       {
@@ -2078,9 +2078,9 @@ export const blogPosts: BlogPost[] = [
 <p>We stock 0.45mm and 0.55mm in all profiles — long span, step tile, and Metcopo — in the full colour range. WhatsApp your roof area and building type to <strong>09150459964</strong> and we will send a written quote for both gauges so you can compare. <a href="/pricing">View price list</a> · <a href="/blog/aluminum-roofing-sheet-price-per-sqm-nigeria">Price per m² guide</a> · <a href="/contact">Contact us</a></p>
     `.trim(),
     date: "2026-04-03",
-    imageSrc: "/images/roofing-gauge-comparison.jpg",
+    imageSrc: "/gallery/latest/flat-roof-in-progress.jpeg",
     imageAlt:
-      "0.45mm vs 0.55mm aluminium roofing sheets Nigeria — price difference, lifespan comparison, and which gauge to choose",
+      "Flat roof aluminium sheet installation showing gauge thickness — 0.45mm vs 0.55mm price difference Nigeria",
     readingTimeMinutes: 7,
     faq: [
       {
@@ -2109,6 +2109,188 @@ export const blogPosts: BlogPost[] = [
         question: "Can I mix 0.45mm and 0.55mm sheets on the same roof?",
         answer:
           "Technically possible but not recommended. Mixing gauges creates uneven thermal expansion and contraction, which can cause leaks at overlaps over time. If budget is a constraint, use 0.55mm on the main roof slopes and 0.45mm only on minor covered areas like verandas or car ports — never on the primary roof plane.",
+      },
+    ],
+  },
+  {
+    slug: "stone-coated-roof-tiles-installation-cost-lagos",
+    title:
+      "Stone Coated Roof Tiles Installation Cost in Lagos (Materials + Labour 2026)",
+    metaTitle:
+      "Stone Coated Tiles Installation Cost Lagos 2026 — Materials + Labour | GPA",
+    metaDescription:
+      "Full breakdown of stone coated roof tiles installation cost in Lagos for 2026 — materials, labour, accessories, and total project budget by building type. Get a WhatsApp quote today.",
+    excerpt:
+      "Planning a stone coated roof? This guide breaks down the full installation cost in Lagos for 2026 — tile supply, accessories, labour, timber work, and hidden extras — so you can budget accurately before your first delivery arrives.",
+    body: [],
+    bodyHtml: `
+<div class="blog-callout">
+  <strong>2026 Cost Summary:</strong> Total installed cost for stone coated roof tiles in Lagos ranges from <strong>₦8,500 – ₦16,000 per m²</strong> depending on tile brand, roof complexity, and labour rates. For a standard 3-bedroom bungalow (130 m² roof), budget <strong>₦1.1 million – ₦2.1 million all-in</strong>. WhatsApp <strong>09150459964</strong> for a quote specific to your building.
+</div>
+
+<p>Stone coated roof tiles are one of the most popular premium roofing choices in Lagos — they look like clay or concrete tiles but weigh a fraction as much, last 40–50 years, and resist the heavy rain, UV exposure, and coastal salt air that Lagos buildings endure year-round. But the tile price you see advertised is never the full story. Installation involves accessories, timber or steel battens, underlayment, skilled labour, and logistics that can double the material-only cost.</p>
+
+<p>This guide gives you a complete, line-by-line breakdown of every cost involved in installing stone coated tiles on a residential building in Lagos in 2026 — so there are no surprises when the invoices arrive.</p>
+
+<h2>Cost Component #1 — Stone Coated Tiles (Supply)</h2>
+
+<table>
+  <thead><tr><th>Tile Brand / Origin</th><th>Price per m² (Supply)</th><th>Typical Quality</th></tr></thead>
+  <tbody>
+    <tr><td>Gerard (New Zealand / licensed)</td><td>₦4,500 – ₦7,500</td><td>Premium — 0.40mm+ base steel, 40–50yr warranty</td></tr>
+    <tr><td>Metrotile (New Zealand)</td><td>₦5,000 – ₦8,000</td><td>Premium — 0.45mm+ base steel</td></tr>
+    <tr><td>Decra (USA / licensed)</td><td>₦5,500 – ₦9,000</td><td>Premium — 0.45mm base steel, 50yr warranty</td></tr>
+    <tr><td>Mid-range imports (Korea, China A-grade)</td><td>₦3,200 – ₦5,000</td><td>Good — 0.35–0.40mm base steel, 10–20yr expected life</td></tr>
+    <tr><td>Budget generics (China B/C-grade)</td><td>₦2,000 – ₦3,500</td><td>Low — 0.25–0.35mm base steel, granule shedding risk</td></tr>
+  </tbody>
+</table>
+
+<p>At Gods Promise Aluminium we supply <a href="/blog/gerard-stone-coated-tiles-price-nigeria-2026">Gerard stone coated tiles</a> — the most recognised premium brand in Nigeria. We also carry mid-range imported tiles for clients on tighter budgets who still want the stone coated look and reasonable longevity.</p>
+
+<h2>Cost Component #2 — Accessories</h2>
+
+<p>Accessories are the most commonly underbudgeted line item. You cannot install stone coated tiles without these — and they typically add <strong>15–25%</strong> to the tile supply cost:</p>
+
+<table>
+  <thead><tr><th>Accessory</th><th>Unit Price Range</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Ridge caps</td><td>₦3,000 – ₦5,500 per piece</td><td>1 piece covers ~420mm</td></tr>
+    <tr><td>Hip tiles</td><td>₦3,000 – ₦5,500 per piece</td><td>Same profile as ridge — quantity depends on hip length</td></tr>
+    <tr><td>Barge / gable trims</td><td>₦2,500 – ₦4,500 per piece</td><td>Needed at all gable (sloped) edges</td></tr>
+    <tr><td>Valley troughs</td><td>₦4,000 – ₦7,000 per piece</td><td>Required where two roof planes meet in a valley</td></tr>
+    <tr><td>Starter strips</td><td>₦2,000 – ₦3,500 per piece</td><td>Run along the eave — first row of tiles sits on these</td></tr>
+    <tr><td>Roofing nails / screws</td><td>₦15,000 – ₦35,000 per carton</td><td>Stainless steel or galvanised — never use plain iron nails</td></tr>
+    <tr><td>Underlayment felt</td><td>₦8,000 – ₦18,000 per roll</td><td>1 roll covers ~15 m². Not always used in Nigeria but highly recommended</td></tr>
+  </tbody>
+</table>
+
+<p>For a 130 m² bungalow roof, accessories typically cost ₦120,000 – ₦250,000 depending on brand and roof geometry. Complex hip roofs with multiple valleys need more accessories than simple gable roofs.</p>
+
+<h2>Cost Component #3 — Battens (Timber or Steel)</h2>
+
+<p>Stone coated tiles are not laid directly onto purlins like aluminium long span sheets. They require horizontal battens spaced at the tile gauge (typically 370–400mm centres) across the entire roof surface. This creates the fixing points for each row of tiles.</p>
+
+<table>
+  <thead><tr><th>Batten Type</th><th>Price per m² of Roof</th><th>Pros / Cons</th></tr></thead>
+  <tbody>
+    <tr><td>Treated timber battens (50×25mm)</td><td>₦800 – ₦1,500</td><td>Cheaper, widely available. Risk of termite damage and warping over time.</td></tr>
+    <tr><td>Light gauge steel battens</td><td>₦1,200 – ₦2,200</td><td>More expensive but termite-proof, straighter, and longer-lasting.</td></tr>
+  </tbody>
+</table>
+
+<p>For a 130 m² roof, batten cost ranges from ₦104,000 (timber) to ₦286,000 (steel). In Lagos where termites are aggressive, we recommend steel battens or at minimum, properly treated timber with anti-termite preservative.</p>
+
+<h2>Cost Component #4 — Installation Labour</h2>
+
+<p>Stone coated tile installation is a specialist trade. Do not hire general aluminium roofers who have never worked with tiles — improper installation voids the manufacturer warranty and causes leaks within the first rainy season.</p>
+
+<table>
+  <thead><tr><th>Labour Item</th><th>Rate (Lagos 2026)</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Stone coated tile laying</td><td>₦1,200 – ₦2,500 per m²</td><td>Depends on roof pitch, access, and installer experience</td></tr>
+    <tr><td>Batten installation</td><td>₦400 – ₦800 per m²</td><td>Often quoted separately from tile laying</td></tr>
+    <tr><td>Underlayment installation</td><td>₦200 – ₦400 per m²</td><td>If used — adds a waterproof membrane layer</td></tr>
+    <tr><td>Ridge/hip/valley finishing</td><td>₦50,000 – ₦120,000 lump sum</td><td>Complex roofs cost more to finish</td></tr>
+  </tbody>
+</table>
+
+<p>Total labour for a 130 m² bungalow: approximately ₦250,000 – ₦500,000. For a 4-bedroom duplex (250 m²), expect ₦480,000 – ₦900,000.</p>
+
+<h2>Full Cost Breakdown by Building Type (Lagos 2026)</h2>
+
+<table>
+  <thead><tr><th>Building Type</th><th>Roof Area</th><th>Tiles</th><th>Accessories</th><th>Battens</th><th>Labour</th><th>Total Installed</th></tr></thead>
+  <tbody>
+    <tr><td>2-bed bungalow</td><td>80–100 m²</td><td>₦360K – ₦750K</td><td>₦80K – ₦180K</td><td>₦65K – ₦220K</td><td>₦160K – ₦350K</td><td>₦665K – ₦1.5M</td></tr>
+    <tr><td>3-bed bungalow</td><td>120–160 m²</td><td>₦540K – ₦1.2M</td><td>₦120K – ₦250K</td><td>₦100K – ₦350K</td><td>₦250K – ₦500K</td><td>₦1.01M – ₦2.3M</td></tr>
+    <tr><td>4-bed duplex</td><td>220–300 m²</td><td>₦990K – ₦2.25M</td><td>₦200K – ₦450K</td><td>₦180K – ₦660K</td><td>₦480K – ₦900K</td><td>₦1.85M – ₦4.26M</td></tr>
+    <tr><td>5-bed duplex</td><td>300–400 m²</td><td>₦1.35M – ₦3M</td><td>₦280K – ₦600K</td><td>₦240K – ₦880K</td><td>₦600K – ₦1.2M</td><td>₦2.47M – ₦5.68M</td></tr>
+    <tr><td>Commercial / church</td><td>400–600 m²</td><td>₦1.8M – ₦4.5M</td><td>₦350K – ₦800K</td><td>₦320K – ₦1.32M</td><td>₦800K – ₦1.6M</td><td>₦3.27M – ₦8.22M</td></tr>
+  </tbody>
+</table>
+
+<p><em>Ranges cover budget-to-premium tile brands and simple-to-complex roof geometries. All figures are supply + installation in Lagos. Delivery within Lagos mainland is typically ₦20,000 – ₦50,000 extra. Island delivery may cost ₦40,000 – ₦80,000.</em></p>
+
+<h2>Stone Coated Tiles vs Aluminium — Installed Cost Comparison</h2>
+
+<p>Many clients ask whether stone coated tiles are worth the premium over standard aluminium sheets. Here is a direct comparison for a 3-bedroom bungalow (130 m² roof):</p>
+
+<table>
+  <thead><tr><th>Cost Item</th><th>Stone Coated (Gerard)</th><th>0.55mm Aluminium Long Span</th></tr></thead>
+  <tbody>
+    <tr><td>Material supply</td><td>₦650,000 – ₦1,100,000</td><td>₦754,000 – ₦845,000</td></tr>
+    <tr><td>Accessories</td><td>₦120,000 – ₦250,000</td><td>₦45,000 – ₦85,000</td></tr>
+    <tr><td>Battens</td><td>₦104,000 – ₦286,000</td><td>Not required (lays on purlins)</td></tr>
+    <tr><td>Labour</td><td>₦250,000 – ₦500,000</td><td>₦130,000 – ₦260,000</td></tr>
+    <tr><td><strong>Total installed</strong></td><td><strong>₦1.12M – ₦2.14M</strong></td><td><strong>₦929K – ₦1.19M</strong></td></tr>
+    <tr><td>Expected lifespan</td><td>40–50 years</td><td>25–35 years</td></tr>
+    <tr><td>Cost per year of life</td><td>₦22,400 – ₦53,500/yr</td><td>₦26,500 – ₦47,600/yr</td></tr>
+  </tbody>
+</table>
+
+<p>On a cost-per-year basis, premium stone coated tiles can actually match or beat aluminium sheets over a full lifecycle. The upfront premium is 20–80% higher, but the longer lifespan and zero-repaint maintenance close the gap over decades. For more on aluminium pricing, see our <a href="/blog/055mm-long-span-aluminium-roofing-sheet-price-lagos">0.55mm long span pricing guide</a>.</p>
+
+<h2>What to Watch Out For</h2>
+
+<ol>
+  <li><strong>Fake "stone coated" tiles</strong> — Lagos has a flood of painted metal tiles marketed as stone coated. Real stone coated tiles have natural stone chips bonded with acrylic — not spray paint. Rub the surface firmly; if colour comes off on your hand, walk away.</li>
+  <li><strong>Incorrect batten spacing</strong> — If battens are spaced even 10mm wrong, tiles will not interlock properly and water will penetrate. Insist on the manufacturer's specified gauge — usually printed in the installation manual.</li>
+  <li><strong>Skipping underlayment</strong> — Many Lagos installers omit the waterproof underlayment membrane to save cost. While it adds ₦26,000 – ₦60,000 on a bungalow, it provides critical secondary water protection and extends roof life. Worth every naira.</li>
+  <li><strong>Wrong fasteners</strong> — Plain iron nails rust within 2–3 years in Lagos humidity and leave brown stain streaks down your tiles. Always use stainless steel or hot-dip galvanised roofing nails.</li>
+  <li><strong>No hip/ridge sealant</strong> — Ridge caps and hip tiles need to be bedded in roofing sealant or mortar, not just nailed on. Dry-fixed ridges lift in harmattan winds and let in driving rain.</li>
+</ol>
+
+<h2>How to Get an Accurate Installation Quote</h2>
+
+<p>The most common reason for budget overruns is getting a quote based on "number of bundles" instead of actual roof area. Here is the right process:</p>
+
+<ol>
+  <li><strong>Measure your roof</strong> — get the actual surface area in m² from your architect's drawing or by physical measurement. Include all slopes, not just the floor plan footprint.</li>
+  <li><strong>Add 10% wastage</strong> — cutting, breakage, and hip/valley overlaps always consume extra tiles.</li>
+  <li><strong>List every accessory</strong> — ridge caps, hip tiles, valley troughs, barge trims, starter strips, nails, underlayment.</li>
+  <li><strong>Get separate material and labour quotes</strong> — this lets you compare fairly. A "package deal" often hides inferior materials.</li>
+  <li><strong>Ask for references</strong> — a good stone coated tile installer should be able to show you at least 3 completed roofs in Lagos.</li>
+</ol>
+
+<p>At Gods Promise Aluminium, we supply complete stone coated roofing packages — tiles, all accessories, and recommended installation contractors. WhatsApp your roof plan or drawing to <strong>09150459964</strong> for a detailed, itemised quote within 24 hours.</p>
+
+<p><a href="/contact">Contact us</a> · <a href="/pricing">Aluminium roofing price list</a> · <a href="/products/stone-coated">Stone coated products</a> · <a href="/blog/cost-to-roof-4-bedroom-duplex-nigeria-2026">Cost to roof a 4-bedroom duplex</a> · <a href="/blog/stone-coated-roofing-sheet-prices-lagos">Stone coated tile prices Lagos</a></p>
+    `.trim(),
+    date: "2026-04-06",
+    imageSrc: "/gallery/latest/stonetiles-in-progress.jpeg",
+    imageAlt:
+      "Stone coated roof tiles being installed on a residential building in Lagos — installation cost guide 2026",
+    readingTimeMinutes: 10,
+    faq: [
+      {
+        question:
+          "How much does it cost to install stone coated roof tiles in Lagos in 2026?",
+        answer:
+          "Total installed cost ranges from ₦8,500 to ₦16,000 per m² depending on tile brand, roof complexity, and labour rates. For a 3-bedroom bungalow with 130 m² roof area, budget ₦1.1 million to ₦2.1 million all-in — covering tiles, accessories, battens, and installation labour.",
+      },
+      {
+        question:
+          "What accessories are needed for stone coated tile installation?",
+        answer:
+          "You need ridge caps, hip tiles (if applicable), barge/gable trims, valley troughs (where roof planes meet), starter strips along the eave, stainless steel or galvanised roofing nails, and ideally a waterproof underlayment membrane. Accessories typically add 15–25% to the tile supply cost.",
+      },
+      {
+        question:
+          "Is stone coated roofing cheaper or more expensive than aluminium sheets?",
+        answer:
+          "Stone coated tiles cost 20–80% more upfront than 0.55mm aluminium long span sheets when you include accessories, battens, and higher labour costs. However, on a cost-per-year-of-life basis, premium stone coated tiles (40–50 year lifespan) can match or beat aluminium (25–35 year lifespan). The choice depends on your budget horizon and aesthetic preference.",
+      },
+      {
+        question:
+          "Can a regular aluminium roofer install stone coated tiles?",
+        answer:
+          "No — stone coated tile installation is a specialist trade with different techniques, batten spacing requirements, and finishing methods. Hiring an inexperienced installer is the number one cause of leaks and premature failure in stone coated roofing. Always ask for references and verify they have completed at least 3 stone coated projects before hiring.",
+      },
+      {
+        question:
+          "Do I need underlayment under stone coated tiles in Lagos?",
+        answer:
+          "It is not technically required but is strongly recommended. Underlayment provides a secondary waterproof barrier that protects against wind-driven rain penetrating between tiles, extends roof life, and costs only ₦26,000 – ₦60,000 for a bungalow. In Lagos's heavy rainfall conditions, the extra protection is well worth the cost.",
       },
     ],
   },
