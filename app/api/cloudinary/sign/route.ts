@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
   if (!paramsToSign || typeof paramsToSign !== "object") {
     return NextResponse.json(
       { error: "Invalid paramsToSign" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -23,7 +23,12 @@ export async function POST(req: NextRequest) {
       .map((key) => `${key}=${paramsToSign[key]}`)
       .join("&") + API_SECRET;
 
-  const signature = createHash("sha256").update(stringToSign).digest("hex");
+  // Cloudinary verifies signed uploads with SHA-1 by default. Must match here.
+  const signature = createHash("sha1").update(stringToSign).digest("hex");
 
-  return NextResponse.json({ signature, apiKey: API_KEY, cloudName: CLOUD_NAME });
+  return NextResponse.json({
+    signature,
+    apiKey: API_KEY,
+    cloudName: CLOUD_NAME,
+  });
 }
