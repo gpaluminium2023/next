@@ -3,17 +3,18 @@ import Image from 'next/image';
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { siteIdentity } from "@/lib/site-identity";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   title: "About Gods Promise Aluminium | Roofing Sheet Manufacturer in Nigeria",
   description:
-    "Gods Promise Aluminium is one of the best aluminium roofing sheet manufacturers in Nigeria, supplying roofing sheets, stone-coated tiles and accessories from our factory in Ogun State to projects across Lagos and Nigeria.",
+    "Gods Promise Aluminium is one of the best aluminium roofing sheet manufacturers in Nigeria, supplying roofing sheets, stone-coated tiles and accessories from our factory in Lagos to projects across Nigeria.",
   openGraph: {
     title: "About Gods Promise Aluminium | Roofing Sheet Manufacturer Nigeria",
     description:
       "Gods Promise Aluminium is a leading aluminium roofing sheet manufacturer in Nigeria, producing long span sheets, step tiles and stone-coated tiles for homes, churches and commercial buildings.",
-    url: "https://www.godspromisealuminiumroofing.com/about",
+    url: `${siteIdentity.siteUrl}/about`,
     type: "article",
     images: [
       {
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     title:
       "About Gods Promise Aluminium | Aluminium Roofing Sheet Manufacturer Nigeria",
     description:
-      "Aluminium roofing sheet manufacturer in Ogun State, Nigeria supplying roofing sheets, stone-coated tiles and accessories for projects across Lagos and Nigeria.",
+      "Aluminium roofing sheet manufacturer in Lagos, Nigeria supplying roofing sheets, stone-coated tiles and accessories for projects across Lagos and Nigeria.",
     images: ["/logo.jpeg"],
   },
 };
@@ -111,8 +112,8 @@ export default function AboutPage() {
             <p className="text-balance text-lg text-primary-foreground/80 md:text-xl">
               One of the best aluminium roofing sheet manufacturers in Nigeria,
               we produce and supply roofing sheets, stone-coated tiles and
-              accessories from our Ogun State factory to homes, churches and
-              businesses across Lagos and Nigeria.
+              accessories from our Lagos factory to homes, churches and
+              businesses across Nigeria.
             </p>
           </div>
         </div>
@@ -153,11 +154,11 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
                 <p>
-                  Gods Promise Aluminium is one of the leading aluminium roofing
-                  sheet manufacturers in Nigeria. From our production facility
-                  in Sango Ota, Ogun State, we manufacture and supply roofing
-                  sheets, stone-coated tiles and accessories for projects of all
-                  sizes across Lagos and Nigeria.
+                  Gods Promise Aluminium ({siteIdentity.legalName}) is one of the
+                  leading aluminium roofing sheet manufacturers in Nigeria. From
+                  our production facility in {siteIdentity.address.locality}, we
+                  manufacture and supply roofing sheets, stone-coated tiles and
+                  accessories for projects of all sizes across Lagos and Nigeria.
                 </p>
                 <p>
                   Over the years we&apos;ve grown with our customers, learning
@@ -192,8 +193,112 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Company Facts */}
+      <section className="bg-secondary py-16 md:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <p className="font-heading mb-3 text-xs font-bold uppercase tracking-widest text-accent">
+              Company facts
+            </p>
+            <h2 className="font-heading text-balance text-3xl font-bold uppercase md:text-4xl">
+              Who we are
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-sm border border-border bg-card p-6">
+              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Legal name</p>
+              <p className="text-muted-foreground">{siteIdentity.legalName}</p>
+            </div>
+            <div className="rounded-sm border border-border bg-card p-6">
+              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Address</p>
+              <p className="text-muted-foreground">{siteIdentity.address.formatted}</p>
+            </div>
+            <div className="rounded-sm border border-border bg-card p-6">
+              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Phone / WhatsApp</p>
+              <p className="text-muted-foreground">{siteIdentity.phoneDisplay}</p>
+            </div>
+            <div className="rounded-sm border border-border bg-card p-6">
+              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Category</p>
+              <p className="text-muted-foreground">{siteIdentity.primaryCategory}</p>
+            </div>
+            <div className="rounded-sm border border-border bg-card p-6">
+              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Opening hours</p>
+              <p className="text-muted-foreground">
+                Monday – Saturday, {siteIdentity.openingHours.opens} – {siteIdentity.openingHours.closes}
+              </p>
+            </div>
+            <div className="rounded-sm border border-border bg-card p-6">
+              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Founded</p>
+              <p className="text-muted-foreground">2009, Nigeria</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Products */}
+      <section className="bg-background py-16 md:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <p className="font-heading mb-3 text-xs font-bold uppercase tracking-widest text-accent">
+              What we make
+            </p>
+            <h2 className="font-heading text-balance text-3xl font-bold uppercase md:text-4xl">
+              Product lines
+            </h2>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {siteIdentity.productLines.map((product) => (
+              <div key={product} className="rounded-sm border border-border bg-card p-5">
+                <div className="mb-3 h-1 w-6 bg-accent" />
+                <p className="font-heading font-bold uppercase text-sm">{product}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/products"
+              className="font-heading text-sm font-bold uppercase tracking-wide text-accent underline-offset-4 hover:underline"
+            >
+              View all products
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Areas */}
+      <section className="bg-secondary py-16 md:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <p className="font-heading mb-3 text-xs font-bold uppercase tracking-widest text-accent">
+              Where we deliver
+            </p>
+            <h2 className="font-heading text-balance text-3xl font-bold uppercase md:text-4xl">
+              Service areas
+            </h2>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3">
+            {siteIdentity.serviceAreas.map((area) => (
+              <span
+                key={area}
+                className="rounded-sm border border-border bg-card px-4 py-2 text-sm font-heading font-bold uppercase"
+              >
+                {area}
+              </span>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/delivery"
+              className="font-heading text-sm font-bold uppercase tracking-wide text-accent underline-offset-4 hover:underline"
+            >
+              Delivery information
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Mission & Vision */}
-      <section className="bg-secondary py-16 md:py-24">
+      <section className="bg-background py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <p className="font-heading mb-3 text-xs font-bold uppercase tracking-widest text-accent">
@@ -314,6 +419,72 @@ export default function AboutPage() {
               hands-on industry experience to ensure that every order is
               processed accurately and every customer is treated with care.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Official Profiles */}
+      <section className="bg-background py-16 md:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <p className="font-heading mb-3 text-xs font-bold uppercase tracking-widest text-accent">
+              Find us online
+            </p>
+            <h2 className="font-heading text-balance text-3xl font-bold uppercase md:text-4xl">
+              Official profiles
+            </h2>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            {[
+              { label: "Instagram", href: "https://www.instagram.com/godspacltd/" },
+              { label: "Facebook", href: "https://www.facebook.com/profile.php?id=100063619451498" },
+              { label: "YouTube", href: "https://www.youtube.com/@godspromisealuminiumconcep3aborig" },
+              { label: "TikTok", href: "https://www.tiktok.com/@godspacltd" },
+            ].map((profile) => (
+              <a
+                key={profile.label}
+                href={profile.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-sm border border-border bg-card px-6 py-3 font-heading text-sm font-bold uppercase tracking-wide hover:border-accent hover:text-accent transition-colors"
+              >
+                {profile.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Explore */}
+      <section className="bg-secondary py-14 md:py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 text-center">
+            <p className="font-heading mb-3 text-xs font-bold uppercase tracking-widest text-accent">
+              Explore
+            </p>
+            <h2 className="font-heading text-balance text-2xl font-bold uppercase md:text-3xl">
+              More from Gods Promise Aluminium
+            </h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {[
+              { label: "Products", href: "/products" },
+              { label: "Pricing", href: "/pricing" },
+              { label: "Gallery", href: "/gallery" },
+              { label: "Projects", href: "/projects" },
+              { label: "Delivery", href: "/delivery" },
+              { label: "FAQ", href: "/faq" },
+              { label: "Reviews", href: "/reviews" },
+              { label: "Contact", href: "/contact" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-sm border border-border bg-card px-5 py-3 text-center font-heading text-sm font-bold uppercase tracking-wide hover:border-accent hover:text-accent transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       </section>

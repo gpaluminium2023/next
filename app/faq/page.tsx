@@ -1,14 +1,26 @@
 import type { Metadata } from 'next';
 
+import { siteIdentity } from "@/lib/site-identity";
+
 export const metadata: Metadata = {
   alternates: { canonical: "/faq" },
   title:
     "Aluminium Roofing FAQs — Prices, Sizes & Installation | Gods Promise Aluminium",
   description:
-    "Answers to common questions about aluminium (aluminum) roofing sheet prices, thickness, delivery and installation from Gods Promise Aluminium in Ogun State, Nigeria.",
+    "Answers to common questions about aluminium (aluminum) roofing sheet prices, thickness, delivery and installation from Gods Promise Aluminium in Lagos, Nigeria.",
 };
 
 const faqs = [
+  {
+    question: "How much do aluminium roofing sheets cost in Lagos?",
+    answer:
+      "Aluminium roofing sheet prices in Lagos depend on the profile, thickness and colour you choose. Long span sheets, step tiles, Metcopo and stone-coated tiles are all priced differently. Contact us on WhatsApp for a current price list and a firm quote for your project. You can also visit our Pricing page for the latest rates.",
+  },
+  {
+    question: "How long do aluminium roofing sheets last?",
+    answer:
+      "Good-quality aluminium roofing sheets can last 25 to 40 years or more when properly installed and maintained. Lifespan depends on the thickness (gauge), coating quality, installation workmanship, and local weather conditions. We recommend at least 0.55mm for coastal or high-wind locations.",
+  },
   {
     question: "Do you deliver aluminium roofing sheets outside Lagos?",
     answer:
@@ -20,14 +32,18 @@ const faqs = [
       "The best thickness depends on your budget, project type and location. As a general guide, 0.45mm is common for budget-friendly residential projects while 0.55mm is preferred where extra durability and wind resistance are required, such as in coastal areas or large commercial buildings. Our team can advise when you share your project details.",
   },
   {
+    question: "Are your aluminium roofing sheets suitable for coastal areas?",
+    answer:
+      "Yes, but we recommend 0.55mm or thicker profiles for coastal locations where salt air and higher humidity are factors. Thicker sheets offer better corrosion resistance and stand up better to strong coastal winds. Contact us to discuss the best profile and thickness for your coastal project.",
+  },
+  {
     question: "What types of aluminium roofing do you manufacture?",
     answer:
-      "We produce long span aluminium roofing sheets, step-tile aluminium roofing sheets and supply premium stone-coated roofing tiles. We also stock roofing accessories including ridge caps, valley gutters, downpipes, roofing nails and flashings.",
+      "We produce long span aluminium roofing sheets, step-tile aluminium roofing sheets and Metcopo roofing sheets. We also supply premium Gerard stone-coated roofing tiles and stock roofing accessories including ridge caps, valley gutters, downpipes, roofing nails and flashings.",
   },
   {
     question: "How do I get a price quote for my roofing project?",
-    answer:
-      "Contact us by phone or WhatsApp on +234 915 045 9964 with details of your project including the roof area, preferred profile type, thickness and colour. You can also use the contact form on our website. We typically respond with a formal quotation within a few hours during business days.",
+    answer: `Contact us by phone or WhatsApp on ${siteIdentity.phoneDisplay} with details of your project including the roof area, preferred profile type, thickness and colour. You can also use the contact form on our website. We typically respond with a formal quotation within a few hours during business days.`,
   },
   {
     question: "What colours are available for aluminium roofing sheets?",
@@ -41,8 +57,7 @@ const faqs = [
   },
   {
     question: "Can I visit your factory to inspect my order before delivery?",
-    answer:
-      "Absolutely. We encourage all customers to visit our factory at 55 Owutu Road, Ikorodu, Lagos to inspect their roofing sheets before dispatch. This allows you to verify the thickness, colour, profile and quantity in person before the materials leave our premises.",
+    answer: `Absolutely. We encourage all customers to visit our factory at ${siteIdentity.address.formatted} to inspect their roofing sheets before dispatch. This allows you to verify the thickness, colour, profile and quantity in person before the materials leave our premises.`,
   },
   {
     question: "Do you offer installation services?",
@@ -51,8 +66,7 @@ const faqs = [
   },
   {
     question: "Where is your factory located?",
-    answer:
-      "Our aluminium roofing sheet factory is located at Km 38, Lagos-Abeokuta Expressway, Beside First Bank, Sango Ota, Ogun State, Nigeria. We are one of the leading aluminum roofing companies in Lagos and Ogun State. Customers from across Nigeria are welcome to visit, inspect products and place orders directly at our facility.",
+    answer: `Our aluminium roofing sheet factory is located at ${siteIdentity.address.formatted}. We are one of the leading aluminum roofing companies in Lagos. Customers from across Nigeria are welcome to visit, inspect products and place orders directly at our facility.`,
   },
   {
     question:
@@ -67,9 +81,27 @@ const faqs = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
 export default function FaqPage() {
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
       <section className="bg-primary text-primary-foreground">
         <div className="h-1 w-full bg-accent" />
         <div className="container px-4 mx-auto max-w-4xl py-16 md:py-20">
@@ -89,7 +121,7 @@ export default function FaqPage() {
             and contractors who contact Gods Promise Aluminium about aluminum
             roofing sheets, pricing, delivery and installation in Lagos and
             across Nigeria. If your question is not answered here, please call
-            or WhatsApp us on +234 915 045 9964 for a prompt response.
+            or WhatsApp us on {siteIdentity.phoneDisplay} for a prompt response.
           </p>
           {faqs.map((faq) => (
             <div
