@@ -4,11 +4,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/mobile-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { CartButton } from "@/components/store/cart-button";
 
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/products", label: "Products" },
+  { href: "/store", label: "Store" },
   { href: "/pricing", label: "Pricing" },
   { href: "/services", label: "Services" },
   { href: "/gallery", label: "Gallery" },
@@ -45,6 +47,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
+          <CartButton />
           <ThemeToggle />
           <div className="hidden md:block">
             <Button

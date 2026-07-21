@@ -41,6 +41,25 @@ export default async function AdminPage() {
             <AdminSignOut />
           </div>
         </div>
+        <div className="border-t border-primary-foreground/10">
+          <div className="container max-w-6xl mx-auto px-4 flex items-center gap-1">
+            <span className="px-3 py-2 text-xs font-heading font-bold uppercase tracking-wide border-b-2 border-accent text-primary-foreground">
+              Blog
+            </span>
+            <Link
+              href="/admin/products"
+              className="px-3 py-2 text-xs font-heading font-bold uppercase tracking-wide text-primary-foreground/70 hover:text-primary-foreground"
+            >
+              Products
+            </Link>
+            <Link
+              href="/admin/orders"
+              className="px-3 py-2 text-xs font-heading font-bold uppercase tracking-wide text-primary-foreground/70 hover:text-primary-foreground"
+            >
+              Orders
+            </Link>
+          </div>
+        </div>
       </header>
 
       <main className="container max-w-6xl mx-auto px-4 py-8">

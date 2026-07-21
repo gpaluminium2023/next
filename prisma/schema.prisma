@@ -87,3 +87,87 @@ model BlogPost {
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 }
+
+// ──────────────────────────────
+// Store
+// ──────────────────────────────
+enum ProductCategory {
+  SHEETS
+  STONE_COATED
+  ACCESSORIES
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FULFILLED
+  CANCELLED
+}
+
+model Product {
+  id            String           @id @default(cuid())
+  name          String
+  slug          String           @unique
+  description   String           @default("")
+  category      ProductCategory
+  unit          String           @default("sqm") // "sqm" | "piece" | "pack" | "bundle"
+  basePriceKobo Int? // used only when the product has no variants
+  inStock       Boolean          @default(true)
+  published     Boolean          @default(false)
+  featured      Boolean          @default(false)
+  sortOrder     Int              @default(0)
+  images        Json             @default("[]") // [{ url, publicId, alt }]
+  videoUrl      String? // Cloudinary secure_url
+  videoPublicId String?
+  variants      ProductVariant[]
+  orderItems    OrderItem[]
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+}
+
+model ProductVariant {
+  id         String      @id @default(cuid())
+  productId  String
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  label      String // "0.45MM", "Shingle Tiles"
+  priceKobo  Int // price per product.unit, in kobo
+  inStock    Boolean     @default(true)
+  sortOrder  Int         @default(0)
+  orderItems OrderItem[]
+
+  @@unique([productId, label])
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  reference       String      @unique // "GPA-…" — also the Paystack transaction reference
+  status          OrderStatus @default(PENDING)
+  customerName    String
+  customerEmail   String
+  customerPhone   String
+  deliveryAddress String
+  note            String?
+  subtotalKobo    Int // materials only; delivery quoted separately
+  paidAt          DateTime?
+  paystackId      String? // Paystack transaction id from verify/webhook
+  channel         String? // "card" | "bank" | "ussd" …
+  items           OrderItem[]
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+model OrderItem {
+  id              String          @id @default(cuid())
+  orderId         String
+  order           Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId       String?
+  product         Product?        @relation(fields: [productId], references: [id], onDelete: SetNull)
+  variantId       String?
+  variant         ProductVariant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+  nameSnapshot    String // product name at purchase time
+  variantSnapshot String? // variant label at purchase time
+  unit            String
+  unitPriceKobo   Int // DB-derived price at purchase, never client price
+  quantity        Int
+  lineTotalKobo   Int
+}

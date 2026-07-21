@@ -7,6 +7,9 @@ import { SiteFooter } from "@/components/site-footer";
 import { PosthogProvider } from "@/components/posthog-provider";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { localBusinessJsonLd, siteIdentity } from "@/lib/site-identity";
+import { CartProvider } from "@/lib/cart/cart-context";
+import { CartDrawer } from "@/components/store/cart-drawer";
+import { Toaster } from "@/components/ui/sonner";
 
 const barlowCondensed = Barlow_Condensed({
   variable: "--font-heading",
@@ -96,11 +99,15 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <PosthogProvider>
-            <div className="flex min-h-screen flex-col">
-              <SiteHeader />
-              <main className="flex-1">{children}</main>
-              <SiteFooter />
-            </div>
+            <CartProvider>
+              <div className="flex min-h-screen flex-col">
+                <SiteHeader />
+                <main className="flex-1">{children}</main>
+                <SiteFooter />
+              </div>
+              <CartDrawer />
+              <Toaster />
+            </CartProvider>
           </PosthogProvider>
         </ThemeProvider>
         <GoogleAnalytics gaId="G-ZFRS3K0XR5" />

@@ -88,6 +88,14 @@ export function SiteFooter() {
             <ul className="mt-3 space-y-2 text-sm">
               <li>
                 <Link
+                  href="/store"
+                  className="font-semibold text-accent transition-colors hover:text-accent/80"
+                >
+                  Shop online
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/products#roofing"
                   className="text-muted-foreground transition-colors hover:text-foreground"
                 >

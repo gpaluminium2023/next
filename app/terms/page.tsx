@@ -127,7 +127,7 @@ export default function TermsPage() {
               Limitation of Liability
             </h2>
             <p>
-              Gods Promise Aluminium's liability is limited to the value of the
+              Gods Promise Aluminium&apos;s liability is limited to the value of the
               goods supplied. We are not responsible for losses arising from
               improper installation, misuse of products, or failure to follow
               installation guidelines provided by our team.

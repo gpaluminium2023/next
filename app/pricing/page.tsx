@@ -337,6 +337,9 @@ export default function PricingPage() {
               asChild
               className="rounded-sm bg-accent font-heading font-bold uppercase tracking-wide hover:bg-accent/90"
             >
+              <Link href="/store">Order Online</Link>
+            </Button>
+            <Button asChild variant="outline" className="rounded-sm">
               <a
                 href="https://wa.me/2349150459964"
                 target="_blank"

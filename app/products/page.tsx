@@ -190,6 +190,9 @@ export default function ProductsPage() {
                   View full price list
                 </Link>
               </div>
+              <Button asChild className="mt-3 w-full rounded-sm bg-accent font-heading font-bold uppercase tracking-wide hover:bg-accent/90">
+                <Link href="/store?category=SHEETS">Buy Online</Link>
+              </Button>
             </div>
           </div>
 
@@ -262,6 +265,9 @@ export default function ProductsPage() {
               >
                 View details <ArrowRight className="h-4 w-4" />
               </Link>
+              <Button asChild className="mt-3 w-full rounded-sm bg-accent font-heading font-bold uppercase tracking-wide hover:bg-accent/90">
+                <Link href="/store?category=STONE_COATED">Buy Online</Link>
+              </Button>
             </div>
           </div>
 
@@ -315,6 +321,9 @@ export default function ProductsPage() {
                 <li>Helps prevent leaks and future problems</li>
                 <li>Available in project quantities</li>
               </ul>
+              <Button asChild variant="outline" className="mt-3 w-full rounded-sm font-heading font-bold uppercase tracking-wide">
+                <Link href="/store?category=ACCESSORIES">Buy Online</Link>
+              </Button>
             </div>
           </div>
         </div>

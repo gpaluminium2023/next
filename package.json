@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "seed:admin": "tsx --tsconfig tsconfig.json scripts/seed-admin.ts",
+    "seed:store": "tsx --tsconfig tsconfig.json scripts/seed-store.ts",
     "postinstall": "prisma generate"
   },
   "dependencies": {

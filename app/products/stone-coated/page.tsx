@@ -214,6 +214,14 @@ export default function StoneCoatedPage() {
               size="lg"
               className="rounded-sm bg-accent font-heading font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90"
             >
+              <Link href="/store?category=STONE_COATED">Buy Online</Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="rounded-sm border-primary-foreground/30 bg-transparent font-heading font-bold uppercase tracking-wide text-primary-foreground hover:bg-primary-foreground/10"
+            >
               <a
                 href="https://wa.me/2349150459964?text=Hello%2C%20I%27m%20interested%20in%20stone-coated%20roofing%20tiles.%20Please%20send%20me%20current%20prices."
                 target="_blank"
