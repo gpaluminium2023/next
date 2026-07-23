@@ -9,6 +9,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { localBusinessJsonLd, siteIdentity } from "@/lib/site-identity";
 import { CartProvider } from "@/lib/cart/cart-context";
 import { CartDrawer } from "@/components/store/cart-drawer";
+import { FloatingCartButton } from "@/components/store/floating-cart-button";
 import { Toaster } from "@/components/ui/sonner";
 
 const barlowCondensed = Barlow_Condensed({
@@ -106,6 +107,7 @@ export default function RootLayout({
                 <SiteFooter />
               </div>
               <CartDrawer />
+              <FloatingCartButton />
               <Toaster />
             </CartProvider>
           </PosthogProvider>
