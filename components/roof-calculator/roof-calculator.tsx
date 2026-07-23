@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Check } from "lucide-react";
+import { Check, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { formatNaira } from "@/lib/store/format";
+import { siteIdentity } from "@/lib/site-identity";
 import {
   DEFAULT_STATE,
   GLOSSARY,
@@ -18,9 +19,11 @@ import {
   round2,
   type CalculatorState,
   type Dims,
+  type ResultsSummary,
   type RoofShape,
 } from "@/lib/roof-calculator/calculations";
 import { ShapeIcon, SHAPE_META } from "@/components/roof-calculator/shape-icons";
+import { PlanDiagram } from "@/components/roof-calculator/plan-diagram";
 
 export interface SheetVariant {
   id: string;
@@ -111,7 +114,9 @@ export function RoofCalculator({ products }: { products: SheetProduct[] }) {
         {step === 4 && (
           <StepAccessories state={state} patch={patch} onBack={() => setStep(3)} onNext={() => setStep(5)} />
         )}
-        {step === 5 && <StepResult state={state} openWhy={openWhy} toggleWhy={toggleWhy} onReset={reset} />}
+        {step === 5 && (
+          <StepResult state={state} products={products} openWhy={openWhy} toggleWhy={toggleWhy} onReset={reset} />
+        )}
       </div>
     </div>
   );
@@ -301,7 +306,11 @@ function StepMeasure({
               className="pointer-events-none absolute inset-3 h-[calc(100%-1.5rem)] w-[calc(100%-1.5rem)] object-contain opacity-20"
             />
           )}
-          {state.shape && <ShapeIcon shape={state.shape} className="h-56 w-full" />}
+          {state.shape && <PlanDiagram shape={state.shape} className="h-56 w-full" />}
+          <p className="mt-1 text-center text-xs text-muted-foreground">
+            Bird&rsquo;s-eye (plan) view — <b className="text-foreground">W</b> and{" "}
+            <b className="text-foreground">L</b> match the fields opposite. Dashed line is the overhang.
+          </p>
         </div>
         <div>
           <Field label="Eave width (W)" hint="front measurement, in metres">
@@ -680,6 +689,35 @@ function StepAccessories({
 
 /* ------------------------------ Step: Result -------------------------------- */
 
+function buildWhatsAppMessage(
+  state: CalculatorState,
+  r: ResultsSummary,
+  productName: string | undefined,
+  variantLabel: string | undefined,
+) {
+  const shapeName = state.shape ? SHAPE_META[state.shape].name : "roof";
+  const dims = `${state.dims.eaveWidth ?? "?"}m x ${state.dims.buildingLength ?? "?"}m${
+    state.shape === "hipext" ? ` + ${state.dims.extWidth ?? "?"}m x ${state.dims.extDepth ?? "?"}m extension` : ""
+  }`;
+
+  const lines = [
+    "Hi! I used the Roof Sheet Calculator and got this estimate:",
+    "",
+    `Roof shape: ${shapeName}`,
+    `Dimensions: ${dims}`,
+    `Pitch: ${state.pitchDeg}°`,
+    productName ? `Sheet: ${productName}${variantLabel ? ` (${variantLabel})` : ""}` : null,
+    `Sheets needed: ${r.sheetsCount}${
+      r.totalLinearMeters != null ? ` (≈${round2(r.totalLinearMeters)} linear metres)` : ""
+    }`,
+    r.materialCostKobo != null ? `Estimated material cost: ${formatNaira(r.materialCostKobo)}` : null,
+    "",
+    "Can you confirm this and help me place an order?",
+  ].filter((line): line is string => line !== null);
+
+  return lines.join("\n");
+}
+
 function WhyToggle({ id, openWhy, toggleWhy, children }: { id: string; openWhy: Set<string>; toggleWhy: (id: string) => void; children: React.ReactNode }) {
   const open = openWhy.has(id);
   return (
@@ -698,11 +736,13 @@ function WhyToggle({ id, openWhy, toggleWhy, children }: { id: string; openWhy: 
 
 function StepResult({
   state,
+  products,
   openWhy,
   toggleWhy,
   onReset,
 }: {
   state: CalculatorState;
+  products: SheetProduct[];
   openWhy: Set<string>;
   toggleWhy: (id: string) => void;
   onReset: () => void;
@@ -712,6 +752,12 @@ function StepResult({
   const { shortSpan, longSpan } = getSpans(state);
   void shortSpan;
   void longSpan;
+
+  const selectedProduct = products.find((p) => p.id === state.productId);
+  const selectedVariant = selectedProduct?.variants.find((v) => v.id === state.variantId);
+  const whatsappHref = `${siteIdentity.whatsappUrl}?text=${encodeURIComponent(
+    buildWhatsAppMessage(state, r, selectedProduct?.name, selectedVariant?.label),
+  )}`;
 
   return (
     <div>
@@ -820,15 +866,24 @@ function StepResult({
         </Disclaimer>
       </div>
 
-      <div className="mt-7 flex justify-between">
+      <div className="mt-7 rounded-sm border border-accent/30 bg-accent/5 p-4">
+        <p className="mb-3 text-sm text-muted-foreground">
+          Want a person to confirm this and take your order? Send the estimate straight to our WhatsApp — no
+          retyping.
+        </p>
+        <Button asChild className="w-full gap-2 rounded-sm bg-accent font-heading font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90 sm:w-auto">
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
+            <MessageCircle className="h-4 w-4" />
+            Send Estimate to WhatsApp
+          </a>
+        </Button>
+      </div>
+
+      <div className="mt-4 flex justify-between">
         <Button type="button" variant="outline" className="rounded-sm" onClick={onReset}>
           Start Over
         </Button>
-        <Button
-          type="button"
-          onClick={() => window.print()}
-          className="rounded-sm bg-accent font-heading font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90"
-        >
+        <Button type="button" variant="outline" className="rounded-sm" onClick={() => window.print()}>
           Print / Save
         </Button>
       </div>
