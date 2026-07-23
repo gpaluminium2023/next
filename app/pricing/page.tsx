@@ -340,6 +340,9 @@ export default function PricingPage() {
               <Link href="/store">Order Online</Link>
             </Button>
             <Button asChild variant="outline" className="rounded-sm">
+              <Link href="/roof-calculator">Not sure how many sheets? Try the Calculator</Link>
+            </Button>
+            <Button asChild variant="outline" className="rounded-sm">
               <a
                 href="https://wa.me/2349150459964"
                 target="_blank"
