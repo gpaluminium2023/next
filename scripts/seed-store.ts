@@ -134,7 +134,59 @@ const products: SeedProduct[] = [
     published: true,
     featured: true,
     sortOrder: 4,
-    images: [{ url: "/images/pshingle.png", publicId: "", alt: "Gerard stone coated roofing tiles" }],
+    images: [
+      { url: "/images/pshingle.png", publicId: "", alt: "Gerard stone coated roofing tiles" },
+      {
+        url: "/core-products/stonetiles.jpg",
+        publicId: "",
+        alt: "Gerard stone-coated roofing tiles — Shingle, Bond, Classic, Milano and Roman profiles displayed at Gods Promise Aluminium",
+      },
+      {
+        url: "/core-products/stonetiles-green.jpg",
+        publicId: "",
+        alt: "Green stone-coated roofing tiles showing two profile options side by side",
+      },
+      {
+        url: "/core-products/stonetiles-red-black-warehouse.jpg",
+        publicId: "",
+        alt: "Red and black stone-coated shingle-profile roofing tile in the Gods Promise Aluminium warehouse",
+      },
+      {
+        url: "/core-products/stonetiles-render-charcoal.png",
+        publicId: "",
+        alt: "Charcoal grey stone-coated shingle-profile roofing tile",
+      },
+      {
+        url: "/core-products/stonetiles-render-teal-navy.png",
+        publicId: "",
+        alt: "Teal and navy stone-coated shingle-profile roofing tile colour option",
+      },
+      {
+        url: "/core-products/stonetiles-render-teal-brown.png",
+        publicId: "",
+        alt: "Teal and brown stone-coated shingle-profile roofing tile colour option",
+      },
+      {
+        url: "/core-products/stonetiles-red-warehouse-stack.png",
+        publicId: "",
+        alt: "Red Roman-profile stone-coated roofing tiles stacked in the warehouse",
+      },
+      {
+        url: "/core-products/stonetiles-green-outdoor.jpg",
+        publicId: "",
+        alt: "Green stone-coated roofing tile sample on site",
+      },
+      {
+        url: "/core-products/stonetiles-showroom-1.jpg",
+        publicId: "",
+        alt: "Gods Promise Aluminium staff member holding a stone-coated roofing tile in the showroom",
+      },
+      {
+        url: "/core-products/stonetiles-showroom-3.jpg",
+        publicId: "",
+        alt: "Gods Promise Aluminium staff member holding a stone-coated roofing tile in the showroom",
+      },
+    ],
     variants: [
       { label: "Shingle Tiles", priceKobo: nairaToKobo("₦4,750"), inStock: true, sortOrder: 1 },
       { label: "Bond Tiles", priceKobo: nairaToKobo("₦4,750"), inStock: true, sortOrder: 2 },

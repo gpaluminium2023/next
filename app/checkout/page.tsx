@@ -53,7 +53,15 @@ export default function CheckoutPage() {
     }
   }
 
-  if (hydrated && items.length === 0) {
+  if (!hydrated) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+      </div>
+    );
+  }
+
+  if (items.length === 0) {
     return (
       <div className="mx-auto flex max-w-lg flex-col items-center gap-4 px-4 py-24 text-center">
         <ShoppingBag className="h-10 w-10 text-muted-foreground" />
@@ -69,8 +77,9 @@ export default function CheckoutPage() {
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
       <h1 className="mb-2 font-heading text-3xl font-bold uppercase">Checkout</h1>
       <p className="mb-8 text-sm text-muted-foreground">
-        You are paying for materials only. Delivery is not included — our team will contact you
-        via WhatsApp or phone after payment to quote and arrange delivery to your location.
+        You are paying for materials only. Delivery varies by location and weight, so it isn&rsquo;t
+        charged here — our team will contact you via WhatsApp or phone shortly after payment to
+        quote delivery and arrange a time, at no obligation.
       </p>
 
       <div className="grid gap-8 lg:grid-cols-5">
@@ -96,6 +105,9 @@ export default function CheckoutPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
               />
+              <p className="text-xs text-muted-foreground">
+                We&rsquo;ll send your payment receipt here.
+              </p>
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="phone">Phone Number *</Label>
@@ -140,6 +152,10 @@ export default function CheckoutPage() {
             {submitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Pay {formatNaira(subtotalKobo)} with Paystack
           </Button>
+          <p className="text-center text-xs text-muted-foreground">
+            Payments are processed securely by Paystack — we never see or store your card
+            details.
+          </p>
           <Button
             type="button"
             variant="ghost"

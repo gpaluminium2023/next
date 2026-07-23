@@ -49,6 +49,25 @@ export function MobileNav() {
 						Gods Promise Aluminium
 					</SheetTitle>
 				</SheetHeader>
+				<div className='flex flex-col gap-2 px-2'>
+					<SheetClose asChild>
+						<Button
+							asChild
+							className='bg-accent font-heading font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90'
+						>
+							<Link href='/store'>Shop Online</Link>
+						</Button>
+					</SheetClose>
+					<SheetClose asChild>
+						<Button
+							asChild
+							variant='outline'
+							className='font-heading font-bold uppercase tracking-wide'
+						>
+							<Link href='/contact'>Get a Quote</Link>
+						</Button>
+					</SheetClose>
+				</div>
 				<nav className='flex flex-col gap-2 text-sm'>
 					{navItems.map((item) => (
 						<SheetClose

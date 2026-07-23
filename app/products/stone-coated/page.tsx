@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import {
     ArrowRight,
     CheckCircle2,
@@ -14,6 +13,56 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ProductGallery } from "@/components/store/product-gallery";
+import type { ProductImage } from "@/lib/store/types";
+
+const GALLERY_IMAGES: ProductImage[] = [
+  {
+    url: "/core-products/stonetiles.jpg",
+    publicId: "stonetiles",
+    alt: "Gerard stone-coated roofing tiles — Shingle, Bond, Classic, Milano and Roman profiles displayed at Gods Promise Aluminium",
+  },
+  {
+    url: "/core-products/stonetiles-green.jpg",
+    publicId: "stonetiles-green",
+    alt: "Green stone-coated roofing tiles showing two profile options side by side",
+  },
+  {
+    url: "/core-products/stonetiles-red-black-warehouse.jpg",
+    publicId: "stonetiles-red-black-warehouse",
+    alt: "Red and black stone-coated shingle-profile roofing tile in the Gods Promise Aluminium warehouse",
+  },
+  {
+    url: "/core-products/stonetiles-render-charcoal.png",
+    publicId: "stonetiles-render-charcoal",
+    alt: "Charcoal grey stone-coated shingle-profile roofing tile",
+  },
+  {
+    url: "/core-products/stonetiles-render-teal-navy.png",
+    publicId: "stonetiles-render-teal-navy",
+    alt: "Teal and navy stone-coated shingle-profile roofing tile colour option",
+  },
+  {
+    url: "/core-products/stonetiles-render-teal-brown.png",
+    publicId: "stonetiles-render-teal-brown",
+    alt: "Teal and brown stone-coated shingle-profile roofing tile colour option",
+  },
+  {
+    url: "/core-products/stonetiles-red-warehouse-stack.png",
+    publicId: "stonetiles-red-warehouse-stack",
+    alt: "Red Roman-profile stone-coated roofing tiles stacked in the warehouse",
+  },
+  {
+    url: "/core-products/stonetiles-green-outdoor.jpg",
+    publicId: "stonetiles-green-outdoor",
+    alt: "Green stone-coated roofing tile sample on site",
+  },
+  {
+    url: "/core-products/stonetiles-showroom-1.jpg",
+    publicId: "stonetiles-showroom-1",
+    alt: "Gods Promise Aluminium staff member holding a stone-coated roofing tile in the showroom",
+  },
+];
 
 export const metadata: Metadata = {
   alternates: { canonical: "/products/stone-coated" },
@@ -250,16 +299,7 @@ export default function StoneCoatedPage() {
       {/* Product Image + Intro */}
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="relative aspect-4/3 overflow-hidden rounded-sm border border-border bg-muted">
-            <Image
-              src="/core-products/stonetiles.jpg"
-              alt="Gerard stone-coated roofing tiles — Shingle, Bond, Classic, Milano and Roman profiles displayed at Gods Promise Aluminium"
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              priority
-            />
-          </div>
+          <ProductGallery images={GALLERY_IMAGES} videoUrl={null} productName="Gerard Stone-Coated Roofing Tiles" />
           <div>
             <Badge
               variant="outline"

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
@@ -11,6 +12,7 @@ import {
   SheetFooter,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useCart } from "@/lib/cart/cart-context";
 import { formatNaira } from "@/lib/store/format";
 import { cartItemKey } from "@/lib/store/types";
@@ -62,13 +64,17 @@ export function CartDrawer() {
                         >
                           <Minus className="h-3 w-3" />
                         </Button>
-                        <span className="w-6 text-center text-sm">{item.quantity}</span>
+                        <QuantityInput
+                          value={item.quantity}
+                          ariaLabel={`Quantity for ${item.name}`}
+                          onCommit={(n) => setQuantity(item.productId, item.variantId, n)}
+                        />
                         <Button
                           type="button"
                           variant="outline"
                           size="icon"
                           className="h-6 w-6"
-                          onClick={() => setQuantity(item.productId, item.variantId, item.quantity + 1)}
+                          onClick={() => setQuantity(item.productId, item.variantId, Math.min(500, item.quantity + 1))}
                         >
                           <Plus className="h-3 w-3" />
                         </Button>
@@ -111,5 +117,54 @@ export function CartDrawer() {
         )}
       </SheetContent>
     </Sheet>
+  );
+}
+
+// Local text state, decoupled from the committed cart quantity, so clearing
+// the field to retype a value (e.g. 5 -> 150) doesn't get fought by the
+// controlled value snapping back on every keystroke.
+function QuantityInput({
+  value,
+  ariaLabel,
+  onCommit,
+}: {
+  value: number;
+  ariaLabel: string;
+  onCommit: (quantity: number) => void;
+}) {
+  const [text, setText] = useState(String(value));
+
+  useEffect(() => {
+    setText(String(value));
+  }, [value]);
+
+  return (
+    <Input
+      type="number"
+      inputMode="numeric"
+      min={1}
+      max={500}
+      value={text}
+      onChange={(e) => {
+        const raw = e.target.value;
+        setText(raw);
+        const n = Math.trunc(Number(raw));
+        if (raw !== "" && Number.isFinite(n) && n > 0) {
+          onCommit(Math.min(500, n));
+        }
+      }}
+      onBlur={() => {
+        const n = Math.trunc(Number(text));
+        if (!Number.isFinite(n) || n <= 0) {
+          setText(String(value));
+          return;
+        }
+        const clamped = Math.min(500, n);
+        setText(String(clamped));
+        onCommit(clamped);
+      }}
+      aria-label={ariaLabel}
+      className="h-6 w-12 rounded-sm border-border px-1 text-center text-sm [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+    />
   );
 }

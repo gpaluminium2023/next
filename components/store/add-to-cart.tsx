@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -47,7 +48,9 @@ export function AddToCart({ productId, slug, name, unit, image, basePriceKobo, i
 
   const unitPriceKobo = selectedVariant ? selectedVariant.priceKobo : basePriceKobo;
   const itemInStock = variants.length > 0 ? (selectedVariant?.inStock ?? false) : inStock;
-  const canAdd = itemInStock && unitPriceKobo != null;
+  const hasPrice = unitPriceKobo != null;
+  const canAdd = itemInStock && hasPrice;
+  const buttonLabel = !itemInStock ? "Out of Stock" : !hasPrice ? "Contact for Price" : "Add to Cart";
 
   function handleAdd() {
     if (!canAdd || unitPriceKobo == null) return;
@@ -63,7 +66,7 @@ export function AddToCart({ productId, slug, name, unit, image, basePriceKobo, i
         image,
         inStock: true,
       },
-      quantity,
+      Math.max(1, quantity),
     );
     toast.success(`Added ${name}${selectedVariant ? ` (${selectedVariant.label})` : ""} to cart`);
   }
@@ -110,8 +113,27 @@ export function AddToCart({ productId, slug, name, unit, image, basePriceKobo, i
           >
             <Minus className="h-4 w-4" />
           </Button>
-          <span className="w-10 text-center text-sm font-medium">{quantity}</span>
-          <Button type="button" variant="ghost" size="icon" onClick={() => setQuantity((q) => q + 1)} disabled={!canAdd}>
+          <Input
+            type="number"
+            inputMode="numeric"
+            min={1}
+            max={500}
+            value={quantity === 0 ? "" : quantity}
+            onChange={(e) => {
+              const raw = e.target.value;
+              if (raw === "") {
+                setQuantity(0);
+                return;
+              }
+              const n = Math.trunc(Number(raw));
+              if (Number.isFinite(n)) setQuantity(Math.min(500, Math.max(0, n)));
+            }}
+            onBlur={() => setQuantity((q) => Math.max(1, Math.min(500, q)))}
+            disabled={!canAdd}
+            aria-label="Quantity"
+            className="h-9 w-14 rounded-none border-0 text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          />
+          <Button type="button" variant="ghost" size="icon" onClick={() => setQuantity((q) => Math.min(500, q + 1))} disabled={!canAdd}>
             <Plus className="h-4 w-4" />
           </Button>
         </div>
@@ -122,7 +144,7 @@ export function AddToCart({ productId, slug, name, unit, image, basePriceKobo, i
           className="flex-1 gap-2 rounded-sm bg-accent font-heading font-bold uppercase tracking-wide hover:bg-accent/90"
         >
           <ShoppingCart className="h-4 w-4" />
-          {canAdd ? "Add to Cart" : "Out of Stock"}
+          {buttonLabel}
         </Button>
       </div>
 

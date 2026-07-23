@@ -64,6 +64,14 @@ export default function Home() {
                 size="lg"
                 className="rounded-sm bg-accent font-heading font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90"
               >
+                <Link href="/store">Shop Online</Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="rounded-sm border-primary-foreground/30 bg-transparent font-heading font-bold uppercase tracking-wide text-primary-foreground hover:bg-primary-foreground/10"
+              >
                 <Link href="/contact">Get WhatsApp Quote</Link>
               </Button>
               <Button

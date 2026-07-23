@@ -9,14 +9,9 @@ import { AddToCart } from "@/components/store/add-to-cart";
 import { formatNaira } from "@/lib/store/format";
 import type { ProductImage } from "@/lib/store/types";
 import { siteIdentity } from "@/lib/site-identity";
+import { categoryLabel } from "@/lib/store/categories";
 
 export const dynamic = "force-dynamic";
-
-const CATEGORY_LABELS: Record<string, string> = {
-  SHEETS: "Roofing Sheets",
-  STONE_COATED: "Stone-Coated Tiles",
-  ACCESSORIES: "Accessories",
-};
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>;
@@ -95,7 +90,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <div>
             <p className="mb-2 font-heading text-xs font-bold uppercase tracking-widest text-accent">
-              {CATEGORY_LABELS[product.category] ?? product.category}
+              {categoryLabel(product.category)}
             </p>
             <h1 className="mb-3 font-heading text-3xl font-bold uppercase leading-tight sm:text-4xl">
               {product.name}

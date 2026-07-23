@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ProductCard } from "@/components/store/product-card";
 import type { ProductImage } from "@/lib/store/types";
 import { siteIdentity } from "@/lib/site-identity";
+import { CATEGORY_LABELS, CATEGORY_VALUES } from "@/lib/store/categories";
 
 export const dynamic = "force-dynamic";
 
@@ -17,10 +18,8 @@ export const metadata: Metadata = {
 
 const CATEGORIES = [
   { value: undefined, label: "All Products" },
-  { value: "SHEETS", label: "Roofing Sheets" },
-  { value: "STONE_COATED", label: "Stone-Coated Tiles" },
-  { value: "ACCESSORIES", label: "Accessories" },
-] as const;
+  ...CATEGORY_VALUES.map((value) => ({ value, label: CATEGORY_LABELS[value] })),
+];
 
 interface StorePageProps {
   searchParams: Promise<{ category?: string }>;

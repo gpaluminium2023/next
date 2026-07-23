@@ -49,12 +49,19 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <CartButton />
           <ThemeToggle />
-          <div className="hidden md:block">
+          <div className="hidden items-center gap-2 md:flex">
+            <Button
+              asChild
+              variant="outline"
+              className="font-heading font-bold uppercase tracking-wide text-sm rounded-sm"
+            >
+              <Link href="/contact">Get a Quote</Link>
+            </Button>
             <Button
               asChild
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-heading font-bold uppercase tracking-wide text-sm rounded-sm"
             >
-              <Link href="/contact">Get a Quote</Link>
+              <Link href="/store">Shop Online</Link>
             </Button>
           </div>
           <MobileNav />

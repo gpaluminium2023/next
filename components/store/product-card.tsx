@@ -3,12 +3,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { formatNaira } from "@/lib/store/format";
 import type { ProductImage } from "@/lib/store/types";
-
-const CATEGORY_LABELS: Record<string, string> = {
-  SHEETS: "Roofing Sheets",
-  STONE_COATED: "Stone-Coated Tiles",
-  ACCESSORIES: "Accessories",
-};
+import { categoryLabel } from "@/lib/store/categories";
 
 interface ProductCardProps {
   slug: string;
@@ -58,7 +53,7 @@ export function ProductCard({ slug, name, category, unit, images, basePriceKobo,
       </div>
       <div className="p-4">
         <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          {CATEGORY_LABELS[category] ?? category}
+          {categoryLabel(category)}
         </p>
         <h3 className="font-heading text-base font-bold uppercase leading-tight">{name}</h3>
         <div className="mt-2 flex items-baseline gap-1">
