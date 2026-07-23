@@ -11,7 +11,6 @@ import { siteIdentity } from "@/lib/site-identity";
 import {
   DEFAULT_STATE,
   GLOSSARY,
-  autoAccessoryKeys,
   computeAccessories,
   computeResults,
   getSpans,
@@ -40,7 +39,7 @@ export interface SheetProduct {
   variants: SheetVariant[];
 }
 
-const STEPS = ["Roof Shape", "Measurements", "Roof Pitch", "Sheet Type", "Accessories", "Result"];
+const STEPS = ["Roof Shape", "Measurements", "Roof Pitch", "Sheet Type", "Result"];
 
 export function RoofCalculator({ products }: { products: SheetProduct[] }) {
   const [step, setStep] = useState(0);
@@ -112,9 +111,6 @@ export function RoofCalculator({ products }: { products: SheetProduct[] }) {
           />
         )}
         {step === 4 && (
-          <StepAccessories state={state} patch={patch} onBack={() => setStep(3)} onNext={() => setStep(5)} />
-        )}
-        {step === 5 && (
           <StepResult state={state} products={products} openWhy={openWhy} toggleWhy={toggleWhy} onReset={reset} />
         )}
       </div>
@@ -582,108 +578,9 @@ function StepSheet({
   );
 }
 
-/* --------------------------- Step: Accessories ----------------------------- */
-
 function accBadge(common: string) {
   return (
     <span className="ml-1.5 rounded-xs bg-muted px-1.5 py-0.5 text-[11px] text-muted-foreground">aka {common}</span>
-  );
-}
-
-function StepAccessories({
-  state,
-  patch,
-  onBack,
-  onNext,
-}: {
-  state: CalculatorState;
-  patch: (p: Partial<CalculatorState>) => void;
-  onBack: () => void;
-  onNext: () => void;
-}) {
-  const acc = computeAccessories(state);
-  const autoKeys = autoAccessoryKeys(state.shape);
-
-  return (
-    <div>
-      <StepHeader
-        n={5}
-        title="Ridges, gutters & trim"
-        help="These are worked out from your roof shape automatically. Every piece is bent from a 6m sheet, so longer runs need several pieces with a small overlap at each joint — that's already included below."
-      />
-
-      <div className="mb-5 grid gap-3 sm:grid-cols-2">
-        {autoKeys.map((key) => {
-          const g = GLOSSARY.find((x) => x.key === key)!;
-          const it = acc.items[key];
-          return (
-            <div key={key} className="rounded-sm border border-border bg-background p-3.5">
-              <div className="flex items-center text-xs uppercase tracking-wide text-muted-foreground">
-                {g.tech}
-                {accBadge(g.common)}
-              </div>
-              <div className="mt-1 font-mono text-lg font-bold">
-                {round2(it.length)} m &rarr; {it.pieces} piece{it.pieces === 1 ? "" : "s"}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {state.shape === "hipext" && (
-        <div className="mb-5">
-          <Disclaimer>
-            Valley flashing runs where the extension roof meets the main roof — this length depends on the exact
-            join, so please measure it on site or estimate it below.
-          </Disclaimer>
-        </div>
-      )}
-
-      <div className="grid gap-x-6 sm:grid-cols-2">
-        <Field label="Valley flashing length" hint="metres, 0 if none">
-          <Input
-            type="number"
-            step="0.1"
-            value={state.valleyLen}
-            onChange={(e) => patch({ valleyLen: parseFloat(e.target.value) || 0 })}
-          />
-        </Field>
-        <Field label="Wall / apron flashing length" hint="only if a wall meets the roof, metres">
-          <Input
-            type="number"
-            step="0.1"
-            value={state.wallFlashingLen}
-            onChange={(e) => patch({ wallFlashingLen: parseFloat(e.target.value) || 0 })}
-          />
-        </Field>
-        <Field label="Bending machine max length" hint="metres, default 6">
-          <Input
-            type="number"
-            step="0.5"
-            value={state.bendMax}
-            onChange={(e) => patch({ bendMax: parseFloat(e.target.value) || 0 })}
-          />
-        </Field>
-        <Field label="Overlap per joint" hint="metres taken up per bend joint">
-          <Input
-            type="number"
-            step="0.05"
-            value={state.bendLap}
-            onChange={(e) => patch({ bendLap: parseFloat(e.target.value) || 0 })}
-          />
-        </Field>
-      </div>
-
-      <div className="max-w-[280px] rounded-sm border border-border bg-background p-3.5">
-        <div className="flex items-center text-xs uppercase tracking-wide text-muted-foreground">
-          Stop Ends / End Caps
-          {accBadge("End caps")}
-        </div>
-        <div className="mt-1 font-mono text-lg font-bold">{acc.endCaps} pieces</div>
-      </div>
-
-      <NavRow onBack={onBack} onNext={onNext} nextLabel="See Result" />
-    </div>
   );
 }
 
@@ -762,7 +659,7 @@ function StepResult({
   return (
     <div>
       <StepHeader
-        n={6}
+        n={5}
         title="Your estimate"
         help="Based on what you entered. Treat this as a solid working estimate — confirm exact hip/valley cuts on site before final ordering."
       />
