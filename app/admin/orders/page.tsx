@@ -109,6 +109,11 @@ export default async function AdminOrdersPage({ searchParams }: AdminOrdersPageP
                     <Badge variant={STATUS_VARIANT[order.status] ?? "outline"} className="h-4 text-xs">
                       {order.status}
                     </Badge>
+                    {order.source === "ROOF_CALCULATOR" && (
+                      <Badge variant="secondary" className="h-4 text-xs">
+                        Calculator
+                      </Badge>
+                    )}
                   </div>
                   <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                     <span>{order.customerName}</span>

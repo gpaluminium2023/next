@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CheckCircle2, MessageCircle } from "lucide-react";
+import { CheckCircle2, Download, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
 import { formatNaira } from "@/lib/store/format";
@@ -70,6 +70,12 @@ export default async function CheckoutSuccessPage({ searchParams }: SuccessPageP
           <a href={`https://wa.me/2349150459964?text=${whatsappText}`} target="_blank" rel="noopener noreferrer">
             <MessageCircle className="h-4 w-4" />
             Confirm Delivery on WhatsApp
+          </a>
+        </Button>
+        <Button asChild variant="outline" className="gap-2">
+          <a href={`/api/orders/${order.reference}/receipt`}>
+            <Download className="h-4 w-4" />
+            Download Receipt (PDF)
           </a>
         </Button>
         <Button asChild variant="outline">

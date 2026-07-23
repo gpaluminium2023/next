@@ -1,5 +1,6 @@
 import { Prisma } from "@/lib/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
+import { sendAdminOrderNotice, sendBuyerReceiptEmail } from "@/lib/email/order-emails";
 
 // Paystack reference charset is restricted to [a-zA-Z0-9-=.]
 export function generateOrderReference(): string {
@@ -26,10 +27,18 @@ interface MarkOrderPaidInput {
 // single-row create/update/delete work fine.)
 export async function markOrderPaid({ reference, paystackId, channel, paidAt }: MarkOrderPaidInput) {
   try {
-    await prisma.order.update({
+    const order = await prisma.order.update({
       where: { reference, status: "PENDING" },
       data: { status: "PAID", paystackId, channel, paidAt },
+      include: { items: true },
     });
+    // Whichever of callback/webhook wins this race is the sole sender, so
+    // these run exactly once per order. Awaited (not fire-and-forget) since
+    // a serverless instance can freeze right after the response is sent,
+    // which would silently drop an unawaited email send. Both functions
+    // swallow their own errors, so a Resend outage can't fail this call.
+    await sendBuyerReceiptEmail(order);
+    await sendAdminOrderNotice(order);
     return true;
   } catch (err) {
     if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2025") {

@@ -23,6 +23,7 @@ import {
 } from "@/lib/roof-calculator/calculations";
 import { ShapeIcon, SHAPE_META } from "@/components/roof-calculator/shape-icons";
 import { PlanDiagram } from "@/components/roof-calculator/plan-diagram";
+import { EstimateContactForm } from "@/components/roof-calculator/estimate-contact-form";
 
 export interface SheetVariant {
   id: string;
@@ -774,6 +775,10 @@ function StepResult({
             Send Estimate to WhatsApp
           </a>
         </Button>
+      </div>
+
+      <div className="mt-4">
+        <EstimateContactForm state={state} />
       </div>
 
       <div className="mt-4 flex justify-between">

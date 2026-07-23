@@ -104,6 +104,11 @@ enum OrderStatus {
   CANCELLED
 }
 
+enum OrderSource {
+  STORE
+  ROOF_CALCULATOR
+}
+
 model Product {
   id            String           @id @default(cuid())
   name          String
@@ -139,21 +144,23 @@ model ProductVariant {
 }
 
 model Order {
-  id              String      @id @default(cuid())
-  reference       String      @unique // "GPA-…" — also the Paystack transaction reference
-  status          OrderStatus @default(PENDING)
-  customerName    String
-  customerEmail   String
-  customerPhone   String
-  deliveryAddress String
-  note            String?
-  subtotalKobo    Int // materials only; delivery quoted separately
-  paidAt          DateTime?
-  paystackId      String? // Paystack transaction id from verify/webhook
-  channel         String? // "card" | "bank" | "ussd" …
-  items           OrderItem[]
-  createdAt       DateTime    @default(now())
-  updatedAt       DateTime    @updatedAt
+  id                String      @id @default(cuid())
+  reference         String      @unique // "GPA-…" — also the Paystack transaction reference
+  status            OrderStatus @default(PENDING)
+  source            OrderSource @default(STORE)
+  customerName      String
+  customerEmail     String
+  customerPhone     String
+  deliveryAddress   String? // not collected yet for ROOF_CALCULATOR quotes
+  note              String?
+  subtotalKobo      Int // materials only; delivery quoted separately
+  calculatorDetails Json? // roof shape/dims/pitch/accessories snapshot, ROOF_CALCULATOR only
+  paidAt            DateTime?
+  paystackId        String? // Paystack transaction id from verify/webhook
+  channel           String? // "card" | "bank" | "ussd" …
+  items             OrderItem[]
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
 }
 
 model OrderItem {
@@ -168,6 +175,6 @@ model OrderItem {
   variantSnapshot String? // variant label at purchase time
   unit            String
   unitPriceKobo   Int // DB-derived price at purchase, never client price
-  quantity        Int
+  quantity        Float // sqm for ROOF_CALCULATOR items, piece count for STORE items
   lineTotalKobo   Int
 }

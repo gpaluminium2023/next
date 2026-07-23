@@ -2,12 +2,14 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import { redirect, notFound } from "next/navigation";
 import { format } from "date-fns";
-import { ChevronLeft, Mail, MessageCircle, Phone } from "lucide-react";
+import { ChevronLeft, Download, Mail, MessageCircle, Phone } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { OrderStatusSelect } from "@/components/admin/order-status-select";
 import { formatNaira } from "@/lib/store/format";
+import type { CalculatorDetailsSnapshot } from "@/lib/roof-calculator/calculator-details";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -22,6 +24,8 @@ export default async function AdminOrderDetailPage({ params }: Props) {
   if (!order) notFound();
 
   const whatsappNumber = order.customerPhone.replace(/[^0-9]/g, "");
+  const calc = order.source === "ROOF_CALCULATOR" ? (order.calculatorDetails as CalculatorDetailsSnapshot | null) : null;
+  const canDownloadReceipt = order.source === "ROOF_CALCULATOR" || order.status === "PAID" || order.status === "FULFILLED";
 
   return (
     <div className="min-h-screen bg-background">
@@ -44,12 +48,25 @@ export default async function AdminOrderDetailPage({ params }: Props) {
       <main className="container mx-auto max-w-4xl px-4 py-8">
         <div className="mb-6 flex items-center justify-between">
           <div>
-            <h1 className="font-heading text-2xl font-bold uppercase">{order.reference}</h1>
+            <div className="flex flex-wrap items-center gap-2">
+              <h1 className="font-heading text-2xl font-bold uppercase">{order.reference}</h1>
+              {order.source === "ROOF_CALCULATOR" && <Badge variant="secondary">Calculator</Badge>}
+            </div>
             <p className="text-sm text-muted-foreground">
               Placed {format(order.createdAt, "d MMM yyyy, HH:mm")}
             </p>
           </div>
-          <OrderStatusSelect orderId={order.id} status={order.status} />
+          <div className="flex items-center gap-2">
+            {canDownloadReceipt && (
+              <Button asChild variant="outline" size="sm" className="gap-2">
+                <a href={`/api/orders/${order.reference}/receipt`}>
+                  <Download className="h-4 w-4" />
+                  {order.source === "ROOF_CALCULATOR" ? "Estimate PDF" : "Receipt PDF"}
+                </a>
+              </Button>
+            )}
+            <OrderStatusSelect orderId={order.id} status={order.status} />
+          </div>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2">
@@ -132,6 +149,59 @@ export default async function AdminOrderDetailPage({ params }: Props) {
             <span className="font-heading text-lg font-bold">{formatNaira(order.subtotalKobo)}</span>
           </div>
         </div>
+
+        {calc && (
+          <div className="mt-6 rounded-sm border border-border bg-card p-5">
+            <h2 className="mb-3 font-heading text-sm font-bold uppercase tracking-wide">Calculator Breakdown</h2>
+            <dl className="grid gap-x-6 gap-y-1.5 text-sm sm:grid-cols-2">
+              <div className="flex justify-between">
+                <dt className="text-muted-foreground">Roof shape</dt>
+                <dd className="font-medium capitalize">{calc.shape}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="text-muted-foreground">Pitch</dt>
+                <dd className="font-medium">{calc.pitchDeg}°</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="text-muted-foreground">Roof area (with waste)</dt>
+                <dd className="font-medium">{calc.roofAreaWithWaste} m²</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="text-muted-foreground">Sheets needed</dt>
+                <dd className="font-medium">{calc.sheetsCount}</dd>
+              </div>
+              {calc.totalLinearMeters != null && (
+                <div className="flex justify-between">
+                  <dt className="text-muted-foreground">Total linear metres</dt>
+                  <dd className="font-medium">{calc.totalLinearMeters} m</dd>
+                </div>
+              )}
+              <div className="flex justify-between">
+                <dt className="text-muted-foreground">Approx. fasteners</dt>
+                <dd className="font-medium">{calc.fasteners}</dd>
+              </div>
+            </dl>
+            {calc.accessories.some((a) => a.length > 0) && (
+              <>
+                <h3 className="mb-2 mt-4 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  Trim &amp; accessories
+                </h3>
+                <ul className="grid gap-1 text-sm sm:grid-cols-2">
+                  {calc.accessories
+                    .filter((a) => a.length > 0)
+                    .map((a) => (
+                      <li key={a.label} className="flex justify-between">
+                        <span className="text-muted-foreground">{a.label}</span>
+                        <span className="font-medium">
+                          {a.length} m &rarr; {a.pieces} pc
+                        </span>
+                      </li>
+                    ))}
+                </ul>
+              </>
+            )}
+          </div>
+        )}
       </main>
     </div>
   );
