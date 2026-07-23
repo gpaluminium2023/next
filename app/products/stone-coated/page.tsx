@@ -109,6 +109,7 @@ export default function StoneCoatedPage() {
       "@type": "AggregateOffer",
       priceCurrency: "NGN",
       lowPrice: "4750",
+      highPrice: "5200",
       offerCount: "5",
       availability: "https://schema.org/InStock",
       seller: {
