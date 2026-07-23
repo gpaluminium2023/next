@@ -24,26 +24,34 @@ interface MarkOrderPaidInput {
 // (`updateMany`/`createMany` are avoided everywhere in the store: the Neon
 // HTTP adapter used at runtime — lib/prisma.ts — rejects their implicit
 // transaction with "Transactions are not supported in HTTP mode", while
-// single-row create/update/delete work fine.)
+// single-row create/update/delete work fine. For the same reason this must
+// NOT add `include: { items: true }` to the update — Prisma compiles
+// update-with-include into an interactive transaction, which throws that
+// same error and prevents the UPDATE from ever committing.)
 export async function markOrderPaid({ reference, paystackId, channel, paidAt }: MarkOrderPaidInput) {
   try {
-    const order = await prisma.order.update({
+    await prisma.order.update({
       where: { reference, status: "PENDING" },
       data: { status: "PAID", paystackId, channel, paidAt },
-      include: { items: true },
     });
-    // Whichever of callback/webhook wins this race is the sole sender, so
-    // these run exactly once per order. Awaited (not fire-and-forget) since
-    // a serverless instance can freeze right after the response is sent,
-    // which would silently drop an unawaited email send. Both functions
-    // swallow their own errors, so a Resend outage can't fail this call.
-    await sendBuyerReceiptEmail(order);
-    await sendAdminOrderNotice(order);
-    return true;
   } catch (err) {
     if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2025") {
       return false; // already PAID/FULFILLED/CANCELLED — not an error
     }
     throw err;
   }
+
+  // Fetched separately (plain findUnique, no transaction) purely to build
+  // the email payload — a failure here must never undo the PAID status above.
+  try {
+    const order = await prisma.order.findUnique({ where: { reference }, include: { items: true } });
+    if (order) {
+      await sendBuyerReceiptEmail(order);
+      await sendAdminOrderNotice(order);
+    }
+  } catch (err) {
+    console.error("Order marked PAID but receipt/notice emails failed:", err);
+  }
+
+  return true;
 }
