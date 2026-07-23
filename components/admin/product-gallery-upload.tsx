@@ -68,6 +68,11 @@ export function ProductGalleryUpload({ images, onChange }: ProductGalleryUploadP
             const info = result.info as CloudinaryUploadResult;
             addImage(info.secure_url, info.public_id);
           }}
+          onClose={() => {
+            // Safety net: cloudinary-community/next-cloudinary#470 — the widget
+            // sometimes leaves <body> stuck at overflow: hidden after closing.
+            document.body.style.overflow = "auto";
+          }}
         >
           {({ open }) => (
             <button

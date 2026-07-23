@@ -51,11 +51,21 @@ export function CoverImageUpload({
             folder: "gpa-blog",
             multiple: false,
             resourceType: "image",
-            maxFileSize: 5_000_000, // 5 MB
+            maxFileSize: 40_000_000, // 40 MB; compressed on upload via the gpa_blog_cover preset
+            uploadPreset: "gpa_blog_cover",
           }}
-          onSuccess={(result) => {
+          onSuccess={(result, { close }) => {
             const info = result.info as CloudinaryUploadResult;
             onChange(info.secure_url, info.public_id);
+            // The widget sets `overflow: hidden` on <body> while open. Closing it
+            // explicitly here (instead of letting unmount destroy() interrupt the
+            // close animation) is required for it to clean that up properly.
+            close();
+          }}
+          onClose={() => {
+            // Safety net: cloudinary-community/next-cloudinary#470 — the widget
+            // sometimes leaves <body> stuck at overflow: hidden after closing.
+            document.body.style.overflow = "auto";
           }}
         >
           {({ open }) => (
@@ -66,9 +76,7 @@ export function CoverImageUpload({
             >
               <ImagePlus className="h-8 w-8 opacity-50" />
               <span>Click to upload cover image</span>
-              <span className="text-xs opacity-60">
-                PNG, JPG, WebP · max 5 MB
-              </span>
+              <span className="text-xs opacity-60">PNG, JPG, WebP</span>
             </button>
           )}
         </CldUploadWidget>
