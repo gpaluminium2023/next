@@ -2,7 +2,7 @@
 
 import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { signIn } from "@/lib/auth-client";
+import { signIn, getSession } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,6 +13,7 @@ import { Loader2 } from "lucide-react";
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const hasExplicitCallback = searchParams.has("callbackUrl");
   const callbackUrl = searchParams.get("callbackUrl") ?? "/admin";
 
   const [email, setEmail] = useState("");
@@ -33,7 +34,16 @@ function LoginForm() {
       return;
     }
 
-    router.push(callbackUrl);
+    // A deep link into a guarded page (explicit callbackUrl) is always
+    // honored as-is — the destination page's own guard handles any role
+    // mismatch. Otherwise send staff straight to Orders, since they can't
+    // access the default /admin (Blog CMS).
+    if (hasExplicitCallback) {
+      router.push(callbackUrl);
+      return;
+    }
+    const { data } = await getSession();
+    router.push(data?.user?.role === "staff" ? "/admin/orders" : callbackUrl);
   }
 
   return (

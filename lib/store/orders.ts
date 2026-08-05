@@ -55,3 +55,30 @@ export async function markOrderPaid({ reference, paystackId, channel, paidAt }: 
 
   return true;
 }
+
+// Called from the confirm-payment route when the dealer or a staff member
+// has manually verified a bank transfer landed in the real account. Same
+// idempotent-update shape as markOrderPaid above (conditional `update`, P2025
+// = no-op) and the same single-row-only constraint re: the Neon HTTP adapter.
+export async function confirmBankTransferPayment(orderId: string) {
+  try {
+    await prisma.order.update({
+      where: { id: orderId, status: "PENDING", paymentMethod: "BANK_TRANSFER" },
+      data: { status: "PAID", channel: "bank_transfer", paidAt: new Date() },
+    });
+  } catch (err) {
+    if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2025") {
+      return false; // not a pending bank-transfer order — nothing to confirm
+    }
+    throw err;
+  }
+
+  try {
+    const order = await prisma.order.findUnique({ where: { id: orderId }, include: { items: true } });
+    if (order) await sendBuyerReceiptEmail(order);
+  } catch (err) {
+    console.error("Order marked PAID but buyer receipt email failed:", err);
+  }
+
+  return true;
+}

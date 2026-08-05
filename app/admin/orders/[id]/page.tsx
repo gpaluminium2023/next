@@ -8,6 +8,7 @@ import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { OrderStatusSelect } from "@/components/admin/order-status-select";
+import { ConfirmBankTransferPayment } from "@/components/admin/confirm-bank-transfer-payment";
 import { formatNaira } from "@/lib/store/format";
 import type { CalculatorDetailsSnapshot } from "@/lib/roof-calculator/calculator-details";
 
@@ -17,7 +18,8 @@ interface Props {
 
 export default async function AdminOrderDetailPage({ params }: Props) {
   const session = await auth.api.getSession({ headers: await headers() });
-  if (!session || session.user.role !== "admin") redirect("/admin/login");
+  if (!session || (session.user.role !== "admin" && session.user.role !== "staff")) redirect("/admin/login");
+  const isAdmin = session.user.role === "admin";
 
   const { id } = await params;
   const order = await prisma.order.findUnique({ where: { id }, include: { items: true } });
@@ -26,6 +28,7 @@ export default async function AdminOrderDetailPage({ params }: Props) {
   const whatsappNumber = order.customerPhone.replace(/[^0-9]/g, "");
   const calc = order.source === "ROOF_CALCULATOR" ? (order.calculatorDetails as CalculatorDetailsSnapshot | null) : null;
   const canDownloadReceipt = order.source === "ROOF_CALCULATOR" || order.status === "PAID" || order.status === "FULFILLED";
+  const canConfirmBankTransfer = order.paymentMethod === "BANK_TRANSFER" && order.status === "PENDING";
 
   return (
     <div className="min-h-screen bg-background">
@@ -50,6 +53,7 @@ export default async function AdminOrderDetailPage({ params }: Props) {
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <h1 className="font-heading text-2xl font-bold uppercase">{order.reference}</h1>
+              {order.paymentMethod === "BANK_TRANSFER" && <Badge variant="outline">Bank Transfer</Badge>}
               {order.source === "ROOF_CALCULATOR" && <Badge variant="secondary">Calculator</Badge>}
             </div>
             <p className="text-sm text-muted-foreground">
@@ -65,7 +69,8 @@ export default async function AdminOrderDetailPage({ params }: Props) {
                 </a>
               </Button>
             )}
-            <OrderStatusSelect orderId={order.id} status={order.status} />
+            {canConfirmBankTransfer && <ConfirmBankTransferPayment orderId={order.id} />}
+            {isAdmin && <OrderStatusSelect orderId={order.id} status={order.status} />}
           </div>
         </div>
 

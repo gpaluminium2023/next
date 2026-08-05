@@ -109,6 +109,11 @@ enum OrderSource {
   ROOF_CALCULATOR
 }
 
+enum PaymentMethod {
+  PAYSTACK
+  BANK_TRANSFER
+}
+
 model Product {
   id            String           @id @default(cuid())
   name          String
@@ -148,6 +153,7 @@ model Order {
   reference         String      @unique // "GPA-…" — also the Paystack transaction reference
   status            OrderStatus @default(PENDING)
   source            OrderSource @default(STORE)
+  paymentMethod     PaymentMethod @default(PAYSTACK)
   customerName      String
   customerEmail     String
   customerPhone     String
@@ -177,4 +183,15 @@ model OrderItem {
   unitPriceKobo   Int // DB-derived price at purchase, never client price
   quantity        Float // sqm for ROOF_CALCULATOR items, piece count for STORE items
   lineTotalKobo   Int
+}
+
+// Singleton row (id is always "singleton") holding the dealer's bank account
+// details shown to customers who choose BANK_TRANSFER at checkout.
+model BankTransferSettings {
+  id            String   @id @default("singleton")
+  bankName      String   @default("")
+  accountNumber String   @default("")
+  accountName   String   @default("")
+  instructions  String?
+  updatedAt     DateTime @updatedAt
 }

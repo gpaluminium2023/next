@@ -1,0 +1,322 @@
+[
+  {
+    "id": "cmsb1luy4000004lcnje80d6x",
+    "name": "    Gerard Roofing Nails",
+    "slug": "gerard-roofing-nails",
+    "description": "    Stone-Coated Roofing Nails\n    Premium roofing nails engineered to provide a strong hold and reliable performance for Gerard roofing ",
+    "category": "ACCESSORIES",
+    "unit": "pack",
+    "basePriceKobo": null,
+    "inStock": true,
+    "published": true,
+    "featured": true,
+    "sortOrder": 1,
+    "images": [
+      {
+        "alt": "    Gerard Roofing Nails",
+        "url": "https://res.cloudinary.com/dvwthkii4/image/upload/v1785628971/gpa-store/kneru23vjlx07egribqu.png",
+        "publicId": "gpa-store/kneru23vjlx07egribqu"
+      }
+    ],
+    "videoUrl": null,
+    "videoPublicId": null,
+    "createdAt": "2026-08-02T00:09:02.956Z",
+    "updatedAt": "2026-08-02T00:11:03.676Z",
+    "variants": [
+      {
+        "id": "cmsb1luyj000104lcavtd8y0o",
+        "productId": "cmsb1luy4000004lcnje80d6x",
+        "label": "5kg ",
+        "priceKobo": 1135000,
+        "inStock": true,
+        "sortOrder": 0
+      },
+      {
+        "id": "cmsb1og4m000204lcy3skda25",
+        "productId": "cmsb1luy4000004lcnje80d6x",
+        "label": "4kg ",
+        "priceKobo": 950000,
+        "inStock": true,
+        "sortOrder": 1
+      }
+    ],
+    "_count": {
+      "orderItems": 0
+    }
+  },
+  {
+    "id": "cmsb1criz000004l670z818ag",
+    "name": "Flashband for Roof Maintenance in Nigeria | Waterproof Leak Repair Solut",
+    "slug": "flashband-for-roof-maintenance-in-nigeria-waterproof-leak-repair-solut",
+    "description": "Flashband for Roof Maintenance\n\nFlashband is a self-adhesive waterproof sealing tape designed for fast and effective roof maintenance. It is widely used to seal leaks, cracks, joints, flashing, gutters, skylights, valleys, chimneys, and roof edges on aluminium roofing sheets, stone-coated roofing, galvanized roofing, and other roofing systems. Its strong adhesive backing and weather-resistant aluminium foil provide long-lasting protection against rain, moisture, heat, and corrosion.",
+    "category": "ACCESSORIES",
+    "unit": "piece",
+    "basePriceKobo": null,
+    "inStock": true,
+    "published": true,
+    "featured": true,
+    "sortOrder": 1,
+    "images": [
+      {
+        "alt": "Flash Band ",
+        "url": "https://res.cloudinary.com/dvwthkii4/image/upload/v1785628536/gpa-store/zgiiduqbawoodllalabm.png",
+        "publicId": "gpa-store/zgiiduqbawoodllalabm"
+      }
+    ],
+    "videoUrl": null,
+    "videoPublicId": null,
+    "createdAt": "2026-08-02T00:01:58.619Z",
+    "updatedAt": "2026-08-02T00:01:58.619Z",
+    "variants": [
+      {
+        "id": "cmsb1crjv000104l6bnym3pk3",
+        "productId": "cmsb1criz000004l670z818ag",
+        "label": "Flash Band ",
+        "priceKobo": 1950000,
+        "inStock": true,
+        "sortOrder": 0
+      }
+    ],
+    "_count": {
+      "orderItems": 0
+    }
+  },
+  {
+    "id": "cmrutzuo9000inc09c4b65hol",
+    "name": "Roofing Drive Screws",
+    "slug": "roofing-drive-screws",
+    "description": "Corrosion-resistant drive screws selected to match our roofing sheets.",
+    "category": "ACCESSORIES",
+    "unit": "pack",
+    "basePriceKobo": null,
+    "inStock": true,
+    "published": false,
+    "featured": false,
+    "sortOrder": 10,
+    "images": [
+      {
+        "alt": "Roofing drive screws",
+        "url": "/images/pdrivescrew.jpg",
+        "publicId": ""
+      }
+    ],
+    "videoUrl": null,
+    "videoPublicId": null,
+    "createdAt": "2026-07-21T16:51:40.041Z",
+    "updatedAt": "2026-07-21T16:51:40.041Z",
+    "variants": [],
+    "_count": {
+      "orderItems": 0
+    }
+  },
+  {
+    "id": "cmrutzv2h000jnc09rujwxiv2",
+    "name": "Roofing Seam Bolts",
+    "slug": "roofing-seam-bolts",
+    "description": "Seam bolts for secure sheet-to-sheet joins.",
+    "category": "ACCESSORIES",
+    "unit": "pack",
+    "basePriceKobo": null,
+    "inStock": true,
+    "published": true,
+    "featured": true,
+    "sortOrder": 11,
+    "images": [
+      {
+        "alt": "Roofing seam bolts",
+        "url": "/images/pseambolt.jpg",
+        "publicId": ""
+      },
+      {
+        "alt": "Roofing seam bolt",
+        "url": "https://res.cloudinary.com/dvwthkii4/image/upload/v1785629560/gpa-store/sow8ptivdmjpzw9qy2fh.png",
+        "publicId": "gpa-store/sow8ptivdmjpzw9qy2fh"
+      }
+    ],
+    "videoUrl": null,
+    "videoPublicId": null,
+    "createdAt": "2026-07-21T16:51:40.553Z",
+    "updatedAt": "2026-08-02T00:14:03.737Z",
+    "variants": [
+      {
+        "id": "cmsb1sb1h000304lc893l1v2t",
+        "productId": "cmrutzv2h000jnc09rujwxiv2",
+        "label": "1 pack ",
+        "priceKobo": 235000,
+        "inStock": true,
+        "sortOrder": 0
+      }
+    ],
+    "_count": {
+      "orderItems": 0
+    }
+  },
+  {
+    "id": "cmrutzvdz000knc09i48trc8r",
+    "name": "Roofing Nails & Washers",
+    "slug": "roofing-nails-washers",
+    "description": "Nails and rubber washers for a watertight fix.",
+    "category": "ACCESSORIES",
+    "unit": "pack",
+    "basePriceKobo": null,
+    "inStock": true,
+    "published": true,
+    "featured": true,
+    "sortOrder": 12,
+    "images": [
+      {
+        "alt": "Roofing nails",
+        "url": "/images/pnail.jpg",
+        "publicId": ""
+      },
+      {
+        "alt": "Roofing washers",
+        "url": "/images/pwasher.jpg",
+        "publicId": ""
+      }
+    ],
+    "videoUrl": null,
+    "videoPublicId": null,
+    "createdAt": "2026-07-21T16:51:40.967Z",
+    "updatedAt": "2026-08-03T10:54:50.271Z",
+    "variants": [
+      {
+        "id": "cmsd4479p000004juzg5qnuv8",
+        "productId": "cmrutzvdz000knc09i48trc8r",
+        "label": "per pack ",
+        "priceKobo": 310000,
+        "inStock": true,
+        "sortOrder": 0
+      }
+    ],
+    "_count": {
+      "orderItems": 0
+    }
+  },
+  {
+    "id": "cmrutzvpg000lnc09pbhahq7b",
+    "name": "Roofing Felt",
+    "slug": "roofing-felt",
+    "description": "Underlay felt for extra insulation and leak protection.",
+    "category": "ACCESSORIES",
+    "unit": "pack",
+    "basePriceKobo": null,
+    "inStock": true,
+    "published": false,
+    "featured": false,
+    "sortOrder": 13,
+    "images": [
+      {
+        "alt": "Roofing felt",
+        "url": "/images/pfelt.png",
+        "publicId": ""
+      }
+    ],
+    "videoUrl": null,
+    "videoPublicId": null,
+    "createdAt": "2026-07-21T16:51:41.381Z",
+    "updatedAt": "2026-07-21T16:51:41.381Z",
+    "variants": [],
+    "_count": {
+      "orderItems": 0
+    }
+  },
+  {
+    "id": "cmrutzw1n000mnc09ozbei0c6",
+    "name": "Roofing Silicone",
+    "slug": "roofing-silicone",
+    "description": "Weatherproof sealant for joins, flashing and screw heads.",
+    "category": "ACCESSORIES",
+    "unit": "piece",
+    "basePriceKobo": null,
+    "inStock": true,
+    "published": true,
+    "featured": true,
+    "sortOrder": 14,
+    "images": [
+      {
+        "alt": "Roofing silicone sealant",
+        "url": "/images/psilicone.jpg",
+        "publicId": ""
+      }
+    ],
+    "videoUrl": null,
+    "videoPublicId": null,
+    "createdAt": "2026-07-21T16:51:41.819Z",
+    "updatedAt": "2026-08-04T13:31:54.562Z",
+    "variants": [
+      {
+        "id": "cmsep61r5000004l6rzbd2k94",
+        "productId": "cmrutzw1n000mnc09ozbei0c6",
+        "label": "ABRO 1200",
+        "priceKobo": 350000,
+        "inStock": true,
+        "sortOrder": 0
+      },
+      {
+        "id": "cmsep61ty000104l67752ocnm",
+        "productId": "cmrutzw1n000mnc09ozbei0c6",
+        "label": "ABRO 1800",
+        "priceKobo": 450000,
+        "inStock": true,
+        "sortOrder": 1
+      },
+      {
+        "id": "cmsep61u6000204l62k9xowxe",
+        "productId": "cmrutzw1n000mnc09ozbei0c6",
+        "label": "ABRO 2000 ",
+        "priceKobo": 550000,
+        "inStock": true,
+        "sortOrder": 2
+      }
+    ],
+    "_count": {
+      "orderItems": 0
+    }
+  },
+  {
+    "id": "cmrutzwes000nnc099qhqwe29",
+    "name": "Flash Band",
+    "slug": "flash-band",
+    "description": "Self-adhesive flashing band for edges, valleys and joints.",
+    "category": "ACCESSORIES",
+    "unit": "pack",
+    "basePriceKobo": null,
+    "inStock": true,
+    "published": true,
+    "featured": true,
+    "sortOrder": 15,
+    "images": [
+      {
+        "alt": "Flash band",
+        "url": "/images/pflashband.jpg",
+        "publicId": ""
+      }
+    ],
+    "videoUrl": null,
+    "videoPublicId": null,
+    "createdAt": "2026-07-21T16:51:42.292Z",
+    "updatedAt": "2026-08-04T13:37:54.990Z",
+    "variants": [
+      {
+        "id": "cmsepdrvq000004l55xdsogmc",
+        "productId": "cmrutzwes000nnc099qhqwe29",
+        "label": "EVO-STIK FLASH-BAND",
+        "priceKobo": 1500000,
+        "inStock": true,
+        "sortOrder": 0
+      },
+      {
+        "id": "cmsepdrw9000104l5r3ag4eh9",
+        "productId": "cmrutzwes000nnc099qhqwe29",
+        "label": "GIBSON FLASH BAND ",
+        "priceKobo": 1950000,
+        "inStock": true,
+        "sortOrder": 1
+      }
+    ],
+    "_count": {
+      "orderItems": 0
+    }
+  }
+]

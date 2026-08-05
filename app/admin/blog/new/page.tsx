@@ -8,7 +8,8 @@ import { ChevronLeft } from "lucide-react";
 
 export default async function NewPostPage() {
   const session = await auth.api.getSession({ headers: await headers() });
-  if (!session || session.user.role !== "admin") redirect("/admin/login");
+  if (!session) redirect("/admin/login");
+  if (session.user.role !== "admin") redirect(session.user.role === "staff" ? "/admin/orders" : "/");
 
   return (
     <div className="min-h-screen bg-background">

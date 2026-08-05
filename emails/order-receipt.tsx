@@ -91,6 +91,7 @@ OrderReceiptEmail.PreviewProps = {
     reference: "GPA-EXAMPLE-1234",
     status: "PAID",
     source: "STORE",
+    paymentMethod: "PAYSTACK",
     customerName: "Ada Okafor",
     customerEmail: "ada@example.com",
     customerPhone: "+2348012345678",

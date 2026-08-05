@@ -21,6 +21,9 @@ config({ path: resolve(__dirname, "../.env") });
 const email = process.env.ADMIN_EMAIL;
 const password = process.env.ADMIN_PASSWORD;
 const name = process.env.ADMIN_NAME ?? "Admin";
+// "admin" (default) or "staff" — staff can confirm bank transfer payments in
+// /admin/orders but can't touch products, blog, or settings.
+const role = process.env.SEED_ROLE === "staff" ? "staff" : "admin";
 
 if (!email || !password) {
   console.error("Missing ADMIN_EMAIL or ADMIN_PASSWORD in .env");
@@ -43,20 +46,20 @@ const auth = betterAuth({
 });
 
 async function main() {
-  console.log(`Seeding admin user: ${email}`);
+  console.log(`Seeding ${role} user: ${email}`);
 
   // Check if user already exists
   const existing = await prisma.user.findUnique({ where: { email: email! } });
   if (existing) {
-    // Ensure role is admin
-    if (existing.role !== "admin") {
+    // Ensure role matches
+    if (existing.role !== role) {
       await prisma.user.update({
         where: { email: email! },
-        data: { role: "admin" },
+        data: { role },
       });
-      console.log("✓ Existing user promoted to admin.");
+      console.log(`✓ Existing user promoted to ${role}.`);
     } else {
-      console.log("✓ Admin user already exists — nothing to do.");
+      console.log(`✓ ${role} user already exists — nothing to do.`);
     }
     return;
   }
@@ -67,17 +70,17 @@ async function main() {
   });
 
   if (!result || !("user" in result)) {
-    console.error("Failed to create admin user:", result);
+    console.error(`Failed to create ${role} user:`, result);
     process.exit(1);
   }
 
-  // Set role to admin
+  // Set role
   await prisma.user.update({
     where: { email: email! },
-    data: { role: "admin" },
+    data: { role },
   });
 
-  console.log(`✓ Admin user created and role set: ${email}`);
+  console.log(`✓ ${role} user created and role set: ${email}`);
 }
 
 main()

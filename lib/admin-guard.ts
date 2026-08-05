@@ -10,3 +10,14 @@ export async function requireAdmin() {
   }
   return session;
 }
+
+// Orders-only access for staff who confirm bank transfer payments on the
+// dealer's behalf — everything else (products, blog, settings) stays
+// requireAdmin-only.
+export async function requireStaff() {
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session || (session.user.role !== "admin" && session.user.role !== "staff")) {
+    return null;
+  }
+  return session;
+}

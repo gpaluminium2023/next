@@ -194,89 +194,13 @@ const products: SeedProduct[] = [
       { label: "Milano Tiles", priceKobo: nairaToKobo("₦4,750"), inStock: true, sortOrder: 4 },
     ],
   },
-  // Accessories — no confirmed price in the source pages, seeded as drafts.
-  // Admin must set a real price and publish before these appear in the store.
-  {
-    name: "Roofing Drive Screws",
-    slug: "roofing-drive-screws",
-    description: "Corrosion-resistant drive screws selected to match our roofing sheets.",
-    category: "ACCESSORIES",
-    unit: "pack",
-    basePriceKobo: null,
-    published: false,
-    featured: false,
-    sortOrder: 10,
-    images: [{ url: "/images/pdrivescrew.jpg", publicId: "", alt: "Roofing drive screws" }],
-    variants: [],
-  },
-  {
-    name: "Roofing Seam Bolts",
-    slug: "roofing-seam-bolts",
-    description: "Seam bolts for secure sheet-to-sheet joins.",
-    category: "ACCESSORIES",
-    unit: "pack",
-    basePriceKobo: null,
-    published: false,
-    featured: false,
-    sortOrder: 11,
-    images: [{ url: "/images/pseambolt.jpg", publicId: "", alt: "Roofing seam bolts" }],
-    variants: [],
-  },
-  {
-    name: "Roofing Nails & Washers",
-    slug: "roofing-nails-washers",
-    description: "Nails and rubber washers for a watertight fix.",
-    category: "ACCESSORIES",
-    unit: "pack",
-    basePriceKobo: null,
-    published: false,
-    featured: false,
-    sortOrder: 12,
-    images: [
-      { url: "/images/pnail.jpg", publicId: "", alt: "Roofing nails" },
-      { url: "/images/pwasher.jpg", publicId: "", alt: "Roofing washers" },
-    ],
-    variants: [],
-  },
-  {
-    name: "Roofing Felt",
-    slug: "roofing-felt",
-    description: "Underlay felt for extra insulation and leak protection.",
-    category: "ACCESSORIES",
-    unit: "pack",
-    basePriceKobo: null,
-    published: false,
-    featured: false,
-    sortOrder: 13,
-    images: [{ url: "/images/pfelt.png", publicId: "", alt: "Roofing felt" }],
-    variants: [],
-  },
-  {
-    name: "Roofing Silicone",
-    slug: "roofing-silicone",
-    description: "Weatherproof sealant for joins, flashing and screw heads.",
-    category: "ACCESSORIES",
-    unit: "piece",
-    basePriceKobo: null,
-    published: false,
-    featured: false,
-    sortOrder: 14,
-    images: [{ url: "/images/psilicone.jpg", publicId: "", alt: "Roofing silicone sealant" }],
-    variants: [],
-  },
-  {
-    name: "Flash Band",
-    slug: "flash-band",
-    description: "Self-adhesive flashing band for edges, valleys and joints.",
-    category: "ACCESSORIES",
-    unit: "pack",
-    basePriceKobo: null,
-    published: false,
-    featured: false,
-    sortOrder: 15,
-    images: [{ url: "/images/pflashband.jpg", publicId: "", alt: "Flash band" }],
-    variants: [],
-  },
+  // Accessories are NOT seeded here. The generic placeholders this file used to
+  // declare (roofing-drive-screws, roofing-seam-bolts, roofing-nails-washers,
+  // roofing-felt, roofing-silicone, flash-band) were deleted from the catalogue
+  // on 2026-08-05 and replaced by the named supplier products in
+  // seed-accessories.ts. Re-adding them here would resurrect them on the next
+  // `pnpm seed:store`. See prisma/backups/accessories-removed-*.json for the
+  // deleted rows.
 ];
 
 async function main() {

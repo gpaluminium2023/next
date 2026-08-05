@@ -20,7 +20,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 export default async function AdminProductsPage() {
   const session = await auth.api.getSession({ headers: await headers() });
   if (!session) redirect("/admin/login");
-  if (session.user.role !== "admin") redirect("/");
+  if (session.user.role !== "admin") redirect(session.user.role === "staff" ? "/admin/orders" : "/");
 
   const products = await prisma.product.findMany({
     include: { variants: true },
@@ -55,6 +55,9 @@ export default async function AdminProductsPage() {
           <div className="flex gap-2">
             <Button asChild variant="outline">
               <Link href="/admin/orders">Orders</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/admin/settings/bank-transfer">Settings</Link>
             </Button>
             <Button asChild>
               <Link href="/admin/products/new">New Product</Link>

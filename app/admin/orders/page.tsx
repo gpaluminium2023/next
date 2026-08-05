@@ -30,7 +30,8 @@ interface AdminOrdersPageProps {
 export default async function AdminOrdersPage({ searchParams }: AdminOrdersPageProps) {
   const session = await auth.api.getSession({ headers: await headers() });
   if (!session) redirect("/admin/login");
-  if (session.user.role !== "admin") redirect("/");
+  if (session.user.role !== "admin" && session.user.role !== "staff") redirect("/");
+  const isAdmin = session.user.role === "admin";
 
   const { status } = await searchParams;
   const validStatus =
@@ -67,9 +68,16 @@ export default async function AdminOrdersPage({ searchParams }: AdminOrdersPageP
               {orders.length} order{orders.length !== 1 ? "s" : ""}
             </p>
           </div>
-          <Button asChild variant="outline">
-            <Link href="/admin/products">Products</Link>
-          </Button>
+          {isAdmin && (
+            <div className="flex gap-2">
+              <Button asChild variant="outline">
+                <Link href="/admin/products">Products</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/admin/settings/bank-transfer">Settings</Link>
+              </Button>
+            </div>
+          )}
         </div>
 
         <div className="mb-6 flex flex-wrap gap-2">
@@ -109,6 +117,11 @@ export default async function AdminOrdersPage({ searchParams }: AdminOrdersPageP
                     <Badge variant={STATUS_VARIANT[order.status] ?? "outline"} className="h-4 text-xs">
                       {order.status}
                     </Badge>
+                    {order.paymentMethod === "BANK_TRANSFER" && (
+                      <Badge variant="outline" className="h-4 text-xs">
+                        Bank Transfer
+                      </Badge>
+                    )}
                     {order.source === "ROOF_CALCULATOR" && (
                       <Badge variant="secondary" className="h-4 text-xs">
                         Calculator

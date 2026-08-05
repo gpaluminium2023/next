@@ -13,4 +13,10 @@ export function getResendClient(): Resend | null {
 
 export const EMAIL_FROM =
   process.env.RESEND_FROM_EMAIL ?? "Gods Promise Aluminium <orders@godspromisealuminiumroofing.com>";
-export const ADMIN_NOTIFICATION_EMAIL = process.env.ADMIN_NOTIFICATION_EMAIL ?? "godspromisegroup@gmail.com";
+
+// Comma-separated so the dealer can list himself plus any staff who should
+// be alerted about new orders/bank transfers, without any new infra.
+export const ADMIN_NOTIFICATION_EMAILS = (process.env.ADMIN_NOTIFICATION_EMAIL ?? "godspromisegroup@gmail.com")
+  .split(",")
+  .map((email) => email.trim())
+  .filter(Boolean);

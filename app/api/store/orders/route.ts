@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { requireAdmin } from "@/lib/admin-guard";
+import { requireStaff } from "@/lib/admin-guard";
 import { prisma } from "@/lib/prisma";
 import { OrderStatus } from "@/lib/generated/prisma/enums";
 
 const VALID_STATUSES = Object.values(OrderStatus) as string[];
 
-// GET /api/store/orders — list orders with items (admin only)
+// GET /api/store/orders — list orders with items (admin or staff)
 export async function GET(request: NextRequest) {
-  const session = await requireAdmin();
+  const session = await requireStaff();
   if (!session) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

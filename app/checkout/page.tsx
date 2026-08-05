@@ -9,9 +9,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useCart } from "@/lib/cart/cart-context";
 import { formatNaira } from "@/lib/store/format";
 import { cartItemKey } from "@/lib/store/types";
+
+type PaymentMethod = "PAYSTACK" | "BANK_TRANSFER";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -21,6 +24,7 @@ export default function CheckoutPage() {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [note, setNote] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("PAYSTACK");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -36,6 +40,7 @@ export default function CheckoutPage() {
         body: JSON.stringify({
           items: items.map((i) => ({ productId: i.productId, variantId: i.variantId, quantity: i.quantity })),
           customer: { name, email, phone, address, note: note || undefined },
+          paymentMethod,
         }),
       });
 
@@ -46,7 +51,11 @@ export default function CheckoutPage() {
         return;
       }
 
-      window.location.href = data.authorization_url;
+      if (data.authorization_url) {
+        window.location.href = data.authorization_url;
+      } else {
+        router.push(`/checkout/bank-transfer?ref=${data.reference}`);
+      }
     } catch {
       setError("Could not reach the server. Check your connection and try again.");
       setSubmitting(false);
@@ -143,6 +152,41 @@ export default function CheckoutPage() {
             />
           </div>
 
+          <div className="space-y-1.5">
+            <Label>Payment Method</Label>
+            <RadioGroup
+              value={paymentMethod}
+              onValueChange={(v) => setPaymentMethod(v as PaymentMethod)}
+              className="gap-2"
+            >
+              <label
+                htmlFor="payment-paystack"
+                className="flex cursor-pointer items-start gap-3 rounded-sm border border-border p-3 text-sm has-[[data-state=checked]]:border-accent"
+              >
+                <RadioGroupItem value="PAYSTACK" id="payment-paystack" className="mt-0.5" />
+                <span>
+                  <span className="block font-medium">Pay with Paystack</span>
+                  <span className="block text-xs text-muted-foreground">
+                    Card, bank, transfer, or USSD — confirmed instantly.
+                  </span>
+                </span>
+              </label>
+              <label
+                htmlFor="payment-bank-transfer"
+                className="flex cursor-pointer items-start gap-3 rounded-sm border border-border p-3 text-sm has-[[data-state=checked]]:border-accent"
+              >
+                <RadioGroupItem value="BANK_TRANSFER" id="payment-bank-transfer" className="mt-0.5" />
+                <span>
+                  <span className="block font-medium">Pay by Bank Transfer</span>
+                  <span className="block text-xs text-muted-foreground">
+                    We&rsquo;ll show you our account details on the next screen. Confirmed manually
+                    once we receive it — usually within a few hours.
+                  </span>
+                </span>
+              </label>
+            </RadioGroup>
+          </div>
+
           <Button
             type="submit"
             disabled={submitting || items.length === 0}
@@ -150,11 +194,14 @@ export default function CheckoutPage() {
             size="lg"
           >
             {submitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Pay {formatNaira(subtotalKobo)} with Paystack
+            {paymentMethod === "PAYSTACK"
+              ? `Pay ${formatNaira(subtotalKobo)} with Paystack`
+              : `Place Order — Pay ${formatNaira(subtotalKobo)} by Bank Transfer`}
           </Button>
           <p className="text-center text-xs text-muted-foreground">
-            Payments are processed securely by Paystack — we never see or store your card
-            details.
+            {paymentMethod === "PAYSTACK"
+              ? "Payments are processed securely by Paystack — we never see or store your card details."
+              : "You'll get our account details and order reference on the next screen."}
           </p>
           <Button
             type="button"

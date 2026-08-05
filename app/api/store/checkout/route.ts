@@ -3,6 +3,7 @@ import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { initializeTransaction, PaystackError } from "@/lib/paystack";
 import { generateOrderReference } from "@/lib/store/orders";
+import { sendAdminOrderNotice, sendBankTransferInstructionsEmail } from "@/lib/email/order-emails";
 
 const checkoutSchema = z.object({
   items: z
@@ -21,6 +22,7 @@ const checkoutSchema = z.object({
     address: z.string().min(5),
     note: z.string().optional(),
   }),
+  paymentMethod: z.enum(["PAYSTACK", "BANK_TRANSFER"]).default("PAYSTACK"),
 });
 
 // POST /api/store/checkout — public. Prices are re-derived from the database
@@ -32,7 +34,7 @@ export async function POST(request: NextRequest) {
   if (!parsed.success) {
     return NextResponse.json({ error: "Invalid checkout payload" }, { status: 400 });
   }
-  const { items, customer } = parsed.data;
+  const { items, customer, paymentMethod } = parsed.data;
 
   interface ResolvedItem {
     productId: string;
@@ -104,6 +106,7 @@ export async function POST(request: NextRequest) {
   const order = await prisma.order.create({
     data: {
       reference,
+      paymentMethod,
       customerName: customer.name,
       customerEmail: customer.email,
       customerPhone: customer.phone,
@@ -127,6 +130,25 @@ export async function POST(request: NextRequest) {
         lineTotalKobo: item.lineTotalKobo,
       },
     });
+  }
+
+  if (paymentMethod === "BANK_TRANSFER") {
+    const bankDetails = await prisma.bankTransferSettings.findUnique({ where: { id: "singleton" } });
+    if (!bankDetails || !bankDetails.bankName || !bankDetails.accountNumber || !bankDetails.accountName) {
+      await prisma.order.update({ where: { id: order.id }, data: { status: "CANCELLED" } });
+      return NextResponse.json(
+        { error: "Bank transfer isn't set up yet — please pay with Paystack or contact us" },
+        { status: 503 },
+      );
+    }
+
+    const orderWithItems = await prisma.order.findUnique({ where: { id: order.id }, include: { items: true } });
+    if (orderWithItems) {
+      await sendBankTransferInstructionsEmail(orderWithItems, bankDetails);
+      await sendAdminOrderNotice(orderWithItems);
+    }
+
+    return NextResponse.json({ reference });
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? request.nextUrl.origin;

@@ -14,7 +14,8 @@ interface Props {
 
 export default async function EditProductPage({ params }: Props) {
   const session = await auth.api.getSession({ headers: await headers() });
-  if (!session || session.user.role !== "admin") redirect("/admin/login");
+  if (!session) redirect("/admin/login");
+  if (session.user.role !== "admin") redirect(session.user.role === "staff" ? "/admin/orders" : "/");
 
   const { id } = await params;
   const product = await prisma.product.findUnique({

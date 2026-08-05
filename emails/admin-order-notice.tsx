@@ -22,7 +22,12 @@ export interface AdminOrderNoticeEmailProps {
 
 export default function AdminOrderNoticeEmail({ order, baseUrl }: AdminOrderNoticeEmailProps) {
   const isCalculator = order.source === "ROOF_CALCULATOR";
-  const heading = isCalculator ? "New Roof Estimate Request" : "New Paid Order";
+  const isPendingBankTransfer = order.paymentMethod === "BANK_TRANSFER" && order.status === "PENDING";
+  const heading = isCalculator
+    ? "New Roof Estimate Request"
+    : isPendingBankTransfer
+      ? "New Bank Transfer Order — Payment Pending"
+      : "New Paid Order";
   const adminUrl = `${baseUrl}/admin/orders/${order.id}`;
 
   return (
@@ -38,7 +43,9 @@ export default function AdminOrderNoticeEmail({ order, baseUrl }: AdminOrderNoti
             <Text className="text-base text-gray-800">
               {isCalculator
                 ? "A customer submitted a roof sheet calculator estimate and asked to be contacted. No payment has been made yet."
-                : "A customer just completed payment on the website."}
+                : isPendingBankTransfer
+                  ? "A customer placed an order and chose to pay by bank transfer. No payment has been received yet — check the account for a matching transfer, then mark it paid in the admin."
+                  : "A customer just completed payment on the website."}
             </Text>
 
             <Section className="my-4 rounded border border-solid border-gray-200 p-4">
@@ -75,7 +82,8 @@ export default function AdminOrderNoticeEmail({ order, baseUrl }: AdminOrderNoti
               ))}
               <Hr className="my-3 border-solid border-gray-200" />
               <Text className="m-0 text-base font-bold text-gray-900">
-                {isCalculator ? "Estimated total" : "Amount paid"}: {formatNaira(order.subtotalKobo)}
+                {isCalculator ? "Estimated total" : isPendingBankTransfer ? "Amount due" : "Amount paid"}:{" "}
+                {formatNaira(order.subtotalKobo)}
               </Text>
             </Section>
 
@@ -99,6 +107,7 @@ AdminOrderNoticeEmail.PreviewProps = {
     reference: "GPA-EXAMPLE-1234",
     status: "PENDING",
     source: "ROOF_CALCULATOR",
+    paymentMethod: "PAYSTACK",
     customerName: "Ada Okafor",
     customerEmail: "ada@example.com",
     customerPhone: "+2348012345678",
