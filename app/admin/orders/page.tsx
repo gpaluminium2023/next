@@ -127,6 +127,11 @@ export default async function AdminOrdersPage({ searchParams }: AdminOrdersPageP
                         Calculator
                       </Badge>
                     )}
+                    {order.branchSnapshot && (
+                      <Badge variant="outline" className="h-4 text-xs">
+                        {order.branchSnapshot}
+                      </Badge>
+                    )}
                   </div>
                   <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                     <span>{order.customerName}</span>

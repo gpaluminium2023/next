@@ -114,6 +114,78 @@ enum PaymentMethod {
   BANK_TRANSFER
 }
 
+// ──────────────────────────────
+// Branches
+//
+// Every price in the store is resolved against a branch. The default branch
+// (exactly one row with isDefault = true — Lagos) is priced straight off
+// Product.basePriceKobo / ProductVariant.priceKobo, so the existing catalogue
+// keeps working untouched.
+//
+// Every other branch is *override-only*: it sells an item only if there is a
+// matching BranchProductPrice / BranchVariantPrice row. Row absence means "not
+// stocked here", which is what we want — the Enugu branch carries four gauges
+// per profile against Lagos's eleven, so falling back to the Lagos price would
+// silently list stock Enugu doesn't have.
+// ──────────────────────────────
+model Branch {
+  id        String  @id @default(cuid())
+  slug      String  @unique // "lagos" | "enugu"
+  name      String // "Lagos Factory"
+  shortName String // "Lagos" — used in the selector and price badges
+  isDefault Boolean @default(false)
+  published Boolean @default(true)
+  sortOrder Int     @default(0)
+
+  addressLine String // free text; the Enugu branch only gave us "Enugu–PH Expressway"
+  locality    String // "Alimosho" | "Enugu"
+  region      String // "Lagos" | "Enugu"
+  phoneE164   String
+  whatsappUrl String
+
+  // Date printed on the branch's own paper price list, shown to customers so a
+  // stale list is visible rather than implied.
+  priceListDate DateTime?
+  note          String?
+
+  productPrices BranchProductPrice[]
+  variantPrices BranchVariantPrice[]
+  orders        Order[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Per-branch price for a product that has no variants (accessories).
+model BranchProductPrice {
+  id        String  @id @default(cuid())
+  branchId  String
+  branch    Branch  @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  priceKobo Int
+  inStock   Boolean @default(true)
+
+  @@unique([branchId, productId])
+  @@index([branchId])
+}
+
+// Per-branch price for a single variant (gauge / tile design).
+model BranchVariantPrice {
+  id        String         @id @default(cuid())
+  branchId  String
+  branch    Branch         @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  variantId String
+  variant   ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  productId String // denormalised so a branch's catalogue is one query
+  product   Product        @relation(fields: [productId], references: [id], onDelete: Cascade)
+  priceKobo Int
+  inStock   Boolean        @default(true)
+
+  @@unique([branchId, variantId])
+  @@index([branchId, productId])
+}
+
 model Product {
   id            String           @id @default(cuid())
   name          String
@@ -121,7 +193,7 @@ model Product {
   description   String           @default("")
   category      ProductCategory
   unit          String           @default("sqm") // "sqm" | "piece" | "pack" | "bundle"
-  basePriceKobo Int? // used only when the product has no variants
+  basePriceKobo Int? // default-branch price; used only when the product has no variants
   inStock       Boolean          @default(true)
   published     Boolean          @default(false)
   featured      Boolean          @default(false)
@@ -131,8 +203,12 @@ model Product {
   videoPublicId String?
   variants      ProductVariant[]
   orderItems    OrderItem[]
-  createdAt     DateTime         @default(now())
-  updatedAt     DateTime         @updatedAt
+
+  branchPrices        BranchProductPrice[]
+  branchVariantPrices BranchVariantPrice[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model ProductVariant {
@@ -140,10 +216,12 @@ model ProductVariant {
   productId  String
   product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
   label      String // "0.45MM", "Shingle Tiles"
-  priceKobo  Int // price per product.unit, in kobo
+  priceKobo  Int // default-branch price per product.unit, in kobo
   inStock    Boolean     @default(true)
   sortOrder  Int         @default(0)
   orderItems OrderItem[]
+
+  branchPrices BranchVariantPrice[]
 
   @@unique([productId, label])
 }
@@ -159,6 +237,11 @@ model Order {
   customerPhone     String
   deliveryAddress   String? // not collected yet for ROOF_CALCULATOR quotes
   note              String?
+  // Which branch priced and fulfils this order. branchSnapshot keeps the name
+  // readable on old orders if the branch row is ever renamed or removed.
+  branchId          String?
+  branch            Branch?     @relation(fields: [branchId], references: [id], onDelete: SetNull)
+  branchSnapshot    String?
   subtotalKobo      Int // materials only; delivery quoted separately
   calculatorDetails Json? // roof shape/dims/pitch/accessories snapshot, ROOF_CALCULATOR only
   paidAt            DateTime?

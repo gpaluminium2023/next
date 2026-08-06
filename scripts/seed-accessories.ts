@@ -1,7 +1,7 @@
 /**
  * Seed the roofing accessories catalogue from the supplier price list
- * (public/new-materials/accessories-price-list-source.png) and the product
- * artwork in public/new-materials/.
+ * (transcribed into the `products` array below) and the product artwork in
+ * public/new-materials/.
  *
  * Run with: pnpm seed:accessories
  *

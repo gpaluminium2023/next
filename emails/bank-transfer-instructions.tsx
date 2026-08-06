@@ -105,6 +105,8 @@ BankTransferInstructionsEmail.PreviewProps = {
     subtotalKobo: 45000000,
     calculatorDetails: null,
     paidAt: null,
+    branchId: null,
+    branchSnapshot: "Lagos Factory",
     paystackId: null,
     channel: null,
     createdAt: new Date(),

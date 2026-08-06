@@ -20,6 +20,22 @@ export const siteIdentity = {
     latitude: 6.7,
     longitude: 3.25,
   },
+  // Physical branches. The first entry is the head office / factory, whose
+  // address is the one above. Store pricing per branch lives in the Branch
+  // table — this list is for structured data and contact details only.
+  branches: [
+    {
+      slug: "enugu",
+      name: "Gods Promise Aluminium — Enugu State Branch",
+      // The branch price list gives no street number or landmark beyond this.
+      streetAddress: "Enugu–PH Expressway",
+      locality: "Enugu",
+      region: "Enugu",
+      country: "Nigeria",
+      countryCode: "NG",
+      phoneE164: "+2349150459964",
+    },
+  ],
   openingHours: {
     days: [
       "Monday",
@@ -57,6 +73,7 @@ export const siteIdentity = {
   serviceAreas: [
     "Lagos",
     "Ogun State",
+    "Enugu State",
     "Abuja",
     "Oyo State",
     "Osun State",
@@ -102,8 +119,24 @@ export const localBusinessJsonLd = {
   ],
   sameAs: siteIdentity.socialLinks,
   description:
-    "Lagos and Ogun State aluminium roofing company manufacturing and supplying long span sheets, step tiles, Metcopo sheets, stone-coated tiles and roofing accessories for projects across Nigeria.",
+    "Lagos and Ogun State aluminium roofing company manufacturing and supplying long span sheets, step tiles, Metcopo sheets, stone-coated tiles and roofing accessories for projects across Nigeria, with a branch in Enugu State.",
   priceRange: siteIdentity.priceRange,
+  // Branches are their own locations rather than extra addresses on the head
+  // office, so each can carry its own address in search results.
+  department: siteIdentity.branches.map((branch) => ({
+    "@type": "LocalBusiness",
+    "@id": `${siteIdentity.siteUrl}/#branch-${branch.slug}`,
+    name: branch.name,
+    telephone: branch.phoneE164,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: branch.streetAddress,
+      addressLocality: branch.locality,
+      addressRegion: branch.region,
+      addressCountry: branch.countryCode,
+    },
+    priceRange: siteIdentity.priceRange,
+  })),
   areaServed: [
     {
       "@type": "Country",
@@ -116,6 +149,10 @@ export const localBusinessJsonLd = {
     {
       "@type": "AdministrativeArea",
       name: "Ogun State",
+    },
+    {
+      "@type": "AdministrativeArea",
+      name: "Enugu State",
     },
   ],
   makesOffer: siteIdentity.services.map((service) => ({

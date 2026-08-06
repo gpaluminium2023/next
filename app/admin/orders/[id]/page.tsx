@@ -106,6 +106,12 @@ export default async function AdminOrderDetailPage({ params }: Props) {
             <p className="mt-3 text-sm">
               <span className="font-semibold">Delivery address:</span> {order.deliveryAddress}
             </p>
+            {order.branchSnapshot && (
+              <p className="mt-2 text-sm">
+                <span className="font-semibold">Priced &amp; fulfilled by:</span>{" "}
+                {order.branchSnapshot}
+              </p>
+            )}
             {order.note && (
               <p className="mt-2 text-sm">
                 <span className="font-semibold">Note:</span> {order.note}

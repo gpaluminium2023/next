@@ -463,21 +463,31 @@ export const locations: LocationData[] = [
     name: "Enugu",
     region: "South-East",
     capital: "Enugu",
-    deliveryDays: "2–4 business days",
+    deliveryDays: "Same day – next business day",
     deliveryNote:
-      "Enugu State is accessible via the Benin-Onitsha-Enugu Road or the Ore-Benin-Enugu route. We deliver to Enugu city, Nsukka, Agbani, Udi and surrounding areas. Transit time is two to four working days.",
+      "We have a branch on the Enugu–PH Expressway holding its own stock, so Enugu orders are supplied locally rather than trucked from Lagos. Collection and delivery to Enugu city, Nsukka, Agbani, Udi and surrounding areas is usually same day or next working day. Gauges the branch doesn't carry are sent from our Lagos factory in two to four working days.",
     hasDealer: true,
     keyAreas: ["Enugu City", "Nsukka", "Agbani", "Udi", "Oji River"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Stone-Coated Tiles"],
     intro:
       "Enugu, the Coal City and former capital of Eastern Nigeria, occupies a unique geographical position on escarpments and hills that shape local construction approaches. The city has experienced a residential boom driven by diaspora investment — Enugu natives living overseas are building retirement homes, rental properties and family compounds. The hilly terrain means roof pitches must be carefully planned, and materials need to handle both heavy rains and strong winds at elevation. Gods Promise Aluminium provides the quality roofing sheets that Enugu's demanding landscape requires.",
     whyChooseUs:
-      "Enugu's hilly terrain requires careful roofing planning. Our team can advise on appropriate gauge thickness and profile selection for hillside buildings, ensuring your roof withstands the wind loads common at Enugu's elevation. We supply directly from our factory, cutting out the reseller chain and giving Enugu builders genuine factory pricing.",
+      "Enugu's hilly terrain requires careful roofing planning. Our team can advise on appropriate gauge thickness and profile selection for hillside buildings, ensuring your roof withstands the wind loads common at Enugu's elevation. Our Enugu–PH Expressway branch stocks the common gauges locally, so you can inspect sheets and load the same day instead of waiting on a delivery from Lagos.",
     faq: [
+      {
+        question: "Where is your Enugu branch?",
+        answer:
+          "Our Enugu State branch is on the Enugu–PH Expressway. It holds its own stock and its own price list, so you can buy and collect locally. Call or WhatsApp 0915 045 9964 for directions and to confirm what's in stock before travelling.",
+      },
       {
         question: "Do you deliver to Nsukka and other parts of Enugu State?",
         answer:
-          "Yes. We deliver throughout Enugu State including Enugu city, Nsukka, Agbani, Udi, Oji River and all local government areas. Delivery takes two to four business days.",
+          "Yes. We supply throughout Enugu State including Enugu city, Nsukka, Agbani, Udi, Oji River and all local government areas from our Enugu branch — usually same day or next working day. Gauges the branch doesn't stock come from our Lagos factory in two to four business days.",
+      },
+      {
+        question: "Are Enugu prices the same as Lagos prices?",
+        answer:
+          "No. The Enugu branch holds its own stock and prices independently of the Lagos factory, so rates differ. Choose the Enugu branch on our store or check the Enugu section of our price list to see the rates that apply to you.",
       },
       {
         question: "What roofing sheets are popular for diaspora building projects in Enugu?",

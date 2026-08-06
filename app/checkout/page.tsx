@@ -18,7 +18,7 @@ type PaymentMethod = "PAYSTACK" | "BANK_TRANSFER";
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { items, subtotalKobo, hydrated } = useCart();
+  const { items, subtotalKobo, hydrated, clear } = useCart();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -41,11 +41,25 @@ export default function CheckoutPage() {
           items: items.map((i) => ({ productId: i.productId, variantId: i.variantId, quantity: i.quantity })),
           customer: { name, email, phone, address, note: note || undefined },
           paymentMethod,
+          expectedSubtotalKobo: subtotalKobo,
         }),
       });
 
       const data = await res.json();
       if (!res.ok) {
+        // The server refused to charge a total the cart wasn't showing. The
+        // cart is the stale side, so empty it rather than leave wrong prices
+        // on screen for a second attempt.
+        if (data.code === "SUBTOTAL_MISMATCH") {
+          clear();
+          setError(
+            `Prices have changed since you added these items — the current total is ${formatNaira(
+              data.subtotalKobo,
+            )}. Your cart has been cleared; please add your items again at today's prices.`,
+          );
+          setSubmitting(false);
+          return;
+        }
         setError(data.error ?? "Something went wrong. Please try again.");
         setSubmitting(false);
         return;

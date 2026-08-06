@@ -4,6 +4,13 @@ import { prisma } from "@/lib/prisma";
 import { initializeTransaction, PaystackError } from "@/lib/paystack";
 import { generateOrderReference } from "@/lib/store/orders";
 import { sendAdminOrderNotice, sendBankTransferInstructionsEmail } from "@/lib/email/order-emails";
+import {
+  BRANCH_COOKIE,
+  loadBranchPrices,
+  priceForProduct,
+  priceForVariant,
+  resolveBranch,
+} from "@/lib/store/branch";
 
 const checkoutSchema = z.object({
   items: z
@@ -23,18 +30,29 @@ const checkoutSchema = z.object({
     note: z.string().optional(),
   }),
   paymentMethod: z.enum(["PAYSTACK", "BANK_TRANSFER"]).default("PAYSTACK"),
+  // What the cart was showing the customer. Advisory only — never used to
+  // price anything, just compared against the real total so we refuse to
+  // charge an amount the customer never saw.
+  expectedSubtotalKobo: z.number().int().min(0).optional(),
 });
 
 // POST /api/store/checkout — public. Prices are re-derived from the database
 // for every line (never trusted from the client), a PENDING order is
 // created, then a Paystack transaction is initialized against that total.
+//
+// Which price applies depends on the branch the customer is shopping. That
+// comes from the branch cookie and is resolved server-side against published
+// branches only — the client never sends a price or a branch id.
 export async function POST(request: NextRequest) {
   const body = await request.json();
   const parsed = checkoutSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json({ error: "Invalid checkout payload" }, { status: 400 });
   }
-  const { items, customer, paymentMethod } = parsed.data;
+  const { items, customer, paymentMethod, expectedSubtotalKobo } = parsed.data;
+
+  const branch = await resolveBranch(request.cookies.get(BRANCH_COOKIE)?.value ?? null);
+  const branchPrices = await loadBranchPrices(branch);
 
   interface ResolvedItem {
     productId: string;
@@ -62,24 +80,43 @@ export async function POST(request: NextRequest) {
     let unitPriceKobo: number;
     let variantLabel: string | null = null;
 
+    const branchLabel = branch ? ` at our ${branch.shortName} branch` : "";
+
     if (item.variantId) {
       const variant = product.variants.find((v) => v.id === item.variantId);
       if (!variant) {
         return NextResponse.json({ error: `${product.name}: selected option not found` }, { status: 409 });
       }
-      if (!variant.inStock) {
-        return NextResponse.json({ error: `${product.name} (${variant.label}) is out of stock` }, { status: 409 });
+      const price = priceForVariant(branchPrices, variant);
+      if (!price) {
+        return NextResponse.json(
+          { error: `${product.name} (${variant.label}) isn't stocked${branchLabel}` },
+          { status: 409 },
+        );
       }
-      unitPriceKobo = variant.priceKobo;
+      if (!price.inStock) {
+        return NextResponse.json(
+          { error: `${product.name} (${variant.label}) is out of stock${branchLabel}` },
+          { status: 409 },
+        );
+      }
+      unitPriceKobo = price.priceKobo;
       variantLabel = variant.label;
     } else {
       if (product.variants.length > 0) {
         return NextResponse.json({ error: `${product.name}: please choose an option` }, { status: 409 });
       }
-      if (!product.inStock || product.basePriceKobo == null) {
-        return NextResponse.json({ error: `${product.name} is out of stock` }, { status: 409 });
+      const price = priceForProduct(branchPrices, product);
+      if (!price) {
+        return NextResponse.json(
+          { error: `${product.name} isn't stocked${branchLabel}` },
+          { status: 409 },
+        );
       }
-      unitPriceKobo = product.basePriceKobo;
+      if (!price.inStock) {
+        return NextResponse.json({ error: `${product.name} is out of stock${branchLabel}` }, { status: 409 });
+      }
+      unitPriceKobo = price.priceKobo;
     }
 
     resolved.push({
@@ -99,6 +136,22 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Cart total must be greater than zero" }, { status: 400 });
   }
 
+  // The cart lives in localStorage and the branch in a cookie, with nothing
+  // tying them together — clear cookies but not site data and the cart can
+  // still be showing another branch's prices. Rather than send the customer to
+  // Paystack for an amount their cart never displayed, stop and make them
+  // re-check. Also catches ordinary price edits made since add-to-cart.
+  if (expectedSubtotalKobo != null && expectedSubtotalKobo !== subtotalKobo) {
+    return NextResponse.json(
+      {
+        error: "Prices have changed since you added these items. Please review your cart.",
+        code: "SUBTOTAL_MISMATCH",
+        subtotalKobo,
+      },
+      { status: 409 },
+    );
+  }
+
   const reference = generateOrderReference();
 
   // Single-row creates only — a nested `items: { create: [...] }` would start
@@ -113,6 +166,8 @@ export async function POST(request: NextRequest) {
       deliveryAddress: customer.address,
       note: customer.note || null,
       subtotalKobo,
+      branchId: branch?.id ?? null,
+      branchSnapshot: branch?.name ?? null,
     },
   });
 

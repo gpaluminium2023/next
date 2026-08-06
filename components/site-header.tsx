@@ -5,24 +5,13 @@ import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/mobile-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { CartButton } from "@/components/store/cart-button";
-
-const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/products", label: "Products" },
-  { href: "/store", label: "Store" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/services", label: "Services" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
-];
+import { SiteNavDesktop } from "@/components/site-nav-desktop";
 
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2.5">
+      <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex shrink-0 items-center gap-2.5">
           <Image
             src="/logo.png"
             alt="Gods Promise Aluminium"
@@ -30,40 +19,31 @@ export function SiteHeader() {
             height={36}
             className="h-9 w-9 object-contain"
           />
-          <span className="font-heading text-lg font-bold uppercase tracking-wide text-foreground leading-tight hidden sm:block">
+          <span className="font-heading text-base font-bold uppercase tracking-wide text-foreground leading-tight hidden sm:block xl:text-lg">
             Gods Promise <span className="text-accent">Aluminium</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="font-heading px-3 py-1.5 text-sm font-semibold uppercase tracking-wide text-muted-foreground transition-colors hover:text-foreground hover:bg-muted rounded-sm"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="flex items-center gap-2">
+        <SiteNavDesktop />
+
+        <div className="ml-auto flex shrink-0 items-center gap-1.5">
           <CartButton />
           <ThemeToggle />
-          <div className="hidden items-center gap-2 md:flex">
-            <Button
-              asChild
-              variant="outline"
-              className="font-heading font-bold uppercase tracking-wide text-sm rounded-sm"
-            >
-              <Link href="/contact">Get a Quote</Link>
-            </Button>
-            <Button
-              asChild
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-heading font-bold uppercase tracking-wide text-sm rounded-sm"
-            >
-              <Link href="/store">Shop Online</Link>
-            </Button>
-          </div>
+          {/* Both CTAs only fit alongside the nav on wide screens; below that
+              "Get a Quote" lives in the mobile sheet instead. */}
+          <Button
+            asChild
+            variant="outline"
+            className="font-heading hidden rounded-sm text-sm font-bold uppercase tracking-wide xl:inline-flex"
+          >
+            <Link href="/contact">Get a Quote</Link>
+          </Button>
+          <Button
+            asChild
+            className="font-heading hidden rounded-sm bg-accent text-sm font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90 lg:inline-flex"
+          >
+            <Link href="/store">Shop Online</Link>
+          </Button>
           <MobileNav />
         </div>
       </div>

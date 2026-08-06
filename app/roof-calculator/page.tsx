@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { RoofCalculator } from "@/components/roof-calculator/roof-calculator";
 import { siteIdentity } from "@/lib/site-identity";
+import { BranchBar } from "@/components/store/branch-bar";
+import { listBranches, resolveBranch, loadBranchPrices, priceProduct } from "@/lib/store/branch";
 
 export const dynamic = "force-dynamic";
 
@@ -100,24 +102,38 @@ const faqJsonLd = {
 };
 
 export default async function RoofCalculatorPage() {
-  const products = await prisma.product.findMany({
-    where: { category: "SHEETS", published: true },
-    include: { variants: { orderBy: { sortOrder: "asc" } } },
-    orderBy: { sortOrder: "asc" },
-  });
+  const [branches, activeBranch, products] = await Promise.all([
+    listBranches(),
+    resolveBranch(),
+    prisma.product.findMany({
+      where: { category: "SHEETS", published: true },
+      include: { variants: { orderBy: { sortOrder: "asc" } } },
+      orderBy: { sortOrder: "asc" },
+    }),
+  ]);
 
-  const sheetProducts = products.map((p) => ({
-    id: p.id,
-    name: p.name,
-    slug: p.slug,
-    unit: p.unit,
-    variants: p.variants.map((v) => ({
-      id: v.id,
-      label: v.label,
-      priceKobo: v.priceKobo,
-      inStock: v.inStock,
-    })),
-  }));
+  const branchPrices = await loadBranchPrices(activeBranch);
+
+  // Estimates are priced at the active branch's rates, so only offer the
+  // gauges that branch actually carries.
+  const sheetProducts = products.flatMap((p) => {
+    const priced = priceProduct(branchPrices, p);
+    if (!priced.carried) return [];
+    return [
+      {
+        id: p.id,
+        name: p.name,
+        slug: p.slug,
+        unit: p.unit,
+        variants: priced.variants.map((v) => ({
+          id: v.id,
+          label: v.label,
+          priceKobo: v.priceKobo,
+          inStock: v.inStock,
+        })),
+      },
+    ];
+  });
 
   return (
     <div className="min-h-screen bg-background">
@@ -148,6 +164,9 @@ export default async function RoofCalculatorPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <BranchBar branches={branches} active={activeBranch} />
+        </div>
         <RoofCalculator products={sheetProducts} />
       </section>
 

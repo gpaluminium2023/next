@@ -100,6 +100,8 @@ OrderReceiptEmail.PreviewProps = {
     subtotalKobo: 45000000,
     calculatorDetails: null,
     paidAt: new Date(),
+    branchId: null,
+    branchSnapshot: "Lagos Factory",
     paystackId: "123456",
     channel: "card",
     createdAt: new Date(),

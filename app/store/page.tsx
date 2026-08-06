@@ -6,6 +6,8 @@ import { ProductCard } from "@/components/store/product-card";
 import type { ProductImage } from "@/lib/store/types";
 import { siteIdentity } from "@/lib/site-identity";
 import { CATEGORY_LABELS, CATEGORY_VALUES } from "@/lib/store/categories";
+import { BranchBar } from "@/components/store/branch-bar";
+import { listBranches, resolveBranch, loadBranchPrices, priceProduct } from "@/lib/store/branch";
 
 export const dynamic = "force-dynamic";
 
@@ -29,13 +31,27 @@ export default async function StorePage({ searchParams }: StorePageProps) {
   const { category } = await searchParams;
   const validCategory = CATEGORIES.find((c) => c.value === category)?.value;
 
-  const products = await prisma.product.findMany({
-    where: {
-      published: true,
-      ...(validCategory ? { category: validCategory } : {}),
-    },
-    include: { variants: { orderBy: { sortOrder: "asc" } } },
-    orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
+  const [branches, activeBranch, products] = await Promise.all([
+    listBranches(),
+    resolveBranch(),
+    prisma.product.findMany({
+      where: {
+        published: true,
+        ...(validCategory ? { category: validCategory } : {}),
+      },
+      include: { variants: { orderBy: { sortOrder: "asc" } } },
+      orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
+    }),
+  ]);
+
+  const branchPrices = await loadBranchPrices(activeBranch);
+
+  // Products the active branch doesn't carry are dropped from the grid rather
+  // than shown at another branch's price.
+  const visibleProducts = products.flatMap((product) => {
+    const priced = priceProduct(branchPrices, product);
+    if (!priced.carried) return [];
+    return [{ product, priced }];
   });
 
   return (
@@ -58,6 +74,10 @@ export default async function StorePage({ searchParams }: StorePageProps) {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <BranchBar branches={branches} active={activeBranch} />
+        </div>
+
         <div className="mb-8 flex flex-wrap gap-2">
           {CATEGORIES.map((c) => {
             const href = c.value ? `/store?category=${c.value}` : "/store";
@@ -79,12 +99,21 @@ export default async function StorePage({ searchParams }: StorePageProps) {
           })}
         </div>
 
-        {products.length === 0 ? (
+        {visibleProducts.length === 0 ? (
           <div className="rounded-sm border border-dashed border-border p-12 text-center text-muted-foreground">
-            <p>No products available in this category yet.</p>
+            <p>
+              {activeBranch && branches.length > 1
+                ? `Our ${activeBranch.shortName} branch doesn't stock anything in this category yet.`
+                : "No products available in this category yet."}
+            </p>
             <p className="mt-2 text-sm">
               Need something specific? Contact us on{" "}
-              <a href={siteIdentity.whatsappUrl} className="text-accent underline" target="_blank" rel="noopener noreferrer">
+              <a
+                href={activeBranch?.whatsappUrl ?? siteIdentity.whatsappUrl}
+                className="text-accent underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 WhatsApp
               </a>
               .
@@ -92,7 +121,7 @@ export default async function StorePage({ searchParams }: StorePageProps) {
           </div>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {products.map((product) => (
+            {visibleProducts.map(({ product, priced }) => (
               <ProductCard
                 key={product.id}
                 slug={product.slug}
@@ -100,9 +129,9 @@ export default async function StorePage({ searchParams }: StorePageProps) {
                 category={product.category}
                 unit={product.unit}
                 images={Array.isArray(product.images) ? (product.images as unknown as ProductImage[]) : []}
-                basePriceKobo={product.basePriceKobo}
-                inStock={product.inStock}
-                variants={product.variants}
+                basePriceKobo={priced.basePriceKobo}
+                inStock={priced.inStock}
+                variants={priced.variants}
               />
             ))}
           </div>

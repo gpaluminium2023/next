@@ -3,8 +3,10 @@
  * committed code expects?
  *
  * The bank-transfer work added a BankTransferSettings model, a PaymentMethod
- * enum and new Order columns. If those were never pushed with `prisma db push`,
- * deploying the code that reads them breaks checkout on a live store.
+ * enum and new Order columns; the branch-pricing work added Branch,
+ * BranchVariantPrice, BranchProductPrice and two more Order columns. If those
+ * were never pushed with `prisma db push`, deploying the code that reads them
+ * breaks checkout on a live store.
  *
  * Run with: npx tsx --tsconfig tsconfig.json scripts/check-schema-drift.ts
  */
@@ -47,6 +49,15 @@ async function main() {
       prisma.order.findFirst({ select: { id: true, source: true, calculatorDetails: true } })
     ),
     await check("User.role column", () => prisma.user.findFirst({ select: { id: true, role: true } })),
+    // Branch pricing. Same hazard as paymentMethod: the checkout route resolves
+    // a branch on every order, so a missing Branch table breaks all checkouts,
+    // not just Enugu ones.
+    await check("Branch table", () => prisma.branch.findFirst()),
+    await check("BranchVariantPrice table", () => prisma.branchVariantPrice.findFirst()),
+    await check("BranchProductPrice table", () => prisma.branchProductPrice.findFirst()),
+    await check("Order.branchId / branchSnapshot", () =>
+      prisma.order.findFirst({ select: { id: true, branchId: true, branchSnapshot: true } })
+    ),
   ];
   const missing = results.filter((r) => !r).length;
   console.log(

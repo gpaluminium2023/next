@@ -36,8 +36,9 @@ export async function generateMetadata({
   }
 
   const url = `https://www.godspromisealuminiumroofing.com/blog/${post.slug}`;
-  const imageUrl = post.imageSrc ?? "/logo.jpeg";
-  const imageAlt = post.imageAlt ?? `${post.title} - Gods Promise Aluminium`;
+  // `||` not `??` — a blank imageSrc string should fall back to the logo too.
+  const imageUrl = post.imageSrc || "/logo.jpeg";
+  const imageAlt = post.imageAlt || `${post.title} - Gods Promise Aluminium`;
   const metaTitle = post.metaTitle ?? post.title;
   const metaDescription = post.metaDescription ?? post.excerpt;
 

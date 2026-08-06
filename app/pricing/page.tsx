@@ -15,9 +15,9 @@ import {
 export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
   title:
-    "Aluminium Roofing Sheet Prices in Lagos 2026 | Gods Promise Aluminium",
+    "Aluminium Roofing Sheet Prices in Lagos & Enugu 2026 | Gods Promise Aluminium",
   description:
-    "2026 aluminium roofing sheet price list for Lagos — Long Span, Step Tiles, Metcopo and Gerard Stone Coated roofing sheets. Get an instant WhatsApp quote from Gods Promise Aluminium.",
+    "2026 aluminium roofing sheet price list for our Lagos factory and Enugu branch — Long Span, Step Tiles, Metcopo and Gerard Stone Coated roofing sheets. Get an instant WhatsApp quote from Gods Promise Aluminium.",
 };
 
 const longSpanPrices = [
@@ -51,6 +51,29 @@ const stoneTilesPrices = [
   { type: "Roman Tiles", price: null, note: "Contact us for price" },
 ];
 
+// ── Enugu branch ──────────────────────────────────────────────────────────
+// Branch price list dated 19 April 2026. The Enugu branch prices its own
+// stock and carries a narrower gauge range than the Lagos factory, so these
+// are listed separately rather than derived from the Lagos rates above.
+const enuguLongSpanPrices = [
+  { gauge: "0.40MM", price: "₦6,170" },
+  { gauge: "0.45MM", price: "₦7,170" },
+  { gauge: "0.50MM", price: "₦9,199" },
+  { gauge: "0.55MM", price: "₦10,400" },
+];
+
+const enuguStepTilePrices = [
+  { gauge: "0.40MM", price: "₦6,730" },
+  { gauge: "0.45MM", price: "₦7,690" },
+  { gauge: "0.50MM", price: "₦9,670" },
+  { gauge: "0.55MM", price: "₦11,020" },
+];
+
+const enuguStoneCoatedPrices = [
+  { type: "Thick Quality", price: "₦6,950" },
+  { type: "Light Quality", price: "₦5,750" },
+];
+
 // Caliper-verified (standard gauge) prices
 const caliperLongSpanPrices = [
   { gauge: "0.40MM", price: "₦8,700" },
@@ -77,15 +100,29 @@ export default function PricingPage() {
             Official Price List 2026
           </h1>
           <p className="text-primary-foreground/80 text-base md:text-lg max-w-2xl">
-            All prices are per square metre (sqm). Prices are subject to change
-            with market conditions — contact us via WhatsApp for the latest
-            confirmed rates before ordering.
+            All prices are per square metre (sqm). Each branch prices its own
+            stock, so the Lagos factory and Enugu branch rates are listed
+            separately below. Prices are subject to change with market
+            conditions — contact us via WhatsApp for the latest confirmed rates
+            before ordering.
           </p>
         </div>
       </section>
 
       <section className="py-12 md:py-16">
         <div className="container px-4 mx-auto max-w-4xl space-y-10">
+          <div>
+            <span className="inline-flex items-center rounded-sm bg-primary px-3 py-1 font-heading text-xs font-bold uppercase tracking-widest text-primary-foreground">
+              Lagos Factory
+            </span>
+            <h2 className="font-heading uppercase font-bold text-2xl md:text-3xl mt-3">
+              Lagos &amp; Ogun Prices
+            </h2>
+            <p className="text-sm text-muted-foreground mt-1">
+              Pleasure Bus Stop, Alimosho, Lagos · list updated 29 January 2026
+            </p>
+          </div>
+
           {/* Long Span & Metral */}
           <div className="rounded-sm border border-border bg-card overflow-hidden">
             <div className="px-6 py-4 border-b border-border">
@@ -197,6 +234,114 @@ export default function PricingPage() {
                           {row.note}
                         </span>
                       )}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+
+          {/* ── Enugu branch ─────────────────────────────────────────── */}
+          <div className="border-t-4 border-accent pt-10">
+            <span className="inline-flex items-center rounded-sm bg-accent px-3 py-1 font-heading text-xs font-bold uppercase tracking-widest text-accent-foreground">
+              Enugu Branch
+            </span>
+            <h2 className="font-heading uppercase font-bold text-2xl md:text-3xl mt-3">
+              Enugu State Prices
+            </h2>
+            <p className="text-sm text-muted-foreground mt-1">
+              Enugu&ndash;PH Expressway, Enugu State · list updated 19 April 2026
+            </p>
+            <p className="text-sm text-muted-foreground mt-2 max-w-2xl">
+              Our Enugu branch holds its own stock and prices independently of the Lagos factory.
+              It carries a narrower gauge range, so anything not listed here is available from
+              Lagos on request.
+            </p>
+          </div>
+
+          {/* Enugu Long Span */}
+          <div className="rounded-sm border border-border bg-card overflow-hidden">
+            <div className="px-6 py-4 border-b border-border">
+              <h3 className="font-heading uppercase font-bold text-lg">
+                Aluminium Long Span
+              </h3>
+              <p className="text-xs text-muted-foreground mt-1">
+                Price per sqm · Enugu branch
+              </p>
+            </div>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="pl-6">Gauge</TableHead>
+                  <TableHead className="text-right pr-6">Price / sqm</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {enuguLongSpanPrices.map((row) => (
+                  <TableRow key={row.gauge}>
+                    <TableCell className="pl-6 font-medium">{row.gauge}</TableCell>
+                    <TableCell className="text-right pr-6 font-semibold">
+                      {row.price}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+
+          {/* Enugu Step Tiles / Metcoppo */}
+          <div className="rounded-sm border border-border bg-card overflow-hidden">
+            <div className="px-6 py-4 border-b border-border">
+              <h3 className="font-heading uppercase font-bold text-lg">
+                Step Tiles &amp; Metcoppo Design
+              </h3>
+              <p className="text-xs text-muted-foreground mt-1">
+                Price per sqm · Enugu branch · both designs priced the same
+              </p>
+            </div>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="pl-6">Gauge</TableHead>
+                  <TableHead className="text-right pr-6">Price / sqm</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {enuguStepTilePrices.map((row) => (
+                  <TableRow key={row.gauge}>
+                    <TableCell className="pl-6 font-medium">{row.gauge}</TableCell>
+                    <TableCell className="text-right pr-6 font-semibold">
+                      {row.price}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+
+          {/* Enugu Stone Coated */}
+          <div className="rounded-sm border border-border bg-card overflow-hidden">
+            <div className="px-6 py-4 border-b border-border">
+              <h3 className="font-heading uppercase font-bold text-lg">
+                Stone-Coated / Gerard Roofing Sheet
+              </h3>
+              <p className="text-xs text-muted-foreground mt-1">
+                Price per sqm · Enugu branch · available in Bond, Classic, Shingle and Milano
+              </p>
+            </div>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="pl-6">Quality</TableHead>
+                  <TableHead className="text-right pr-6">Price / sqm</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {enuguStoneCoatedPrices.map((row) => (
+                  <TableRow key={row.type}>
+                    <TableCell className="pl-6 font-medium">{row.type}</TableCell>
+                    <TableCell className="text-right pr-6 font-semibold">
+                      {row.price}
                     </TableCell>
                   </TableRow>
                 ))}

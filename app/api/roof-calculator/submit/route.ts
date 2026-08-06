@@ -12,6 +12,12 @@ import {
   type CalculatorState,
 } from "@/lib/roof-calculator/calculations";
 import type { CalculatorDetailsSnapshot } from "@/lib/roof-calculator/calculator-details";
+import {
+  BRANCH_COOKIE,
+  loadBranchPrices,
+  priceForVariant,
+  resolveBranch,
+} from "@/lib/store/branch";
 
 const dimsSchema = z.object({
   eaveWidth: z.string().optional(),
@@ -63,8 +69,24 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Selected sheet product is no longer available" }, { status: 409 });
   }
   const variant = product.variants.find((v) => v.id === calculator.variantId);
-  if (!variant || !variant.inStock) {
+  if (!variant) {
     return NextResponse.json({ error: "Selected sheet option is no longer available" }, { status: 409 });
+  }
+
+  // Same trust model as the price itself: the branch comes from the cookie and
+  // is resolved server-side, so the estimate is priced at that branch's rates.
+  const branch = await resolveBranch(request.cookies.get(BRANCH_COOKIE)?.value ?? null);
+  const branchPrices = await loadBranchPrices(branch);
+  const price = priceForVariant(branchPrices, variant);
+  if (!price || !price.inStock) {
+    return NextResponse.json(
+      {
+        error: branch
+          ? `That sheet option isn't available at our ${branch.shortName} branch`
+          : "Selected sheet option is no longer available",
+      },
+      { status: 409 },
+    );
   }
 
   const state: CalculatorState = {
@@ -79,7 +101,7 @@ export async function POST(request: NextRequest) {
     sheetLength: calculator.sheetLength,
     overlap: calculator.overlap,
     wastePct: calculator.wastePct,
-    pricePerSqmKobo: variant.priceKobo,
+    pricePerSqmKobo: price.priceKobo,
     priceUnit: product.unit,
   };
 
@@ -124,6 +146,8 @@ export async function POST(request: NextRequest) {
       note: contact.note || null,
       subtotalKobo: r.materialCostKobo,
       calculatorDetails: calculatorDetails as unknown as object,
+      branchId: branch?.id ?? null,
+      branchSnapshot: branch?.name ?? null,
     },
   });
 
@@ -135,7 +159,7 @@ export async function POST(request: NextRequest) {
       nameSnapshot: product.name,
       variantSnapshot: variant.label,
       unit: product.unit,
-      unitPriceKobo: variant.priceKobo,
+      unitPriceKobo: price.priceKobo,
       quantity: round2(r.roofAreaWithWaste),
       lineTotalKobo: r.materialCostKobo,
     },
