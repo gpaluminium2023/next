@@ -11,6 +11,7 @@ import {
   Youtube,
 } from "lucide-react";
 import { Separator } from "./ui/separator";
+import { siteIdentity } from "@/lib/site-identity";
 
 export function SiteFooter() {
   return (
@@ -265,7 +266,7 @@ export function SiteFooter() {
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Music2 className="h-4 w-4 shrink-0" />
                 <a
-                  href="https://www.tiktok.com/@godspromiseroofing_1"
+                  href={`https://www.tiktok.com/@${siteIdentity.tiktokHandle}`}
                   target="_blank"
                   rel="noopener nofollow"
                   className="transition-colors hover:text-foreground"

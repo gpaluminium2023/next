@@ -6,6 +6,9 @@ export const siteIdentity = {
   phoneDisplay: "+234 915 045 9964",
   phoneE164: "+2349150459964",
   whatsappUrl: "https://wa.me/2349150459964",
+  // Single source of truth for the TikTok handle — reused by both the footer
+  // link and any TikTok embeds so they can't drift apart again.
+  tiktokHandle: "godspromiseroofing_1",
   address: {
     streetAddress: "Pleasure Bus Stop, Alimosho",
     locality: "Lagos",
@@ -63,7 +66,7 @@ export const siteIdentity = {
     "https://www.instagram.com/godspacltd/",
     "https://www.facebook.com/profile.php?id=100063619451498",
     "https://www.youtube.com/@godspromisealuminiumconcep3aborig",
-    "https://www.tiktok.com/@godspacltd",
+    "https://www.tiktok.com/@godspromiseroofing_1",
   ],
   productLines: [
     "Long span aluminium roofing sheets",

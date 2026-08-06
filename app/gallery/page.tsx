@@ -3,6 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { TikTokEmbed } from "@/components/tiktok-embed";
+import { galleryVideos } from "@/lib/videos-data";
+import { featuredTikTokVideos } from "@/lib/tiktok-videos-data";
+import { siteIdentity } from "@/lib/site-identity";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/gallery" },
@@ -179,9 +183,39 @@ const galleryImages = [
   },
 ];
 
+const videoJsonLd =
+  galleryVideos.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        itemListElement: galleryVideos.map((video, index) => ({
+          "@type": "VideoObject",
+          position: index + 1,
+          name: video.title,
+          description: video.description,
+          thumbnailUrl: video.thumbnail,
+          uploadDate: video.uploadDate,
+          duration: video.duration,
+          contentUrl: video.contentUrl,
+          ...(video.tiktokVideoId
+            ? {
+                embedUrl: `https://www.tiktok.com/embed/v2/${video.tiktokVideoId}`,
+              }
+            : {}),
+        })),
+      }
+    : null;
+
 export default function GalleryPage() {
   return (
     <div className="min-h-screen bg-background">
+      {videoJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
+        />
+      )}
+
       {/* Hero */}
       <section className="bg-primary text-primary-foreground">
         <div className="h-1 w-full bg-accent" />
@@ -294,6 +328,72 @@ export default function GalleryPage() {
           </div>
         </div>
       </section>
+
+      {/* Video gallery — self-hosted, indexable. Renders only once
+          lib/videos-data.ts has real Cloudinary-hosted clips in it. */}
+      {galleryVideos.length > 0 && (
+        <section className="border-t border-border bg-secondary py-12 md:py-16">
+          <div className="container px-4 mx-auto max-w-6xl">
+            <div className="mb-8">
+              <p className="text-accent text-xs uppercase tracking-widest font-heading font-bold mb-2">
+                In Motion
+              </p>
+              <h2 className="font-heading uppercase font-bold text-2xl md:text-3xl">
+                Factory &amp; Installation Videos
+              </h2>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {galleryVideos.map((video) => (
+                <div
+                  key={video.id}
+                  className="rounded-sm overflow-hidden border border-border bg-card"
+                >
+                  <video
+                    src={video.contentUrl}
+                    poster={video.thumbnail}
+                    controls
+                    preload="none"
+                    className="aspect-video w-full bg-black"
+                  />
+                  <div className="p-4">
+                    <p className="font-heading uppercase font-bold text-xs tracking-widest text-accent">
+                      {video.category}
+                    </p>
+                    <p className="text-sm font-medium mt-0.5">{video.title}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Follow us on TikTok — secondary social proof, not a substitute for
+          the self-hosted videos above. Renders only once
+          lib/tiktok-videos-data.ts has real video IDs in it. */}
+      {featuredTikTokVideos.length > 0 && (
+        <section className="border-t border-border py-12 md:py-16">
+          <div className="container px-4 mx-auto max-w-6xl">
+            <div className="mb-8">
+              <p className="text-accent text-xs uppercase tracking-widest font-heading font-bold mb-2">
+                @{siteIdentity.tiktokHandle}
+              </p>
+              <h2 className="font-heading uppercase font-bold text-2xl md:text-3xl">
+                Follow Us on TikTok
+              </h2>
+            </div>
+            <div className="grid gap-6 grid-cols-2 md:grid-cols-4">
+              {featuredTikTokVideos.map((video) => (
+                <TikTokEmbed
+                  key={video.videoId}
+                  videoId={video.videoId}
+                  authorHandle={siteIdentity.tiktokHandle}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA Strip */}
       <section className="bg-secondary py-10">
