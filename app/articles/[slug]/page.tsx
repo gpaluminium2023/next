@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { prisma } from "@/lib/prisma";
+import { ogImageUrl, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from "@/lib/og-image";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
@@ -49,7 +50,9 @@ export async function generateMetadata({
 
   const url = `https://www.godspromisealuminiumroofing.com/articles/${post.slug}`;
   // `||` not `??` — a blank coverImage string should fall back to the logo too.
-  const imageUrl = post.coverImage || "/logo.jpeg";
+  // ogImageUrl caps the Cloudinary original at 1200x630 so the scraper isn't
+  // asked to pull a full-size upload.
+  const imageUrl = ogImageUrl(post.coverImage || "/logo.jpeg");
   const imageAlt = post.coverImageAlt || `${post.title} - Gods Promise Aluminium`;
 
   return {
@@ -63,7 +66,9 @@ export async function generateMetadata({
       locale: "en_NG",
       siteName: "Gods Promise Aluminium",
       publishedTime: post.date,
-      images: [{ url: imageUrl, alt: imageAlt }],
+      images: [
+        { url: imageUrl, alt: imageAlt, width: OG_IMAGE_WIDTH, height: OG_IMAGE_HEIGHT },
+      ],
     },
     twitter: {
       card: "summary_large_image",

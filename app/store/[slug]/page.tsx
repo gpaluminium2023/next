@@ -10,6 +10,7 @@ import { formatNaira } from "@/lib/store/format";
 import type { ProductImage } from "@/lib/store/types";
 import { siteIdentity } from "@/lib/site-identity";
 import { categoryLabel } from "@/lib/store/categories";
+import { ogImageUrl, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from "@/lib/og-image";
 import { BranchBar } from "@/components/store/branch-bar";
 import { listBranches, resolveBranch, loadBranchPrices, priceProduct } from "@/lib/store/branch";
 
@@ -36,10 +37,11 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     product.description || `Buy ${product.name} online from ${siteIdentity.brandName}.`;
 
   // Share cards use the product's own photo; the logo is only the fallback for
-  // products that have no gallery image yet.
+  // products that have no gallery image yet. ogImageUrl swaps in a ~100 KB
+  // derivative — the raw artwork is megabytes and WhatsApp drops it.
   const images = Array.isArray(product.images) ? (product.images as unknown as ProductImage[]) : [];
   const cover = images[0];
-  const imageUrl = cover?.url ?? siteIdentity.logoPath;
+  const imageUrl = ogImageUrl(cover?.url ?? siteIdentity.logoPath);
   const imageAlt = cover?.alt || `${product.name} — ${siteIdentity.brandName}`;
 
   return {
@@ -53,7 +55,11 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
       type: "website",
       locale: "en_NG",
       siteName: siteIdentity.brandName,
-      images: [{ url: imageUrl, alt: imageAlt }],
+      // Explicit dimensions let a scraper lay the card out without downloading
+      // the file first.
+      images: [
+        { url: imageUrl, alt: imageAlt, width: OG_IMAGE_WIDTH, height: OG_IMAGE_HEIGHT },
+      ],
     },
     twitter: {
       card: "summary_large_image",
