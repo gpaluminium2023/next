@@ -8,6 +8,12 @@ const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL ??
   "https://www.godspromisealuminiumroofing.com";
 
+// Articles and store products come from the database, so a build-time snapshot
+// goes stale the moment either is added in /admin. Regenerate at most hourly —
+// well inside how often crawlers re-fetch a sitemap, so on-demand revalidation
+// on publish would buy nothing.
+export const revalidate = 3600;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     {
@@ -66,6 +72,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${BASE_URL}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/articles`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
@@ -150,6 +162,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
+  // /articles is the CMS-backed set (prisma.blogPost, written in /admin);
+  // /blog above is the hardcoded set in lib/blog-posts.ts. Different content,
+  // different slugs — no overlap.
+  const publishedArticles = await prisma.blogPost.findMany({
+    where: { published: true },
+    select: { slug: true, updatedAt: true },
+  });
+  const articleRoutes: MetadataRoute.Sitemap = publishedArticles.map((article) => ({
+    url: `${BASE_URL}/articles/${article.slug}`,
+    lastModified: article.updatedAt,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   const locationRoutes: MetadataRoute.Sitemap = [
     {
       url: `${BASE_URL}/locations`,
@@ -165,5 +191,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
-  return [...staticRoutes, ...productRoutes, ...blogRoutes, ...locationRoutes];
+  return [
+    ...staticRoutes,
+    ...productRoutes,
+    ...blogRoutes,
+    ...articleRoutes,
+    ...locationRoutes,
+  ];
 }
