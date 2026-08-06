@@ -62,6 +62,9 @@ export default async function AdminProductsPage() {
             <Button asChild variant="outline">
               <Link href="/admin/settings/bank-transfer">Settings</Link>
             </Button>
+            <Button asChild variant="outline">
+              <Link href="/admin/tiktok">TikTok</Link>
+            </Button>
             <Button asChild>
               <Link href="/admin/products/new">New Product</Link>
             </Button>

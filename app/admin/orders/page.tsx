@@ -76,6 +76,9 @@ export default async function AdminOrdersPage({ searchParams }: AdminOrdersPageP
               <Button asChild variant="outline">
                 <Link href="/admin/settings/bank-transfer">Settings</Link>
               </Button>
+              <Button asChild variant="outline">
+                <Link href="/admin/tiktok">TikTok</Link>
+              </Button>
             </div>
           )}
         </div>

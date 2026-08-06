@@ -5,8 +5,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { TikTokEmbed } from "@/components/tiktok-embed";
 import { galleryVideos } from "@/lib/videos-data";
-import { featuredTikTokVideos } from "@/lib/tiktok-videos-data";
 import { siteIdentity } from "@/lib/site-identity";
+import { prisma } from "@/lib/prisma";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/gallery" },
@@ -206,7 +208,11 @@ const videoJsonLd =
       }
     : null;
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
+  const featuredTikTokVideos = await prisma.featuredTikTokVideo.findMany({
+    orderBy: { sortOrder: "asc" },
+  });
+
   return (
     <div className="min-h-screen bg-background">
       {videoJsonLd && (
@@ -369,8 +375,9 @@ export default function GalleryPage() {
       )}
 
       {/* Follow us on TikTok — secondary social proof, not a substitute for
-          the self-hosted videos above. Renders only once
-          lib/tiktok-videos-data.ts has real video IDs in it. */}
+          the self-hosted videos above. Sourced from FeaturedTikTokVideo,
+          managed at /admin/tiktok. Renders only once staff have featured
+          at least one video there. */}
       {featuredTikTokVideos.length > 0 && (
         <section className="border-t border-border py-12 md:py-16">
           <div className="container px-4 mx-auto max-w-6xl">

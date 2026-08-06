@@ -180,3 +180,34 @@ Nice-to-have on `app/store/[slug]/page.tsx` or `app/gallery/page.tsx` ("share th
 4. **Don't let entity signals diverge.** Fix the `@godspacltd` vs. `@godspromiseroofing_1` mismatch between `lib/site-identity.ts`'s `sameAs` and `components/site-footer.tsx` before doing anything else on this list — an inconsistent `sameAs` weakens how confidently Google associates the TikTok profile with this business's Knowledge Panel / Local entity.
 5. **Don't confuse Content Posting API with an SEO lever.** It's a content-ops convenience for staff, not something that improves this site's rankings. Keep publishing the actual long-form equivalent (factory-tour write-ups, installation guides) on `/blog` or `/articles` per `docs/blog-content-plan.md` — that's what builds this domain's own topical authority and backlinks, not TikTok posts.
 6. **Don't request broader OAuth scopes than needed** if the Content Posting API tool gets built (§2.4) — request only the video-upload/direct-post scope for the business account, not Login Kit user-info scopes you won't use. Narrower scope requests also tend to move faster through TikTok's app review.
+
+---
+
+## 4. Build status
+
+Implemented so far (2026-08-06):
+
+- ✅ Handle fix — `lib/site-identity.ts` now has a single `tiktokHandle` field; `sameAs` and the footer link both read from it.
+- ✅ `components/tiktok-embed.tsx` — lazy-loaded oEmbed widget (§2.2).
+- ✅ Self-hosted video section scaffold on `/gallery` with `VideoObject`/`ItemList` JSON-LD, driven by `lib/videos-data.ts` (§2.1) — empty until real Cloudinary clips are added.
+- ✅ **TikTok Display API integration** (read-only "list my own account's videos" — not §2.4's Content Posting/write API):
+  - `TikTokConnection` / `FeaturedTikTokVideo` models in `prisma/schema.prisma`.
+  - OAuth (PKCE) flow: `app/api/tiktok/authorize/route.ts` → TikTok consent → `app/api/tiktok/callback/route.ts`, token exchange/refresh in `lib/tiktok/client.ts`.
+  - `app/api/tiktok/videos/route.ts` — browses the connected account's videos.
+  - `app/api/tiktok/featured/route.ts` (+ `[videoId]/route.ts`) — staff pick which videos are featured.
+  - `app/admin/tiktok/page.tsx` + `components/admin/tiktok-video-browser.tsx` — admin-only (`requireAdmin`) UI to connect the account and toggle featured videos, linked from the admin nav.
+  - `/gallery`'s "Follow us on TikTok" strip now reads `FeaturedTikTokVideo` from the DB instead of a static file.
+- ⬜ Not built: Content Posting API (§2.4, write access — separate, higher-risk scope) and Share Kit (§2.5) — still deferred per the earlier scope decision.
+
+### To go live, still needed (cannot be done from this environment):
+
+1. **`prisma db push`** against the real database — the two new models above exist in the schema but not yet in the live DB.
+2. **Register a TikTok Developer app** at developers.tiktok.com, add Login Kit, and request the `user.info.basic` + `video.list` scopes (Display API).
+3. Set the app's redirect URI to `https://www.godspromisealuminiumroofing.com/api/tiktok/callback` (must match exactly, including trailing slash conventions TikTok expects).
+4. Add three env vars (production + wherever else this runs), following this repo's existing `.env` naming convention:
+   - `TIKTOK_CLIENT_KEY`
+   - `TIKTOK_CLIENT_SECRET`
+   - `TIKTOK_REDIRECT_URI` — `https://www.godspromisealuminiumroofing.com/api/tiktok/callback`
+5. Sign in as the business's TikTok account (`@godspromiseroofing_1`) when TikTok's review flow asks who's authorizing the app — the connected account in `/admin/tiktok` will be whichever account completes that consent screen.
+6. TikTok may require the app to pass review before `video.list` works outside a small sandbox allow-list of test users — expect a review step, not instant access, on a fresh app.
+7. Once connected, visit `/admin/tiktok` to browse the account's videos and click "Feature on /gallery" on the ones you want shown.

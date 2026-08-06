@@ -70,6 +70,12 @@ export default async function AdminPage() {
             >
               Settings
             </Link>
+            <Link
+              href="/admin/tiktok"
+              className="px-3 py-2 text-xs font-heading font-bold uppercase tracking-wide text-primary-foreground/70 hover:text-primary-foreground"
+            >
+              TikTok
+            </Link>
           </div>
         </div>
       </header>

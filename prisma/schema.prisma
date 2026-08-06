@@ -278,3 +278,30 @@ model BankTransferSettings {
   instructions  String?
   updatedAt     DateTime @updatedAt
 }
+
+// ──────────────────────────────
+// TikTok (Display API — see docs/tiktok-integration-plan.md)
+// ──────────────────────────────
+
+// Singleton row (id is always "singleton") holding the OAuth tokens for the
+// connected business TikTok account, used to read its own video list.
+model TikTokConnection {
+  id                    String   @id @default("singleton")
+  openId                String
+  accessToken           String
+  accessTokenExpiresAt  DateTime
+  refreshToken          String
+  refreshTokenExpiresAt DateTime
+  scope                 String
+  updatedAt             DateTime @updatedAt
+}
+
+// Videos staff picked from the connected account's video list (app/admin/tiktok)
+// to show in the "Follow us on TikTok" strip on /gallery.
+model FeaturedTikTokVideo {
+  id        String   @id @default(cuid())
+  videoId   String   @unique // TikTok's numeric video ID
+  caption   String? // admin reference only — TikTokEmbed pulls the real caption at render time
+  sortOrder Int      @default(0)
+  addedAt   DateTime @default(now())
+}
