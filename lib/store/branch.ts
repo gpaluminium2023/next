@@ -51,15 +51,27 @@ export async function getDefaultBranch(): Promise<BranchSummary | null> {
   });
 }
 
+export interface BranchResolution {
+  branch: BranchSummary | null;
+  /**
+   * True when the visitor actually picked this branch, false when we fell back
+   * to the default. Prices differ enough between branches that a silent
+   * fallback shouldn't look like a choice — the store prompts when this is
+   * false rather than quietly showing Lagos rates to an Enugu customer.
+   */
+  explicit: boolean;
+}
+
 /**
- * The branch a request is shopping. Falls back to the default branch when the
- * cookie is missing or names a branch that has since been unpublished.
+ * The branch a request is shopping, plus whether the visitor chose it.
  *
- * Returns null only if no published branch exists at all — callers treat that
- * as "branches not seeded yet" and fall back to the plain catalogue prices, so
- * the store keeps working before `pnpm seed:branches` has been run.
+ * `branch` is null only if no published branch exists at all — callers treat
+ * that as "branches not seeded yet" and fall back to the plain catalogue
+ * prices, so the store keeps working before `pnpm seed:branches` has been run.
  */
-export async function resolveBranch(slugOverride?: string | null): Promise<BranchSummary | null> {
+export async function resolveBranchWithSource(
+  slugOverride?: string | null,
+): Promise<BranchResolution> {
   const slug = slugOverride ?? (await cookies()).get(BRANCH_COOKIE)?.value;
 
   if (slug) {
@@ -67,10 +79,15 @@ export async function resolveBranch(slugOverride?: string | null): Promise<Branc
       where: { slug, published: true },
       select: BRANCH_SELECT,
     });
-    if (match) return match;
+    if (match) return { branch: match, explicit: true };
   }
 
-  return getDefaultBranch();
+  return { branch: await getDefaultBranch(), explicit: false };
+}
+
+/** Just the branch — for callers that don't care how it was arrived at. */
+export async function resolveBranch(slugOverride?: string | null): Promise<BranchSummary | null> {
+  return (await resolveBranchWithSource(slugOverride)).branch;
 }
 
 // ──────────────────────────────
@@ -87,6 +104,10 @@ export interface ResolvedPrice {
  *
  * The default branch has no overrides — it is priced off the catalogue columns
  * directly — so we skip the query entirely for it.
+ *
+ * Anything absent falls back to the national catalogue price — every branch
+ * sells the full range, and only the items a branch has explicitly repriced
+ * differ.
  */
 export interface BranchPriceMap {
   branch: BranchSummary | null;
@@ -109,7 +130,7 @@ export async function loadBranchPrices(branch: BranchSummary | null): Promise<Br
   const [variantPrices, productPrices] = await Promise.all([
     prisma.branchVariantPrice.findMany({
       where: { branchId: branch.id },
-      select: { variantId: true, priceKobo: true, inStock: true },
+      select: { variantId: true, productId: true, priceKobo: true, inStock: true },
     }),
     prisma.branchProductPrice.findMany({
       where: { branchId: branch.id },
@@ -135,26 +156,26 @@ export async function getBranchPricing(slugOverride?: string | null): Promise<Br
 }
 
 /**
- * Price for one variant at this branch. `null` means the branch does not carry
- * it — callers must hide it rather than fall back to the default-branch price.
+ * Price for one variant at this branch.
  *
- * One rule at every branch: **no price means not carried**. A ₦0 variant is a
- * placeholder for a gauge that exists in the range but this branch has no rate
- * for (the convention seed-store.ts uses for 0.45MMB, and the seed uses for
- * gauges only Enugu sells). Hiding those beats listing them as out of stock —
- * an unbuyable row on the page is noise, not information.
+ * Every branch sells the full catalogue. A branch price wins where one exists;
+ * everything else falls back to the national rate on the variant itself.
+ *
+ * `null` means nothing anywhere has a usable price — a ₦0 variant, which is
+ * the placeholder convention seed-store.ts uses for 0.45MMB and the branch seed
+ * uses for gauges only one branch lists. Those stay hidden rather than showing
+ * as out of stock: an unbuyable row is noise, not information.
  */
 export function priceForVariant(
   prices: BranchPriceMap,
   variant: { id: string; priceKobo: number; inStock: boolean },
 ): ResolvedPrice | null {
-  if (prices.isDefaultBranch) {
-    if (variant.priceKobo <= 0) return null;
-    return { priceKobo: variant.priceKobo, inStock: variant.inStock };
-  }
   const override = prices.byVariantId.get(variant.id);
-  if (!override || override.priceKobo <= 0) return null;
-  return override;
+  if (override && override.priceKobo > 0) return override;
+
+  // No branch price for this gauge — sell it at the national rate.
+  if (variant.priceKobo <= 0) return null;
+  return { priceKobo: variant.priceKobo, inStock: variant.inStock };
 }
 
 /** Same, for a product with no variants. */
@@ -162,13 +183,11 @@ export function priceForProduct(
   prices: BranchPriceMap,
   product: { id: string; basePriceKobo: number | null; inStock: boolean },
 ): ResolvedPrice | null {
-  if (prices.isDefaultBranch) {
-    if (product.basePriceKobo == null || product.basePriceKobo <= 0) return null;
-    return { priceKobo: product.basePriceKobo, inStock: product.inStock };
-  }
   const override = prices.byProductId.get(product.id);
-  if (!override || override.priceKobo <= 0) return null;
-  return override;
+  if (override && override.priceKobo > 0) return override;
+
+  if (product.basePriceKobo == null || product.basePriceKobo <= 0) return null;
+  return { priceKobo: product.basePriceKobo, inStock: product.inStock };
 }
 
 export interface PricedVariant {
@@ -179,7 +198,7 @@ export interface PricedVariant {
   sortOrder: number;
 }
 
-interface PricableProduct {
+export interface PricableProduct {
   id: string;
   basePriceKobo: number | null;
   inStock: boolean;

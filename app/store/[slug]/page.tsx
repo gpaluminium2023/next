@@ -12,7 +12,12 @@ import { siteIdentity } from "@/lib/site-identity";
 import { categoryLabel } from "@/lib/store/categories";
 import { ogImageUrl, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from "@/lib/og-image";
 import { BranchBar } from "@/components/store/branch-bar";
-import { listBranches, resolveBranch, loadBranchPrices, priceProduct } from "@/lib/store/branch";
+import {
+  listBranches,
+  resolveBranchWithSource,
+  loadBranchPrices,
+  priceProduct,
+} from "@/lib/store/branch";
 
 export const dynamic = "force-dynamic";
 
@@ -75,7 +80,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const product = await getProduct(slug);
   if (!product || !product.published) notFound();
 
-  const [branches, activeBranch] = await Promise.all([listBranches(), resolveBranch()]);
+  const [branches, { branch: activeBranch, explicit: branchChosen }] = await Promise.all([
+    listBranches(),
+    resolveBranchWithSource(),
+  ]);
   const branchPrices = await loadBranchPrices(activeBranch);
   const priced = priceProduct(branchPrices, product);
 
@@ -124,7 +132,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <BranchBar branches={branches} active={activeBranch} />
+          <BranchBar branches={branches} active={activeBranch} chosen={branchChosen} />
         </div>
 
         <div className="grid gap-8 lg:grid-cols-2">

@@ -126,11 +126,19 @@ export function BranchPriceForm({
         </Alert>
       )}
 
-      <p className="text-sm text-muted-foreground">
-        Leave a price blank for anything the {branchShortName} branch doesn&rsquo;t sell — blank
-        items are hidden from the store entirely rather than shown at{" "}
-        {defaultBranchShortName} prices.
-      </p>
+      <div className="space-y-2 rounded-sm border border-border bg-muted/40 p-4 text-sm text-muted-foreground">
+        <p>
+          Only long span and step tiles are priced per branch. Leave a product entirely blank and
+          it sells at the standard {defaultBranchShortName} price everywhere — that&rsquo;s how
+          Metcopo, stone-coated and accessories work.
+        </p>
+        <p>
+          {branchShortName} sells the full catalogue either way — a blank just means it uses the
+          standard price. Watch the {defaultBranchShortName} column as you fill these in: if this
+          branch prices 0.55 above the standard 0.58 or 0.60, the thicker gauge ends up cheaper
+          here. Price the whole ladder to avoid that.
+        </p>
+      </div>
 
       <div className="space-y-5">
         {grouped.map((productRows) => {

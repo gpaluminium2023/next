@@ -7,7 +7,12 @@ import type { ProductImage } from "@/lib/store/types";
 import { siteIdentity } from "@/lib/site-identity";
 import { CATEGORY_LABELS, CATEGORY_VALUES } from "@/lib/store/categories";
 import { BranchBar } from "@/components/store/branch-bar";
-import { listBranches, resolveBranch, loadBranchPrices, priceProduct } from "@/lib/store/branch";
+import {
+  listBranches,
+  resolveBranchWithSource,
+  loadBranchPrices,
+  priceProduct,
+} from "@/lib/store/branch";
 
 export const dynamic = "force-dynamic";
 
@@ -31,9 +36,9 @@ export default async function StorePage({ searchParams }: StorePageProps) {
   const { category } = await searchParams;
   const validCategory = CATEGORIES.find((c) => c.value === category)?.value;
 
-  const [branches, activeBranch, products] = await Promise.all([
+  const [branches, { branch: activeBranch, explicit: branchChosen }, products] = await Promise.all([
     listBranches(),
-    resolveBranch(),
+    resolveBranchWithSource(),
     prisma.product.findMany({
       where: {
         published: true,
@@ -75,7 +80,7 @@ export default async function StorePage({ searchParams }: StorePageProps) {
 
       <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <BranchBar branches={branches} active={activeBranch} />
+          <BranchBar branches={branches} active={activeBranch} chosen={branchChosen} />
         </div>
 
         <div className="mb-8 flex flex-wrap gap-2">

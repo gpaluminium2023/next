@@ -3,7 +3,12 @@ import { prisma } from "@/lib/prisma";
 import { RoofCalculator } from "@/components/roof-calculator/roof-calculator";
 import { siteIdentity } from "@/lib/site-identity";
 import { BranchBar } from "@/components/store/branch-bar";
-import { listBranches, resolveBranch, loadBranchPrices, priceProduct } from "@/lib/store/branch";
+import {
+  listBranches,
+  resolveBranchWithSource,
+  loadBranchPrices,
+  priceProduct,
+} from "@/lib/store/branch";
 
 export const dynamic = "force-dynamic";
 
@@ -102,9 +107,9 @@ const faqJsonLd = {
 };
 
 export default async function RoofCalculatorPage() {
-  const [branches, activeBranch, products] = await Promise.all([
+  const [branches, { branch: activeBranch, explicit: branchChosen }, products] = await Promise.all([
     listBranches(),
-    resolveBranch(),
+    resolveBranchWithSource(),
     prisma.product.findMany({
       where: { category: "SHEETS", published: true },
       include: { variants: { orderBy: { sortOrder: "asc" } } },
@@ -165,7 +170,7 @@ export default async function RoofCalculatorPage() {
 
       <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <BranchBar branches={branches} active={activeBranch} />
+          <BranchBar branches={branches} active={activeBranch} chosen={branchChosen} />
         </div>
         <RoofCalculator products={sheetProducts} />
       </section>

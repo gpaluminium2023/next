@@ -506,10 +506,10 @@ export const locations: LocationData[] = [
     name: "Imo",
     region: "South-East",
     capital: "Owerri",
-    deliveryDays: "3–4 business days",
+    deliveryDays: "Same day – next business day",
     deliveryNote:
-      "Imo State is reached via the Benin-Onitsha-Owerri route or through Aba in Abia State. We deliver to Owerri, Orlu, Okigwe, Oguta and surrounding areas. Delivery takes three to four business days.",
-    hasDealer: false,
+      "We have a branch in Imo State holding its own stock of long span and step tile sheets, so most Imo orders are supplied locally rather than trucked from Lagos. Collection and delivery to Owerri, Orlu, Okigwe, Oguta and surrounding areas is usually same day or next working day. Stone-coated tiles and accessories come from our Lagos factory in three to four working days.",
+    hasDealer: true,
     keyAreas: ["Owerri", "Orlu", "Okigwe", "Oguta", "Mbaise"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Stone-Coated Tiles"],
     intro:
@@ -517,6 +517,11 @@ export const locations: LocationData[] = [
     whyChooseUs:
       "Imo State's diverse building landscape, from budget bungalows to show-stopping mansions, means you need a roofing supplier with a complete range. We supply everything from entry-level 0.40 mm long span sheets to premium Gerard stone-coated tiles, all at factory-direct prices. Our WhatsApp-based ordering makes it easy to manage your purchase even if you are coordinating from abroad.",
     faq: [
+      {
+        question: "Are Imo State prices the same as Lagos prices?",
+        answer:
+          "Long span and step tile sheets are priced by our Imo branch and differ from the Lagos factory rates — Imo also stocks a 0.35 mm long span we don't carry elsewhere. Metcopo, stone-coated tiles and accessories are the same price nationwide. Choose the Imo branch on our store to see the rates that apply to you.",
+      },
       {
         question: "I am building in Owerri from abroad — can you coordinate with my builder?",
         answer:

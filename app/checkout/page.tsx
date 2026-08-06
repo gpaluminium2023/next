@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Loader2, ShoppingBag } from "lucide-react";
+import { Loader2, ShoppingBag, TriangleAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,8 +13,15 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useCart } from "@/lib/cart/cart-context";
 import { formatNaira } from "@/lib/store/format";
 import { cartItemKey } from "@/lib/store/types";
+import { detectStateInAddress } from "@/lib/store/address-state";
 
 type PaymentMethod = "PAYSTACK" | "BANK_TRANSFER";
+
+interface ActiveBranch {
+  slug: string;
+  shortName: string;
+  region: string;
+}
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -27,6 +34,33 @@ export default function CheckoutPage() {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("PAYSTACK");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [branch, setBranch] = useState<ActiveBranch | null>(null);
+
+  // The branch cookie is httpOnly, so ask the server which branch is active.
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/store/branch")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data: { branch: ActiveBranch | null } | null) => {
+        if (!cancelled && data?.branch) setBranch(data.branch);
+      })
+      .catch(() => {
+        // Non-critical — without it we just don't show the state warning.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Soft warning only. Buying from one branch for delivery to another state is
+  // legitimate (a Lagos buyer roofing a house in Owerri), so this never blocks
+  // — it just stops someone ordering against the wrong branch by accident.
+  const addressStateMismatch = useMemo(() => {
+    if (!branch) return null;
+    const detected = detectStateInAddress(address);
+    if (!detected || detected === branch.region) return null;
+    return detected;
+  }, [address, branch]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -154,6 +188,20 @@ export default function CheckoutPage() {
               onChange={(e) => setAddress(e.target.value)}
               placeholder="Street, area, city, state"
             />
+            {addressStateMismatch && (
+              <Alert className="border-accent/50">
+                <TriangleAlert className="h-4 w-4" />
+                <AlertDescription>
+                  You&rsquo;re ordering at <strong>{branch?.shortName}</strong> branch prices but
+                  delivering to <strong>{addressStateMismatch} State</strong>. That&rsquo;s fine if
+                  you meant it — otherwise{" "}
+                  <Link href="/store" className="text-accent underline">
+                    switch branch on the store
+                  </Link>{" "}
+                  first, since prices and available gauges differ by branch.
+                </AlertDescription>
+              </Alert>
+            )}
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="note">Order Note (optional)</Label>

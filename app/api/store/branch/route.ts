@@ -1,9 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
-import { BRANCH_COOKIE, BRANCH_COOKIE_MAX_AGE } from "@/lib/store/branch";
+import { BRANCH_COOKIE, BRANCH_COOKIE_MAX_AGE, resolveBranch } from "@/lib/store/branch";
 
 const bodySchema = z.object({ slug: z.string().min(1).max(64) });
+
+// GET /api/store/branch — the branch this visitor is shopping. The cookie is
+// httpOnly, so client components that need it (the checkout page, to sanity
+// check the delivery address against the branch's state) ask here.
+export async function GET(request: NextRequest) {
+  const branch = await resolveBranch(request.cookies.get(BRANCH_COOKIE)?.value ?? null);
+  if (!branch) return NextResponse.json({ branch: null });
+  return NextResponse.json({
+    branch: { slug: branch.slug, shortName: branch.shortName, region: branch.region },
+  });
+}
 
 // POST /api/store/branch — public. Records which branch the visitor is
 // shopping. Only the slug is stored; every price is still resolved server-side

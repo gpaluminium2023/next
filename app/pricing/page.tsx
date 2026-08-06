@@ -15,9 +15,9 @@ import {
 export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
   title:
-    "Aluminium Roofing Sheet Prices in Lagos & Enugu 2026 | Gods Promise Aluminium",
+    "Aluminium Roofing Sheet Prices in Lagos, Enugu & Imo 2026 | Gods Promise Aluminium",
   description:
-    "2026 aluminium roofing sheet price list for our Lagos factory and Enugu branch — Long Span, Step Tiles, Metcopo and Gerard Stone Coated roofing sheets. Get an instant WhatsApp quote from Gods Promise Aluminium.",
+    "2026 aluminium roofing sheet price list for our Lagos factory and Enugu and Imo State branches — Long Span, Step Tiles, Metcopo and Gerard Stone Coated roofing sheets. Get an instant WhatsApp quote from Gods Promise Aluminium.",
 };
 
 const longSpanPrices = [
@@ -43,12 +43,11 @@ const stepTilesPrices = [
   { gauge: "0.60MM", price: "₦9,680" },
 ];
 
+// Priced by sheet quality, not by tile design — Bond, Classic, Shingle and
+// Milano are a finish choice at the same rate. One price nationwide.
 const stoneTilesPrices = [
-  { type: "Shingle Tiles", price: "₦4,750" },
-  { type: "Bond Tiles", price: "₦4,750" },
-  { type: "Classic Tiles", price: "₦4,750" },
-  { type: "Milano Tiles", price: "₦4,750" },
-  { type: "Roman Tiles", price: null, note: "Contact us for price" },
+  { type: "Thick Quality", price: "₦6,950" },
+  { type: "Light Quality", price: "₦5,750" },
 ];
 
 // ── Enugu branch ──────────────────────────────────────────────────────────
@@ -69,9 +68,20 @@ const enuguStepTilePrices = [
   { gauge: "0.55MM", price: "₦11,020" },
 ];
 
-const enuguStoneCoatedPrices = [
-  { type: "Thick Quality", price: "₦6,950" },
-  { type: "Light Quality", price: "₦5,750" },
+// ── Imo branch ────────────────────────────────────────────────────────────
+// Branch price list, undated.
+const imoLongSpanPrices = [
+  { gauge: "0.35MM", price: "₦5,200" },
+  { gauge: "0.40MM", price: "₦6,200" },
+  { gauge: "0.45MM", price: "₦6,700" },
+  { gauge: "0.50MM", price: "₦7,700" },
+  { gauge: "0.55MM", price: "₦9,000" },
+];
+
+const imoStepTilePrices = [
+  { gauge: "0.45MM", price: "₦6,950" },
+  { gauge: "0.50MM", price: "₦7,950" },
+  { gauge: "0.55MM", price: "₦9,250" },
 ];
 
 // Caliper-verified (standard gauge) prices
@@ -100,11 +110,12 @@ export default function PricingPage() {
             Official Price List 2026
           </h1>
           <p className="text-primary-foreground/80 text-base md:text-lg max-w-2xl">
-            All prices are per square metre (sqm). Each branch prices its own
-            stock, so the Lagos factory and Enugu branch rates are listed
-            separately below. Prices are subject to change with market
-            conditions — contact us via WhatsApp for the latest confirmed rates
-            before ordering.
+            All prices are per square metre (sqm). Long span and step tile
+            rates are set by each branch, so the Lagos factory, Enugu and Imo
+            lists appear separately below; everything else is one price
+            nationwide. Prices are subject to change with market conditions —
+            contact us via WhatsApp for the latest confirmed rates before
+            ordering.
           </p>
         </div>
       </section>
@@ -210,13 +221,14 @@ export default function PricingPage() {
                 </span>
               </div>
               <p className="text-xs text-muted-foreground mt-1">
-                Price per sqm
+                Price per sqm · Same price nationwide · Available in Bond, Classic, Shingle and
+                Milano at no extra cost
               </p>
             </div>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="pl-6">Type</TableHead>
+                  <TableHead className="pl-6">Quality</TableHead>
                   <TableHead className="text-right pr-6">Price / sqm</TableHead>
                 </TableRow>
               </TableHeader>
@@ -226,14 +238,8 @@ export default function PricingPage() {
                     <TableCell className="pl-6 font-medium">
                       {row.type}
                     </TableCell>
-                    <TableCell className="text-right pr-6">
-                      {row.price ? (
-                        <span className="font-semibold">{row.price}</span>
-                      ) : (
-                        <span className="text-xs text-muted-foreground">
-                          {row.note}
-                        </span>
-                      )}
+                    <TableCell className="text-right pr-6 font-semibold">
+                      {row.price}
                     </TableCell>
                   </TableRow>
                 ))}
@@ -253,9 +259,9 @@ export default function PricingPage() {
               Enugu&ndash;PH Expressway, Enugu State · list updated 19 April 2026
             </p>
             <p className="text-sm text-muted-foreground mt-2 max-w-2xl">
-              Our Enugu branch holds its own stock and prices independently of the Lagos factory.
-              It carries a narrower gauge range, so anything not listed here is available from
-              Lagos on request.
+              Our Enugu branch holds its own stock and sets its own rates for long span and step
+              tiles. Everything else — Metcopo, stone-coated tiles and accessories — is the same
+              price nationwide, as are any gauges not listed below.
             </p>
           </div>
 
@@ -319,27 +325,72 @@ export default function PricingPage() {
             </Table>
           </div>
 
-          {/* Enugu Stone Coated */}
+          {/* ── Imo branch ───────────────────────────────────────────── */}
+          <div className="border-t-4 border-accent pt-10">
+            <span className="inline-flex items-center rounded-sm bg-accent px-3 py-1 font-heading text-xs font-bold uppercase tracking-widest text-accent-foreground">
+              Imo Branch
+            </span>
+            <h2 className="font-heading uppercase font-bold text-2xl md:text-3xl mt-3">
+              Imo State Prices
+            </h2>
+            <p className="text-sm text-muted-foreground mt-2 max-w-2xl">
+              Our Imo State branch sets its own rates for long span and step tiles, including a
+              0.35 mm long span not stocked elsewhere. Metcopo, stone-coated tiles, accessories and
+              any gauge not listed below are the same price nationwide.
+            </p>
+          </div>
+
+          {/* Imo Long Span */}
           <div className="rounded-sm border border-border bg-card overflow-hidden">
             <div className="px-6 py-4 border-b border-border">
               <h3 className="font-heading uppercase font-bold text-lg">
-                Stone-Coated / Gerard Roofing Sheet
+                Aluminium Long Span
               </h3>
               <p className="text-xs text-muted-foreground mt-1">
-                Price per sqm · Enugu branch · available in Bond, Classic, Shingle and Milano
+                Price per sqm · Imo branch
               </p>
             </div>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="pl-6">Quality</TableHead>
+                  <TableHead className="pl-6">Gauge</TableHead>
                   <TableHead className="text-right pr-6">Price / sqm</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {enuguStoneCoatedPrices.map((row) => (
-                  <TableRow key={row.type}>
-                    <TableCell className="pl-6 font-medium">{row.type}</TableCell>
+                {imoLongSpanPrices.map((row) => (
+                  <TableRow key={row.gauge}>
+                    <TableCell className="pl-6 font-medium">{row.gauge}</TableCell>
+                    <TableCell className="text-right pr-6 font-semibold">
+                      {row.price}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+
+          {/* Imo Step Tiles */}
+          <div className="rounded-sm border border-border bg-card overflow-hidden">
+            <div className="px-6 py-4 border-b border-border">
+              <h3 className="font-heading uppercase font-bold text-lg">
+                Step Tiles
+              </h3>
+              <p className="text-xs text-muted-foreground mt-1">
+                Price per sqm · Imo branch
+              </p>
+            </div>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="pl-6">Gauge</TableHead>
+                  <TableHead className="text-right pr-6">Price / sqm</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {imoStepTilePrices.map((row) => (
+                  <TableRow key={row.gauge}>
+                    <TableCell className="pl-6 font-medium">{row.gauge}</TableCell>
                     <TableCell className="text-right pr-6 font-semibold">
                       {row.price}
                     </TableCell>

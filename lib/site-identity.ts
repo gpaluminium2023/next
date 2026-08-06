@@ -35,6 +35,17 @@ export const siteIdentity = {
       countryCode: "NG",
       phoneE164: "+2349150459964",
     },
+    {
+      slug: "imo",
+      name: "Gods Promise Aluminium — Imo State Branch",
+      // No street address supplied by the branch yet.
+      streetAddress: "",
+      locality: "Owerri",
+      region: "Imo",
+      country: "Nigeria",
+      countryCode: "NG",
+      phoneE164: "+2349150459964",
+    },
   ],
   openingHours: {
     days: [
@@ -74,6 +85,7 @@ export const siteIdentity = {
     "Lagos",
     "Ogun State",
     "Enugu State",
+    "Imo State",
     "Abuja",
     "Oyo State",
     "Osun State",
@@ -119,7 +131,7 @@ export const localBusinessJsonLd = {
   ],
   sameAs: siteIdentity.socialLinks,
   description:
-    "Lagos and Ogun State aluminium roofing company manufacturing and supplying long span sheets, step tiles, Metcopo sheets, stone-coated tiles and roofing accessories for projects across Nigeria, with a branch in Enugu State.",
+    "Lagos and Ogun State aluminium roofing company manufacturing and supplying long span sheets, step tiles, Metcopo sheets, stone-coated tiles and roofing accessories for projects across Nigeria, with branches in Enugu and Imo States.",
   priceRange: siteIdentity.priceRange,
   // Branches are their own locations rather than extra addresses on the head
   // office, so each can carry its own address in search results.
@@ -130,7 +142,9 @@ export const localBusinessJsonLd = {
     telephone: branch.phoneE164,
     address: {
       "@type": "PostalAddress",
-      streetAddress: branch.streetAddress,
+      // Omit streetAddress entirely rather than emit an empty string for
+      // branches that haven't given us one.
+      ...(branch.streetAddress ? { streetAddress: branch.streetAddress } : {}),
       addressLocality: branch.locality,
       addressRegion: branch.region,
       addressCountry: branch.countryCode,
@@ -153,6 +167,10 @@ export const localBusinessJsonLd = {
     {
       "@type": "AdministrativeArea",
       name: "Enugu State",
+    },
+    {
+      "@type": "AdministrativeArea",
+      name: "Imo State",
     },
   ],
   makesOffer: siteIdentity.services.map((service) => ({
