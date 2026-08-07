@@ -1382,19 +1382,19 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "metcopo-roofing-sheet-price-per-metre-nigeria",
-    title: "Metcopo Roofing Sheet Price Per Metre in Nigeria (2026 Update)",
-    metaTitle: "Metcopo Roofing Sheet Price Per Metre Nigeria 2026",
+    title: "Metcopo (Metcoppo) Roofing Sheet Price Per Metre in Nigeria (2026 Update)",
+    metaTitle: "Metcoppo / Metcopo Roofing Sheet Price Per Metre Nigeria 2026",
     metaDescription:
-      "Current 2026 factory price of Metcopo roofing sheets per metre in Nigeria. Compare gauges, coverage, and total project cost. Buy factory-direct from Lagos.",
+      "Current 2026 factory price of Metcopo roofing sheets — also spelled Metcoppo — per metre in Nigeria. Compare gauges, coverage, and total project cost. Buy factory-direct from Lagos.",
     excerpt:
-      "Metcopo aluminium roofing sheets have the deepest, boldest profile of any standard aluminium roofing option in Nigeria — popular for commercial buildings, schools, churches, and high-end residential projects. This guide covers the exact 2026 price per metre, coverage calculation, and how it compares to long span and step tile.",
+      "Metcopo aluminium roofing sheets — spelled Metcoppo or Metrocopo by many buyers, all the same profile — have the deepest, boldest profile of any standard aluminium roofing option in Nigeria, popular for commercial buildings, schools, churches, and high-end residential projects. This guide covers the exact 2026 price per metre, coverage calculation, and how it compares to long span and step tile.",
     body: [],
     bodyHtml: `
 <div class="blog-callout">
   <strong>Current Price (April 2026):</strong> Metcopo roofing sheets cost <strong>₦5,500 – ₦7,500 per m²</strong> at factory gate, Gods Promise Aluminium, Alimosho. Per linear metre (0.9m effective width): <strong>₦4,950 – ₦6,750/lm</strong>. WhatsApp <strong>09150459964</strong> for a written quote.
 </div>
 
-<p>The Metcopo profile — also called wide-rib corrugated or Metcoppo in some markets — is the widest-spanning standard aluminium roofing profile available in Nigeria. Its deep, widely-spaced ribs make it structurally stiffer than long span or step tile, allowing for longer unsupported spans between purlins. This rigidity, combined with a bold commercial aesthetic, makes it the profile of choice for warehouses, churches, schools, hotels, and large-footprint buildings.</p>
+<p>The Metcopo profile — spelled <strong>Metcoppo</strong> or <strong>Metrocopo</strong> by many Nigerian buyers and suppliers, and sometimes called wide-rib corrugated, all referring to the same sheet — is the widest-spanning standard aluminium roofing profile available in Nigeria. Its deep, widely-spaced ribs make it structurally stiffer than long span or step tile, allowing for longer unsupported spans between purlins. This rigidity, combined with a bold commercial aesthetic, makes it the profile of choice for warehouses, churches, schools, hotels, and large-footprint buildings.</p>
 
 <p>This guide covers the current factory price per metre, how to calculate total project cost, and how Metcopo compares to the alternatives.</p>
 
