@@ -12,6 +12,10 @@ import { siteIdentity } from "@/lib/site-identity";
 import { categoryLabel } from "@/lib/store/categories";
 import { ogImageUrl, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from "@/lib/og-image";
 import { BranchBar } from "@/components/store/branch-bar";
+import { ReviewCard } from "@/components/reviews/review-card";
+import { ReviewSummary } from "@/components/reviews/review-summary";
+import { buildAggregateRating, buildReviewNodes } from "@/lib/reviews/jsonld";
+import { getApprovedReviews, getProductRatingSummary } from "@/lib/reviews/queries";
 import {
   listBranches,
   resolveBranchWithSource,
@@ -87,6 +91,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const branchPrices = await loadBranchPrices(activeBranch);
   const priced = priceProduct(branchPrices, product);
 
+  const [ratingSummary, reviews] = await Promise.all([
+    getProductRatingSummary(slug),
+    getApprovedReviews({ productSlug: slug, limit: 8 }),
+  ]);
+
   const images = Array.isArray(product.images) ? (product.images as unknown as ProductImage[]) : [];
   const anyInStock = priced.inStock;
   const prices = priced.variants.map((v) => v.priceKobo).filter((p) => p > 0);
@@ -118,6 +127,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
             },
           }
         : {}),
+    // Present only when this product has real approved reviews.
+    ...buildAggregateRating(ratingSummary),
+    ...buildReviewNodes(reviews),
   };
 
   return (
@@ -210,6 +222,41 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
             )}
           </div>
+        </div>
+      </section>
+
+      {/* Reviews — kept rendered whenever the JSON-LD above carries an
+          aggregateRating, since review markup must reflect visible content. */}
+      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:px-8">
+        <h2 className="font-heading mb-6 text-xl font-bold uppercase sm:text-2xl">
+          Customer Reviews
+        </h2>
+
+        {ratingSummary.count > 0 ? (
+          <>
+            <div className="mb-6 rounded-sm border border-border bg-card p-6">
+              <ReviewSummary summary={ratingSummary} />
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {reviews.map((review) => (
+                <ReviewCard key={review.id} review={review} showProduct={false} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <ReviewSummary
+            summary={ratingSummary}
+            emptyHint={`No one has reviewed the ${product.name} yet.`}
+          />
+        )}
+
+        <div className="mt-6">
+          <Link
+            href={`/reviews/submit?product=${product.slug}`}
+            className="inline-flex items-center gap-2 rounded-sm border border-border px-5 py-2.5 font-heading text-sm font-bold uppercase tracking-wide hover:border-accent/60"
+          >
+            Write a review
+          </Link>
         </div>
       </section>
     </div>

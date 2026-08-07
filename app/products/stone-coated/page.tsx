@@ -14,6 +14,10 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProductGallery } from "@/components/store/product-gallery";
+import { ReviewCard } from "@/components/reviews/review-card";
+import { ReviewSummary } from "@/components/reviews/review-summary";
+import { buildAggregateRating, buildReviewNodes } from "@/lib/reviews/jsonld";
+import { getApprovedReviews, getProductRatingSummary } from "@/lib/reviews/queries";
 import type { ProductImage } from "@/lib/store/types";
 
 const GALLERY_IMAGES: ProductImage[] = [
@@ -64,6 +68,10 @@ const GALLERY_IMAGES: ProductImage[] = [
   },
 ];
 
+// Rebuilt hourly so a newly approved review reaches the page (and its
+// aggregateRating) without a deploy.
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   alternates: { canonical: "/products/stone-coated" },
   title:
@@ -96,7 +104,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function StoneCoatedPage() {
+// The Gerard tiles are sold under this catalogue slug; the page's rating and
+// reviews are whatever real customers have said about that product.
+const STONE_COATED_SLUG = "gerard-stone-coated-tiles";
+
+export default async function StoneCoatedPage() {
+  const [summary, reviews] = await Promise.all([
+    getProductRatingSummary(STONE_COATED_SLUG),
+    getApprovedReviews({ productSlug: STONE_COATED_SLUG, limit: 6 }),
+  ]);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -118,11 +135,11 @@ export default function StoneCoatedPage() {
         url: "https://www.godspromisealuminiumroofing.com",
       },
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "46",
-    },
+    // Emitted only when real approved reviews exist — both builders return
+    // nothing at all when there are none. A hardcoded rating previously lived
+    // here; it was not backed by any review data and has been removed.
+    ...buildAggregateRating(summary),
+    ...buildReviewNodes(reviews),
   };
 
   const profiles = [
@@ -496,6 +513,39 @@ export default function StoneCoatedPage() {
           </p>
         </div>
       </section>
+
+      {/* Reviews — must stay rendered: the aggregateRating in this page's
+          JSON-LD describes exactly these reviews, and Google requires review
+          markup to reflect content visible on the page. */}
+      {summary.count > 0 && (
+        <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+          <p className="font-heading mb-2 text-xs font-bold uppercase tracking-widest text-accent">
+            Customer Reviews
+          </p>
+          <h2 className="font-heading mb-8 text-2xl font-bold uppercase sm:text-3xl lg:text-4xl">
+            What Buyers Say About Gerard Tiles
+          </h2>
+
+          <div className="mb-8 rounded-sm border border-border bg-card p-6">
+            <ReviewSummary summary={summary} />
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {reviews.map((review) => (
+              <ReviewCard key={review.id} review={review} showProduct={false} />
+            ))}
+          </div>
+
+          <div className="mt-8">
+            <Link
+              href={`/reviews/submit?product=${STONE_COATED_SLUG}`}
+              className="inline-flex items-center gap-2 rounded-sm border border-border px-5 py-2.5 font-heading text-sm font-bold uppercase tracking-wide hover:border-accent/60"
+            >
+              Write a review
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* FAQ */}
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">

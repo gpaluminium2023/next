@@ -11,6 +11,7 @@
     "seed:store": "tsx --tsconfig tsconfig.json scripts/seed-store.ts",
     "seed:accessories": "tsx --tsconfig tsconfig.json scripts/seed-accessories.ts",
     "seed:branches": "tsx --tsconfig tsconfig.json scripts/seed-branches.ts",
+    "import:reviews": "tsx --tsconfig tsconfig.json scripts/import-reviews.ts",
     "stock:all-in": "tsx --tsconfig tsconfig.json scripts/set-all-in-stock.ts",
     "og:images": "node scripts/make-og-images.mjs",
     "unpublish:dupes": "tsx --tsconfig tsconfig.json scripts/unpublish-duplicate-accessories.ts",

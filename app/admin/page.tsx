@@ -65,6 +65,12 @@ export default async function AdminPage() {
               Orders
             </Link>
             <Link
+              href="/admin/reviews"
+              className="px-3 py-2 text-xs font-heading font-bold uppercase tracking-wide text-primary-foreground/70 hover:text-primary-foreground"
+            >
+              Reviews
+            </Link>
+            <Link
               href="/admin/settings/bank-transfer"
               className="px-3 py-2 text-xs font-heading font-bold uppercase tracking-wide text-primary-foreground/70 hover:text-primary-foreground"
             >

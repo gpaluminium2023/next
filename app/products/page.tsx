@@ -14,6 +14,11 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProductColors } from "@/components/product-colors";
+import { buildAggregateRating } from "@/lib/reviews/jsonld";
+import { EMPTY_RATING_SUMMARY, getRatingSummariesBySlug } from "@/lib/reviews/queries";
+
+// Rebuilt hourly so a newly approved review reaches the page without a deploy.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/products" },
@@ -31,7 +36,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  // Search Console flags "Missing field review / aggregateRating" for the four
+  // products below. Both fields are *recommended*, not required: the items stay
+  // rich-result eligible without them. They appear here only once real approved
+  // reviews exist for the matching catalogue slug — a product with no reviews
+  // emits no rating, which is the correct answer to the warning, not a bug.
+  const summaries = await getRatingSummariesBySlug();
+  const ratingFor = (slug: string) => buildAggregateRating(summaries[slug] ?? EMPTY_RATING_SUMMARY);
+
   const productsJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -55,6 +68,7 @@ export default function ProductsPage() {
             offerCount: "10",
             availability: "https://schema.org/InStock",
           },
+          ...ratingFor("long-span-roofing-sheet"),
         },
       },
       {
@@ -75,6 +89,7 @@ export default function ProductsPage() {
             offerCount: "6",
             availability: "https://schema.org/InStock",
           },
+          ...ratingFor("step-tiles-roofing-sheet"),
         },
       },
       {
@@ -95,6 +110,7 @@ export default function ProductsPage() {
             offerCount: "10",
             availability: "https://schema.org/InStock",
           },
+          ...ratingFor("metcopo-roofing-sheet"),
         },
       },
       {
@@ -115,6 +131,7 @@ export default function ProductsPage() {
             offerCount: "5",
             availability: "https://schema.org/InStock",
           },
+          ...ratingFor("gerard-stone-coated-tiles"),
         },
       },
     ],

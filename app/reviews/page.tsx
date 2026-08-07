@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { ReviewCard } from "@/components/reviews/review-card";
+import { ReviewSummary } from "@/components/reviews/review-summary";
+import { getApprovedReviews, getSiteRatingSummary } from "@/lib/reviews/queries";
 import { siteIdentity } from "@/lib/site-identity";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/reviews" },
@@ -21,8 +26,6 @@ export const metadata: Metadata = {
 
 const whatsappReviewTemplate = `Hi, I recently purchased roofing sheets from Gods Promise Aluminium and I'm happy with the quality and service. I'd like to leave a review to help others. Could you share a link where I can do that?`;
 
-const whatsappShareTemplate = `Hi, I wanted to say thank you for the roofing sheets I ordered recently. The quality was great and delivery was on time. I'm happy to leave a Google review if you can send me the link.`;
-
 const emailTemplate = `Subject: Review for Gods Promise Aluminium
 
 Hi Gods Promise Aluminium team,
@@ -35,7 +38,12 @@ Best regards,
 [Your name]
 [Your phone number]`;
 
-export default function ReviewsPage() {
+export default async function ReviewsPage() {
+  const [reviews, summary] = await Promise.all([
+    getApprovedReviews(),
+    getSiteRatingSummary(),
+  ]);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
@@ -49,24 +57,71 @@ export default function ReviewsPage() {
             What Our Customers Say
           </h1>
           <p className="mt-4 text-lg text-primary-foreground/80">
-            Over 950 satisfied clients. Real projects. Real results across Lagos
-            and Nigeria.
+            Real projects across Lagos and Nigeria, in our customers&rsquo; own words. We
+            publish every approved review exactly as it was written.
           </p>
         </div>
       </section>
 
-      {/* Google Review CTA */}
+      {/* Reviews */}
       <section className="bg-background py-14 md:py-20">
         <div className="mx-auto max-w-4xl px-4">
+          {summary.count > 0 ? (
+            <>
+              <div className="mb-10 rounded-sm border border-border bg-card p-6 md:p-8">
+                <ReviewSummary summary={summary} />
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                {reviews.map((review) => (
+                  <ReviewCard key={review.id} review={review} />
+                ))}
+              </div>
+
+              <div className="mt-10 text-center">
+                <Button
+                  size="lg"
+                  className="rounded-sm bg-accent font-heading font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90"
+                  asChild
+                >
+                  <Link href="/reviews/submit">Write a review</Link>
+                </Button>
+              </div>
+            </>
+          ) : (
+            <div className="rounded-sm border border-dashed border-border p-10 text-center">
+              <h2 className="font-heading text-xl font-bold uppercase">
+                No published reviews yet
+              </h2>
+              <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground">
+                We&rsquo;ve only just opened reviews on the site. If you&rsquo;ve bought from
+                us, yours would be the first — and it will appear here exactly as you write
+                it.
+              </p>
+              <Button
+                size="lg"
+                className="mt-6 rounded-sm bg-accent font-heading font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90"
+                asChild
+              >
+                <Link href="/reviews/submit">Write the first review</Link>
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Leave a review elsewhere */}
+      <section className="bg-secondary py-14 md:py-20">
+        <div className="mx-auto max-w-4xl px-4">
           <div className="rounded-sm border border-border bg-card p-8 text-center">
-            <div className="mb-4 h-1 w-10 bg-accent mx-auto" />
+            <div className="mx-auto mb-4 h-1 w-10 bg-accent" />
             <h2 className="font-heading mb-4 text-2xl font-bold uppercase md:text-3xl">
-              Leave a Google Review
+              Prefer Google or WhatsApp?
             </h2>
             <p className="mx-auto mb-8 max-w-xl text-muted-foreground">
-              Had a good experience with us? A Google review takes less than two
-              minutes and helps other homeowners and builders in Lagos and across
-              Nigeria find a manufacturer they can trust.
+              A Google review takes less than two minutes and helps other homeowners and
+              builders in Lagos and across Nigeria find a manufacturer they can trust. Message
+              us and we&rsquo;ll send you the direct link.
             </p>
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Button
@@ -74,11 +129,7 @@ export default function ReviewsPage() {
                 className="rounded-sm bg-accent font-heading font-bold uppercase tracking-wide hover:bg-accent/90"
                 asChild
               >
-                <a
-                  href={siteIdentity.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={siteIdentity.whatsappUrl} target="_blank" rel="noopener noreferrer">
                   Request review link via WhatsApp
                 </a>
               </Button>
@@ -91,118 +142,53 @@ export default function ReviewsPage() {
                 <Link href="/contact">Contact us</Link>
               </Button>
             </div>
-            <p className="mt-6 text-xs text-muted-foreground">
-              Message us on WhatsApp and we will send you the direct Google
-              review link.
-            </p>
           </div>
         </div>
       </section>
 
-      {/* WhatsApp Review Template */}
-      <section className="bg-secondary py-14 md:py-20">
+      {/* Templates */}
+      <section className="bg-background py-14 md:py-20">
         <div className="mx-auto max-w-4xl px-4">
           <div className="mb-8">
             <p className="font-heading mb-2 text-xs font-bold uppercase tracking-widest text-accent">
-              Quick template
+              Not sure what to write?
             </p>
             <h2 className="font-heading text-2xl font-bold uppercase md:text-3xl">
-              WhatsApp Message Template
+              Starting points
             </h2>
             <p className="mt-2 text-muted-foreground">
-              Copy and send this to us on WhatsApp at{" "}
-              <a
-                href={siteIdentity.whatsappUrl}
-                className="font-bold text-accent hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {siteIdentity.phoneDisplay}
-              </a>
-              :
+              These are prompts, not scripts — the useful part of any review is the bit only
+              you can write.
             </p>
           </div>
           <div className="space-y-6">
             <div className="rounded-sm border border-border bg-card p-6">
               <p className="font-heading mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                If you want to leave a review
+                On WhatsApp —{" "}
+                <a
+                  href={siteIdentity.whatsappUrl}
+                  className="text-accent hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {siteIdentity.phoneDisplay}
+                </a>
               </p>
-              <p className="text-sm text-muted-foreground italic leading-relaxed">
+              <p className="text-sm italic leading-relaxed text-muted-foreground">
                 &ldquo;{whatsappReviewTemplate}&rdquo;
               </p>
             </div>
             <div className="rounded-sm border border-border bg-card p-6">
               <p className="font-heading mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                If you want to share feedback directly
+                By email — via the{" "}
+                <Link href="/contact" className="text-accent hover:underline">
+                  contact form
+                </Link>
               </p>
-              <p className="text-sm text-muted-foreground italic leading-relaxed">
-                &ldquo;{whatsappShareTemplate}&rdquo;
-              </p>
+              <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-muted-foreground">
+                {emailTemplate}
+              </pre>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Email Template */}
-      <section className="bg-background py-14 md:py-20">
-        <div className="mx-auto max-w-4xl px-4">
-          <div className="mb-8">
-            <p className="font-heading mb-2 text-xs font-bold uppercase tracking-widest text-accent">
-              Prefer email?
-            </p>
-            <h2 className="font-heading text-2xl font-bold uppercase md:text-3xl">
-              Email Review Template
-            </h2>
-            <p className="mt-2 text-muted-foreground">
-              Use this template and send it to us via the{" "}
-              <Link href="/contact" className="font-bold text-accent hover:underline">
-                contact form
-              </Link>
-              :
-            </p>
-          </div>
-          <div className="rounded-sm border border-border bg-card p-6">
-            <pre className="whitespace-pre-wrap text-sm text-muted-foreground leading-relaxed font-sans">
-              {emailTemplate}
-            </pre>
-          </div>
-        </div>
-      </section>
-
-      {/* Why reviews matter */}
-      <section className="bg-secondary py-14 md:py-20">
-        <div className="mx-auto max-w-4xl px-4">
-          <div className="mb-8 text-center">
-            <p className="font-heading mb-3 text-xs font-bold uppercase tracking-widest text-accent">
-              Why it matters
-            </p>
-            <h2 className="font-heading text-2xl font-bold uppercase md:text-3xl">
-              Your review makes a difference
-            </h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: "Helps other buyers",
-                body: "Homeowners and builders across Nigeria rely on reviews to choose a roofing supplier they can trust.",
-              },
-              {
-                title: "Builds confidence",
-                body: "Honest feedback about product quality, delivery times, and service helps new customers know what to expect.",
-              },
-              {
-                title: "Supports a Nigerian business",
-                body: "Every review strengthens Gods Promise Aluminium's reputation and helps us grow to serve more customers.",
-              },
-            ].map((item) => (
-              <div key={item.title} className="rounded-sm border border-border bg-card p-6">
-                <div className="mb-3 h-1 w-6 bg-accent" />
-                <h3 className="font-heading mb-2 font-bold uppercase text-sm">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-muted-foreground">{item.body}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
