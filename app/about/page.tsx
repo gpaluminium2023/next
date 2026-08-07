@@ -180,10 +180,11 @@ export default function AboutPage() {
                 </p>
                 <p>
                   Whether you are covering a new home, renovating a sanctuary,
-                  or completing a commercial project, our team is ready to guide
-                  you from product selection through to delivery and
-                  installation support, with simple WhatsApp quoting and clear,
-                  transparent pricing.
+                  or completing a commercial project, we can take it from
+                  product selection through production and delivery to the
+                  finished roof — our installers are Gerard-certified, so the
+                  tiles and the fitting come from the same company. Simple
+                  WhatsApp quoting, clear and transparent pricing.
                 </p>
               </div>
             </div>

@@ -93,7 +93,10 @@ export const siteIdentity = {
     "Metcopo roofing sheet production",
     "Stone-coated tile supply",
     "Roofing accessories supply",
-    "Roofing installation support",
+    // Installation is a service we sell, carried out by our Gerard-certified
+    // installers — not merely advice to the customer's own roofers, which is
+    // what "installation support" implied.
+    "Roofing installation by Gerard-certified installers",
     "Nationwide roofing material delivery",
   ],
   serviceAreas: [
@@ -138,6 +141,11 @@ export const siteIdentity = {
       credential: "Authorised Gerard stone-coated roofing dealer",
       issuer: "Gerard",
       shortLabel: "Authorised Gerard dealer",
+    },
+    {
+      credential: "Certified Gerard stone-coated roofing installer",
+      issuer: "Gerard",
+      shortLabel: "Certified Gerard installer",
     },
   ],
 } as const;
@@ -200,12 +208,12 @@ export const localBusinessJsonLd = {
       jobTitle: person.jobTitle,
       image: `${siteIdentity.siteUrl}${person.imagePath}`,
     })),
-  // Verifiable authorisations, so "authorised Gerard dealer" is a structured
-  // claim rather than a line of marketing copy.
+  // Verifiable authorisations, so the Gerard credentials are structured
+  // claims rather than lines of marketing copy.
   hasCredential: siteIdentity.authorisations.map((auth) => ({
     "@type": "EducationalOccupationalCredential",
     name: auth.credential,
-    credentialCategory: "Authorised dealer",
+    credentialCategory: auth.shortLabel,
     recognizedBy: { "@type": "Organization", name: auth.issuer },
   })),
   // Lagos is the only place the company manufactures. Ogun and the other

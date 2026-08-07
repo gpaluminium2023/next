@@ -75,14 +75,13 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/products/stone-coated" },
-  // "Authorised Gerard dealer" is in the title deliberately: Search Console
-  // shows live demand for "gerard authorized dealer" / "gerard authorized
-  // installer" where this site ranks 27th. We are a dealer, not an installer,
-  // and the copy says so precisely.
+  // Both Gerard credentials are in the title deliberately: Search Console
+  // shows live demand for "gerard authorized dealer" and "gerard authorized
+  // installer" where this site ranks 27th, and we hold both.
   title:
-    "Authorised Gerard Dealer in Lagos | Stone Coated Roofing Tile Prices — Gods Promise Aluminium",
+    "Authorised Gerard Dealer & Certified Installer in Lagos | Stone Coated Roofing Tile Prices",
   description:
-    "Authorised Gerard dealer in Lagos. Buy genuine Gerard stone-coated roofing tiles — Shingle, Bond, Classic, Milano & Roman profiles from ₦4,750/piece. 50-year warranty, nationwide delivery.",
+    "Authorised Gerard dealer and certified Gerard installer in Lagos. Buy and fit genuine Gerard stone-coated roofing tiles — Shingle, Bond, Classic, Milano & Roman profiles from ₦4,750/piece. 50-year warranty, nationwide delivery.",
   openGraph: {
     title:
       "Stone Coated Roofing Tiles — Gerard Shingle, Bond, Classic & Milano | Gods Promise Aluminium",
@@ -230,7 +229,11 @@ export default async function StoneCoatedPage() {
     },
     {
       q: "Are you an authorised Gerard dealer?",
-      a: "Yes. Gods Promise Aluminium is an authorised Gerard stone-coated roofing dealer, supplying genuine Gerard tiles from our Alimosho, Lagos factory to projects across all 36 states and the FCT. We supply the tiles and the full accessory range; we are a dealer rather than an installation contractor, though we support your roofers throughout the job.",
+      a: "Yes. Gods Promise Aluminium is an authorised Gerard stone-coated roofing dealer, supplying genuine Gerard tiles from our Alimosho, Lagos factory to projects across all 36 states and the FCT, along with the full accessory range.",
+    },
+    {
+      q: "Do you install stone-coated roofing tiles, or only supply them?",
+      a: "Both. Our installers are Gerard-certified, so you can buy the tiles and have them fitted by the same company — no coordinating between a supplier and a separate roofing crew. Installation is quoted per project based on roof area, pitch and complexity. If you would rather use your own roofers we are happy to supply materials only.",
     },
     {
       q: "How do I verify the tiles are genuine Gerard?",
@@ -335,9 +338,14 @@ export default async function StoneCoatedPage() {
               >
                 Imported from New Zealand
               </Badge>
-              <Badge className="rounded-sm bg-accent text-xs uppercase tracking-wider text-accent-foreground">
-                {siteIdentity.authorisations[0].shortLabel}
-              </Badge>
+              {siteIdentity.authorisations.map((auth) => (
+                <Badge
+                  key={auth.credential}
+                  className="rounded-sm bg-accent text-xs uppercase tracking-wider text-accent-foreground"
+                >
+                  {auth.shortLabel}
+                </Badge>
+              ))}
             </div>
             <h2 className="font-heading mb-4 text-2xl font-bold uppercase sm:text-3xl lg:text-4xl">
               Gerard Stone-Coated Tiles
@@ -353,8 +361,9 @@ export default async function StoneCoatedPage() {
               Available in five distinct profiles — Shingle, Bond, Classic,
               Milano and Roman — each tile delivers a beautiful, natural
               appearance while offering the strength and longevity of steel.
-              Gods Promise Aluminium is an authorised Gerard dealer in Lagos,
-              supplying genuine tiles with delivery to all 36 states.
+              Gods Promise Aluminium is an authorised Gerard dealer in Lagos
+              with Gerard-certified installers, so we can both supply genuine
+              tiles and fit them — with delivery to all 36 states.
             </p>
             <div className="flex items-center gap-2 rounded-sm border border-accent/30 bg-accent/10 p-4">
               <span className="font-heading text-2xl font-bold text-accent sm:text-3xl">
