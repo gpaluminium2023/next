@@ -124,8 +124,20 @@ export const siteIdentity = {
   leadership: [
     {
       name: "Nwobodo Daniel",
-      jobTitle: "Chief Executive Officer",
+      jobTitle: "Founder & Chief Executive Officer",
+      isFounder: true,
       imagePath: "/gallery/latest/daniel-ceo.jpeg",
+    },
+  ],
+  // Formal authorisations. Keep this list strictly to things that can be
+  // verified with the issuer — it is the difference between a credential and
+  // a marketing claim. Note "dealer", not "installer": there is live search
+  // demand for both and we are only one of them.
+  authorisations: [
+    {
+      credential: "Authorised Gerard stone-coated roofing dealer",
+      issuer: "Gerard",
+      shortLabel: "Authorised Gerard dealer",
     },
   ],
 } as const;
@@ -177,13 +189,24 @@ export const localBusinessJsonLd = {
     name: "CAC registration number",
     value: siteIdentity.registrationNumber,
   },
-  // `employee` rather than `founder` — the CEO's role is known, whether he
-  // founded the company in 2009 is not, and schema.org has no "ceo" property.
-  employee: siteIdentity.leadership.map((person) => ({
-    "@type": "Person",
-    name: person.name,
-    jobTitle: person.jobTitle,
-    image: `${siteIdentity.siteUrl}${person.imagePath}`,
+  // `founder` is the strongest available signal tying a real, named person to
+  // the company — schema.org has no "ceo" property, so the role travels on
+  // the Person's jobTitle.
+  founder: siteIdentity.leadership
+    .filter((person) => person.isFounder)
+    .map((person) => ({
+      "@type": "Person",
+      name: person.name,
+      jobTitle: person.jobTitle,
+      image: `${siteIdentity.siteUrl}${person.imagePath}`,
+    })),
+  // Verifiable authorisations, so "authorised Gerard dealer" is a structured
+  // claim rather than a line of marketing copy.
+  hasCredential: siteIdentity.authorisations.map((auth) => ({
+    "@type": "EducationalOccupationalCredential",
+    name: auth.credential,
+    credentialCategory: "Authorised dealer",
+    recognizedBy: { "@type": "Organization", name: auth.issuer },
   })),
   // Lagos is the only place the company manufactures. Ogun and the other
   // states it serves belong in areaServed below, not in the identity — saying

@@ -223,8 +223,14 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="rounded-sm border border-border bg-card p-6">
-              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Chief Executive</p>
+              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Founder &amp; CEO</p>
               <p className="text-muted-foreground">{siteIdentity.leadership[0].name}</p>
+            </div>
+            <div className="rounded-sm border border-border bg-card p-6">
+              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Authorisations</p>
+              <p className="text-muted-foreground">
+                {siteIdentity.authorisations.map((a) => a.credential).join(" · ")}
+              </p>
             </div>
             <div className="rounded-sm border border-border bg-card p-6">
               <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Address</p>
@@ -485,13 +491,12 @@ export default function AboutPage() {
                   {siteIdentity.brandName}
                 </p>
                 <p className="leading-relaxed text-muted-foreground">
-                  {siteIdentity.leadership[0].name} leads{" "}
+                  {siteIdentity.leadership[0].name} founded{" "}
                   {siteIdentity.legalName} ({siteIdentity.registrationNumber})
-                  from the factory floor in {siteIdentity.address.locality},
-                  where the company has rolled aluminium roofing sheets since{" "}
-                  {siteIdentity.foundedYear}. Behind him is a team of managers,
-                  supervisors and craftsmen who see every order through from
-                  production to delivery.
+                  in {siteIdentity.foundedYear} and still leads it from the
+                  factory floor in {siteIdentity.address.locality}. Behind him
+                  is a team of managers, supervisors and craftsmen who see every
+                  order through from production to delivery.
                 </p>
               </div>
             </div>
