@@ -21,6 +21,128 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "how-to-choose-aluminium-roofing-supplier-nigeria",
+    title:
+      "How to Choose an Aluminium Roofing Supplier in Nigeria (2026 Buyer's Guide)",
+    metaTitle:
+      "How to Compare Aluminium Roofing Suppliers & Price Lists in Nigeria 2026",
+    metaDescription:
+      "Comparing roofing sheet price lists between Nigerian suppliers? Learn what actually differs — gauge, effective width, VAT, delivery and accessories — plus how to verify thickness yourself and spot counterfeit stone-coated tiles.",
+    excerpt:
+      "Two roofing quotes can differ by 40% and both be honest — because suppliers quote different things. This guide shows you how to normalise any Nigerian roofing price list so you are comparing like with like, how to verify sheet gauge yourself with a ₦3,000 tool, and the questions worth asking before you pay a deposit.",
+    body: [],
+    bodyHtml: `
+<div class="blog-callout">
+  <strong>The short version:</strong> before comparing two price lists, check four things — gauge in millimetres, <em>effective</em> covering width, whether VAT and delivery are included, and whether accessories are quoted. Those four explain most price gaps between suppliers.
+</div>
+
+<p>Most roofing guides tell you how to choose a profile. Far fewer tell you how to choose who you buy it from — which, in the Nigerian market, is where more money is won and lost. A sheet that is 0.03mm under its stated gauge looks identical on the truck and costs you years of roof life.</p>
+
+<p>This guide is about evaluating suppliers and their price lists. It applies to any manufacturer, dealer or distributor in Nigeria, including us.</p>
+
+<h2>Why two honest quotes can differ by 40%</h2>
+
+<p>When a customer tells us a competitor quoted much less, the gap almost always comes from one of four things rather than anyone being dishonest:</p>
+
+<h3>1. Gauge</h3>
+<p>0.45mm and 0.55mm are the common residential gauges, but 0.40mm and thinner sheets are widely sold. A 0.40mm sheet can be 15–20% cheaper per square metre than 0.45mm and will look the same to an untrained eye on delivery day. Always compare price <em>at the same gauge</em>. If a price list does not state gauge in millimetres, that is the first question to ask.</p>
+
+<h3>2. Effective width versus nominal width</h3>
+<p>Sheets overlap when laid. A sheet sold as "1 metre wide" may only cover 0.9m or less once lapped, so you need roughly 11% more material than a naive area calculation suggests. Suppliers quoting per linear metre on <em>nominal</em> width will look cheaper than those quoting on <em>effective</em> covering width. Ask which one the price refers to, then convert both quotes to naira per square metre of finished roof.</p>
+
+<h3>3. VAT, delivery and loading</h3>
+<p>Factory-gate prices exclude delivery. Depending on distance and access, transport can add a meaningful amount to a roofing order, and a quote that bundles it will look worse against one that does not. Confirm whether VAT is included as well.</p>
+
+<h3>4. Accessories</h3>
+<p>Ridge caps, valley gutters, flashing, nails and screws are easy to leave out of a headline figure. On stone-coated work in particular, accessories can add 15–20% to material cost. A complete quote and a sheets-only quote are not comparable.</p>
+
+<h2>Verify the gauge yourself — it costs about ₦3,000</h2>
+
+<p>You do not have to take anyone's word on thickness. A digital vernier caliper or a micrometer costs a few thousand naira and settles the question in seconds:</p>
+
+<ul>
+  <li>Measure at several points across the sheet, not just the edge, which can deform in handling.</li>
+  <li>Measure the bare metal. Paint and coating add a few hundredths of a millimetre, so a "0.45mm" reading that includes coating may be 0.42mm of aluminium.</li>
+  <li>Check more than one sheet from the bundle.</li>
+</ul>
+
+<p>Any supplier confident in what they sell will let you do this before you pay. We encourage it at our factory — you are welcome to watch your order run and measure it as it comes off the line.</p>
+
+<h2>Manufacturer, dealer or reseller?</h2>
+
+<p>All three are legitimate, and the right choice depends on your project. What matters is knowing which one you are talking to:</p>
+
+<ul>
+  <li><strong>Manufacturers</strong> roll the sheets themselves. You can usually visit, watch production and buy at factory-gate price, but you may face minimum order quantities.</li>
+  <li><strong>Authorised dealers</strong> are appointed by a brand — this matters most for imported stone-coated tiles, where authorisation is your guard against counterfeits.</li>
+  <li><strong>Resellers and merchants</strong> buy from manufacturers and hold local stock. You pay a margin for convenience and immediate availability, which is often worth it for small quantities or urgent repairs.</li>
+</ul>
+
+<p>Nigeria has a number of long-established aluminium roofing manufacturers, several trading for decades, alongside many smaller regional producers and merchants. Ask directly which category a supplier falls into — a manufacturer will happily show you the machines.</p>
+
+<h2>Counterfeit stone-coated tiles</h2>
+
+<p>Stone-coated roofing carries a genuine counterfeit problem in Nigeria. Imitations of well-known brands appear at prices well below the real product, and the difference shows up in coating adhesion and colour retention after a few rainy seasons rather than on the day of purchase.</p>
+
+<p>Two practical protections: buy from an authorised dealer of the brand, and inspect a physical sample for consistent weight, coating depth and a clearly embossed brand mark on the underside. If a stone-coated price looks dramatically below every other quote, that is the most likely explanation.</p>
+
+<h2>Questions worth asking any supplier</h2>
+
+<ol>
+  <li>What gauge is this, in millimetres, and can I measure it myself?</li>
+  <li>Is that price per square metre of finished roof, or per nominal metre of sheet?</li>
+  <li>Does the price include VAT, delivery and accessories?</li>
+  <li>Do you manufacture these, or buy them in?</li>
+  <li>For branded tiles — are you an authorised dealer, and can that be verified?</li>
+  <li>What is the lead time, and what happens if my measurements change?</li>
+  <li>Can I visit and see my order being produced?</li>
+</ol>
+
+<p>A supplier who answers all seven plainly is usually a safe bet, whoever they are.</p>
+
+<h2>Where we fit</h2>
+
+<p>Gods Promise Aluminium Concept Limited (RC 1814033) has manufactured aluminium roofing sheets since 2009 from our factory at Pleasure Bus Stop, Alimosho, Lagos. We roll long span, step tile, Metcopo (Metcoppo) and flat sheets in-house in gauges from 0.40mm to 1.00mm, we are an authorised Gerard dealer with Gerard-certified installers, and we deliver to all 36 states and the FCT, with branches in Enugu and Owerri.</p>
+
+<p>Our current rates are published on our <a href="/pricing">price list</a>, and you are welcome to bring a caliper. If you would rather compare profiles first, see our <a href="/blog/longspan-vs-steptile-vs-metcopo-comparison">long span vs step tile vs Metcopo comparison</a> or our guide to <a href="/blog/roofing-sheet-lifespan-045mm-vs-055mm">0.45mm vs 0.55mm lifespan</a>.</p>
+`.trim(),
+    date: "2026-08-07",
+    imageSrc: "/gallery/latest/corrugation-machine.jpeg",
+    imageAlt:
+      "Roll-forming corrugation machine producing aluminium roofing sheets at the Gods Promise Aluminium factory in Alimosho, Lagos.",
+    readingTimeMinutes: 9,
+    featured: true,
+    faq: [
+      {
+        question:
+          "Why is one roofing sheet price list so much cheaper than another?",
+        answer:
+          "Usually one of four reasons: a thinner gauge (0.40mm against 0.45mm can be 15–20% cheaper), pricing on nominal rather than effective covering width, delivery and VAT excluded, or accessories left out of the quote. Normalise all four before concluding one supplier is cheaper — the gap often disappears.",
+      },
+      {
+        question: "How can I check a roofing sheet is really 0.45mm?",
+        answer:
+          "Measure it with a digital vernier caliper or micrometer, which cost a few thousand naira. Take readings at several points across the sheet rather than at the edge, and remember that paint and coating add slightly to the reading — so bare metal should be measured where possible. Any reputable supplier will let you check before you pay.",
+      },
+      {
+        question:
+          "What is the difference between a roofing manufacturer, an authorised dealer and a reseller?",
+        answer:
+          "A manufacturer rolls the sheets themselves and sells at factory-gate price, usually with minimum order quantities. An authorised dealer is appointed by a brand, which matters most for imported stone-coated tiles where authorisation protects you from counterfeits. A reseller buys from manufacturers and holds local stock, charging a margin for convenience. All three are legitimate — just be clear which you are dealing with.",
+      },
+      {
+        question: "How do I avoid counterfeit stone-coated roofing tiles?",
+        answer:
+          "Buy from an authorised dealer of the brand, and inspect a sample for consistent weight, coating depth and a clearly embossed brand mark underneath. Counterfeit stone-coated tiles are a real problem in the Nigerian market, and the difference typically shows in coating adhesion and colour fade after a few rainy seasons rather than at the point of sale.",
+      },
+      {
+        question: "Should I buy roofing sheets factory-direct or from a merchant?",
+        answer:
+          "Factory-direct is usually cheaper per square metre and lets you inspect production, which suits full-roof orders. A local merchant is often the better choice for small quantities, urgent repairs or when you need stock the same hour — you pay a margin for that convenience. For a whole roof, the saving from buying direct is normally worth the trip.",
+      },
+    ],
+  },
+  {
     slug: "aluminum-roofing-sheet-price-lagos",
     title:
       "How Much Do Aluminium Roofing Sheets Cost in Lagos, Nigeria in 2026?",

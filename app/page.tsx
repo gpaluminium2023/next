@@ -7,9 +7,14 @@ import { siteIdentity, yearsTrading } from '@/lib/site-identity';
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
-  title: "Aluminium Roofing Company in Lagos | Gods Promise Aluminium",
+  // "aluminium roofing company" brings 151 impressions and zero clicks at
+  // position 7.8 — the largest single waste in Search Console. The title
+  // already matched the query; the description did not earn the click, opening
+  // with "a leading aluminium roofing company", which every competitor also
+  // claims. It now leads with what can be checked: years, gauges, credentials.
+  title: "Aluminium Roofing Company in Lagos & Nigeria | Gods Promise Aluminium",
   description:
-    "Gods Promise Aluminium is a leading aluminium roofing company in Lagos supplying durable roofing sheets, step tiles and stone-coated tiles across Nigeria. Fast WhatsApp quotes and nationwide delivery.",
+    "Aluminium roofing sheet manufacturer in Lagos since 2009. We roll long span, step tile, Metcopo (Metcoppo) and flat sheets in-house from 0.40mm to 1.00mm, and we are an authorised Gerard dealer with Gerard-certified installers. Delivery to all 36 states.",
   openGraph: {
     title: "Aluminium Roofing Company in Lagos | Gods Promise Aluminium",
     description:
