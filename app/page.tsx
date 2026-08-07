@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
-import { siteIdentity } from '@/lib/site-identity';
+import { siteIdentity, yearsTrading } from '@/lib/site-identity';
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -112,10 +112,12 @@ export default function Home() {
       {/* ── STATS STRIP ─────────────────────────────────────────── */}
       <section className="bg-secondary">
         <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-border md:grid-cols-4">
-          <StatItem value="15+" label="Years in Business" />
+          {/* Years derives from siteIdentity.foundedYear; the customer count
+              matches /about rather than rounding up to 1K+ separately. */}
+          <StatItem value={`${yearsTrading()}+`} label="Years in Business" />
           <StatItem value="500K+" label="Sheets Sold" />
           <StatItem value="36" label="States Served" />
-          <StatItem value="1K+" label="Happy Customers" />
+          <StatItem value="950+" label="Happy Customers" />
         </div>
       </section>
 

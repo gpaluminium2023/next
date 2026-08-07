@@ -1,6 +1,7 @@
 export const siteIdentity = {
   legalName: "Gods Promise Aluminium Concept Limited",
   brandName: "Gods Promise Aluminium",
+  foundedYear: 2009,
   siteUrl: "https://www.godspromisealuminiumroofing.com",
   logoPath: "/logo.jpeg",
   phoneDisplay: "+234 915 045 9964",
@@ -111,7 +112,32 @@ export const siteIdentity = {
   ],
   primaryCategory: "Aluminium roofing sheet manufacturer",
   priceRange: "NGN",
+  // Gauges we roll in-house, thinnest to thickest. Stated on /about and the
+  // homepage — it is one of the few hard specs that distinguishes a real
+  // manufacturer from a reseller, and the detail AI search results quote.
+  gaugeRange: { min: "0.40mm", max: "1.00mm" },
+  // CAC registration. A verifiable company number is a strong trust signal in
+  // Nigeria and is emitted as a schema.org identifier below.
+  registrationNumber: "RC 1814033",
+  // Named leadership. Real, named people are among the strongest E-E-A-T
+  // signals available, and AI search answers cite them where they exist.
+  leadership: [
+    {
+      name: "Nwobodo Daniel",
+      jobTitle: "Chief Executive Officer",
+      imagePath: "/gallery/latest/daniel-ceo.jpeg",
+    },
+  ],
 } as const;
+
+/**
+ * Years trading, derived from foundedYear rather than typed in — the page
+ * previously advertised "15+ years" against a 2009 founding, which had been
+ * true two years earlier. Recomputed on every build.
+ */
+export function yearsTrading(now: Date = new Date()): number {
+  return now.getFullYear() - siteIdentity.foundedYear;
+}
 
 export const localBusinessJsonLd = {
   "@context": "https://schema.org",
@@ -145,6 +171,20 @@ export const localBusinessJsonLd = {
     },
   ],
   sameAs: siteIdentity.socialLinks,
+  // CAC number, so the entity is tied to a checkable public record.
+  identifier: {
+    "@type": "PropertyValue",
+    name: "CAC registration number",
+    value: siteIdentity.registrationNumber,
+  },
+  // `employee` rather than `founder` — the CEO's role is known, whether he
+  // founded the company in 2009 is not, and schema.org has no "ceo" property.
+  employee: siteIdentity.leadership.map((person) => ({
+    "@type": "Person",
+    name: person.name,
+    jobTitle: person.jobTitle,
+    image: `${siteIdentity.siteUrl}${person.imagePath}`,
+  })),
   // Lagos is the only place the company manufactures. Ogun and the other
   // states it serves belong in areaServed below, not in the identity — saying
   // "Lagos and Ogun State company" here competed with the address above.

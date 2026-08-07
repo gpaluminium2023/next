@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-import { siteIdentity } from "@/lib/site-identity";
+import { siteIdentity, yearsTrading } from "@/lib/site-identity";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
@@ -37,7 +37,9 @@ export const metadata: Metadata = {
 
 const stats = [
   { id: 1, value: "950+", label: "Satisfied clients" },
-  { id: 2, value: "15+", label: "Years of experience" },
+  // Derived from siteIdentity.foundedYear (2009) so it can never go stale —
+  // this read "15+" well into the seventeenth year.
+  { id: 2, value: `${yearsTrading()}+`, label: "Years of experience" },
   { id: 3, value: "1000+", label: "Completed projects" },
   { id: 4, value: "24/7", label: "Customer support" },
 ];
@@ -153,12 +155,21 @@ export default function AboutPage() {
                 Built on promise, powered by experience
               </h2>
               <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
+                {/* Opening paragraph is written to be quotable: who, what,
+                    where, since when, at what spec, over what area. Search
+                    engines and AI answers lift this passage, and it previously
+                    offered nothing but "one of the leading manufacturers". */}
                 <p>
-                  Gods Promise Aluminium ({siteIdentity.legalName}) is one of the
-                  leading aluminium roofing sheet manufacturers in Nigeria. From
-                  our production facility in {siteIdentity.address.locality}, we
-                  manufacture and supply roofing sheets, stone-coated tiles and
-                  accessories for projects of all sizes across Lagos and Nigeria.
+                  Gods Promise Aluminium ({siteIdentity.legalName}) is an
+                  aluminium roofing sheet manufacturer based at{" "}
+                  {siteIdentity.address.formatted}, trading since{" "}
+                  {siteIdentity.foundedYear}. We roll long span, step tile,
+                  Metcopo and flat aluminium sheets in-house in gauges from{" "}
+                  {siteIdentity.gaugeRange.min} to {siteIdentity.gaugeRange.max},
+                  supply Gerard stone-coated roofing tiles and the accessories
+                  that go with them, and deliver to all 36 states and the FCT —
+                  with branches in{" "}
+                  {siteIdentity.branches.map((b) => b.locality).join(" and ")}.
                 </p>
                 <p>
                   Over the years we&apos;ve grown with our customers, learning
@@ -207,7 +218,13 @@ export default function AboutPage() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-sm border border-border bg-card p-6">
               <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Legal name</p>
-              <p className="text-muted-foreground">{siteIdentity.legalName}</p>
+              <p className="text-muted-foreground">
+                {siteIdentity.legalName} ({siteIdentity.registrationNumber})
+              </p>
+            </div>
+            <div className="rounded-sm border border-border bg-card p-6">
+              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Chief Executive</p>
+              <p className="text-muted-foreground">{siteIdentity.leadership[0].name}</p>
             </div>
             <div className="rounded-sm border border-border bg-card p-6">
               <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Address</p>
@@ -229,7 +246,41 @@ export default function AboutPage() {
             </div>
             <div className="rounded-sm border border-border bg-card p-6">
               <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Founded</p>
-              <p className="text-muted-foreground">2009, Nigeria</p>
+              <p className="text-muted-foreground">
+                {siteIdentity.foundedYear}, Nigeria — {yearsTrading()} years manufacturing
+              </p>
+            </div>
+
+            {/* The four specifics below are the ones AI search results quote
+                about competitors and previously could not find here: this page
+                described the company only as "one of the leading manufacturers"
+                with no checkable detail. */}
+            <div className="rounded-sm border border-border bg-card p-6">
+              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Gauges produced</p>
+              <p className="text-muted-foreground">
+                {siteIdentity.gaugeRange.min} – {siteIdentity.gaugeRange.max}, rolled in-house
+              </p>
+            </div>
+            <div className="rounded-sm border border-border bg-card p-6">
+              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Profiles</p>
+              <p className="text-muted-foreground">
+                Long span, step tile, Metcopo (Metcoppo) and flat sheets, plus Gerard
+                stone-coated tiles
+              </p>
+            </div>
+            <div className="rounded-sm border border-border bg-card p-6">
+              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Delivery coverage</p>
+              <p className="text-muted-foreground">
+                All 36 states and the Federal Capital Territory
+              </p>
+            </div>
+            <div className="rounded-sm border border-border bg-card p-6">
+              <p className="font-heading mb-1 text-xs font-bold uppercase tracking-widest text-accent">Branches</p>
+              <p className="text-muted-foreground">
+                {siteIdentity.branches
+                  .map((branch) => `${branch.locality}, ${branch.region}`)
+                  .join(" · ")}
+              </p>
             </div>
           </div>
         </div>
@@ -408,17 +459,42 @@ export default function AboutPage() {
               Leadership
             </h2>
           </div>
+          {/* Named, with a photo. An anonymous "our leadership team brings
+              years of experience" paragraph is worth nothing to a reader
+              deciding whether to trust a supplier, and nothing to a search
+              engine trying to establish who stands behind the company. */}
           <div className="mx-auto max-w-3xl rounded-sm border border-border bg-card p-8">
-            <div className="mb-2 h-1 w-8 bg-accent" />
-            <h3 className="font-heading mb-4 text-xl font-bold uppercase">
-              Our leadership team
-            </h3>
-            <p className="leading-relaxed text-muted-foreground">
-              Behind every successful project is a committed team of managers,
-              supervisors, and craftsmen. Our leadership brings years of
-              hands-on industry experience to ensure that every order is
-              processed accurately and every customer is treated with care.
-            </p>
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+              {siteIdentity.leadership.map((person) => (
+                <Image
+                  key={person.name}
+                  src={person.imagePath}
+                  alt={`${person.name}, ${person.jobTitle} of ${siteIdentity.brandName}`}
+                  width={140}
+                  height={140}
+                  className="h-32 w-32 shrink-0 rounded-sm object-cover sm:h-36 sm:w-36"
+                />
+              ))}
+              <div>
+                <div className="mb-2 h-1 w-8 bg-accent" />
+                <h3 className="font-heading text-xl font-bold uppercase">
+                  {siteIdentity.leadership[0].name}
+                </h3>
+                <p className="font-heading mb-4 text-xs font-bold uppercase tracking-widest text-accent">
+                  {siteIdentity.leadership[0].jobTitle},{" "}
+                  {siteIdentity.brandName}
+                </p>
+                <p className="leading-relaxed text-muted-foreground">
+                  {siteIdentity.leadership[0].name} leads{" "}
+                  {siteIdentity.legalName} ({siteIdentity.registrationNumber})
+                  from the factory floor in {siteIdentity.address.locality},
+                  where the company has rolled aluminium roofing sheets since{" "}
+                  {siteIdentity.foundedYear}. Behind him is a team of managers,
+                  supervisors and craftsmen who see every order through from
+                  production to delivery.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
