@@ -1,10 +1,19 @@
 import type { Metadata } from 'next';
 
+import { branchLocations, dealerLocations } from "@/lib/locations-data";
+import { siteIdentity } from "@/lib/site-identity";
+
+/** "Enugu and Imo" / "Enugu, Imo and Oyo" — Oxford-free, matching site voice. */
+function formatList(items: string[]): string {
+  if (items.length <= 1) return items[0] ?? "";
+  return `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+}
+
 export const metadata: Metadata = {
   alternates: { canonical: "/dealers" },
   title: "Become a Dealer or Partner | Gods Promise Aluminium",
   description:
-    "Partner with Gods Promise Aluminium — aluminium roofing sheet manufacturer in Ogun State, Nigeria. Dealer and distributor opportunities for roofing contractors across Lagos and Nigeria.",
+    "Partner with Gods Promise Aluminium — aluminium roofing sheet manufacturer in Alimosho, Lagos. Dealer and distributor opportunities for roofing contractors across Nigeria.",
 };
 
 export default function DealersPage() {
@@ -90,15 +99,34 @@ export default function DealersPage() {
               Areas We Currently Serve
             </h2>
             <div className="text-sm text-muted-foreground space-y-2">
+              {/* Rendered from locations-data rather than written out by
+                  hand — the prose here used to name twelve states while the
+                  location pages flagged a different eleven. */}
               <p>
-                We already work with partners in Lagos, Ogun, Oyo, Osun, Ondo,
-                Ekiti, Kwara, Edo, Delta, Rivers, Anambra and Enugu states.
-                However, we are actively looking to expand our dealer network
-                into the northern states and the Federal Capital Territory. If
-                you operate anywhere in Nigeria and are interested in supplying
-                quality aluminium roofing products, we would like to hear from
-                you.
+                We manufacture at our Lagos factory in {siteIdentity.address.locality}
+                {branchLocations.length > 0 && (
+                  <>
+                    {" "}
+                    and run our own branches in{" "}
+                    {formatList(branchLocations.map((loc) => loc.name))}
+                  </>
+                )}
+                , and we deliver to all 36 states and the FCT from there.
               </p>
+              {dealerLocations.length > 0 ? (
+                <p>
+                  We also work with independent dealers in{" "}
+                  {formatList(dealerLocations.map((loc) => loc.name))}.
+                </p>
+              ) : (
+                <p>
+                  We do not yet have independent dealers anywhere in Nigeria —
+                  every order today is supplied directly by us. That makes this
+                  the ground floor: we are actively looking for the first
+                  dealers and installation partners in every region, and early
+                  partners get first claim on their territory.
+                </p>
+              )}
             </div>
           </div>
 

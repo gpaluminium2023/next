@@ -9,7 +9,8 @@ import {
     CheckCircle2,
     ChevronRight,
 } from "lucide-react";
-import { locations, getLocationBySlug } from "@/lib/locations-data";
+import { locations, getLocationBySlug, getPresence } from "@/lib/locations-data";
+import { siteIdentity } from "@/lib/site-identity";
 
 /* ── Static params for ISR / static export ─────────────────────────────── */
 
@@ -82,20 +83,28 @@ export default async function LocationStatePage({
   const loc = getLocationBySlug(state);
   if (!loc) notFound();
 
+  const presence = getPresence(loc);
+
   /* JSON-LD LocalBusiness schema for the state */
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Gods Promise Aluminium",
     description: `Aluminium roofing company serving ${loc.name}, Nigeria. Factory-direct roofing sheets delivered to ${loc.keyAreas.slice(0, 3).join(", ")} and surrounding areas.`,
-    telephone: "+2349150459964",
+    telephone: siteIdentity.phoneE164,
     url: `https://www.godspromisealuminiumroofing.com/locations/${loc.slug}`,
+    // Always the head office, taken from siteIdentity so it cannot drift from
+    // the site-wide LocalBusiness node in app/layout.tsx. These pages used to
+    // hardcode a Sango Ota, Ogun State address here, which put a second,
+    // contradictory PostalAddress for the same business on all ~36 location
+    // pages. `areaServed` below is what varies per state — not the address.
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Km 38 Lagos-Abeokuta Expressway, Beside First Bank",
-      addressLocality: "Sango Ota",
-      addressRegion: "Ogun State",
-      addressCountry: "NG",
+      streetAddress: siteIdentity.address.streetAddress,
+      addressLocality: siteIdentity.address.locality,
+      addressRegion: siteIdentity.address.region,
+      postalCode: siteIdentity.address.postalCode,
+      addressCountry: siteIdentity.address.countryCode,
     },
     areaServed: {
       "@type": "State",
@@ -247,7 +256,30 @@ export default async function LocationStatePage({
                 </p>
               </div>
             </div>
-            {loc.hasDealer && (
+            {/* Only ever the strongest *true* claim. A state we merely deliver
+                to renders nothing here rather than an implied local presence —
+                this block used to assert "distribution partners" in eleven
+                states, including three the /dealers page said we had not
+                reached yet. */}
+            {presence === "branch" && (
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-heading font-bold text-base">
+                    We have a branch in {loc.name}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Buy directly from our {loc.name} branch — no delivery wait
+                    and no reseller margin.{" "}
+                    <Link href="/contact" className="text-accent hover:underline">
+                      Get branch contact details →
+                    </Link>
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {presence === "dealer" && (
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="h-5 w-5 text-accent shrink-0 mt-0.5" />
                 <div>
@@ -255,7 +287,7 @@ export default async function LocationStatePage({
                     Local dealer/partner available
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    We have distribution partners in {loc.name}.{" "}
+                    We work with a dealer in {loc.name}.{" "}
                     <Link
                       href="/dealers"
                       className="text-accent hover:underline"

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
+import { siteIdentity } from '@/lib/site-identity';
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -255,8 +256,8 @@ export default function Home() {
             <div className="space-y-4 text-sm leading-relaxed text-muted-foreground">
               <p>
                 Gods Promise Aluminium Concept Limited is an aluminium roofing
-                sheet manufacturer based at 288 Abeokuta Expressway, Pleasure
-                Bus Stop, Iyana Ipaja, Lagos State, Nigeria. We produce long
+                sheet manufacturer based at Pleasure Bus Stop, Alimosho, Lagos
+                100275, Nigeria. We produce long
                 span roofing sheets, step tiles, metcoppo profiles and flat
                 sheets in a range of thicknesses from 0.40mm to 1.00mm, serving
                 homeowners, builders, contractors and developers across all 36
@@ -346,7 +347,7 @@ export default function Home() {
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="mb-3 font-heading text-xs font-bold uppercase tracking-[0.28em] opacity-75">
-                288 Abeokuta Expressway, Iyana Ipaja, Lagos State
+                {siteIdentity.address.formatted}
               </p>
               <h2 className="font-heading text-3xl font-bold uppercase leading-none tracking-tight md:text-5xl lg:text-6xl">
                 Ready to Start

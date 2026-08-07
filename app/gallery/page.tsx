@@ -283,7 +283,7 @@ export default async function GalleryPage() {
             <div className="grid gap-4 md:grid-cols-2 text-sm text-muted-foreground">
               <p>
                 Below you will find a selection of photographs taken at our
-                factory in Iyana Ipaja, Lagos and from completed roofing
+                factory in Alimosho, Lagos and from completed roofing
                 projects we have supplied across Nigeria. These images show our
                 production process, the quality of our aluminium roofing sheets
                 and how they look once installed on real buildings — from

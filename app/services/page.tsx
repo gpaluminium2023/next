@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { siteIdentity } from "@/lib/site-identity";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/services" },
@@ -441,7 +442,7 @@ export default function ServicesPage() {
           </div>
 
           <p className="mt-8 text-sm text-primary-foreground/75">
-            288 Abeokuta Expressway, Pleasure B/Stop, Iyana Ipaja, Lagos State
+            {siteIdentity.address.formatted}
           </p>
         </div>
       </section>

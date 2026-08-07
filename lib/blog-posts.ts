@@ -33,7 +33,7 @@ export const blogPosts: BlogPost[] = [
 <p>The type of aluminium roofing profile you choose has a significant impact on total cost. <a href="/blog/longspan-vs-steptile-vs-metcopo-comparison">Long span sheets are generally the most affordable option</a>, followed by step-tile profiles which offer a more traditional tile-like appearance at a slightly higher price. Stone-coated tiles cost more per square metre but provide enhanced durability and a premium decorative finish that many estate developers and high-end homeowners prefer.</p>
 <p>Thickness also plays a key role in pricing. The most common gauges sold in Lagos are 0.45mm and 0.55mm. A thicker sheet costs more per metre but offers better resistance to wind uplift, hail damage and general wear over time. For most residential buildings, 0.45mm provides adequate performance, while 0.55mm is recommended for commercial buildings, coastal properties and areas prone to heavy rainfall. Not sure which gauge to choose long-term? See our guide on <a href="/blog/roofing-sheet-lifespan-045mm-vs-055mm">0.45mm vs 0.55mm roofing sheet lifespan</a>.</p>
 <p>Trying to estimate total project cost? Our detailed breakdown of the <a href="/blog/cost-to-roof-4-bedroom-duplex-nigeria-2026">cost of roofing a 4-bedroom duplex in Nigeria (2026)</a> covers materials, labour, and accessories across all three sheet types.</p>
-<p>Ready for a quote? <a href="/contact">Contact us</a> via WhatsApp on 09150459964 or visit our factory at Km 38, Lagos-Abeokuta Expressway, Sango Ota, Ogun State. <a href="/delivery">Nationwide delivery</a> is available.</p>
+<p>Ready for a quote? <a href="/contact">Contact us</a> via WhatsApp on 09150459964 or visit our factory at Pleasure Bus Stop, Alimosho, Lagos. <a href="/delivery">Nationwide delivery</a> is available.</p>
 `.trim(),
     date: "2026-01-15",
     imageSrc: "/gallery/latest/flatsheet-sample-cuts.jpeg",
@@ -77,7 +77,7 @@ export const blogPosts: BlogPost[] = [
 <p>Brand reputation plays a significant role in pricing. Genuine Gerard tiles, Decra tiles and other recognised brands are typically more expensive than unbranded or locally coated alternatives. However, the quality difference is substantial. Authentic stone-coated tiles use multiple layers of acrylic coating over natural stone chips bonded to a galvanised steel base, which gives them their 50-year plus lifespan. Cheaper alternatives often use inferior coatings that fade, crack or peel within a few years.</p>
 <p>When buying stone-coated roofing sheets in Lagos, always ask for a sample tile so you can check the weight, coating quality and finish before placing a bulk order. Buy from suppliers who can show you documentation of the brand and origin. Be wary of prices that seem too good to be true — they usually indicate substandard products that will cost you more in the long run through premature replacement.</p>
 <p>Beyond the tiles themselves, budget for accessories including starter kits, ridge caps, hip tiles, valley troughs and roofing nails. These accessories typically add 15 to 20 percent to the total material cost but are essential for a professional, watertight installation. Labour costs for stone-coated tile installation are also higher than for standard aluminium sheets because the tiles require more careful handling and a specific installation technique. See how stone-coated fits into a full project budget in our <a href="/blog/cost-to-roof-4-bedroom-duplex-nigeria-2026">4-bedroom duplex roofing cost breakdown</a>.</p>
-<p>At Gods Promise Aluminium, we supply complete stone-coated roofing packages including tiles and all necessary accessories. Our team can also recommend experienced installation contractors if you need one. <a href="/contact">Contact us</a> on WhatsApp at 09150459964 or visit our factory at Km 38, Lagos-Abeokuta Expressway, Sango Ota, Ogun State for a hands-on look at our stone-coated tile range.</p>
+<p>At Gods Promise Aluminium, we supply complete stone-coated roofing packages including tiles and all necessary accessories. Our team can also recommend experienced installation contractors if you need one. <a href="/contact">Contact us</a> on WhatsApp at 09150459964 or visit our factory at Pleasure Bus Stop, Alimosho, Lagos for a hands-on look at our stone-coated tile range.</p>
 `.trim(),
     date: "2026-01-20",
     imageSrc: "/core-products/stonetiles.jpg",
@@ -208,7 +208,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Why Choose Gods Promise Aluminium?</h2>
 <p>We manufacture long span, step tile and Metcopo profiles in-house at our Lagos factory — which means no middlemen and no inflated market prices. Every sheet is produced to the stated gauge and customers are welcome to verify at our factory before dispatch. We also supply <a href="/blog/stone-coated-roofing-sheet-prices-lagos">Gerard stone-coated tiles</a> imported from New Zealand for premium projects.</p>
-<p>Nationwide delivery available. WhatsApp us on 09150459964 or visit our factory at Km 38, Lagos-Abeokuta Expressway, Sango Ota, Ogun State.</p>
+<p>Nationwide delivery available. WhatsApp us on 09150459964 or visit our factory at Pleasure Bus Stop, Alimosho, Lagos.</p>
     `.trim(),
     date: "2026-04-03",
     imageSrc: "/gallery/blogs/3-bedroom-flat.png",
@@ -802,7 +802,7 @@ export const blogPosts: BlogPost[] = [
   Long span aluminium: <strong>₦3,500 – ₦6,500/m²</strong> · Step tile: <strong>₦5,200 – ₦7,200/m²</strong> · Stone-coated tiles: <strong>₦4,750 – ₦6,500/piece</strong> · Roofing labour: <strong>₦280,000 – ₦900,000</strong> (full install, 3–5 bedroom)
 </div>
 
-<p>Building material prices in Nigeria change faster than almost any other cost category. Exchange rate movements, port congestion, and fuel prices can shift roofing sheet prices by 10–20% within a single quarter. This guide captures the <strong>April 2026 market</strong> for all major roofing materials in Lagos — sourced from factory-direct pricing at Gods Promise Aluminium, Sango Ota, Ogun State.</p>
+<p>Building material prices in Nigeria change faster than almost any other cost category. Exchange rate movements, port congestion, and fuel prices can shift roofing sheet prices by 10–20% within a single quarter. This guide captures the <strong>April 2026 market</strong> for all major roofing materials in Lagos — sourced from factory-direct pricing at Gods Promise Aluminium, Alimosho, Lagos.</p>
 
 <p>This page focuses on the <strong>roofing section</strong> of the broader building materials market. For full project cost estimates, see our guides on the <a href="/blog/cost-of-roofing-a-3-bedroom-house-lagos">cost of roofing a 3-bedroom house</a> and the <a href="/blog/cost-to-roof-4-bedroom-duplex-nigeria-2026">cost of roofing a 4-bedroom duplex</a>.</p>
 
@@ -889,13 +889,13 @@ export const blogPosts: BlogPost[] = [
 </table>
 
 <h2>How Much Does Delivery Add to the Cost?</h2>
-<p>Delivery from the Gods Promise Aluminium factory (Km 38, Lagos-Abeokuta Expressway, Sango Ota, Ogun State) to your site adds the following approximate costs based on current diesel and logistics rates:</p>
+<p>Delivery from the Gods Promise Aluminium factory (Pleasure Bus Stop, Alimosho, Lagos) to your site adds the following approximate costs based on current diesel and logistics rates:</p>
 
 <table>
   <thead><tr><th>Destination</th><th>Approximate Delivery Cost</th><th>Transit Time</th></tr></thead>
   <tbody>
-    <tr><td>Within Ogun State</td><td>₦20,000 – ₦45,000</td><td>Same day</td></tr>
-    <tr><td>Lagos (Island / Mainland)</td><td>₦35,000 – ₦70,000</td><td>1 day</td></tr>
+    <tr><td>Lagos (Island / Mainland)</td><td>₦35,000 – ₦70,000</td><td>Same day – next business day</td></tr>
+    <tr><td>Within Ogun State</td><td>₦20,000 – ₦45,000</td><td>Next business day</td></tr>
     <tr><td>Ibadan</td><td>₦40,000 – ₦75,000</td><td>1–2 days</td></tr>
     <tr><td>Abuja</td><td>₦90,000 – ₦160,000</td><td>2–3 days</td></tr>
     <tr><td>Port Harcourt</td><td>₦100,000 – ₦180,000</td><td>2–4 days</td></tr>
@@ -958,7 +958,7 @@ export const blogPosts: BlogPost[] = [
     body: [],
     bodyHtml: `
 <div class="blog-callout">
-  <strong>Current Price (April 2026):</strong> 0.55mm long span aluminium roofing sheets start from <strong>₦5,800 – ₦6,500 per m²</strong> at the Gods Promise Aluminium factory, Sango Ota, Lagos. WhatsApp <strong>09150459964</strong> for a same-day quote.
+  <strong>Current Price (April 2026):</strong> 0.55mm long span aluminium roofing sheets start from <strong>₦5,800 – ₦6,500 per m²</strong> at the Gods Promise Aluminium factory, Alimosho, Lagos. WhatsApp <strong>09150459964</strong> for a same-day quote.
 </div>
 
 <p>The 0.55mm gauge is the most specified aluminium roofing sheet for mid-to-upper residential builds and commercial projects in Lagos. It costs more than the common 0.45mm entry-level option, but delivers meaningfully better performance in wind resistance, dent resistance, and corrosion longevity — especially important in Lagos&apos;s high-humidity, high-rainfall environment.</p>
@@ -969,7 +969,7 @@ export const blogPosts: BlogPost[] = [
 <table>
   <thead><tr><th>Product</th><th>Price per m²</th><th>Price per sheet (typical 3m × 0.9m)</th><th>Note</th></tr></thead>
   <tbody>
-    <tr><td>0.55mm Long Span (standard)</td><td>₦5,800 – ₦6,200</td><td>₦15,660 – ₦16,740</td><td>Factory gate, Sango Ota</td></tr>
+    <tr><td>0.55mm Long Span (standard)</td><td>₦5,800 – ₦6,200</td><td>₦15,660 – ₦16,740</td><td>Factory gate, Alimosho</td></tr>
     <tr><td>0.55mm Long Span (colour-coated)</td><td>₦6,000 – ₦6,500</td><td>₦16,200 – ₦17,550</td><td>10+ colours available</td></tr>
     <tr><td>0.55mm Long Span (Aluzinc mill finish)</td><td>₦5,800 – ₦6,200</td><td>₦15,660 – ₦16,740</td><td>Natural metallic finish</td></tr>
   </tbody>
@@ -1039,7 +1039,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h2>Order 0.55mm Long Span Sheets in Lagos</h2>
-<p>Gods Promise Aluminium is a manufacturer, not a reseller — we roll and cut sheets in-house at our factory at Km 38, Lagos-Abeokuta Expressway, Sango Ota, Ogun State.</p>
+<p>Gods Promise Aluminium is a manufacturer, not a reseller — we roll and cut sheets in-house at our factory at Pleasure Bus Stop, Alimosho, Lagos.</p>
 <p><strong>To order:</strong> WhatsApp us your roof area (m²), preferred length, and colour to <strong>09150459964</strong>. We will confirm stock, cut-to-length lead time (usually 24–48 hours), and arrange delivery. <a href="/contact">Contact us</a> · <a href="/delivery">Delivery zones</a> · <a href="/pricing">Full price list</a></p>
     `.trim(),
     date: "2026-04-03",
@@ -1052,7 +1052,7 @@ export const blogPosts: BlogPost[] = [
         question:
           "How much does a 0.55mm long span roofing sheet cost in Lagos?",
         answer:
-          "As of April 2026, 0.55mm long span aluminium roofing sheets cost ₦5,800–₦6,500 per m² at the Gods Promise Aluminium factory in Sango Ota, Lagos. A standard 3m × 0.9m sheet works out to approximately ₦15,660–₦17,550. Colour-coated variants are at the higher end of this range.",
+          "As of April 2026, 0.55mm long span aluminium roofing sheets cost ₦5,800–₦6,500 per m² at the Gods Promise Aluminium factory in Alimosho, Lagos. A standard 3m × 0.9m sheet works out to approximately ₦15,660–₦17,550. Colour-coated variants are at the higher end of this range.",
       },
       {
         question: "Is 0.55mm roofing sheet significantly better than 0.45mm?",
@@ -1084,7 +1084,7 @@ export const blogPosts: BlogPost[] = [
     body: [],
     bodyHtml: `
 <div class="blog-callout">
-  <strong>Updated:</strong> April 2026 · <strong>Source:</strong> Factory-direct pricing, Gods Promise Aluminium, Km 38 Lagos-Abeokuta Expressway, Sango Ota · <strong>Quote:</strong> WhatsApp <strong>09150459964</strong>
+  <strong>Updated:</strong> April 2026 · <strong>Source:</strong> Factory-direct pricing, Gods Promise Aluminium, Pleasure Bus Stop, Alimosho, Lagos · <strong>Quote:</strong> WhatsApp <strong>09150459964</strong>
 </div>
 
 <p>This is the most comprehensive roofing sheet price list for Nigeria in 2026. It covers every gauge (thickness) and profile (sheet shape) available at the Gods Promise Aluminium factory in Lagos, plus stone-coated steel tiles. All prices are <strong>factory-gate rates in Lagos</strong> — delivery charges are additional and vary by destination.</p>
@@ -1230,13 +1230,13 @@ export const blogPosts: BlogPost[] = [
     metaTitle:
       "Step Tile Aluminium Roofing Sheet Price Lagos 2026 — Factory Direct",
     metaDescription:
-      "Current 2026 factory price of step tile aluminium roofing sheets in Lagos. Compare gauges, calculate quantities, see colours, and order direct from the manufacturer at Sango Ota.",
+      "Current 2026 factory price of step tile aluminium roofing sheets in Lagos. Compare gauges, calculate quantities, see colours, and order direct from the manufacturer at Alimosho.",
     excerpt:
       "Step tile aluminium roofing sheets combine the decorative look of clay tiles with the lightweight durability of aluminium. This guide covers the exact 2026 factory price in Lagos, how step tile compares to long span, quantity calculation, and how to buy direct.",
     body: [],
     bodyHtml: `
 <div class="blog-callout">
-  <strong>Current Price (April 2026):</strong> Step tile aluminium roofing sheets cost <strong>₦5,200 – ₦7,200 per m²</strong> at factory gate, Gods Promise Aluminium, Sango Ota. WhatsApp <strong>09150459964</strong> for a same-day quote with your roof area.
+  <strong>Current Price (April 2026):</strong> Step tile aluminium roofing sheets cost <strong>₦5,200 – ₦7,200 per m²</strong> at factory gate, Gods Promise Aluminium, Alimosho. WhatsApp <strong>09150459964</strong> for a same-day quote with your roof area.
 </div>
 
 <p>Step tile aluminium roofing sheets are one of the most popular roofing choices for residential estates and duplex developments in Lagos. The step profile creates a ribbed, tile-like appearance that looks significantly more premium than plain long span sheets — at a fraction of the cost and weight of actual clay or concrete tiles.</p>
@@ -1253,7 +1253,7 @@ export const blogPosts: BlogPost[] = [
     <tr><td>0.55mm</td><td>Colour-coated</td><td>₦6,800 – ₦7,200</td><td>₦18,360 – ₦19,440</td></tr>
   </tbody>
 </table>
-<p><em>3m sheet price calculated at effective sheet width of 0.9m. All prices are factory-gate at Sango Ota, excluding delivery. Prices are April 2026 and subject to change with exchange rates.</em></p>
+<p><em>3m sheet price calculated at effective sheet width of 0.9m. All prices are factory-gate at Alimosho, excluding delivery. Prices are April 2026 and subject to change with exchange rates.</em></p>
 
 <blockquote><p>Need a written, date-locked quote? Send your roof area (m²) and preferred gauge to <strong>09150459964</strong> on WhatsApp. We respond within 2 hours. <a href="/pricing">View our full price list →</a></p></blockquote>
 
@@ -1332,7 +1332,7 @@ export const blogPosts: BlogPost[] = [
 <p>Always budget 15–20% on top of your sheet cost for accessories. A step tile roof without matching ridge caps and proper flashing is the most common source of leaks after installation.</p>
 
 <h2>Why Buy Step Tile Factory-Direct in Lagos?</h2>
-<p>Most building material markets stock long span aluminium sheets — step tile is less commonly stocked because it is ordered in smaller quantities. Buying factory-direct at Sango Ota gives you:</p>
+<p>Most building material markets stock long span aluminium sheets — step tile is less commonly stocked because it is ordered in smaller quantities. Buying factory-direct at Alimosho gives you:</p>
 <ul>
   <li><strong>Correct gauge guaranteed</strong> — verified by digital caliper before dispatch</li>
   <li><strong>Any cut length</strong> — 2m to 6m+ cut to your specification</li>
@@ -1342,7 +1342,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h2>Order Step Tile Roofing Sheets in Lagos</h2>
-<p>Gods Promise Aluminium manufactures step tile sheets in-house at our factory: Km 38, Lagos-Abeokuta Expressway, Sango Ota, Ogun State.</p>
+<p>Gods Promise Aluminium manufactures step tile sheets in-house at our factory: Pleasure Bus Stop, Alimosho, Lagos.</p>
 <p>WhatsApp your roof area, gauge preference, and colour choice to <strong>09150459964</strong> — we'll confirm stock and send a written quote within 2 hours. <a href="/contact">Contact us</a> · <a href="/delivery">Delivery info</a> · <a href="/pricing">Full price list</a></p>
     `.trim(),
     date: "2026-04-03",
@@ -1391,7 +1391,7 @@ export const blogPosts: BlogPost[] = [
     body: [],
     bodyHtml: `
 <div class="blog-callout">
-  <strong>Current Price (April 2026):</strong> Metcopo roofing sheets cost <strong>₦5,500 – ₦7,500 per m²</strong> at factory gate, Gods Promise Aluminium, Sango Ota. Per linear metre (0.9m effective width): <strong>₦4,950 – ₦6,750/lm</strong>. WhatsApp <strong>09150459964</strong> for a written quote.
+  <strong>Current Price (April 2026):</strong> Metcopo roofing sheets cost <strong>₦5,500 – ₦7,500 per m²</strong> at factory gate, Gods Promise Aluminium, Alimosho. Per linear metre (0.9m effective width): <strong>₦4,950 – ₦6,750/lm</strong>. WhatsApp <strong>09150459964</strong> for a written quote.
 </div>
 
 <p>The Metcopo profile — also called wide-rib corrugated or Metcoppo in some markets — is the widest-spanning standard aluminium roofing profile available in Nigeria. Its deep, widely-spaced ribs make it structurally stiffer than long span or step tile, allowing for longer unsupported spans between purlins. This rigidity, combined with a bold commercial aesthetic, makes it the profile of choice for warehouses, churches, schools, hotels, and large-footprint buildings.</p>
@@ -1412,7 +1412,7 @@ export const blogPosts: BlogPost[] = [
   </tbody>
 </table>
 
-<p><em>Effective sheet width 0.9m. Prices are factory-gate at Sango Ota, Lagos, April 2026. Subject to change with Naira/USD exchange rate. <a href="/pricing">View our live price list →</a></em></p>
+<p><em>Effective sheet width 0.9m. Prices are factory-gate at Alimosho, Lagos, April 2026. Subject to change with Naira/USD exchange rate. <a href="/pricing">View our live price list →</a></em></p>
 
 <h2>What Makes Metcopo Different from Long Span and Step Tile?</h2>
 
@@ -1463,7 +1463,7 @@ export const blogPosts: BlogPost[] = [
 </table>
 
 <h2>Available Sheet Lengths for Metcopo</h2>
-<p>Metcopo sheets are cut to length at our factory in Sango Ota. Available lengths:</p>
+<p>Metcopo sheets are cut to length at our factory in Alimosho. Available lengths:</p>
 <ul>
   <li>2.0m, 2.4m, 3.0m (standard residential)</li>
   <li>3.6m, 4.5m, 6.0m (commercial and industrial)</li>
@@ -1501,7 +1501,7 @@ export const blogPosts: BlogPost[] = [
 <p>For large commercial orders (500m² +), custom colour-matching may be available on request. <a href="/contact">Contact us</a> to discuss.</p>
 
 <h2>Order Metcopo Sheets Direct from the Factory</h2>
-<p>Gods Promise Aluminium roll-forms Metcopo sheets in-house at Km 38, Lagos-Abeokuta Expressway, Sango Ota, Ogun State. We supply direct to developers, contractors, project managers, and self-builders across Nigeria.</p>
+<p>Gods Promise Aluminium roll-forms Metcopo sheets in-house at Pleasure Bus Stop, Alimosho, Lagos. We supply direct to developers, contractors, project managers, and self-builders across Nigeria.</p>
 <p>To order, WhatsApp your roof area (m²), required length, gauge, and delivery address to <strong>09150459964</strong>. We will send a written, itemised quote and confirm lead time (typically 24–72 hours for cut-to-length orders). <a href="/contact">Contact us</a> · <a href="/delivery">Delivery zones</a> · <a href="/pricing">Full price list</a></p>
     `.trim(),
     date: "2026-04-03",
@@ -1651,7 +1651,7 @@ export const blogPosts: BlogPost[] = [
 </ol>
 
 <h2>Buy Factory Direct from Gods Promise Aluminium, Lagos</h2>
-<p>Our factory is at Km 38, Lagos-Abeokuta Expressway, Sango Ota, Ogun State — about 45 minutes from Lagos Island and 30 minutes from Ojodu Berger. You can visit in person (Monday–Saturday, 8am–5pm) or order remotely by WhatsApp.</p>
+<p>Our factory is at Pleasure Bus Stop, Alimosho, Lagos — about 45 minutes from Lagos Island and 30 minutes from Ojodu Berger. You can visit in person (Monday–Saturday, 8am–6pm) or order remotely by WhatsApp.</p>
 
 <p>To get started, WhatsApp your roof area, sheet type, and preferred gauge to <strong>09150459964</strong>. We will send a written quote within 2 hours. <a href="/contact">Contact us</a> · <a href="/pricing">View price list</a> · <a href="/delivery">Delivery zones</a></p>
     `.trim(),
@@ -1665,7 +1665,7 @@ export const blogPosts: BlogPost[] = [
         question:
           "How do I buy roofing sheets directly from the factory in Lagos?",
         answer:
-          "WhatsApp or call Gods Promise Aluminium on 09150459964 with your roof area (m²), preferred sheet type (long span, step tile, or Metcopo), gauge (0.45mm or 0.55mm), and your location. We will send a written quote within 2 hours. You can also visit the factory in person at Km 38, Lagos-Abeokuta Expressway, Sango Ota, Monday–Saturday 8am–5pm.",
+          "WhatsApp or call Gods Promise Aluminium on 09150459964 with your roof area (m²), preferred sheet type (long span, step tile, or Metcopo), gauge (0.45mm or 0.55mm), and your location. We will send a written quote within 2 hours. You can also visit the factory in person at Pleasure Bus Stop, Alimosho, Lagos, Monday–Saturday 8am–6pm.",
       },
       {
         question:

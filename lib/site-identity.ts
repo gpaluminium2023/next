@@ -9,15 +9,26 @@ export const siteIdentity = {
   // Single source of truth for the TikTok handle — reused by both the footer
   // link and any TikTok embeds so they can't drift apart again.
   tiktokHandle: "godspromiseroofing_1",
+  // The one true address. Field-for-field this matches the verified Google
+  // Business Profile listing ("PLEASURE BUS STOP, ALIMOSHO, Lagos 100275,
+  // Lagos"), which is the record Google reconciles the site against — so
+  // nothing here should be edited without changing the GBP listing to match.
+  //
+  // Everything on the site must render from these fields rather than hardcode
+  // an address. Hardcoding is how the site ended up publishing three
+  // different addresses across two states, including a second contradictory
+  // PostalAddress in the JSON-LD on every /locations/* page.
   address: {
-    streetAddress: "Pleasure Bus Stop, Alimosho",
-    locality: "Lagos",
+    streetAddress: "Pleasure Bus Stop",
+    locality: "Alimosho",
     region: "Lagos",
     postalCode: "100275",
     country: "Nigeria",
     countryCode: "NG",
-    formatted:
-      "Pleasure Bus Stop, Alimosho, Lagos 100275, Lagos, Nigeria",
+    // Full display form, matching the GBP listing exactly.
+    formatted: "Pleasure Bus Stop, Alimosho, Lagos 100275, Lagos",
+    // Shorter form for running prose, where the postal code reads awkwardly.
+    short: "Pleasure Bus Stop, Alimosho, Lagos",
   },
   geo: {
     latitude: 6.7,
@@ -117,6 +128,7 @@ export const localBusinessJsonLd = {
     streetAddress: siteIdentity.address.streetAddress,
     addressLocality: siteIdentity.address.locality,
     addressRegion: siteIdentity.address.region,
+    postalCode: siteIdentity.address.postalCode,
     addressCountry: siteIdentity.address.countryCode,
   },
   geo: {
@@ -133,8 +145,11 @@ export const localBusinessJsonLd = {
     },
   ],
   sameAs: siteIdentity.socialLinks,
+  // Lagos is the only place the company manufactures. Ogun and the other
+  // states it serves belong in areaServed below, not in the identity — saying
+  // "Lagos and Ogun State company" here competed with the address above.
   description:
-    "Lagos and Ogun State aluminium roofing company manufacturing and supplying long span sheets, step tiles, Metcopo sheets, stone-coated tiles and roofing accessories for projects across Nigeria, with branches in Enugu and Imo States.",
+    "Lagos aluminium roofing company manufacturing and supplying long span sheets, step tiles, Metcopo sheets, stone-coated tiles and roofing accessories from its Alimosho factory to projects across Nigeria, with branches in Enugu and Imo States.",
   priceRange: siteIdentity.priceRange,
   // Branches are their own locations rather than extra addresses on the head
   // office, so each can carry its own address in search results.

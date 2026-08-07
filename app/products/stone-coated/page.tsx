@@ -18,6 +18,7 @@ import { ReviewCard } from "@/components/reviews/review-card";
 import { ReviewSummary } from "@/components/reviews/review-summary";
 import { buildAggregateRating, buildReviewNodes } from "@/lib/reviews/jsonld";
 import { getApprovedReviews, getProductRatingSummary } from "@/lib/reviews/queries";
+import { siteIdentity } from "@/lib/site-identity";
 import type { ProductImage } from "@/lib/store/types";
 
 const GALLERY_IMAGES: ProductImage[] = [
@@ -579,7 +580,7 @@ export default async function StoneCoatedPage() {
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="mb-3 font-heading text-xs font-bold uppercase tracking-[0.28em] opacity-75">
-                288 Abeokuta Expressway, Iyana Ipaja, Lagos State
+                {siteIdentity.address.formatted}
               </p>
               <h2 className="font-heading text-3xl font-bold uppercase leading-none tracking-tight md:text-5xl lg:text-6xl">
                 Ready to Roof
