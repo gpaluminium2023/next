@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { AnalyticsClientPage } from './analytics-client';
+import { PosthogProvider } from '@/components/posthog-provider';
 
 export const metadata: Metadata = {
 	title: 'Analytics Overview - Gods Promise Aluminium',
@@ -97,10 +98,15 @@ export default async function AnalyticsPage() {
 	const days = 7;
 	const summary = await getAnalyticsSummary(days);
 
+	// The PostHog React provider is mounted here rather than in the root
+	// layout: usePostHog() is used only by this internal page, so keeping it
+	// global put posthog-js in every public page's bundle for nothing.
 	return (
-		<AnalyticsClientPage
-			summary={summary}
-			days={days}
-		/>
+		<PosthogProvider>
+			<AnalyticsClientPage
+				summary={summary}
+				days={days}
+			/>
+		</PosthogProvider>
 	);
 }
