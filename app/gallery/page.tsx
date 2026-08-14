@@ -195,10 +195,12 @@ const videoJsonLd =
           position: index + 1,
           name: video.title,
           description: video.description,
-          thumbnailUrl: video.thumbnail,
+          // Google rejects relative URLs in VideoObject, and the clips are
+          // stored site-root-relative so the <video> tags below stay portable.
+          thumbnailUrl: `${siteIdentity.siteUrl}${video.thumbnail}`,
           uploadDate: video.uploadDate,
           duration: video.duration,
-          contentUrl: video.contentUrl,
+          contentUrl: `${siteIdentity.siteUrl}${video.contentUrl}`,
           ...(video.tiktokVideoId
             ? {
                 embedUrl: `https://www.tiktok.com/embed/v2/${video.tiktokVideoId}`,

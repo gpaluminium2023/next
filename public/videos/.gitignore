@@ -1,0 +1,17 @@
+# The raw camera originals stay here as local masters but are never committed
+# or deployed — they are 848x480 h264+aac, ~14.6MB total, and every byte the
+# site actually serves comes from the web derivatives listed below. Re-run the
+# recipe in docs/factory-video-assets.md to regenerate them from the masters.
+*
+
+!.gitignore
+!hero-corrugation.mp4
+!hero-corrugation.jpg
+!coil-feed.mp4
+!coil-feed.jpg
+!sheet-inspection.mp4
+!sheet-inspection.jpg
+!cut-to-length.mp4
+!cut-to-length.jpg
+!coil-stock.mp4
+!coil-stock.jpg
