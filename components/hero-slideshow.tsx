@@ -24,6 +24,7 @@ type HeroSlideshowProps = {
  * mobile and prefers-reduced-motion visitors keep the still frame.
  */
 export function HeroSlideshow({ clips, className }: HeroSlideshowProps) {
+  const wrapRef = useRef<HTMLDivElement>(null);
   const layerRefs = [useRef<HTMLVideoElement>(null), useRef<HTMLVideoElement>(null)] as const;
   const nextIndexRef = useRef(1 % Math.max(clips.length, 1));
   const [activeLayer, setActiveLayer] = useState<0 | 1>(0);
@@ -38,7 +39,19 @@ export function HeroSlideshow({ clips, className }: HeroSlideshowProps) {
     ) {
       return;
     }
-    setArmed(true);
+    const el = wrapRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setArmed(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
   }, [clips.length]);
 
   const handleEnded = (layer: 0 | 1) => {
@@ -73,7 +86,7 @@ export function HeroSlideshow({ clips, className }: HeroSlideshowProps) {
   if (clips.length === 0) return null;
 
   return (
-    <div className={cn("absolute inset-0 overflow-hidden bg-primary", className)}>
+    <div ref={wrapRef} className={cn("absolute inset-0 overflow-hidden bg-primary", className)}>
       <link rel="preload" as="image" href={clips[0].poster} fetchPriority="high" />
       {!armed ? (
         // eslint-disable-next-line @next/next/no-img-element
