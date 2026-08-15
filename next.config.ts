@@ -10,6 +10,17 @@ const nextConfig: NextConfig = {
         hostname: "res.cloudinary.com",
       },
     ],
+    // AVIF first: ~25–35% smaller than WebP on photographs, which is what
+    // every blog cover and gallery shot here is. Next falls back to WebP,
+    // then the original, per the browser's Accept header.
+    formats: ["image/avif", "image/webp"],
+    // Blog covers never change once published, so let an optimised variant
+    // live in the edge cache for a month. Left at the default, entries expire
+    // far sooner and a visitor landing on a cold URL waits for a full Sharp
+    // transform before the first image byte arrives — which lands directly in
+    // LCP. With 53 blog URLs each carrying its own cover, those cold hits are
+    // common at this traffic level rather than rare.
+    minimumCacheTTL: 2678400, // 31 days
   },
 
   // Redirect old .html URLs to clean paths

@@ -4,13 +4,10 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { PosthogProvider } from "@/components/posthog-provider";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { localBusinessJsonLd, siteIdentity } from "@/lib/site-identity";
 import { CartProvider } from "@/lib/cart/cart-context";
-import { CartDrawer } from "@/components/store/cart-drawer";
-import { FloatingCartButton } from "@/components/store/floating-cart-button";
-import { Toaster } from "@/components/ui/sonner";
+import { DeferredShell } from "@/components/deferred-shell";
 
 const barlowCondensed = Barlow_Condensed({
   variable: "--font-heading",
@@ -99,18 +96,19 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <PosthogProvider>
-            <CartProvider>
-              <div className="flex min-h-screen flex-col">
-                <SiteHeader />
-                <main className="flex-1">{children}</main>
-                <SiteFooter />
-              </div>
-              <CartDrawer />
-              <FloatingCartButton />
-              <Toaster />
-            </CartProvider>
-          </PosthogProvider>
+          {/* CartProvider stays global — the header's cart badge needs it on
+              every route, and it is plain React with no dependencies, so it
+              costs almost nothing. The heavy pieces it feeds live in
+              DeferredShell below. PostHog's React provider is no longer here:
+              usePostHog() is used only by /anltks, which mounts its own. */}
+          <CartProvider>
+            <div className="flex min-h-screen flex-col">
+              <SiteHeader />
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+            </div>
+            <DeferredShell />
+          </CartProvider>
         </ThemeProvider>
         <GoogleAnalytics gaId="G-ZFRS3K0XR5" />
       </body>

@@ -18,6 +18,7 @@ import { ReviewCard } from "@/components/reviews/review-card";
 import { ReviewSummary } from "@/components/reviews/review-summary";
 import { buildAggregateRating, buildReviewNodes } from "@/lib/reviews/jsonld";
 import { getApprovedReviews, getProductRatingSummary } from "@/lib/reviews/queries";
+import { siteIdentity } from "@/lib/site-identity";
 import type { ProductImage } from "@/lib/store/types";
 
 const GALLERY_IMAGES: ProductImage[] = [
@@ -74,10 +75,13 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/products/stone-coated" },
+  // Both Gerard credentials are in the title deliberately: Search Console
+  // shows live demand for "gerard authorized dealer" and "gerard authorized
+  // installer" where this site ranks 27th, and we hold both.
   title:
-    "Stone Coated Roofing Sheet Prices in Lagos | Gerard Tiles — Gods Promise Aluminium",
+    "Authorised Gerard Dealer & Certified Installer in Lagos | Stone Coated Roofing Tile Prices",
   description:
-    "Buy genuine Gerard stone-coated roofing tiles in Lagos — Shingle, Bond, Classic, Milano & Roman profiles from ₦4,750/piece. 50-year warranty, nationwide delivery. Call for today's prices.",
+    "Authorised Gerard dealer and certified Gerard installer in Lagos. Buy and fit genuine Gerard stone-coated roofing tiles — Shingle, Bond, Classic, Milano & Roman profiles from ₦4,750/piece. 50-year warranty, nationwide delivery.",
   openGraph: {
     title:
       "Stone Coated Roofing Tiles — Gerard Shingle, Bond, Classic & Milano | Gods Promise Aluminium",
@@ -224,8 +228,16 @@ export default async function StoneCoatedPage() {
       a: "You'll need ridge caps, hip tiles, valley troughs, starter kits, roofing nails and in some cases, eave closures. We supply complete accessory kits alongside tile orders.",
     },
     {
+      q: "Are you an authorised Gerard dealer?",
+      a: "Yes. Gods Promise Aluminium is an authorised Gerard stone-coated roofing dealer, supplying genuine Gerard tiles from our Alimosho, Lagos factory to projects across all 36 states and the FCT, along with the full accessory range.",
+    },
+    {
+      q: "Do you install stone-coated roofing tiles, or only supply them?",
+      a: "Both. Our installers are Gerard-certified, so you can buy the tiles and have them fitted by the same company — no coordinating between a supplier and a separate roofing crew. Installation is quoted per project based on roof area, pitch and complexity. If you would rather use your own roofers we are happy to supply materials only.",
+    },
+    {
       q: "How do I verify the tiles are genuine Gerard?",
-      a: "Genuine Gerard tiles have consistent weight, colour depth and a clearly embossed brand mark on the underside. We encourage customers to inspect samples at our factory before placing bulk orders.",
+      a: "Genuine Gerard tiles have consistent weight, colour depth and a clearly embossed brand mark on the underside. Buying from an authorised dealer is the surest check — counterfeit stone-coated tiles are common in the Nigerian market. We encourage customers to inspect samples at our factory before placing bulk orders.",
     },
   ];
 
@@ -319,12 +331,22 @@ export default async function StoneCoatedPage() {
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <ProductGallery images={GALLERY_IMAGES} videoUrl={null} productName="Gerard Stone-Coated Roofing Tiles" />
           <div>
-            <Badge
-              variant="outline"
-              className="mb-3 rounded-sm text-xs uppercase tracking-wider"
-            >
-              Imported from New Zealand
-            </Badge>
+            <div className="mb-3 flex flex-wrap gap-2">
+              <Badge
+                variant="outline"
+                className="rounded-sm text-xs uppercase tracking-wider"
+              >
+                Imported from New Zealand
+              </Badge>
+              {siteIdentity.authorisations.map((auth) => (
+                <Badge
+                  key={auth.credential}
+                  className="rounded-sm bg-accent text-xs uppercase tracking-wider text-accent-foreground"
+                >
+                  {auth.shortLabel}
+                </Badge>
+              ))}
+            </div>
             <h2 className="font-heading mb-4 text-2xl font-bold uppercase sm:text-3xl lg:text-4xl">
               Gerard Stone-Coated Tiles
             </h2>
@@ -339,8 +361,9 @@ export default async function StoneCoatedPage() {
               Available in five distinct profiles — Shingle, Bond, Classic,
               Milano and Roman — each tile delivers a beautiful, natural
               appearance while offering the strength and longevity of steel.
-              Gods Promise Aluminium is a trusted supplier of genuine Gerard
-              tiles in Lagos with delivery to all 36 states.
+              Gods Promise Aluminium is an authorised Gerard dealer in Lagos
+              with Gerard-certified installers, so we can both supply genuine
+              tiles and fit them — with delivery to all 36 states.
             </p>
             <div className="flex items-center gap-2 rounded-sm border border-accent/30 bg-accent/10 p-4">
               <span className="font-heading text-2xl font-bold text-accent sm:text-3xl">
@@ -579,7 +602,7 @@ export default async function StoneCoatedPage() {
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="mb-3 font-heading text-xs font-bold uppercase tracking-[0.28em] opacity-75">
-                288 Abeokuta Expressway, Iyana Ipaja, Lagos State
+                {siteIdentity.address.formatted}
               </p>
               <h2 className="font-heading text-3xl font-bold uppercase leading-none tracking-tight md:text-5xl lg:text-6xl">
                 Ready to Roof

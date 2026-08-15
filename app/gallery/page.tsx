@@ -195,10 +195,12 @@ const videoJsonLd =
           position: index + 1,
           name: video.title,
           description: video.description,
-          thumbnailUrl: video.thumbnail,
+          // Google rejects relative URLs in VideoObject, and the clips are
+          // stored site-root-relative so the <video> tags below stay portable.
+          thumbnailUrl: `${siteIdentity.siteUrl}${video.thumbnail}`,
           uploadDate: video.uploadDate,
           duration: video.duration,
-          contentUrl: video.contentUrl,
+          contentUrl: `${siteIdentity.siteUrl}${video.contentUrl}`,
           ...(video.tiktokVideoId
             ? {
                 embedUrl: `https://www.tiktok.com/embed/v2/${video.tiktokVideoId}`,
@@ -283,7 +285,7 @@ export default async function GalleryPage() {
             <div className="grid gap-4 md:grid-cols-2 text-sm text-muted-foreground">
               <p>
                 Below you will find a selection of photographs taken at our
-                factory in Iyana Ipaja, Lagos and from completed roofing
+                factory in Alimosho, Lagos and from completed roofing
                 projects we have supplied across Nigeria. These images show our
                 production process, the quality of our aluminium roofing sheets
                 and how they look once installed on real buildings — from

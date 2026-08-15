@@ -1,7 +1,24 @@
+import { siteIdentity } from "@/lib/site-identity";
+
 export interface LocationFaq {
   question: string;
   answer: string;
 }
+
+/**
+ * What we actually have in a state — the strongest true claim, no stronger.
+ *
+ *   branch   — one of our own depots. Derived from siteIdentity.branches, so
+ *              it cannot drift from the structured data.
+ *   dealer   — a genuine third-party dealer or installation partner.
+ *   delivery — we ship there and nothing more. The honest default.
+ *
+ * This replaced a hand-maintained `hasDealer` boolean that had drifted out of
+ * sync with the prose on /dealers: the two disagreed on nine states, and the
+ * flags claimed partners in Abuja, Kano and Kaduna while the page said we were
+ * still trying to expand into the north and the FCT.
+ */
+export type LocationPresence = "branch" | "dealer" | "delivery";
 
 export interface LocationData {
   slug: string;
@@ -10,7 +27,12 @@ export interface LocationData {
   capital: string;
   deliveryDays: string;
   deliveryNote: string;
-  hasDealer: boolean;
+  /**
+   * Set true only when a real third-party dealer operates in the state.
+   * Currently false everywhere — the only physical presence outside Lagos is
+   * our own Enugu and Imo branches, which `presence` picks up automatically.
+   */
+  dealerPartner: boolean;
   keyAreas: string[];
   popularProducts: string[];
   intro: string;
@@ -18,7 +40,18 @@ export interface LocationData {
   faq: LocationFaq[];
 }
 
-export const locations: LocationData[] = [
+/** States where we run our own branch, taken straight from siteIdentity. */
+const BRANCH_REGIONS = new Set(
+  siteIdentity.branches.map((branch) => branch.region.toLowerCase()),
+);
+
+/** The strongest true claim for a state. Never hand-maintained. */
+export function getPresence(loc: LocationData): LocationPresence {
+  if (BRANCH_REGIONS.has(loc.name.toLowerCase())) return "branch";
+  return loc.dealerPartner ? "dealer" : "delivery";
+}
+
+const rawLocations: LocationData[] = [
   // ────────────── SOUTH-WEST ──────────────────────────────────────────────────
   {
     slug: "lagos",
@@ -27,19 +60,19 @@ export const locations: LocationData[] = [
     capital: "Ikeja",
     deliveryDays: "Same day – next business day",
     deliveryNote:
-      "Our factory is located on the Lagos-Abeokuta Expressway at Sango Ota. We deliver directly to building sites across every part of Lagos including Lekki, Ajah, Victoria Island, Ikeja, Festac, Ikorodu, Epe and Badagry. Most orders arrive the same day or next working day after production.",
-    hasDealer: true,
+      "Our factory is at Pleasure Bus Stop, Alimosho, on the Lagos-Abeokuta Expressway corridor. We deliver directly to building sites across every part of Lagos including Lekki, Ajah, Victoria Island, Ikeja, Festac, Ikorodu, Epe and Badagry. Most orders arrive the same day or next working day after production.",
+    dealerPartner: false,
     keyAreas: ["Lekki", "Ajah", "Ikeja", "Victoria Island", "Ikorodu", "Festac"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Stone-Coated Tiles", "Flat Sheets"],
     intro:
-      "Lagos is the economic capital of Nigeria and the engine of its construction industry. From luxury developments on Banana Island to affordable housing estates in Ibeju-Lekki, every building needs a roof that can handle coastal humidity, heavy seasonal rains and the salt-laden Atlantic breeze. As a Lagos-based aluminium roofing company, Gods Promise Aluminium manufactures roofing sheets directly at our factory on the Lagos-Abeokuta Expressway and delivers to project sites across the entire metropolis — no middlemen, no inflated prices.",
+      "Lagos is the economic capital of Nigeria and the engine of its construction industry. From luxury developments on Banana Island to affordable housing estates in Ibeju-Lekki, every building needs a roof that can handle coastal humidity, heavy seasonal rains and the salt-laden Atlantic breeze. As a Lagos-based aluminium roofing company, Gods Promise Aluminium manufactures roofing sheets directly at our Alimosho factory and delivers to project sites across the entire metropolis — no middlemen, no inflated prices.",
     whyChooseUs:
       "Being based in Lagos means you get the fastest delivery and the lowest transport costs anywhere in the state. You can visit our factory to inspect your order during production, verify gauges with a digital caliper and confirm colours before dispatch. Builders and contractors across Lagos choose Gods Promise Aluminium because we combine factory-direct pricing with a quality guarantee you can see for yourself.",
     faq: [
       {
         question: "Can I visit your factory to inspect my roofing sheets before delivery?",
         answer:
-          "Yes. Our factory at Km 38, Lagos-Abeokuta Expressway, Sango Ota is open Monday to Saturday, 8 am to 6 pm. You are welcome to watch your order being produced, measure thickness with a caliper and confirm colour before loading.",
+          "Yes. Our factory at Pleasure Bus Stop, Alimosho, Lagos is open Monday to Saturday, 8 am to 6 pm. You are welcome to watch your order being produced, measure thickness with a caliper and confirm colour before loading.",
       },
       {
         question: "How quickly can you deliver aluminium roofing sheets within Lagos?",
@@ -63,31 +96,31 @@ export const locations: LocationData[] = [
     name: "Ogun",
     region: "South-West",
     capital: "Abeokuta",
-    deliveryDays: "Same day",
+    deliveryDays: "Next business day",
     deliveryNote:
-      "Our production facility is physically located in Sango Ota, Ogun State. Customers in Abeokuta, Ifo, Ota, Sagamu, Ijebu-Ode and surrounding areas enjoy the fastest delivery times — often within hours of order confirmation. Many clients pick up directly from our factory.",
-    hasDealer: true,
+      "We manufacture in Alimosho, Lagos, at the Lagos end of the Lagos-Abeokuta Expressway — the road that runs straight into Ogun State. Deliveries to Ota, Ifo, Mowe, Abeokuta, Sagamu and Ijebu-Ode arrive the next business day after production. If you need your sheets sooner, you are welcome to collect from the factory yourself and load the same day.",
+    dealerPartner: false,
     keyAreas: ["Abeokuta", "Sango Ota", "Ifo", "Sagamu", "Ijebu-Ode", "Mowe"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Flat Sheets"],
     intro:
-      "Ogun State is home to our factory and one of the fastest-growing states for residential and industrial construction in Nigeria. The Lagos-Abeokuta Expressway corridor through Sango Ota, Ifo and Mowe has attracted thousands of new housing estates, while Abeokuta and Sagamu continue to expand with modern developments. As the aluminium roofing company operating right in the heart of Ogun State, Gods Promise Aluminium gives you direct access to factory-gate pricing and same-day availability that no reseller can match.",
+      "Ogun State is one of the fastest-growing states for residential and industrial construction in Nigeria. The Lagos-Abeokuta Expressway corridor through Ota, Ifo and Mowe has attracted thousands of new housing estates, while Abeokuta and Sagamu continue to expand with modern developments. Our factory sits at the Lagos end of that same corridor, in Alimosho — close enough that Ogun builders buy at the same factory-direct prices as Lagos customers, without a reseller's margin on top.",
     whyChooseUs:
-      "Our factory at Km 38 on the Lagos-Abeokuta Expressway is in Ogun State itself. That means zero delivery distance for many of our Ogun customers — you can literally drive to our gate, inspect your sheets and load them the same day. For those farther away in Sagamu or Ijebu-Ode, we arrange direct delivery with minimal transport cost because the distance is short.",
+      "You are buying from the people who actually make the sheets, not a depot reselling someone else's stock. The factory is a short drive up the expressway, so Ogun customers can come and watch their order run, check the gauge with a caliper and load straight from production. For sites further out in Abeokuta, Sagamu or Ijebu-Ode we deliver direct, and the transport cost stays low because the corridor is a straight run.",
     faq: [
       {
-        question: "Where exactly is your factory in Ogun State?",
+        question: "Do you have a factory or depot in Ogun State?",
         answer:
-          "We are located at Km 38, Lagos-Abeokuta Expressway, beside First Bank, Sango Ota, Ogun State. The factory is easily accessible from both the Lagos and Abeokuta direction.",
+          "No — we manufacture at one location, Pleasure Bus Stop, Alimosho, Lagos, at the Lagos end of the Lagos-Abeokuta Expressway. It is a short run up the corridor from Ota and Ifo, and we deliver throughout Ogun State from there.",
       },
       {
-        question: "Can I buy roofing sheets directly from your Ogun State factory?",
+        question: "Can I buy roofing sheets directly from the factory?",
         answer:
-          "Absolutely. We sell retail and wholesale directly from our factory. You can walk in, place your order, watch it being produced and take delivery the same day.",
+          "Absolutely. We sell retail and wholesale straight from the factory in Alimosho. You can walk in, place your order, watch it being produced and load it the same day — plenty of our Ogun customers do exactly that rather than wait for next-day delivery.",
       },
       {
         question: "Do you deliver to Abeokuta and Ijebu-Ode?",
         answer:
-          "Yes. We deliver throughout Ogun State including Abeokuta, Sagamu, Ijebu-Ode, Ifo, Mowe and all local government areas. Delivery within Ogun is typically same-day.",
+          "Yes. We deliver throughout Ogun State including Abeokuta, Sagamu, Ijebu-Ode, Ifo, Mowe and all local government areas. Delivery within Ogun is typically the next business day after your order is produced. Collecting from the factory in Alimosho yourself is the only same-day option.",
       },
     ],
   },
@@ -99,7 +132,7 @@ export const locations: LocationData[] = [
     deliveryDays: "1–2 business days",
     deliveryNote:
       "Ibadan is approximately two hours from our factory via the Lagos-Ibadan Expressway. We dispatch roofing sheets to Oyo State regularly and cover areas including Ibadan, Ogbomoso, Oyo town and Iseyin. Orders are typically delivered within one to two working days.",
-    hasDealer: true,
+    dealerPartner: false,
     keyAreas: ["Ibadan", "Ogbomoso", "Oyo Town", "Iseyin", "Saki"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Stone-Coated Tiles"],
     intro:
@@ -132,7 +165,7 @@ export const locations: LocationData[] = [
     deliveryDays: "1–2 business days",
     deliveryNote:
       "Osun State is reachable from our factory through Ibadan and the Ife-Ibadan Road. We deliver to Osogbo, Ile-Ife, Ede, Ilesa and surrounding towns. Most deliveries arrive within one to two working days of dispatch.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Osogbo", "Ile-Ife", "Ilesa", "Ede", "Iwo"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles"],
     intro:
@@ -165,7 +198,7 @@ export const locations: LocationData[] = [
     deliveryDays: "1–3 business days",
     deliveryNote:
       "Ondo State is served via the Ore-Benin Expressway and Akure Road from Ibadan. We deliver to Akure, Ondo Town, Owo, Ikare and the coastal town of Ilaje. Transit times range from one to three working days depending on destination.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Akure", "Ondo Town", "Owo", "Ikare-Akoko", "Ore"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Stone-Coated Tiles"],
     intro:
@@ -198,7 +231,7 @@ export const locations: LocationData[] = [
     deliveryDays: "2–3 business days",
     deliveryNote:
       "Ekiti State is reached from our factory through Ibadan and the Ado-Ekiti Road. We deliver to Ado-Ekiti, Ikere, Ijero, Ikole and surrounding areas. Deliveries typically arrive within two to three working days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Ado-Ekiti", "Ikere-Ekiti", "Ijero-Ekiti", "Ikole-Ekiti", "Oye-Ekiti"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles"],
     intro:
@@ -233,7 +266,7 @@ export const locations: LocationData[] = [
     deliveryDays: "2–3 business days",
     deliveryNote:
       "Edo State is connected to our factory via the Lagos-Benin Expressway through Ore. We deliver to Benin City, Auchi, Ekpoma, Uromi and surrounding areas. Transit time is typically two to three working days.",
-    hasDealer: true,
+    dealerPartner: false,
     keyAreas: ["Benin City", "Auchi", "Ekpoma", "Uromi", "Igarra"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Stone-Coated Tiles"],
     intro:
@@ -266,7 +299,7 @@ export const locations: LocationData[] = [
     deliveryDays: "2–3 business days",
     deliveryNote:
       "Delta State is served through the Benin-Asaba Expressway and the Warri routes. We deliver to Asaba, Warri, Sapele, Ughelli, Agbor and creek-side areas where road access permits. Transit time is two to three business days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Asaba", "Warri", "Sapele", "Ughelli", "Agbor"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Stone-Coated Tiles"],
     intro:
@@ -299,7 +332,7 @@ export const locations: LocationData[] = [
     deliveryDays: "2–4 business days",
     deliveryNote:
       "Rivers State deliveries are routed through Benin City and the East-West Road to Port Harcourt. We cover Port Harcourt, Obio-Akpor, Eleme, Bonny and accessible mainland areas. Transit time is two to four working days depending on exact location.",
-    hasDealer: true,
+    dealerPartner: false,
     keyAreas: ["Port Harcourt", "Obio-Akpor", "Eleme", "Bonny", "Oyigbo"],
     popularProducts: ["Long Span Roofing Sheets", "Stone-Coated Tiles", "Step Tiles"],
     intro:
@@ -332,7 +365,7 @@ export const locations: LocationData[] = [
     deliveryDays: "3–5 business days",
     deliveryNote:
       "Bayelsa State is reached via the East-West Road through Rivers State. We deliver to Yenagoa and accessible mainland locations. For creek and riverine areas, delivery is arranged to the nearest road-accessible point. Transit time is three to five working days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Yenagoa", "Ogbia", "Sagbama", "Ekeremor"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles"],
     intro:
@@ -365,7 +398,7 @@ export const locations: LocationData[] = [
     deliveryDays: "3–5 business days",
     deliveryNote:
       "Cross River State is served through the Ikom-Calabar Road from the Benin-Enugu corridor. We deliver to Calabar, Ikom, Ogoja and surrounding areas. Delivery takes three to five working days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Calabar", "Ikom", "Ogoja", "Obudu", "Ugep"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Stone-Coated Tiles"],
     intro:
@@ -398,7 +431,7 @@ export const locations: LocationData[] = [
     deliveryDays: "3–5 business days",
     deliveryNote:
       "Akwa Ibom State is reached via the Calabar-Itu-Uyo Road or through Aba in Abia State. We deliver to Uyo, Eket, Ikot Ekpene and surrounding areas. Delivery takes three to five working days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Uyo", "Eket", "Ikot Ekpene", "Oron", "Abak"],
     popularProducts: ["Long Span Roofing Sheets", "Stone-Coated Tiles", "Step Tiles"],
     intro:
@@ -433,7 +466,7 @@ export const locations: LocationData[] = [
     deliveryDays: "2–3 business days",
     deliveryNote:
       "Anambra State is served through the Benin-Onitsha Expressway and the Enugu-Onitsha Road. We deliver to Awka, Onitsha, Nnewi, Ekwulobia and surrounding towns. Transit time is two to three working days.",
-    hasDealer: true,
+    dealerPartner: false,
     keyAreas: ["Awka", "Onitsha", "Nnewi", "Ekwulobia", "Ihiala"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Stone-Coated Tiles", "Flat Sheets"],
     intro:
@@ -466,7 +499,7 @@ export const locations: LocationData[] = [
     deliveryDays: "Same day – next business day",
     deliveryNote:
       "We have a branch on the Enugu–PH Expressway holding its own stock, so Enugu orders are supplied locally rather than trucked from Lagos. Collection and delivery to Enugu city, Nsukka, Agbani, Udi and surrounding areas is usually same day or next working day. Gauges the branch doesn't carry are sent from our Lagos factory in two to four working days.",
-    hasDealer: true,
+    dealerPartner: false,
     keyAreas: ["Enugu City", "Nsukka", "Agbani", "Udi", "Oji River"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Stone-Coated Tiles"],
     intro:
@@ -509,7 +542,7 @@ export const locations: LocationData[] = [
     deliveryDays: "Same day – next business day",
     deliveryNote:
       "We have a branch in Imo State holding its own stock of long span and step tile sheets, so most Imo orders are supplied locally rather than trucked from Lagos. Collection and delivery to Owerri, Orlu, Okigwe, Oguta and surrounding areas is usually same day or next working day. Stone-coated tiles and accessories come from our Lagos factory in three to four working days.",
-    hasDealer: true,
+    dealerPartner: false,
     keyAreas: ["Owerri", "Orlu", "Okigwe", "Oguta", "Mbaise"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Stone-Coated Tiles"],
     intro:
@@ -547,7 +580,7 @@ export const locations: LocationData[] = [
     deliveryDays: "3–4 business days",
     deliveryNote:
       "Abia State is accessible via the Enugu-Port Harcourt Expressway. We deliver to Umuahia, Aba, Ohafia and surrounding towns. Transit time is three to four working days from our factory.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Umuahia", "Aba", "Ohafia", "Arochukwu", "Isialangwa"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Flat Sheets"],
     intro:
@@ -580,7 +613,7 @@ export const locations: LocationData[] = [
     deliveryDays: "3–5 business days",
     deliveryNote:
       "Ebonyi State is reached via the Enugu-Abakaliki Road. We deliver to Abakaliki, Afikpo, Onueke, Ezza and surrounding areas. Transit time is three to five business days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Abakaliki", "Afikpo", "Onueke", "Ezza", "Ishielu"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles"],
     intro:
@@ -615,7 +648,7 @@ export const locations: LocationData[] = [
     deliveryDays: "2–4 business days",
     deliveryNote:
       "We deliver to the Federal Capital Territory via the Lagos-Abuja highway corridor. Coverage includes Abuja city, Gwagwalada, Kubwa, Bwari, Kuje and Nyanya. Delivery takes two to four working days depending on the specific location within the FCT.",
-    hasDealer: true,
+    dealerPartner: false,
     keyAreas: ["Central Area", "Gwarinpa", "Kubwa", "Maitama", "Lugbe", "Gwagwalada"],
     popularProducts: ["Stone-Coated Tiles", "Step Tiles", "Long Span Roofing Sheets"],
     intro:
@@ -653,7 +686,7 @@ export const locations: LocationData[] = [
     deliveryDays: "1–2 business days",
     deliveryNote:
       "Kwara State is well-connected to our factory through the Lagos-Ibadan-Ilorin corridor. We deliver to Ilorin, Offa, Omu-Aran, Jebba and surrounding areas. Delivery typically arrives within one to two business days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Ilorin", "Offa", "Omu-Aran", "Jebba", "Lafiagi"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles"],
     intro:
@@ -686,7 +719,7 @@ export const locations: LocationData[] = [
     deliveryDays: "2–3 business days",
     deliveryNote:
       "Kogi State is served via the Abuja-Lokoja Expressway and the Okene corridor. We deliver to Lokoja, Okene, Kabba, Idah and surrounding areas. Transit takes two to three business days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Lokoja", "Okene", "Kabba", "Idah", "Ankpa"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles"],
     intro:
@@ -719,7 +752,7 @@ export const locations: LocationData[] = [
     deliveryDays: "2–4 business days",
     deliveryNote:
       "Niger State is accessible via the Abuja-Minna Expressway and the Bida Road. We deliver to Minna, Bida, Suleja, Kontagora and surrounding areas. Transit time is two to four business days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Minna", "Bida", "Suleja", "Kontagora", "New Bussa"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles"],
     intro:
@@ -752,7 +785,7 @@ export const locations: LocationData[] = [
     deliveryDays: "3–4 business days",
     deliveryNote:
       "Plateau State is reached via the Abuja-Jos Expressway. We deliver to Jos, Bukuru, Barkin Ladi, Pankshin and surrounding areas. Transit time is three to four working days from our factory.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Jos", "Bukuru", "Barkin Ladi", "Pankshin", "Shendam"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Stone-Coated Tiles"],
     intro:
@@ -785,7 +818,7 @@ export const locations: LocationData[] = [
     deliveryDays: "2–4 business days",
     deliveryNote:
       "Nasarawa State is adjacent to the FCT and accessible via the Abuja-Keffi-Lafia Road. We deliver to Lafia, Keffi, Akwanga, Nasarawa Town and surrounding areas. Transit time is two to four working days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Lafia", "Keffi", "Akwanga", "Nasarawa Town", "Doma"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles"],
     intro:
@@ -818,7 +851,7 @@ export const locations: LocationData[] = [
     deliveryDays: "3–5 business days",
     deliveryNote:
       "Benue State is reached via the Abuja-Makurdi Road. We deliver to Makurdi, Otukpo, Gboko, Katsina-Ala and surrounding areas. Delivery takes three to five working days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Makurdi", "Otukpo", "Gboko", "Katsina-Ala", "Vandeikya"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles"],
     intro:
@@ -853,7 +886,7 @@ export const locations: LocationData[] = [
     deliveryDays: "3–5 business days",
     deliveryNote:
       "Kano State is reached via the Abuja-Kaduna-Kano Expressway. We deliver to Kano city, Fagge, Nassarawa, Ungogo and surrounding areas. Transit time is three to five business days from our factory.",
-    hasDealer: true,
+    dealerPartner: false,
     keyAreas: ["Kano City", "Fagge", "Nassarawa", "Ungogo", "Wudil"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Flat Sheets"],
     intro:
@@ -886,7 +919,7 @@ export const locations: LocationData[] = [
     deliveryDays: "3–4 business days",
     deliveryNote:
       "Kaduna State is well-connected via the Abuja-Kaduna Expressway and the Kaduna rail line corridor. We deliver to Kaduna city, Zaria, Kafanchan, Kachia and surrounding areas within three to four working days.",
-    hasDealer: true,
+    dealerPartner: false,
     keyAreas: ["Kaduna City", "Zaria", "Kafanchan", "Kachia", "Birnin Gwari"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles", "Stone-Coated Tiles"],
     intro:
@@ -919,7 +952,7 @@ export const locations: LocationData[] = [
     deliveryDays: "4–5 business days",
     deliveryNote:
       "Katsina State is reached via Kano or through the Kaduna-Funtua-Katsina road. We deliver to Katsina city, Funtua, Daura, Malumfashi and surrounding areas. Transit time is four to five business days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Katsina City", "Funtua", "Daura", "Malumfashi", "Kankia"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles"],
     intro:
@@ -952,7 +985,7 @@ export const locations: LocationData[] = [
     deliveryDays: "4–6 business days",
     deliveryNote:
       "Zamfara State is reached via the Kaduna-Funtua-Gusau Road or through Sokoto. We deliver to Gusau, Kaura Namoda, Anka, Talata Mafara and surrounding areas. Transit time is four to six business days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Gusau", "Kaura Namoda", "Anka", "Talata Mafara"],
     popularProducts: ["Long Span Roofing Sheets"],
     intro:
@@ -985,7 +1018,7 @@ export const locations: LocationData[] = [
     deliveryDays: "5–7 business days",
     deliveryNote:
       "Sokoto State is one of our most distant delivery points, reached via the Kaduna-Gusau-Sokoto Road. We deliver to Sokoto city, Bodinga, Wamakko, Tambuwal and surrounding areas. Transit time is five to seven business days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Sokoto City", "Bodinga", "Wamakko", "Tambuwal"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles"],
     intro:
@@ -1018,7 +1051,7 @@ export const locations: LocationData[] = [
     deliveryDays: "5–7 business days",
     deliveryNote:
       "Kebbi State is reached via the Sokoto-Birnin Kebbi Road or through the Kaduna-Kontagora-Yauri route. We deliver to Birnin Kebbi, Argungu, Yauri, Zuru and surrounding areas. Transit time is five to seven working days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Birnin Kebbi", "Argungu", "Yauri", "Zuru", "Jega"],
     popularProducts: ["Long Span Roofing Sheets"],
     intro:
@@ -1051,7 +1084,7 @@ export const locations: LocationData[] = [
     deliveryDays: "4–6 business days",
     deliveryNote:
       "Jigawa State is reached via the Kano-Dutse Road. We deliver to Dutse, Hadejia, Gumel, Kazaure and surrounding areas. Transit time is four to six working days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Dutse", "Hadejia", "Gumel", "Kazaure", "Birnin Kudu"],
     popularProducts: ["Long Span Roofing Sheets"],
     intro:
@@ -1086,7 +1119,7 @@ export const locations: LocationData[] = [
     deliveryDays: "4–5 business days",
     deliveryNote:
       "Bauchi State is accessible via the Jos-Bauchi Road or the Abuja-Kaduna-Bauchi corridor. We deliver to Bauchi city, Azare, Misau, Tafawa Balewa and surrounding areas. Transit time is four to five working days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Bauchi City", "Azare", "Misau", "Tafawa Balewa", "Dass"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles"],
     intro:
@@ -1119,7 +1152,7 @@ export const locations: LocationData[] = [
     deliveryDays: "4–6 business days",
     deliveryNote:
       "Gombe State is reached via the Bauchi-Gombe Road. We deliver to Gombe city, Billiri, Kaltungo, Deba and surrounding areas. Transit time is four to six working days from our factory.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Gombe City", "Billiri", "Kaltungo", "Deba", "Kumo"],
     popularProducts: ["Long Span Roofing Sheets"],
     intro:
@@ -1152,7 +1185,7 @@ export const locations: LocationData[] = [
     deliveryDays: "5–7 business days",
     deliveryNote:
       "Borno State is reached via the Gombe-Damaturu-Maiduguri Road. We deliver to Maiduguri and other accessible areas. Security and road conditions are assessed before each delivery to ensure safe transit. Delivery takes five to seven working days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Maiduguri", "Jere", "Biu", "Konduga"],
     popularProducts: ["Long Span Roofing Sheets"],
     intro:
@@ -1185,7 +1218,7 @@ export const locations: LocationData[] = [
     deliveryDays: "5–7 business days",
     deliveryNote:
       "Yobe State is reached via the Gombe-Damaturu road corridor. We deliver to Damaturu, Potiskum, Gashua, Nguru and accessible surrounding areas. Delivery takes five to seven business days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Damaturu", "Potiskum", "Gashua", "Nguru"],
     popularProducts: ["Long Span Roofing Sheets"],
     intro:
@@ -1218,7 +1251,7 @@ export const locations: LocationData[] = [
     deliveryDays: "5–7 business days",
     deliveryNote:
       "Adamawa State is reached via the Gombe-Numan-Yola Road or the Jalingo route. We deliver to Yola, Jimeta, Mubi, Numan and surrounding accessible areas. Transit time is five to seven working days.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Yola", "Jimeta", "Mubi", "Numan", "Ganye"],
     popularProducts: ["Long Span Roofing Sheets", "Step Tiles"],
     intro:
@@ -1251,7 +1284,7 @@ export const locations: LocationData[] = [
     deliveryDays: "5–7 business days",
     deliveryNote:
       "Taraba State is reached via the Gombe-Jalingo Road or through Adamawa. We deliver to Jalingo, Wukari, Takum, Bali and surrounding areas. Transit time is five to seven working days depending on exact destination.",
-    hasDealer: false,
+    dealerPartner: false,
     keyAreas: ["Jalingo", "Wukari", "Takum", "Bali", "Ibi"],
     popularProducts: ["Long Span Roofing Sheets"],
     intro:
@@ -1278,7 +1311,19 @@ export const locations: LocationData[] = [
   },
 ];
 
+export const locations: LocationData[] = rawLocations;
+
 /** Look up a single location by its URL slug */
 export function getLocationBySlug(slug: string): LocationData | undefined {
   return locations.find((loc) => loc.slug === slug);
 }
+
+/** States with one of our own branches — drives the /dealers page copy. */
+export const branchLocations = locations.filter(
+  (loc) => getPresence(loc) === "branch",
+);
+
+/** States with a genuine third-party dealer. Empty today, by design. */
+export const dealerLocations = locations.filter(
+  (loc) => getPresence(loc) === "dealer",
+);

@@ -1,12 +1,20 @@
 'use client';
 
 import { ReactNode } from 'react';
-import posthog from 'posthog-js';
 import { PostHogProvider } from 'posthog-js/react';
 
-// posthog.init() runs in instrumentation-client.ts, which Next.js loads
-// before this module — do not call init() again here (it's a no-op and
-// logs a warning, plus risks drifting out of sync with that config).
+import { startPostHog } from '@/lib/posthog';
+
+// Mounted only by /anltks, the internal analytics page — it is the sole
+// consumer of usePostHog(). Keeping this in the root layout put posthog-js in
+// every public page's client bundle for no benefit.
+//
+// startPostHog() is called during render rather than in an effect because the
+// page captures an event on mount, and instrumentation-client.ts only starts
+// PostHog on browser idle. The call is idempotent: whichever path runs first
+// wins and the other is a no-op.
 export function PosthogProvider({ children }: { children: ReactNode }) {
+	const posthog = startPostHog();
+
 	return <PostHogProvider client={posthog}>{children}</PostHogProvider>;
 }

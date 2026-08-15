@@ -4,6 +4,8 @@ import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 import { HeroSlideshow } from '@/components/hero-slideshow';
+import { FactoryVideo } from '@/components/factory-video';
+import { siteIdentity, yearsTrading } from '@/lib/site-identity';
 
 const heroClips = [
   { src: "/videos/hero-corrugation.mp4", poster: "/videos/hero-corrugation.jpg" },
@@ -14,9 +16,14 @@ const heroClips = [
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
-  title: "Aluminium Roofing Company in Lagos | Gods Promise Aluminium",
+  // "aluminium roofing company" brings 151 impressions and zero clicks at
+  // position 7.8 — the largest single waste in Search Console. The title
+  // already matched the query; the description did not earn the click, opening
+  // with "a leading aluminium roofing company", which every competitor also
+  // claims. It now leads with what can be checked: years, gauges, credentials.
+  title: "Aluminium Roofing Company in Lagos & Nigeria | Gods Promise Aluminium",
   description:
-    "Gods Promise Aluminium is a leading aluminium roofing company in Lagos supplying durable roofing sheets, step tiles and stone-coated tiles across Nigeria. Fast WhatsApp quotes and nationwide delivery.",
+    "Aluminium roofing sheet manufacturer in Lagos since 2009. We roll long span, step tile, Metcopo (Metcoppo) and flat sheets in-house from 0.40mm to 1.00mm, and we are an authorised Gerard dealer with Gerard-certified installers. Delivery to all 36 states.",
   openGraph: {
     title: "Aluminium Roofing Company in Lagos | Gods Promise Aluminium",
     description:
@@ -93,6 +100,19 @@ export default function Home() {
                 <Link href="/products">View Products</Link>
               </Button>
             </div>
+            {/* The three claims a buyer can actually check before ringing —
+                the same ones the meta description leads with. */}
+            <ul className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-primary-foreground/15 pt-6 font-heading text-[10px] font-bold uppercase tracking-[0.18em] text-primary-foreground/60">
+              <li>Authorised Gerard Dealer</li>
+              <li aria-hidden className="text-accent">
+                /
+              </li>
+              <li>0.40mm – 1.00mm</li>
+              <li aria-hidden className="text-accent">
+                /
+              </li>
+              <li>All 36 States</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -100,10 +120,12 @@ export default function Home() {
       {/* ── STATS STRIP ─────────────────────────────────────────── */}
       <section className="bg-secondary">
         <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-border md:grid-cols-4">
-          <StatItem value="15+" label="Years in Business" />
+          {/* Years derives from siteIdentity.foundedYear; the customer count
+              matches /about rather than rounding up to 1K+ separately. */}
+          <StatItem value={`${yearsTrading()}+`} label="Years in Business" />
           <StatItem value="500K+" label="Sheets Sold" />
           <StatItem value="36" label="States Served" />
-          <StatItem value="1K+" label="Happy Customers" />
+          <StatItem value="950+" label="Happy Customers" />
         </div>
       </section>
 
@@ -152,6 +174,56 @@ export default function Home() {
               imageAlt="Stack of coloured aluminium flat sheets ready for fabrication"
               href="/products"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* ── CUT TO LENGTH ───────────────────────────────────────── */}
+      {/* Portrait footage in a portrait frame — the clip is 480x848, so it is
+          shown at that shape instead of being cropped into a landscape box.
+          It answers the one question every buyer asks by phone: can you do my
+          exact length? */}
+      <section className="bg-primary py-16 text-primary-foreground">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 md:grid-cols-[minmax(0,18rem)_1fr] md:px-10">
+          <FactoryVideo
+            src="/videos/cut-to-length.mp4"
+            poster="/videos/cut-to-length.jpg"
+            label="Factory staff measuring and cutting a 60 metre length from a black aluminium coil"
+            className="aspect-[480/848] w-full max-w-[18rem] border border-primary-foreground/15"
+          />
+          <div>
+            <p className="mb-2 font-heading text-xs font-bold uppercase tracking-[0.28em] text-accent">
+              Made to Order
+            </p>
+            <h2 className="font-heading text-3xl font-bold uppercase leading-none tracking-tight md:text-4xl">
+              Cut to Your Measurement,
+              <br />
+              Not Ours
+            </h2>
+            <p className="mt-6 max-w-lg text-sm leading-relaxed text-primary-foreground/75">
+              Sheets are cut to the length your roof actually needs, measured
+              straight off the coil on our factory floor. That means fewer
+              joints on long runs, and you are not paying for offcuts you will
+              never lay. Bring your measurements — or send them on WhatsApp and
+              our team will work the quantity out with you.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-sm bg-accent font-heading font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90"
+              >
+                <Link href="/roof-calculator">Work Out My Quantity</Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="rounded-sm border-primary-foreground/30 bg-transparent font-heading font-bold uppercase tracking-wide text-primary-foreground hover:bg-primary-foreground/10"
+              >
+                <Link href="/contact">Send Measurements</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -226,6 +298,30 @@ export default function Home() {
               description="Cross-check every item at our factory before transport. We ensure quality at the source before it reaches your site."
             />
           </div>
+
+          {/* The two ends of the line, side by side. Step 02 is where most
+              buyers hesitate, and this is what it looks like from the inside. */}
+          <div className="mt-12">
+            <p className="mb-6 font-heading text-xs font-bold uppercase tracking-[0.28em] text-accent">
+              On Our Floor
+            </p>
+            <div className="grid gap-1 md:grid-cols-2">
+              <ClipPanel
+                src="/videos/coil-feed.mp4"
+                poster="/videos/coil-feed.jpg"
+                label="An aluminium coil being fed into the long span corrugation machine"
+                caption="Coil goes in"
+                detail="Raw aluminium coil loaded onto the long span line."
+              />
+              <ClipPanel
+                src="/videos/sheet-inspection.mp4"
+                poster="/videos/sheet-inspection.jpg"
+                label="A factory worker watching a black 0.45mm aluminium sheet come off the corrugation machine"
+                caption="Sheet comes out"
+                detail="0.45mm profiled sheet, watched off the line by our team."
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -244,8 +340,8 @@ export default function Home() {
             <div className="space-y-4 text-sm leading-relaxed text-muted-foreground">
               <p>
                 Gods Promise Aluminium Concept Limited is an aluminium roofing
-                sheet manufacturer based at 288 Abeokuta Expressway, Pleasure
-                Bus Stop, Iyana Ipaja, Lagos State, Nigeria. We produce long
+                sheet manufacturer based at Pleasure Bus Stop, Alimosho, Lagos
+                100275, Nigeria. We produce long
                 span roofing sheets, step tiles, metcoppo profiles and flat
                 sheets in a range of thicknesses from 0.40mm to 1.00mm, serving
                 homeowners, builders, contractors and developers across all 36
@@ -276,6 +372,32 @@ export default function Home() {
                 delivery timelines and customer support before, during and after
                 your purchase. Contact us on WhatsApp or visit our factory to
                 discuss your project.
+              </p>
+            </div>
+          </div>
+
+          {/* Stock depth is the hardest thing to prove in prose and the easiest
+              to prove on camera. Feature mode: 34 seconds with sound, and it
+              downloads nothing until someone presses play. */}
+          <div className="mt-12 grid gap-6 md:grid-cols-[1fr_minmax(0,20rem)] md:items-end">
+            <FactoryVideo
+              src="/videos/coil-stock.mp4"
+              poster="/videos/coil-stock.jpg"
+              label="Aluminium coils in stock at the Gods Promise Aluminium factory, in a range of colours and gauges"
+              mode="feature"
+              className="aspect-video w-full rounded-sm border border-border"
+            />
+            <div>
+              <p className="font-heading text-xs font-bold uppercase tracking-[0.28em] text-accent">
+                Coil Store
+              </p>
+              <h3 className="mt-2 font-heading text-xl font-bold uppercase leading-tight tracking-tight">
+                The Stock Behind the Quote
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Colours and gauges held on site, so an order does not wait on
+                somebody else&rsquo;s container. Press play — the sound is our
+                floor, not a soundtrack.
               </p>
             </div>
           </div>
@@ -335,7 +457,7 @@ export default function Home() {
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="mb-3 font-heading text-xs font-bold uppercase tracking-[0.28em] opacity-75">
-                288 Abeokuta Expressway, Iyana Ipaja, Lagos State
+                {siteIdentity.address.formatted}
               </p>
               <h2 className="font-heading text-3xl font-bold uppercase leading-none tracking-tight md:text-5xl lg:text-6xl">
                 Ready to Start
@@ -372,6 +494,29 @@ function StatItem({ value, label }: { value: string; label: string }) {
 				{label}
 			</span>
 		</div>
+	);
+}
+
+type ClipPanelProps = {
+	src: string;
+	poster: string;
+	label: string;
+	caption: string;
+	detail: string;
+};
+
+/** A captioned ambient clip, sized to the footage's native 16:9. */
+function ClipPanel({ src, poster, label, caption, detail }: ClipPanelProps) {
+	return (
+		<figure className="bg-primary">
+			<FactoryVideo src={src} poster={poster} label={label} className="aspect-video w-full" />
+			<figcaption className="px-4 py-4">
+				<p className="font-heading text-xs font-bold uppercase tracking-[0.2em] text-accent">
+					{caption}
+				</p>
+				<p className="mt-1 text-xs leading-relaxed text-primary-foreground/70">{detail}</p>
+			</figcaption>
+		</figure>
 	);
 }
 

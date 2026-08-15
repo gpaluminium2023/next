@@ -4,12 +4,13 @@ import Link from "next/link";
 
 import { ContactForm } from "@/components/contact-form";
 import { Button } from "@/components/ui/button";
+import { siteIdentity } from "@/lib/site-identity";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
   title: "Contact Us — Get a Free Roofing Quote | Gods Promise Aluminium",
   description:
-    "Contact Gods Promise Aluminium in Sango Ota, Ogun State for quality aluminium roofing sheets, stone-coated tiles and accessories. Free quotes for projects across Lagos and Nigeria.",
+    "Contact Gods Promise Aluminium at our Alimosho, Lagos factory for quality aluminium roofing sheets, stone-coated tiles and accessories. Free quotes for projects across Lagos and Nigeria.",
 };
 
 const PHONE_NUMBERS = [
@@ -21,10 +22,12 @@ const PHONE_NUMBERS = [
 
 const EMAIL_ADDRESS = "godspromisealuminumconceptltd@gmail.com";
 
+// Derived from siteIdentity so this can never drift from the Google Business
+// Profile listing again — the contact page is the address Google trusts most.
 const FACTORY_ADDRESS_LINES = [
-  "288 Abeokuta Expressway, Pleasure B/Stop",
-  "Iyana Ipaja, Lagos State",
-  "Nigeria",
+  siteIdentity.address.streetAddress,
+  `${siteIdentity.address.locality}, ${siteIdentity.address.region} ${siteIdentity.address.postalCode}`,
+  siteIdentity.address.country,
 ];
 
 export default function ContactPage() {
@@ -42,8 +45,8 @@ export default function ContactPage() {
           </h1>
           <p className="text-primary-foreground/80 text-base md:text-lg max-w-2xl">
             Have questions about our aluminium (aluminum) roofing sheets,
-            stone-coated tiles or accessories? Contact our team in Ogun State
-            and we will respond promptly with a free quote.
+            stone-coated tiles or accessories? Contact our team in Lagos and we
+            will respond promptly with a free quote.
           </p>
         </div>
       </section>

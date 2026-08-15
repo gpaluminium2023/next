@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, ChevronRight, Phone, Factory } from "lucide-react";
 import { locations } from "@/lib/locations-data";
+import { siteIdentity } from "@/lib/site-identity";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/locations" },
@@ -58,9 +59,7 @@ export default function LocationsPage() {
         <div className="container px-4 mx-auto max-w-4xl py-6 flex flex-col sm:flex-row gap-4 sm:gap-8 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <Factory className="h-4 w-4 text-accent shrink-0" />
-            <span>
-              Factory: Km 38 Lagos-Abeokuta Expressway, Sango Ota, Ogun State
-            </span>
+            <span>Factory: {siteIdentity.address.formatted}</span>
           </div>
           <div className="flex items-center gap-2">
             <Phone className="h-4 w-4 text-accent shrink-0" />

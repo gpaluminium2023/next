@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { ProductColors } from "@/components/product-colors";
 import { buildAggregateRating } from "@/lib/reviews/jsonld";
 import { EMPTY_RATING_SUMMARY, getRatingSummariesBySlug } from "@/lib/reviews/queries";
+import { siteIdentity } from "@/lib/site-identity";
 
 // Rebuilt hourly so a newly approved review reaches the page without a deploy.
 export const revalidate = 3600;
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
   title:
     "Aluminium Roofing Sheets, Step Tiles & Stone-Coated Tiles | Buy Direct in Lagos",
   description:
-    "Buy aluminium long span roofing sheets, flat aluminium roofing sheets, step tiles, Metcopo and Gerard stone-coated tiles direct from our factory. Wholesale & retail — call for today's prices.",
+    "Buy aluminium long span roofing sheets, flat sheets, step tiles, Metcopo (Metcoppo) and Gerard stone-coated tiles direct from our Lagos factory. Wholesale & retail — call for today's prices.",
   openGraph: {
     title:
       "Aluminium Roofing Sheets & Stone-Coated Tiles | Gods Promise Aluminium Products",
@@ -45,6 +46,11 @@ export default async function ProductsPage() {
   const summaries = await getRatingSummariesBySlug();
   const ratingFor = (slug: string) => buildAggregateRating(summaries[slug] ?? EMPTY_RATING_SUMMARY);
 
+  // Points every product back at the LocalBusiness node in app/layout.tsx by
+  // @id, so the catalogue and the company are one connected entity rather
+  // than four anonymous products on an unattributed page.
+  const manufacturer = { "@id": `${siteIdentity.siteUrl}/#localbusiness` };
+
   const productsJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -60,6 +66,7 @@ export default async function ProductsPage() {
             "0.45mm and 0.55mm aluminium long span roofing sheets manufactured in Lagos. Available in custom lengths up to 6m. Rust-proof and lightweight.",
           brand: { "@type": "Brand", name: "Gods Promise Aluminium" },
           category: "Roofing Sheets",
+          manufacturer,
           offers: {
             "@type": "AggregateOffer",
             priceCurrency: "NGN",
@@ -81,6 +88,7 @@ export default async function ProductsPage() {
             "Step tile profile aluminium roofing sheets with realistic tile appearance. Available in 0.45mm and 0.55mm thickness in various colours.",
           brand: { "@type": "Brand", name: "Gods Promise Aluminium" },
           category: "Roofing Sheets",
+          manufacturer,
           offers: {
             "@type": "AggregateOffer",
             priceCurrency: "NGN",
@@ -98,10 +106,19 @@ export default async function ProductsPage() {
         item: {
           "@type": "Product",
           name: "Metcopo Aluminium Roofing Sheet",
+          // alternateName carries the spellings buyers actually type. Search
+          // Console shows ~56 impressions and zero clicks across "metcoppo",
+          // "metrocopo" and bare "metcopo" — the site only ever wrote one of
+          // the three, so it never matched the phrasing on the query side.
+          alternateName: [
+            "Metcoppo Aluminium Roofing Sheet",
+            "Metrocopo Roofing Sheet",
+          ],
           description:
-            "Metcopo profile aluminium roofing sheets with bold tile design. Manufactured in 0.45mm and 0.55mm gauges for residential and commercial roofing.",
+            "Metcopo profile aluminium roofing sheets, also spelled Metcoppo, with bold tile design. Manufactured in 0.45mm and 0.55mm gauges for residential and commercial roofing.",
           brand: { "@type": "Brand", name: "Gods Promise Aluminium" },
           category: "Roofing Sheets",
+          manufacturer,
           offers: {
             "@type": "AggregateOffer",
             priceCurrency: "NGN",
@@ -123,6 +140,7 @@ export default async function ProductsPage() {
             "Premium stone-coated steel roofing tiles by Gerard. Available in Classic, Milano, Heritage, Shingle and Roman profiles with 50-year warranty.",
           brand: { "@type": "Brand", name: "Gerard" },
           category: "Stone Coated Tiles",
+          manufacturer,
           offers: {
             "@type": "AggregateOffer",
             priceCurrency: "NGN",
@@ -152,9 +170,22 @@ export default async function ProductsPage() {
           <h1 className="font-heading mb-4 text-balance text-4xl font-bold uppercase sm:text-5xl lg:text-6xl">
             Roofing Sheets, Tiles &amp; Accessories
           </h1>
-          <p className="max-w-2xl text-base text-primary-foreground/80 sm:text-lg">
-            Durable, accurately measured and carefully finished aluminium
-            products for homes and projects across Nigeria.
+          {/* Says who makes these, from where, since when and at what spec.
+              This page is what AI search actually retrieves for "aluminium
+              roofing companies in Nigeria" — and as a bare catalogue it had
+              nothing to answer a question about the *company* with, so the
+              answer named competitors instead. */}
+          <p className="max-w-3xl text-base text-primary-foreground/80 sm:text-lg">
+            Everything below is made or supplied by{" "}
+            {siteIdentity.legalName} ({siteIdentity.registrationNumber}), an
+            aluminium roofing sheet manufacturer trading since{" "}
+            {siteIdentity.foundedYear} from our factory at{" "}
+            {siteIdentity.address.formatted}. We roll long span, step tile,
+            Metcopo (Metcoppo) and flat sheets in-house in gauges from{" "}
+            {siteIdentity.gaugeRange.min} to {siteIdentity.gaugeRange.max}, and
+            we are an authorised Gerard dealer with Gerard-certified installers.
+            Delivery covers all 36 states and the FCT, with branches in{" "}
+            {siteIdentity.branches.map((b) => b.locality).join(" and ")}.
           </p>
         </div>
         <div className="h-1 w-full bg-accent" />

@@ -1,15 +1,12 @@
 # The raw camera originals stay here as local masters but are never committed
-# or deployed. Every byte the site actually serves comes from the web
-# derivatives listed below, encoded with:
+# or deployed — they are 848x480 h264+aac, ~14.6MB total, and every byte the
+# site actually serves comes from the web derivatives listed below. Re-run the
+# recipe in docs/factory-video-assets.md to regenerate them from the masters.
 #
-#   ffmpeg -y -ss <offset> -i "<master>.mp4" -t <seconds> \
-#     -c:v libx264 -crf 27 -preset veryslow -profile:v main -level 3.1 \
-#     -pix_fmt yuv420p -movflags +faststart -an -metadata:s:v rotate=0 \
-#     "<name>.mp4"
-#
-# and posters via -frames:v 1 -q:v 6. These four are the landscape clips used
-# in the hero background slideshow (components/hero-slideshow.tsx); the
-# portrait cutting clip is not part of this branch.
+# hero-corrugation / coil-feed / sheet-inspection / coil-stock-loop feed the
+# hero background slideshow (components/hero-slideshow.tsx). cut-to-length /
+# coil-stock feed the contained-panel placements further down the page
+# (components/factory-video.tsx).
 *
 
 !.gitignore
@@ -21,3 +18,7 @@
 !sheet-inspection.jpg
 !coil-stock-loop.mp4
 !coil-stock-loop.jpg
+!cut-to-length.mp4
+!cut-to-length.jpg
+!coil-stock.mp4
+!coil-stock.jpg
