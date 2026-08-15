@@ -1,0 +1,23 @@
+# The raw camera originals stay here as local masters but are never committed
+# or deployed. Every byte the site actually serves comes from the web
+# derivatives listed below, encoded with:
+#
+#   ffmpeg -y -ss <offset> -i "<master>.mp4" -t <seconds> \
+#     -c:v libx264 -crf 27 -preset veryslow -profile:v main -level 3.1 \
+#     -pix_fmt yuv420p -movflags +faststart -an -metadata:s:v rotate=0 \
+#     "<name>.mp4"
+#
+# and posters via -frames:v 1 -q:v 6. These four are the landscape clips used
+# in the hero background slideshow (components/hero-slideshow.tsx); the
+# portrait cutting clip is not part of this branch.
+*
+
+!.gitignore
+!hero-corrugation.mp4
+!hero-corrugation.jpg
+!coil-feed.mp4
+!coil-feed.jpg
+!sheet-inspection.mp4
+!sheet-inspection.jpg
+!coil-stock-loop.mp4
+!coil-stock-loop.jpg

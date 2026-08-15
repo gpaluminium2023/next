@@ -3,6 +3,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
+import { HeroSlideshow } from '@/components/hero-slideshow';
+
+const heroClips = [
+  { src: "/videos/hero-corrugation.mp4", poster: "/videos/hero-corrugation.jpg" },
+  { src: "/videos/coil-feed.mp4", poster: "/videos/coil-feed.jpg" },
+  { src: "/videos/sheet-inspection.mp4", poster: "/videos/sheet-inspection.jpg" },
+  { src: "/videos/coil-stock-loop.mp4", poster: "/videos/coil-stock-loop.jpg" },
+];
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -37,11 +45,13 @@ export default function Home() {
 	return (
     <div>
       {/* ── HERO ────────────────────────────────────────────────── */}
-      <section className="relative bg-primary text-primary-foreground">
-        <div className="h-1 w-full bg-accent" />
-        <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-          {/* Left: text */}
-          <div className="flex flex-col justify-center px-6 py-14 md:px-10 lg:py-24">
+      <section className="relative min-h-[560px] overflow-hidden bg-primary text-primary-foreground lg:min-h-[680px]">
+        <HeroSlideshow clips={heroClips} className="z-0" />
+        <div className="absolute inset-0 z-1 bg-linear-to-r from-primary/95 via-primary/75 to-primary/30" />
+        <div className="absolute inset-0 z-1 bg-linear-to-t from-primary/70 via-transparent to-transparent" />
+        <div className="relative z-10 h-1 w-full bg-accent" />
+        <div className="relative z-10 mx-auto flex min-h-[calc(560px-4px)] max-w-7xl items-center px-6 py-14 md:px-10 lg:min-h-[calc(680px-4px)] lg:py-24">
+          <div className="max-w-xl">
             <p className="mb-4 font-heading text-xs font-bold uppercase tracking-[0.28em] text-accent">
               Lagos · Nigeria
             </p>
@@ -82,27 +92,6 @@ export default function Home() {
               >
                 <Link href="/products">View Products</Link>
               </Button>
-            </div>
-          </div>
-          {/* Right: CEO image */}
-          <div className="relative min-h-72 lg:min-h-[600px]">
-            <Image
-              src="/images/ceo-two.jpg"
-              alt="CEO of Gods Promise Aluminium in the factory, representing a business built on promise"
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-primary/70 via-transparent to-transparent" />
-            <div className="absolute bottom-0 left-0 px-6 pb-6">
-              <p className="font-heading text-xs font-bold uppercase tracking-[0.22em] text-accent">
-                Projects Across Nigeria
-              </p>
-              <p className="mt-1 text-xs leading-relaxed text-primary-foreground/85">
-                Long span, stone-coated tiles and flat sheets designed for the
-                Nigerian climate.
-              </p>
             </div>
           </div>
         </div>
