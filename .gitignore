@@ -41,3 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 /lib/generated/prisma
+
+# Raw phone footage and photos for the nails campaign (~230MB). Web
+# derivatives live in public/videos and public/new-materials.
+public/t/

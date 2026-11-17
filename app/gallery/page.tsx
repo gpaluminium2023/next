@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { TikTokEmbed } from "@/components/tiktok-embed";
-import { galleryVideos } from "@/lib/videos-data";
+import { galleryVideos, videoObjectJsonLd, watchPagePath } from "@/lib/videos-data";
 import { siteIdentity } from "@/lib/site-identity";
 import { prisma } from "@/lib/prisma";
 
@@ -191,21 +191,8 @@ const videoJsonLd =
         "@context": "https://schema.org",
         "@type": "ItemList",
         itemListElement: galleryVideos.map((video, index) => ({
-          "@type": "VideoObject",
+          ...videoObjectJsonLd(video, siteIdentity.siteUrl),
           position: index + 1,
-          name: video.title,
-          description: video.description,
-          // Google rejects relative URLs in VideoObject, and the clips are
-          // stored site-root-relative so the <video> tags below stay portable.
-          thumbnailUrl: `${siteIdentity.siteUrl}${video.thumbnail}`,
-          uploadDate: video.uploadDate,
-          duration: video.duration,
-          contentUrl: `${siteIdentity.siteUrl}${video.contentUrl}`,
-          ...(video.tiktokVideoId
-            ? {
-                embedUrl: `https://www.tiktok.com/embed/v2/${video.tiktokVideoId}`,
-              }
-            : {}),
         })),
       }
     : null;
@@ -347,7 +334,7 @@ export default async function GalleryPage() {
                 In Motion
               </p>
               <h2 className="font-heading uppercase font-bold text-2xl md:text-3xl">
-                Factory &amp; Installation Videos
+                Factory &amp; Product Videos
               </h2>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -361,13 +348,25 @@ export default async function GalleryPage() {
                     poster={video.thumbnail}
                     controls
                     preload="none"
-                    className="aspect-video w-full bg-black"
+                    className={
+                      video.orientation === "portrait"
+                        ? "aspect-9/16 w-full bg-black object-contain"
+                        : "aspect-video w-full bg-black"
+                    }
                   />
                   <div className="p-4">
                     <p className="font-heading uppercase font-bold text-xs tracking-widest text-accent">
                       {video.category}
                     </p>
                     <p className="text-sm font-medium mt-0.5">{video.title}</p>
+                    {video.transcript && (
+                      <Link
+                        href={watchPagePath(video)}
+                        className="mt-2 inline-block text-xs text-accent underline"
+                      >
+                        Watch with transcript &rarr;
+                      </Link>
+                    )}
                   </div>
                 </div>
               ))}

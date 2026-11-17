@@ -16,6 +16,9 @@ import { ReviewCard } from "@/components/reviews/review-card";
 import { ReviewSummary } from "@/components/reviews/review-summary";
 import { buildAggregateRating, buildReviewNodes } from "@/lib/reviews/jsonld";
 import { getApprovedReviews, getProductRatingSummary } from "@/lib/reviews/queries";
+import { GerardNailsDetails, gerardNailVideos } from "@/components/nails/gerard-nails-details";
+import { GERARD_NAIL_SLUG, gerardNails, gerardNailsFaq } from "@/lib/nails-content";
+import { videoObjectJsonLd } from "@/lib/videos-data";
 import {
   listBranches,
   resolveBranchWithSource,
@@ -99,14 +102,24 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const images = Array.isArray(product.images) ? (product.images as unknown as ProductImage[]) : [];
   const anyInStock = priced.inStock;
   const prices = priced.variants.map((v) => v.priceKobo).filter((p) => p > 0);
+  const isGerardNail = product.slug === GERARD_NAIL_SLUG;
 
   const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
     description: product.description,
-    image: images.map((img) => img.url),
-    brand: { "@type": "Brand", name: siteIdentity.brandName },
+    // Schema wants absolute URLs; uploads are already absolute (Cloudinary),
+    // the bundled artwork is site-root-relative.
+    image: images.map((img) => (img.url.startsWith("/") ? `${siteIdentity.siteUrl}${img.url}` : img.url)),
+    // The nails are made by Simplex and sold by us; for everything else the
+    // brand on the product is ours.
+    brand: { "@type": "Brand", name: isGerardNail ? gerardNails.manufacturer : siteIdentity.brandName },
+    ...(isGerardNail
+      ? {
+          subjectOf: gerardNailVideos().map((video) => videoObjectJsonLd(video, siteIdentity.siteUrl)),
+        }
+      : {}),
     ...(prices.length > 0
       ? {
           offers: {
@@ -132,9 +145,24 @@ export default async function ProductPage({ params }: ProductPageProps) {
     ...buildReviewNodes(reviews),
   };
 
+  const faqJsonLd = isGerardNail
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: gerardNailsFaq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      }
+    : null;
+
   return (
     <div className="min-h-screen bg-background">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
+      {faqJsonLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      )}
 
       <div className="mx-auto max-w-6xl px-4 pt-6 sm:px-6 lg:px-8">
         <Link href="/store" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
@@ -224,6 +252,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         </div>
       </section>
+
+      {isGerardNail && <GerardNailsDetails />}
 
       {/* Reviews — kept rendered whenever the JSON-LD above carries an
           aggregateRating, since review markup must reflect visible content. */}

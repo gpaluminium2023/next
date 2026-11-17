@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { notFound } from "next/navigation";
 
 import { blogPosts } from "@/lib/blog-posts";
+import { FactoryVideo } from "@/components/factory-video";
+import { getVideo, videoObjectJsonLd, watchPagePath, type GalleryVideo } from "@/lib/videos-data";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -133,8 +135,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       }
     : null;
 
+  const videos = (post.videoIds ?? [])
+    .map((id) => getVideo(id))
+    .filter((video): video is GalleryVideo => Boolean(video));
+  const videosJsonLd =
+    videos.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@graph": videos.map((video) => videoObjectJsonLd(video, siteUrl)),
+        }
+      : null;
+
   return (
     <div className="bg-linear-to-b from-primary/5 via-background to-background">
+      {videosJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(videosJsonLd) }}
+        />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -193,6 +212,34 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {post.body.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
+          </div>
+        )}
+        {videos.length > 0 && (
+          <div className="mt-10">
+            <h2 className="mb-4 text-xl font-bold tracking-tight">Watch</h2>
+            <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+              {videos.map((video) => (
+                <li key={video.id}>
+                  <FactoryVideo
+                    src={video.contentUrl}
+                    poster={video.thumbnail}
+                    label={video.title}
+                    mode="feature"
+                    className={
+                      video.orientation === "portrait"
+                        ? "aspect-9/16 w-full rounded-sm"
+                        : "aspect-video w-full rounded-sm"
+                    }
+                  />
+                  <p className="mt-2 text-xs font-medium">{video.title}</p>
+                  {video.transcript && (
+                    <Link href={watchPagePath(video)} className="text-xs text-primary underline">
+                      Watch with transcript
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
         {post.faq && post.faq.length > 0 && (

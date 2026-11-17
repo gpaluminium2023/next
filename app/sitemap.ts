@@ -3,6 +3,7 @@ import type { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/blog-posts";
 import { locations } from "@/lib/locations-data";
 import { prisma } from "@/lib/prisma";
+import { durationSeconds, watchPagePath, watchPageVideos } from "@/lib/videos-data";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL ??
@@ -191,8 +192,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
+  // Watch pages carry the <video:video> extension, so Google can find each
+  // clip even before it renders the page.
+  const videoRoutes: MetadataRoute.Sitemap = watchPageVideos().map((video) => ({
+    url: `${BASE_URL}${watchPagePath(video)}`,
+    lastModified: new Date(video.uploadDate),
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+    videos: [
+      {
+        title: video.title,
+        description: video.description,
+        thumbnail_loc: `${BASE_URL}${video.thumbnail}`,
+        content_loc: `${BASE_URL}${video.contentUrl}`,
+        duration: durationSeconds(video.duration),
+        publication_date: video.uploadDate,
+        family_friendly: "yes" as const,
+      },
+    ],
+  }));
+
   return [
     ...staticRoutes,
+    ...videoRoutes,
     ...productRoutes,
     ...blogRoutes,
     ...articleRoutes,

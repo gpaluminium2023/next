@@ -1,3 +1,6 @@
+import { gerardNails, gerardNailsUrl, gerardNailsWhatsAppUrl } from "@/lib/nails-content";
+import { siteIdentity } from "@/lib/site-identity";
+
 export type FaqItem = {
   question: string;
   answer: string;
@@ -17,9 +20,179 @@ export type BlogPost = {
   readingTimeMinutes?: number;
   featured?: boolean;
   faq?: FaqItem[];
+  /** lib/videos-data.ts ids, embedded under the body with VideoObject markup. */
+  videoIds?: string[];
 };
 
+const n = gerardNails;
+const perKg = `₦${(n.priceNaira / n.cartonKg).toLocaleString("en-NG")}`;
+const perPack = `₦${(n.priceNaira / n.packsPerCarton).toLocaleString("en-NG")}`;
+const nailsOrderCta = `<div class="blog-callout">
+  <strong>Order Gerard roofing nails:</strong> ${n.priceDisplay} per ${n.cartonKg}kg carton. <a href="${gerardNailsWhatsAppUrl}">WhatsApp ${siteIdentity.phoneDisplay}</a> with the number of cartons and your location, call the same number, or <a href="${gerardNailsUrl}">buy online</a>. Pickup at ${n.pickup}; delivery nationwide.
+</div>`;
+
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "gerard-roofing-nails-wholesale-price-nigeria",
+    title: `Gerard Roofing Nails Wholesale Price in Nigeria (2026): ${n.priceDisplay} per ${n.cartonKg}kg Carton`,
+    metaTitle: `Gerard Roofing Nails Price in Nigeria 2026: ${n.priceDisplay} per Carton (Wholesale)`,
+    metaDescription: `Gerard roofing nails cost ${n.priceDisplay} per ${n.cartonKg}kg carton (${n.packsPerCarton} × ${n.packKg}kg packs) at wholesale from Gods Promise, Lagos. BWG 12 × 2" coated wire nails, bulk discounts, nationwide delivery. Order on WhatsApp.`,
+    excerpt: `Gerard roofing nails sell for ${n.priceDisplay} per ${n.cartonKg}kg carton at wholesale. Here is what is in a carton, what it works out to per pack and per kg, and how dealers order.`,
+    body: [],
+    date: "2026-11-17",
+    imageSrc: "/new-materials/gerard-nail-cartons-wide.jpg",
+    imageAlt: `Cartons of Simplex coated wire nails, BWG 12 × 2 inch, sold as Gerard roofing nails at ${n.priceDisplay} per carton`,
+    readingTimeMinutes: 4,
+    videoIds: ["gerard-nails-wholesale-dealers", "gerard-nails-wholesale-pidgin", "gerard-nails-ceo-launch"],
+    bodyHtml: `
+<div class="blog-callout">
+  <strong>The short answer:</strong> Gerard roofing nails cost <strong>${n.priceDisplay} per ${n.cartonKg}kg carton</strong> at wholesale from Gods Promise Aluminium in Lagos. A carton holds ${n.packsPerCarton} packs of ${n.packKg}kg. The nails are ${n.gauge} × ${n.lengthIn} coated wire nails with a diamond point. Bulk orders get a discount and we deliver nationwide.
+</div>
+
+<h2>Gerard roofing nails price list</h2>
+<table>
+  <thead><tr><th>What you buy</th><th>Weight</th><th>Price</th></tr></thead>
+  <tbody>
+    <tr><td>1 carton (${n.packsPerCarton} packs)</td><td>${n.cartonKg}kg</td><td><strong>${n.priceDisplay}</strong></td></tr>
+    <tr><td>Works out per pack</td><td>${n.packKg}kg</td><td>${perPack}</td></tr>
+    <tr><td>Works out per kg</td><td>1kg</td><td>${perKg}</td></tr>
+    <tr><td>Bulk (many cartons)</td><td>—</td><td>Discounted. Message us the quantity.</td></tr>
+  </tbody>
+</table>
+<p>We sell by the carton. The per-pack and per-kg figures are there so you can compare our price with quotes given in other units. Prices are at our factory, ${n.pickup}. Delivery is quoted separately for your location.</p>
+
+<h2>Who buys nails by the carton</h2>
+<p>Every customer who buys roofing sheets also needs roofing nails. Roofing sheet dealers, building materials shops, roofing companies and warehouse owners who stock both can sell them together, and a customer doesn't have to go elsewhere to finish the job. That is who our wholesale cartons are for. Contractors who fix many roofs a month also buy by the carton.</p>
+
+<h2>What is inside a carton</h2>
+<ul>
+  <li><strong>${n.packsPerCarton} packs</strong>, each ${n.packKg}kg, for ${n.cartonKg}kg in total.</li>
+  <li><strong>Size:</strong> ${n.gauge} × ${n.lengthIn}, so the wire is about ${n.gaugeMm} thick and each nail is about ${n.lengthMm} long. <a href="/blog/bwg-12-x-2-inch-roofing-nails-size-packaging-guide">What BWG 12 × 2" means</a>.</li>
+  <li><strong>Point and finish:</strong> ${n.point.toLowerCase()}, ${n.finish.toLowerCase()}.</li>
+  <li><strong>Maker:</strong> ${n.manufacturer}. The carton is printed "Coated Wire Nails, Size: BWG 12 × 2", Professional Grade, Diamond Point, Precision Cut".</li>
+</ul>
+
+<h2>Over 2,000 cartons in the first 24 hours</h2>
+<p>${n.launchClaim} Dealers moved quickly because the price is a true wholesale price and the packaging (5kg packs in a 20kg carton) is easy to resell.</p>
+
+<h2>How to order</h2>
+<ol>
+  <li>Send a WhatsApp message to <a href="${gerardNailsWhatsAppUrl}">${siteIdentity.phoneDisplay}</a> with the number of cartons and your delivery location, or call the same number.</li>
+  <li>We confirm the total, including any bulk discount and the delivery cost.</li>
+  <li>Pick up from ${n.pickup}, or we deliver to you anywhere in Nigeria.</li>
+</ol>
+<p>You can also <a href="${gerardNailsUrl}">buy cartons online</a> and pay by card or bank transfer.</p>
+
+<h2>For Pidgin</h2>
+<p lang="pcm">You dey sell Gerard roofing sheets? We dey sell Gerard roofing nails for wholesale price: ${n.priceDisplay} for one carton. Na ${n.packsPerCarton} pack dey inside one carton, ${n.packKg}kg each, ${n.cartonKg}kg altogether. Come Pleasure Bus Stop, Lagos, or send us message. We dey deliver nationwide.</p>
+
+${nailsOrderCta}
+`,
+    faq: [
+      {
+        question: `Is the ${n.priceDisplay} price for a pack or a carton of Gerard roofing nails?`,
+        answer: `${n.priceDisplay} is the price of one ${n.cartonKg}kg carton, which holds ${n.packsPerCarton} packs of ${n.packKg}kg. That works out to ${perPack} per pack, but we sell by the carton.`,
+      },
+      {
+        question: "How much is 1kg of Gerard roofing nails?",
+        answer: `Bought by the carton, Gerard roofing nails work out to ${perKg} per kg (${n.priceDisplay} for ${n.cartonKg}kg).`,
+      },
+      {
+        question: "Do you give discounts on Gerard roofing nails for bulk buyers?",
+        answer: `Yes. Bulk purchases get a discount. Send the number of cartons you need on WhatsApp (${siteIdentity.phoneDisplay}) and we will reply with your price.`,
+      },
+      {
+        question: "Where can I pick up Gerard roofing nails in Lagos?",
+        answer: `At our office and factory at ${n.pickup}. We also arrange delivery anywhere in Nigeria.`,
+      },
+      {
+        question: "Can I buy Gerard roofing sheets and nails together?",
+        answer: "Yes. Gods Promise is an authorised Gerard dealer, so you can order Gerard stone-coated roofing sheets and the nails to fix them in one order.",
+      },
+    ],
+  },
+  {
+    slug: "bwg-12-x-2-inch-roofing-nails-size-packaging-guide",
+    title: 'BWG 12 × 2 Inch Roofing Nails Explained: Size, Packaging and How to Order',
+    metaTitle: 'BWG 12 × 2" Roofing Nails: What the Size Means, 20kg Carton Packaging & Price',
+    metaDescription: `What does BWG 12 × 2" mean on a nail carton? 12-gauge wire (${n.gaugeMm}) by 2 inches (${n.lengthMm}). How Gerard roofing nails are packed (${n.packsPerCarton} × ${n.packKg}kg = ${n.cartonKg}kg), the ${n.priceDisplay} carton price, and how to order in Nigeria.`,
+    excerpt: `"BWG 12 × 2 inch" is printed on every carton of Gerard roofing nails. This guide explains what the gauge and length mean, how the nails are packed, and how to order the right number of cartons.`,
+    body: [],
+    date: "2026-11-17",
+    imageSrc: "/new-materials/gerard-nail-pack-wide.jpg",
+    imageAlt: "A Simplex Special 5kg pack of roofing nails on top of a Simplex Industrial Limited 20kg carton",
+    readingTimeMinutes: 4,
+    videoIds: ["gerard-nails-closeup", "gerard-nails-wholesale-dealers"],
+    bodyHtml: `
+<div class="blog-callout">
+  <strong>The short answer:</strong> BWG 12 × 2" means the nail is made from 12-gauge wire, about <strong>${n.gaugeMm}</strong> (0.109 inch) thick, and is <strong>2 inches</strong> (50.8mm) long. Gerard roofing nails in this size come in ${n.packKg}kg packs, ${n.packsPerCarton} to a ${n.cartonKg}kg carton, for ${n.priceDisplay} a carton.
+</div>
+
+<h2>What "BWG" means</h2>
+<p>BWG stands for Birmingham Wire Gauge, the scale nail makers in Nigeria and much of the world still print on cartons. The smaller the gauge number, the thicker the wire. A BWG 10 nail is thicker than a BWG 12 nail, and a BWG 14 nail is thinner.</p>
+<table>
+  <thead><tr><th>Gauge</th><th>Wire thickness</th></tr></thead>
+  <tbody>
+    <tr><td>BWG 10</td><td>3.40mm (0.134")</td></tr>
+    <tr><td>BWG 11</td><td>3.05mm (0.120")</td></tr>
+    <tr><td><strong>BWG 12</strong></td><td><strong>2.77mm (0.109")</strong></td></tr>
+    <tr><td>BWG 13</td><td>2.41mm (0.095")</td></tr>
+    <tr><td>BWG 14</td><td>2.11mm (0.083")</td></tr>
+  </tbody>
+</table>
+
+<h2>What "2 inch" means</h2>
+<p>The second number is the nail's length: 2 inches, or 50.8mm (usually rounded to 50mm). Nails in Nigeria are sold by inch length, so "2 inch nail" and "50mm nail" refer to the same thing.</p>
+
+<h2>Diamond point and coated finish</h2>
+<p>A <strong>diamond point</strong> is the common four-sided point that starts cleanly in timber without pre-drilling. The <strong>coated</strong> finish is the black coating on the wire that you can see in the close-up video below. Every nail in the carton is the same size, which the carton describes as "precision cut".</p>
+<p>If your specification calls for a zinc-plated nail, for example for aluminium long span roofing, see our <a href="/store/carton-nail-aluminium-roofing">aluminium roofing carton nails</a>, or ask us which nail suits your roof.</p>
+
+<h2>How Gerard roofing nails are packed</h2>
+<table>
+  <thead><tr><th>Unit</th><th>Contents</th><th>Price</th></tr></thead>
+  <tbody>
+    <tr><td>Pack</td><td>${n.packKg}kg of nails</td><td>Sold in cartons only</td></tr>
+    <tr><td>Carton</td><td>${n.packsPerCarton} packs = ${n.cartonKg}kg</td><td><strong>${n.priceDisplay}</strong></td></tr>
+  </tbody>
+</table>
+<p>The outer carton is printed "${n.manufacturer}, Coated Wire Nails, Size: BWG 12 × 2"". The inner packs are white "Simplex Special" boxes.</p>
+
+<h2>How many cartons do you need?</h2>
+<p>That depends on how many sheets you are fixing and how far apart your purlins or battens are. Dealers usually order by how fast nails sell alongside their roofing sheets. For a single roof, send your roof size or sheet count on WhatsApp and we will tell you how many cartons to buy, or estimate the sheets first with our <a href="/roof-calculator">roof calculator</a>.</p>
+
+<h2>Storing cartons</h2>
+<p>Keep cartons sealed, dry and off the floor until you need them. Damp cardboard tears when the carton is lifted, and dry nails stay clean and easy to handle.</p>
+
+${nailsOrderCta}
+`,
+    faq: [
+      {
+        question: "What does BWG 12 mean on a nail carton?",
+        answer: `BWG 12 means the nail is made from 12-gauge wire on the Birmingham Wire Gauge scale, which is about ${n.gaugeMm} (0.109 inch) thick.`,
+      },
+      {
+        question: "Is BWG 12 thicker than BWG 14?",
+        answer: "Yes. On the BWG scale a smaller number means thicker wire: BWG 12 is 2.77mm and BWG 14 is 2.11mm.",
+      },
+      {
+        question: "How long is a 2 inch nail in mm?",
+        answer: "A 2 inch nail is 50.8mm long, usually rounded to 50mm.",
+      },
+      {
+        question: "What is a diamond point nail?",
+        answer: "A diamond point nail has a sharp four-sided point that starts cleanly in timber without pre-drilling. It is the standard point on common wire nails.",
+      },
+      {
+        question: "How many packs are in a carton of Gerard roofing nails?",
+        answer: `There are ${n.packsPerCarton} packs in a carton. Each pack is ${n.packKg}kg, so a full carton is ${n.cartonKg}kg and costs ${n.priceDisplay}.`,
+      },
+      {
+        question: "Who makes the Gerard roofing nails sold by Gods Promise?",
+        answer: `They are made by ${n.manufacturer} and sold under the label "Coated Wire Nails, BWG 12 × 2", Professional Grade, Diamond Point, Precision Cut".`,
+      },
+    ],
+  },
   {
     slug: "how-to-choose-aluminium-roofing-supplier-nigeria",
     title:

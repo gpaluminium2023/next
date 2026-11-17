@@ -22,3 +22,8 @@
 !cut-to-length.jpg
 !coil-stock.mp4
 !coil-stock.jpg
+
+# Gerard roofing nails campaign: 720x1280 derivatives of public/t (see
+# lib/videos-data.ts). Masters are gitignored at the repo root.
+!gerard-nails-*.mp4
+!gerard-nails-*.jpg

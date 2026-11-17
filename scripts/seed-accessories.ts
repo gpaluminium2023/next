@@ -125,21 +125,23 @@ const products: SeedProduct[] = [
     variants: [],
   },
   {
-    name: "Gerard Nail",
+    // Kept in step with scripts/update-gerard-nail.ts, which is what actually
+    // corrected the live row; copy comes from lib/nails-content.ts.
+    name: "Gerard Roofing Nails (20kg Carton)",
     slug: "gerard-nail",
     description:
-      "High carbon steel nails made for installing Gerard stone-coated roofing sheets. Black coated for rust resistance, with a flat head and ring/spiral shank for a secure hold that resists wind uplift. 2\" (50mm), approximately 1kg per carton.",
+      'Gerard roofing nails at wholesale: ₦23,000 per 20kg carton of 4 × 5kg packs. BWG 12 × 2" (2.77mm × 50mm) black coated wire nails with a diamond point, made by Simplex Industrial Limited. Bulk discounts and nationwide delivery from Pleasure Bus Stop, Alimosho, Lagos.',
     category: "ACCESSORIES",
-    unit: "pack",
-    basePriceKobo: nairaToKobo("₦11,000"),
+    unit: "carton",
+    basePriceKobo: nairaToKobo("₦23,000"),
     published: true,
     featured: false,
     sortOrder: 23,
     images: [
       {
-        url: "/new-materials/gerard-nail.png",
+        url: "/new-materials/gerard-nail-carton-1.jpg",
         publicId: "",
-        alt: "Gerard nails — black coated 2 inch ring shank nails for Gerard stone-coated roofing sheets",
+        alt: "Three cartons of Simplex coated wire nails, BWG 12 × 2 inch: Gerard roofing nails, ₦23,000 per 20kg carton",
       },
     ],
     variants: [],
