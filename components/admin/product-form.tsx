@@ -254,6 +254,7 @@ export function ProductForm({ mode, productId, defaultValues }: ProductFormProps
               <SelectItem value="piece">Per piece</SelectItem>
               <SelectItem value="pack">Per pack</SelectItem>
               <SelectItem value="bundle">Per bundle</SelectItem>
+              <SelectItem value="carton">Per carton</SelectItem>
             </SelectContent>
           </Select>
         </div>
