@@ -16,7 +16,7 @@ Source media: `public/t/`. Transcribed 2026-11-17 with Whisper (large-v3-turbo).
 >
 > Each pack contains 5kg, 4 packs in 1 carton, that's 20kg. We sell by the carton, with discounts available for bulk purchase.
 >
-> Our office is at Pleasure Bus Stop here in [Iyana-Ipaja?], Lagos, and we arrange delivery nationwide.
+> Our office is at Pleasure Bus Stop here in Iyana-Ipaja, Lagos, and we arrange delivery nationwide.
 >
 > Send us a WhatsApp message with the number of cartons you need and let's give you our price.
 >
@@ -32,7 +32,7 @@ Source media: `public/t/`. Transcribed 2026-11-17 with Whisper (large-v3-turbo).
 | Inside each pack, we get 5kg. All together na 20kg dey inside one carton. | Each pack is 5kg, so one carton holds 20kg. |
 | No forget say na wholesale price we dey sell. | Remember, we sell at wholesale price. |
 | You fit send us message today, make we supply your next stock. | Message us today and let us supply your next stock. |
-| You fit visit us at Pleasure Bus Stop in [Iyana-Ipaja?], Lagos, and we dey deliver nationwide. | Visit us at Pleasure Bus Stop, Lagos. We deliver nationwide. |
+| You fit visit us at Pleasure Bus Stop in Iyana-Ipaja, Lagos, and we dey deliver nationwide. | Visit us at Pleasure Bus Stop, Lagos. We deliver nationwide. |
 
 ## IMG_6534.MOV: owner/CEO with award, Pidgin/English (64s, vertical)
 

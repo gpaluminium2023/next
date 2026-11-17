@@ -52,6 +52,26 @@ export const gerardNailsPosts = [
     slug: "bwg-12-x-2-inch-roofing-nails-size-packaging-guide",
     title: "BWG 12 × 2 Inch Roofing Nails Explained: Size, Packaging and Ordering",
   },
+  {
+    slug: "how-to-sell-roofing-nails-roofing-sheet-dealers",
+    title: "How Roofing Sheet Dealers Can Add Nails to Their Shop",
+  },
+  {
+    slug: "where-to-buy-roofing-nails-wholesale-lagos",
+    title: "Where to Buy Roofing Nails Wholesale in Lagos",
+  },
+  {
+    slug: "roofing-nails-vs-roofing-screws-nigeria",
+    title: "Roofing Nails or Roofing Screws? What to Use on Your Roof",
+  },
+  {
+    slug: "how-to-check-carton-of-roofing-nails-weight-gauge",
+    title: "How to Check a Carton of Roofing Nails Before You Pay",
+  },
+  {
+    slug: "gerard-roofing-nails-price-pidgin",
+    title: "Gerard Roofing Nails Price: Wetin You Need Know (Pidgin)",
+  },
 ] as const;
 
 /** WhatsApp link with the order message pre-filled, so the first message already says what they want. */

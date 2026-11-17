@@ -194,6 +194,362 @@ ${nailsOrderCta}
     ],
   },
   {
+    slug: "how-to-sell-roofing-nails-roofing-sheet-dealers",
+    title: "How Roofing Sheet Dealers Can Add Nails to Their Shop (2026 Wholesale Guide)",
+    metaTitle: "Selling Roofing Nails as a Roofing Sheet Dealer in Nigeria: Margins, Stock & Supply",
+    metaDescription: `A practical guide for Nigerian roofing sheet dealers adding nails to their shop: what a ${n.priceDisplay} carton of Gerard roofing nails costs per pack, how to work out your margin, how much to stock and how to store it.`,
+    excerpt: `Every customer who buys roofing sheets also needs nails. If they can't buy them from you, they buy them from someone else. Here is how dealers work out the margin on a ${n.priceDisplay} carton, how much stock to start with, and how to keep it saleable.`,
+    body: [],
+    date: "2026-11-17",
+    imageSrc: "/new-materials/gerard-nail-dealer-wide.jpg",
+    imageAlt: "A Gods Promise staff member holding a 5kg pack of Simplex coated wire nails sold to roofing sheet dealers",
+    readingTimeMinutes: 5,
+    videoIds: ["gerard-nails-wholesale-dealers", "gerard-nails-ceo-launch"],
+    bodyHtml: `
+<div class="blog-callout">
+  <strong>The short version:</strong> a ${n.cartonKg}kg carton of Gerard roofing nails costs ${n.priceDisplay} wholesale and holds ${n.packsPerCarton} packs of ${n.packKg}kg, so each pack costs you ${perPack} before delivery. Your margin is what you sell a pack for, minus ${perPack} and your share of delivery. Bulk orders get a discount, which raises it further.
+</div>
+
+<h2>Why roofing sheet dealers should stock nails</h2>
+<p>A roof cannot go up without nails. When a customer buys sheets from you and has to find nails somewhere else, you lose that sale, and the customer also learns where else to buy their next roof. Stocking nails keeps the whole order in your shop, and you can quote "sheets and nails" as one figure.</p>
+<p>Nails are also easy stock. They don't come in colours or gauges that go out of fashion, a sealed carton takes little space, and one carton serves many customers because it splits into ${n.packsPerCarton} packs.</p>
+
+<h2>Working out your margin</h2>
+<p>Start from the cost of one pack:</p>
+<ul>
+  <li>Carton price: <strong>${n.priceDisplay}</strong> for ${n.cartonKg}kg</li>
+  <li>Packs per carton: <strong>${n.packsPerCarton}</strong> × ${n.packKg}kg</li>
+  <li>Cost per pack: <strong>${perPack}</strong> (${perKg} per kg)</li>
+</ul>
+<p>Add your share of delivery or transport, then compare that with what you sell a pack for. The table shows the arithmetic at three example selling prices. These are illustrations only. Set your own price from what your local market pays.</p>
+<table>
+  <thead><tr><th>If you sell a ${n.packKg}kg pack at</th><th>You take per carton (${n.packsPerCarton} packs)</th><th>Margin per carton, before delivery</th></tr></thead>
+  <tbody>
+    <tr><td>₦6,000</td><td>₦24,000</td><td>₦1,000</td></tr>
+    <tr><td>₦6,250</td><td>₦25,000</td><td>₦2,000</td></tr>
+    <tr><td>₦6,500</td><td>₦26,000</td><td>₦3,000</td></tr>
+  </tbody>
+</table>
+<p>Buying several cartons at once usually does more for your margin than a higher shelf price: the bulk discount and a single delivery charge are both spread across more packs. <a href="${gerardNailsWhatsAppUrl}">Send us your quantity</a> for a bulk price.</p>
+
+<h2>How much to stock</h2>
+<p>Start from your sheet sales, not a round number. Look at how many roofs you supplied last month and stock enough nails to cover the same number, plus a little buffer. Then reorder when you are down to your last carton rather than your last pack, because a customer who arrives to find no nails leaves with the sheets but not the nails.</p>
+<p>Because we deliver nationwide and sell by the carton, you don't need to tie up money in months of stock. Several small reorders are fine.</p>
+
+<h2>Keep nails saleable</h2>
+<ul>
+  <li><strong>Keep cartons sealed until you need them.</strong> A sealed pack is also what a customer trusts.</li>
+  <li><strong>Store off the floor and away from damp.</strong> Wet cardboard tears, and a damp pack is hard to sell.</li>
+  <li><strong>Sell the oldest stock first.</strong> Put new cartons behind or under the ones you already have.</li>
+  <li><strong>Display one pack beside your sheets.</strong> Customers buy what they can see, and the printed "BWG 12 × 2"" answers their size question for you.</li>
+</ul>
+
+<h2>Where dealers get their nails</h2>
+<p>Gods Promise supplies Gerard roofing nails (${n.labelName}, made by ${n.manufacturer}) by the carton from ${n.pickup}, with nationwide delivery. ${n.launchClaim} If you also want to stock our roofing sheets, see our <a href="/dealers">dealer partnership page</a>.</p>
+
+${nailsOrderCta}
+`,
+    faq: [
+      {
+        question: "How much does one pack of Gerard roofing nails cost a dealer?",
+        answer: `Bought by the carton at ${n.priceDisplay}, each ${n.packKg}kg pack costs a dealer ${perPack} before delivery, because a carton holds ${n.packsPerCarton} packs.`,
+      },
+      {
+        question: "Can a dealer sell the 5kg packs separately?",
+        answer: `Yes. Each carton holds ${n.packsPerCarton} separate ${n.packKg}kg packs, so dealers usually sell nails to customers by the pack.`,
+      },
+      {
+        question: "How many cartons of roofing nails should a new dealer stock?",
+        answer: "Stock enough to cover the number of roofs you supplied last month, plus a small buffer, and reorder when you reach your last carton. We deliver nationwide, so several small orders work as well as one large one.",
+      },
+      {
+        question: "Do bulk orders of roofing nails get a better price?",
+        answer: `Yes. Bulk purchases get a discount on the ${n.priceDisplay} carton price. Message ${siteIdentity.phoneDisplay} on WhatsApp with your quantity for a price.`,
+      },
+    ],
+  },
+  {
+    slug: "where-to-buy-roofing-nails-wholesale-lagos",
+    title: "Where to Buy Roofing Nails Wholesale in Lagos (2026)",
+    metaTitle: `Where to Buy Roofing Nails in Lagos: Wholesale Cartons at ${n.priceDisplay}, Iyana-Ipaja`,
+    metaDescription: `Buy Gerard roofing nails wholesale in Lagos at Pleasure Bus Stop, Iyana-Ipaja (Alimosho): ${n.priceDisplay} per ${n.cartonKg}kg carton, open Monday to Saturday 8am–6pm, with delivery across Lagos and Nigeria.`,
+    excerpt: `Looking for roofing nails by the carton in Lagos? Here is where to find us, when we are open, what to check before you pay, and how pickup and delivery work.`,
+    body: [],
+    date: "2026-11-17",
+    imageSrc: "/new-materials/gerard-nail-stack-wide.jpg",
+    imageAlt: "Stacked cartons of Gerard roofing nails available for pickup in Lagos",
+    readingTimeMinutes: 3,
+    videoIds: ["gerard-nails-wholesale-pidgin", "gerard-nails-wholesale-dealers"],
+    bodyHtml: `
+<div class="blog-callout">
+  <strong>The short answer:</strong> buy Gerard roofing nails wholesale from Gods Promise Aluminium at <strong>Pleasure Bus Stop, Iyana-Ipaja (Alimosho), Lagos</strong>, open Monday to Saturday, 8am to 6pm. A ${n.cartonKg}kg carton costs ${n.priceDisplay}. Call or WhatsApp ${siteIdentity.phoneDisplay} before you come, or order for delivery.
+</div>
+
+<h2>Our location</h2>
+<p>Our office and roofing factory is at Pleasure Bus Stop, Iyana-Ipaja, in Alimosho, Lagos. It is the same place we roll aluminium roofing sheets, so you can collect nails and sheets in one trip.</p>
+<ul>
+  <li><strong>Address:</strong> Pleasure Bus Stop, Iyana-Ipaja, Alimosho, Lagos</li>
+  <li><strong>Opening hours:</strong> Monday to Saturday, 8:00am to 6:00pm</li>
+  <li><strong>Phone / WhatsApp:</strong> <a href="tel:${siteIdentity.phoneE164}">${siteIdentity.phoneDisplay}</a></li>
+</ul>
+<p>Message us before you set off with the number of cartons you want, and we will have them ready.</p>
+
+<h2>What you can buy</h2>
+<table>
+  <thead><tr><th>Product</th><th>Unit</th><th>Price</th></tr></thead>
+  <tbody>
+    <tr><td>Gerard roofing nails, ${n.gauge} × ${n.lengthIn}</td><td>${n.cartonKg}kg carton (${n.packsPerCarton} × ${n.packKg}kg)</td><td>${n.priceDisplay}</td></tr>
+  </tbody>
+</table>
+<p>We also stock <a href="/store/carton-nail-aluminium-roofing">nails for aluminium roofing</a> and other <a href="/store">roofing accessories</a>, and we manufacture the roofing sheets themselves.</p>
+
+<h2>Check before you pay</h2>
+<p>Wherever you buy, a minute's checking protects you from short weight and the wrong size:</p>
+<ul>
+  <li>The carton is sealed and printed with the size (ours read "Coated Wire Nails, Size: BWG 12 × 2"").</li>
+  <li>It holds ${n.packsPerCarton} packs, and a full carton weighs at least ${n.cartonKg}kg on a scale.</li>
+  <li>The nails are clean, with no rust in the pack.</li>
+</ul>
+<p>Our guide to <a href="/blog/how-to-check-carton-of-roofing-nails-weight-gauge">checking a carton of roofing nails</a> covers weighing and measuring in detail.</p>
+
+<h2>Pickup or delivery</h2>
+<p>Pick up from Iyana-Ipaja during opening hours, or tell us your address and we will arrange delivery. We deliver across Lagos and to every state in Nigeria; see our <a href="/delivery">delivery page</a>. Delivery is quoted for your location when you order.</p>
+
+${nailsOrderCta}
+`,
+    faq: [
+      {
+        question: "Where can I buy roofing nails in bulk in Lagos?",
+        answer: `At Gods Promise Aluminium, Pleasure Bus Stop, Iyana-Ipaja (Alimosho), Lagos. Gerard roofing nails are sold by the ${n.cartonKg}kg carton at ${n.priceDisplay}.`,
+      },
+      {
+        question: "What time does the Gods Promise office at Iyana-Ipaja open?",
+        answer: "We are open Monday to Saturday, from 8:00am to 6:00pm.",
+      },
+      {
+        question: "Can I collect roofing nails the same day I order?",
+        answer: `Yes, during opening hours. Message ${siteIdentity.phoneDisplay} on WhatsApp with the number of cartons before you come so they are ready when you arrive.`,
+      },
+      {
+        question: "Do you deliver roofing nails within Lagos?",
+        answer: "Yes. Give us your address and the number of cartons and we will quote the delivery. We also deliver to every state in Nigeria.",
+      },
+    ],
+  },
+  {
+    slug: "roofing-nails-vs-roofing-screws-nigeria",
+    title: "Roofing Nails or Roofing Screws? What to Use on Stone-Coated, Long Span and Step Tile Roofs",
+    metaTitle: "Roofing Nails vs Screws in Nigeria: Stone-Coated, Long Span & Step Tile Roofs",
+    metaDescription: "Nails or screws for your roof? How stone-coated tiles and aluminium long span and step tile sheets are usually fixed in Nigeria, where each fastener goes, and the mistakes that cause leaks and rust stains.",
+    excerpt: "Stone-coated tiles, long span and step tile sheets are not fixed the same way. This guide explains when roofers use nails and when they use screws, where the fastener goes, and the fixing mistakes that cause leaks.",
+    body: [],
+    date: "2026-11-17",
+    imageSrc: "/new-materials/gerard-nail-closeup-wide.jpg",
+    imageAlt: "Black coated roofing nails with diamond points in an open carton",
+    readingTimeMinutes: 5,
+    videoIds: ["gerard-nails-closeup"],
+    bodyHtml: `
+<div class="blog-callout">
+  <strong>The short answer:</strong> stone-coated roofing tiles are normally nailed to timber battens with roofing nails such as Gerard roofing nails. Aluminium long span and step tile sheets can be fixed with roofing nails and washers on timber purlins, but roofing screws grip harder against wind, and screws are the usual choice on steel purlins.
+</div>
+
+<h2>Stone-coated roofing tiles</h2>
+<p>Stone-coated tiles (Gerard and similar) are laid over timber battens and fixed by nailing through the tile into the batten. The nail has to be long enough to get a full grip in the timber and thick enough not to bend as it is driven. That is why ${n.gauge} × ${n.lengthIn} nails (${n.gaugeMm} wire, ${n.lengthMm} long) are sold as Gerard roofing nails. Follow the tile maker's fixing pattern for how many nails go into each tile.</p>
+<p>Use proper coated roofing nails. Bare, uncoated iron nails rust and leave brown streaks down the tiles. See <a href="${gerardNailsUrl}">Gerard roofing nails</a> (${n.priceDisplay} per ${n.cartonKg}kg carton).</p>
+
+<h2>Aluminium long span and step tile sheets</h2>
+<p>Corrugated and step tile aluminium sheets sit on purlins. Two kinds of fastener are common:</p>
+<ul>
+  <li><strong>Roofing nails with washers</strong> on timber purlins. The washer seals the hole and spreads the load on the thin sheet. Use nails made for aluminium roofing, such as our <a href="/store/carton-nail-aluminium-roofing">aluminium roofing carton nails</a>.</li>
+  <li><strong>Roofing screws</strong> (self-drilling, hex head with a sealing washer). A screw's thread resists being pulled out, so screws hold better in strong wind. On steel purlins, screws are the normal choice because a nail cannot grip steel.</li>
+</ul>
+<p>Whichever you use, fix through the <strong>crest</strong> (the raised part) of the corrugation, not the valley. Water runs down the valleys, and a hole there leaks.</p>
+
+<h2>Quick comparison</h2>
+<table>
+  <thead><tr><th>Roof</th><th>Usually fixed with</th><th>Into</th></tr></thead>
+  <tbody>
+    <tr><td>Stone-coated tiles</td><td>Roofing nails (e.g. ${n.gauge} × ${n.lengthIn} Gerard nails)</td><td>Timber battens</td></tr>
+    <tr><td>Long span / step tile on timber</td><td>Roofing nails with washers, or roofing screws</td><td>Timber purlins, through the crest</td></tr>
+    <tr><td>Long span / step tile on steel</td><td>Self-drilling roofing screws</td><td>Steel purlins, through the crest</td></tr>
+  </tbody>
+</table>
+
+<h2>Fixing mistakes that cost money</h2>
+<ul>
+  <li><strong>Bare iron nails.</strong> They rust and stain the roof. Use coated or plated roofing nails.</li>
+  <li><strong>Fixing in the valley of a sheet.</strong> It leaks in the first heavy rain.</li>
+  <li><strong>Over-driving.</strong> Hammering a nail or tightening a screw until the sheet dents breaks the seal around the hole.</li>
+  <li><strong>Nails too short for the timber.</strong> They work loose as the roof heats and cools each day.</li>
+</ul>
+<p>Not sure which fastener your roof needs? Ask us on WhatsApp, and tell us the roofing type and whether the purlins are timber or steel.</p>
+
+${nailsOrderCta}
+`,
+    faq: [
+      {
+        question: "Are stone-coated roofing tiles fixed with nails or screws?",
+        answer: `They are normally nailed through the tile into timber battens, with roofing nails such as ${n.gauge} × ${n.lengthIn} Gerard roofing nails. Follow the tile maker's fixing pattern.`,
+      },
+      {
+        question: "Can I use nails instead of screws on aluminium long span roofing?",
+        answer: "On timber purlins, yes: use roofing nails made for aluminium sheets, with washers. Screws hold better in strong wind, and on steel purlins you need self-drilling roofing screws.",
+      },
+      {
+        question: "Where should roofing nails go on a corrugated sheet?",
+        answer: "Through the crest (the raised part) of the corrugation, never the valley, because water runs down the valleys and a hole there leaks.",
+      },
+      {
+        question: "Why do roofs get rust streaks under the nails?",
+        answer: "Usually because bare, uncoated iron nails were used. They rust in humid weather and the rust runs down the roof. Use coated or plated roofing nails.",
+      },
+    ],
+  },
+  {
+    slug: "how-to-check-carton-of-roofing-nails-weight-gauge",
+    title: "How to Check a Carton of Roofing Nails Before You Pay: Weight, Gauge and Length",
+    metaTitle: "How to Check Roofing Nails: Weigh the Carton, Measure the Gauge & Avoid Short Weight",
+    metaDescription: `Five checks before you pay for roofing nails in Nigeria: sealed carton, pack count, weight (a full carton is ${n.cartonKg}kg of nails), wire gauge with a caliper (BWG 12 = 2.77mm) and length (2" = 50.8mm).`,
+    excerpt: "Nails are sold by weight and size, and both can be short. These five checks take a few minutes with a scale and a caliper and tell you whether you are getting what is printed on the carton.",
+    body: [],
+    date: "2026-11-17",
+    imageSrc: "/new-materials/gerard-nail-cartons-angle-wide.jpg",
+    imageAlt: "Two cartons of coated wire nails with the size BWG 12 × 2 inch printed on the side",
+    readingTimeMinutes: 4,
+    videoIds: ["gerard-nails-closeup"],
+    bodyHtml: `
+<div class="blog-callout">
+  <strong>The short version:</strong> check that the carton is sealed and printed with its size, count the packs, weigh it (a ${n.cartonKg}kg carton should weigh at least ${n.cartonKg}kg), measure a nail's thickness with a caliper (BWG 12 is about ${n.gaugeMm}) and its length (2 inches is 50.8mm), and look for rust.
+</div>
+
+<h2>1. Read the carton</h2>
+<p>A proper carton states its maker and size. Ours read "${n.manufacturer}, Coated Wire Nails, Size: BWG 12 × 2", Professional Grade, Diamond Point, Precision Cut". If a carton has no size printed on it, you have nothing to hold the seller to.</p>
+
+<h2>2. Check it is sealed and count the packs</h2>
+<p>The tape should be intact. A Gerard roofing nails carton holds <strong>${n.packsPerCarton} packs</strong> of ${n.packKg}kg. If you are buying several cartons, open one and count.</p>
+
+<h2>3. Weigh it</h2>
+<p>Nails are sold by weight, so the scale is your best check. A ${n.cartonKg}kg carton should weigh <strong>at least ${n.cartonKg}kg</strong> on a scale, because the cardboard adds a little. A single pack should weigh at least ${n.packKg}kg. If you are paying ${n.priceDisplay} for ${n.cartonKg}kg, every missing kilogram costs you ${perKg}.</p>
+
+<h2>4. Measure the gauge and length</h2>
+<p>A digital vernier caliper costs a few thousand naira (the same tool we recommend for <a href="/blog/how-to-choose-aluminium-roofing-supplier-nigeria">checking roofing sheet thickness</a>). Measure the shank, not the head:</p>
+<table>
+  <thead><tr><th>Printed size</th><th>What the caliper should read</th></tr></thead>
+  <tbody>
+    <tr><td>BWG 12 (thickness)</td><td>About ${n.gaugeMm}</td></tr>
+    <tr><td>BWG 14 (thinner)</td><td>About 2.11mm</td></tr>
+    <tr><td>2 inch (length)</td><td>About 50.8mm</td></tr>
+  </tbody>
+</table>
+<p>Measure several nails from different packs. A reading near 2.1mm on a carton printed BWG 12 means you have been given a thinner nail. <a href="/blog/bwg-12-x-2-inch-roofing-nails-size-packaging-guide">What BWG 12 × 2" means</a> explains the gauge scale.</p>
+
+<h2>5. Look at the nails</h2>
+<ul>
+  <li><strong>No rust</strong> in the pack. Orange spots mean the nails were stored damp.</li>
+  <li><strong>Sharp, even points.</strong> Ours are diamond points.</li>
+  <li><strong>Straight shanks and full heads.</strong> Bent or headless nails are waste.</li>
+</ul>
+
+<h2>Buying from us</h2>
+<p>Our cartons are ${n.cartonKg}kg (${n.packsPerCarton} × ${n.packKg}kg) of ${n.gauge} × ${n.lengthIn} coated wire nails by ${n.manufacturer}, ${n.priceDisplay} a carton, from ${n.pickup}.</p>
+
+${nailsOrderCta}
+`,
+    faq: [
+      {
+        question: "How much should a carton of roofing nails weigh?",
+        answer: `A ${n.cartonKg}kg carton should weigh at least ${n.cartonKg}kg on a scale, slightly more with the cardboard. Each of its ${n.packsPerCarton} packs should weigh at least ${n.packKg}kg.`,
+      },
+      {
+        question: "How do I measure the gauge of a nail?",
+        answer: `Measure the shank (not the head) with a digital vernier caliper. A BWG 12 nail should read about ${n.gaugeMm}, and a BWG 14 nail about 2.11mm.`,
+      },
+      {
+        question: "How long is a 2 inch roofing nail when measured?",
+        answer: "About 50.8mm from the underside of the head to the point. Measure several nails from different packs.",
+      },
+      {
+        question: "What does rust in a pack of nails mean?",
+        answer: "The nails were stored damp. Don't accept rusty nails for a roof; they will stain it.",
+      },
+    ],
+  },
+  {
+    slug: "gerard-roofing-nails-price-pidgin",
+    title: "Gerard Roofing Nails Price: Wetin You Need Know (Pidgin Guide)",
+    metaTitle: `Gerard Roofing Nails Price for Pidgin: ${n.priceDisplay} for One Carton (${n.cartonKg}kg)`,
+    metaDescription: `For Pidgin: Gerard roofing nails na ${n.priceDisplay} for one ${n.cartonKg}kg carton. ${n.packsPerCarton} pack dey inside, ${n.packKg}kg each. BWG 12 × 2 inch. Come Pleasure Bus Stop, Iyana-Ipaja, Lagos, or send WhatsApp. We dey deliver nationwide.`,
+    excerpt: `You dey find Gerard roofing nails for wholesale price? Na ${n.priceDisplay} for one carton. See everything wey you need know: wetin dey inside carton, the size, where to buy, and how to order.`,
+    body: [],
+    date: "2026-11-17",
+    imageSrc: "/new-materials/gerard-nail-pidgin-wide.jpg",
+    imageAlt: "Gods Promise staff explaining Gerard roofing nails wholesale price in Pidgin",
+    readingTimeMinutes: 3,
+    videoIds: ["gerard-nails-wholesale-pidgin", "gerard-nails-ceo-launch"],
+    bodyHtml: `
+<div lang="pcm">
+<div class="blog-callout">
+  <strong>Short answer:</strong> Gerard roofing nails na <strong>${n.priceDisplay} for one carton</strong>. One carton na ${n.cartonKg}kg: ${n.packsPerCarton} pack dey inside, and each pack na ${n.packKg}kg. Na wholesale price, and if you buy plenty carton, we go give you discount.
+</div>
+
+<h2>How much be Gerard roofing nails?</h2>
+<table>
+  <thead><tr><th>Wetin you buy</th><th>Weight</th><th>Price</th></tr></thead>
+  <tbody>
+    <tr><td>1 carton (${n.packsPerCarton} pack)</td><td>${n.cartonKg}kg</td><td><strong>${n.priceDisplay}</strong></td></tr>
+    <tr><td>E come out per pack</td><td>${n.packKg}kg</td><td>${perPack}</td></tr>
+  </tbody>
+</table>
+<p>We dey sell am by carton. The per-pack price na just to show you how e take come out.</p>
+
+<h2>Wetin dey inside one carton?</h2>
+<ul>
+  <li>${n.packsPerCarton} pack, ${n.packKg}kg each. All together na ${n.cartonKg}kg.</li>
+  <li>The size na ${n.gauge} × ${n.lengthIn}: the nail thick reach ${n.gaugeMm}, e long reach ${n.lengthMm}.</li>
+  <li>Black coated nail, with diamond point wey dey enter wood well.</li>
+  <li>Na ${n.manufacturer} make am.</li>
+</ul>
+
+<h2>Who suppose buy am?</h2>
+<p>If you dey sell Gerard roofing sheets, if you get roofing warehouse or building materials shop, or you be roofer, you need these nails. Anybody wey buy roofing sheet go need nail. Stock the two together so your customer no go waka go another place.</p>
+
+<h2>2,000 carton for 24 hours</h2>
+<p>E never reach 24 hours wey we launch these nails, we don sell pass 2,000 carton, and dem give us award for am.</p>
+
+<h2>Where you fit buy am?</h2>
+<p>Come our office for <strong>Pleasure Bus Stop, Iyana-Ipaja (Alimosho), Lagos</strong>, Monday reach Saturday, 8am to 6pm. If you no dey Lagos, no wahala: we dey deliver go every state for Nigeria.</p>
+
+<h2>How you go take order?</h2>
+<ol>
+  <li>Send WhatsApp message to <a href="${gerardNailsWhatsAppUrl}">${siteIdentity.phoneDisplay}</a>. Tell us how many carton you want and where you dey.</li>
+  <li>We go tell you the total price, plus delivery.</li>
+  <li>Come carry am for our office, or we go deliver am give you.</li>
+</ol>
+<p>You fit also <a href="${gerardNailsUrl}">buy am online</a>. Read am for English: <a href="/blog/gerard-roofing-nails-wholesale-price-nigeria">Gerard roofing nails wholesale price</a>.</p>
+</div>
+
+${nailsOrderCta}
+`,
+    faq: [
+      {
+        question: "How much be one carton of Gerard roofing nails?",
+        answer: `One carton na ${n.priceDisplay}. E get ${n.packsPerCarton} pack inside, ${n.packKg}kg each, so all together na ${n.cartonKg}kg.`,
+      },
+      {
+        question: "How many kg dey inside one carton of Gerard nails?",
+        answer: `Na ${n.cartonKg}kg dey inside one carton: ${n.packsPerCarton} pack, and each pack na ${n.packKg}kg.`,
+      },
+      {
+        question: "Where I fit buy Gerard roofing nails for Lagos?",
+        answer: "Come our office for Pleasure Bus Stop, Iyana-Ipaja (Alimosho), Lagos, Monday reach Saturday, 8am to 6pm.",
+      },
+      {
+        question: "Una dey deliver Gerard nails outside Lagos?",
+        answer: `Yes, we dey deliver go every state for Nigeria. Send WhatsApp to ${siteIdentity.phoneDisplay} with how many carton and your location.`,
+      },
+    ],
+  },
+  {
     slug: "how-to-choose-aluminium-roofing-supplier-nigeria",
     title:
       "How to Choose an Aluminium Roofing Supplier in Nigeria (2026 Buyer's Guide)",
