@@ -651,7 +651,7 @@ ${nailsOrderCta}
     <tr><td>Flashings (wall, valley)</td><td>₦60,000 – ₦120,000</td><td>Waterproofs junctions</td></tr>
     <tr><td>Fascia boards</td><td>₦80,000 – ₦160,000</td><td>Timber or PVC</td></tr>
     <tr><td>Gutters &amp; downpipes</td><td>₦100,000 – ₦200,000</td><td>Aluminium or PVC</td></tr>
-    <tr><td>Roofing nails / screws</td><td>₦20,000 – ₦40,000</td><td>Stainless or galvanised</td></tr>
+    <tr><td>Roofing nails / screws</td><td>₦20,000 – ₦40,000</td><td>Coated or zinc-plated roofing nails to suit the sheet — never bare iron</td></tr>
     <tr><td>Underlayment / sarking</td><td>₦40,000 – ₦80,000</td><td>Recommended for premium roofs</td></tr>
     <tr><td><strong>Total accessories</strong></td><td><strong>₦380,000 – ₦750,000</strong></td><td></td></tr>
   </tbody>
@@ -1164,7 +1164,8 @@ ${nailsOrderCta}
     <tr><td>Aluminium gutter</td><td>Per 3m length</td><td>₦5,000 – ₦8,000</td><td>Including downpipe connector</td></tr>
     <tr><td>PVC gutter</td><td>Per 3m length</td><td>₦3,000 – ₦4,500</td><td>Budget alternative</td></tr>
     <tr><td>Roofing screws (500 pcs)</td><td>Box</td><td>₦8,000 – ₦14,000</td><td>Self-tapping, hex head with washer</td></tr>
-    <tr><td>Roofing nails (5kg)</td><td>Bag</td><td>₦4,000 – ₦6,500</td><td>Galvanised; for rafter fixing</td></tr>
+    <tr><td>Roofing nails (5kg)</td><td>Bag</td><td>₦4,000 – ₦6,500</td><td>Coated or zinc-plated; for rafter fixing</td></tr>
+    <tr><td><a href="${gerardNailsUrl}">Gerard roofing nails</a> (BWG 12 × 2")</td><td>Carton (${n.packsPerCarton} × ${n.packKg}kg = ${n.cartonKg}kg)</td><td>${n.priceDisplay}</td><td>Our wholesale price; coated, diamond point</td></tr>
     <tr><td>Anti-condensation felt</td><td>Per roll (30m²)</td><td>₦12,000 – ₦20,000</td><td>Recommended under all metal roofs</td></tr>
     <tr><td>Gerard stone-coated starter kit</td><td>Per set</td><td>₦45,000 – ₦65,000</td><td>Includes eave trim, ridge foam</td></tr>
   </tbody>
@@ -2454,7 +2455,7 @@ ${nailsOrderCta}
     <tr><td>Barge / gable trims</td><td>₦2,500 – ₦4,500 per piece</td><td>Needed at all gable (sloped) edges</td></tr>
     <tr><td>Valley troughs</td><td>₦4,000 – ₦7,000 per piece</td><td>Required where two roof planes meet in a valley</td></tr>
     <tr><td>Starter strips</td><td>₦2,000 – ₦3,500 per piece</td><td>Run along the eave — first row of tiles sits on these</td></tr>
-    <tr><td>Roofing nails / screws</td><td>₦15,000 – ₦35,000 per carton</td><td>Stainless steel or galvanised — never use plain iron nails</td></tr>
+    <tr><td>Roofing nails / screws</td><td>₦15,000 – ₦35,000 per carton</td><td>Coated roofing nails made for stone-coated tiles, e.g. our <a href="${gerardNailsUrl}">Gerard roofing nails</a> at ${n.priceDisplay} per ${n.cartonKg}kg carton — never bare iron nails</td></tr>
     <tr><td>Underlayment felt</td><td>₦8,000 – ₦18,000 per roll</td><td>1 roll covers ~15 m². Not always used in Nigeria but highly recommended</td></tr>
   </tbody>
 </table>
@@ -2531,7 +2532,7 @@ ${nailsOrderCta}
   <li><strong>Fake "stone coated" tiles</strong> — Lagos has a flood of painted metal tiles marketed as stone coated. Real stone coated tiles have natural stone chips bonded with acrylic — not spray paint. Rub the surface firmly; if colour comes off on your hand, walk away.</li>
   <li><strong>Incorrect batten spacing</strong> — If battens are spaced even 10mm wrong, tiles will not interlock properly and water will penetrate. Insist on the manufacturer's specified gauge — usually printed in the installation manual.</li>
   <li><strong>Skipping underlayment</strong> — Many Lagos installers omit the waterproof underlayment membrane to save cost. While it adds ₦26,000 – ₦60,000 on a bungalow, it provides critical secondary water protection and extends roof life. Worth every naira.</li>
-  <li><strong>Wrong fasteners</strong> — Plain iron nails rust within 2–3 years in Lagos humidity and leave brown stain streaks down your tiles. Always use stainless steel or hot-dip galvanised roofing nails.</li>
+  <li><strong>Wrong fasteners</strong> — Plain, uncoated iron nails rust within 2–3 years in Lagos humidity and leave brown stain streaks down your tiles. Use proper coated roofing nails made for stone-coated tiles, such as <a href="${gerardNailsUrl}">Gerard roofing nails</a> (BWG 12 × 2", coated, diamond point).</li>
   <li><strong>No hip/ridge sealant</strong> — Ridge caps and hip tiles need to be bedded in roofing sealant or mortar, not just nailed on. Dry-fixed ridges lift in harmattan winds and let in driving rain.</li>
 </ol>
 
@@ -2567,7 +2568,7 @@ ${nailsOrderCta}
         question:
           "What accessories are needed for stone coated tile installation?",
         answer:
-          "You need ridge caps, hip tiles (if applicable), barge/gable trims, valley troughs (where roof planes meet), starter strips along the eave, stainless steel or galvanised roofing nails, and ideally a waterproof underlayment membrane. Accessories typically add 15–25% to the tile supply cost.",
+          "You need ridge caps, hip tiles (if applicable), barge/gable trims, valley troughs (where roof planes meet), starter strips along the eave, coated roofing nails made for stone-coated tiles (such as Gerard roofing nails, never bare iron nails), and ideally a waterproof underlayment membrane. Accessories typically add 15–25% to the tile supply cost.",
       },
       {
         question:
