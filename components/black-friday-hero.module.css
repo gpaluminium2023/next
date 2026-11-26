@@ -1,0 +1,95 @@
+:global(body):has(.hero) [data-site-header] {
+  --background: oklch(0.17 0.045 245);
+  --foreground: oklch(0.98 0 0);
+  --muted: oklch(0.28 0.045 245);
+  --muted-foreground: oklch(0.85 0.015 245);
+  --popover: var(--background);
+  --popover-foreground: var(--foreground);
+  --border: oklch(1 0 0 / 16%);
+  --input: var(--border);
+  color: var(--foreground);
+}
+
+:global(body):has(.hero) [data-site-header] a[href="/"] > img {
+  padding: 2px;
+  border-radius: 2px;
+  background: oklch(0.97 0.004 80);
+}
+
+@media (max-width: 39.99rem) {
+  :global(body):has(.hero) [data-site-header] a[href="/"] > span {
+    display: block;
+    max-width: 6rem;
+    font-size: 0.875rem;
+  }
+}
+
+.hero {
+  --midnight: oklch(0.16 0.045 245);
+  background: radial-gradient(ellipse at 50% 35%, oklch(0.25 0.065 245), var(--midnight) 72%);
+  color: white;
+  padding: clamp(1rem, 3vw, 2.75rem) 0 clamp(2.5rem, 4vw, 4rem);
+  text-align: center;
+}
+
+.artwork {
+  display: block;
+  width: min(100%, 64rem, 118svh);
+  height: auto;
+  margin: 0 auto;
+  mask-image: linear-gradient(to right, transparent, black 9% 91%, transparent),
+    linear-gradient(to bottom, transparent, black 10% 88%, transparent);
+  mask-composite: intersect;
+}
+
+.content {
+  position: relative;
+  margin-top: clamp(-2.8rem, -3.2vw, -0.75rem);
+  padding-inline: 1rem;
+}
+
+.headline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 2vw, 2rem);
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.headline h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 10.4vw, 9rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  background: linear-gradient(#fff 20%, #f2f4f7 48%, #b3c1cb 77%, #e6ecf2);
+  background-clip: text;
+  color: transparent;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0.3em 0.45em 0.35em 0.55em;
+  transform: rotate(-8deg);
+  clip-path: polygon(0 50%, 13% 0, 100% 0, 100% 100%, 13% 100%);
+  background: var(--accent);
+  color: var(--accent-foreground);
+  font-size: clamp(1.15rem, 3.8vw, 3.5rem);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.tag::before {
+  content: "";
+  width: 0.14em;
+  height: 0.14em;
+  border-radius: 50%;
+  background: var(--midnight);
+}
+
+@media (forced-colors: active) {
+  .headline h1 { color: CanvasText; }
+}

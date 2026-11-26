@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import Link from "next/link";
 
 import { ContactForm } from "@/components/contact-form";
+import { DirectContactLines } from "@/components/direct-contact-lines";
 import { Button } from "@/components/ui/button";
 import { siteIdentity } from "@/lib/site-identity";
 
@@ -122,6 +123,25 @@ export default function ContactPage() {
               </address>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Direct lines — each number labelled with the one channel it is for */}
+      <section
+        aria-labelledby="direct-lines-heading"
+        className="pt-12 md:pt-16"
+      >
+        <div className="container px-4 mx-auto max-w-6xl">
+          <p className="text-accent text-xs uppercase tracking-widest font-heading font-bold mb-2">
+            Direct Lines
+          </p>
+          <h2
+            id="direct-lines-heading"
+            className="font-heading uppercase font-bold text-2xl md:text-3xl mb-6"
+          >
+            Call, WhatsApp or Reach Our CEO
+          </h2>
+          <DirectContactLines />
         </div>
       </section>
 
