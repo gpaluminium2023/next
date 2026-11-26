@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
+import { BlackFridayHero } from '@/components/black-friday-hero';
+import { blackFridayOffer } from '@/lib/promo';
 import { HeroSlideshow } from '@/components/hero-slideshow';
 import { FactoryVideo } from '@/components/factory-video';
 import { siteIdentity, yearsTrading } from '@/lib/site-identity';
@@ -51,94 +53,21 @@ export const metadata: Metadata = {
 export default function Home() {
 	return (
     <div>
-      {/* ── HERO ────────────────────────────────────────────────── */}
-      <section className="relative min-h-[560px] overflow-hidden bg-primary text-primary-foreground lg:min-h-[680px]">
-        <HeroSlideshow clips={heroClips} className="z-0" />
-        <div className="absolute inset-0 z-1 bg-linear-to-r from-primary/95 via-primary/75 to-primary/30" />
-        <div className="absolute inset-0 z-1 bg-linear-to-t from-primary/70 via-transparent to-transparent" />
-        <div className="relative z-10 h-1 w-full bg-accent" />
-        <div className="relative z-10 mx-auto flex min-h-[calc(560px-4px)] max-w-7xl items-center px-6 py-14 md:px-10 lg:min-h-[calc(680px-4px)] lg:py-24">
-          <div className="max-w-xl">
-            <p className="mb-4 font-heading text-xs font-bold uppercase tracking-[0.28em] text-accent">
-              Lagos · Nigeria
-            </p>
-            <h1 className="font-heading text-5xl font-bold uppercase leading-none tracking-tight md:text-6xl lg:text-7xl">
-              We Build
-              <br />
-              <span className="text-accent">Roofs</span>
-              <br />
-              That Last
-            </h1>
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-primary-foreground/75">
-              Gods Promise Aluminium is a trusted aluminium roofing company in
-              Lagos, manufacturing durable roofing sheets and stone-coated
-              tiles. Fast WhatsApp quotes, accurate gauges and delivery to every
-              state in Nigeria.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button
-                asChild
-                size="lg"
-                className="rounded-sm bg-accent font-heading font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90"
-              >
-                <Link href="/store">Shop Online</Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="rounded-sm border-primary-foreground/30 bg-transparent font-heading font-bold uppercase tracking-wide text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                <Link href="/contact">Get WhatsApp Quote</Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="rounded-sm border-primary-foreground/30 bg-transparent font-heading font-bold uppercase tracking-wide text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                <Link href="/products">View Products</Link>
-              </Button>
-            </div>
-            {/* The three claims a buyer can actually check before ringing —
-                the same ones the meta description leads with. */}
-            <ul className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-primary-foreground/15 pt-6 font-heading text-[10px] font-bold uppercase tracking-[0.18em] text-primary-foreground/60">
-              <li>Authorised Gerard Dealer</li>
-              <li aria-hidden className="text-accent">
-                /
-              </li>
-              <li>0.40mm – 1.00mm</li>
-              <li aria-hidden className="text-accent">
-                /
-              </li>
-              <li>All 36 States</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* ── STATS STRIP ─────────────────────────────────────────── */}
-      <section className="bg-secondary">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-border md:grid-cols-4">
-          {/* Years derives from siteIdentity.foundedYear; the customer count
-              matches /about rather than rounding up to 1K+ separately. */}
-          <StatItem value={`${yearsTrading()}+`} label="Years in Business" />
-          <StatItem value="500K+" label="Sheets Sold" />
-          <StatItem value="36" label="States Served" />
-          <StatItem value="950+" label="Happy Customers" />
-        </div>
-      </section>
+      {blackFridayOffer.enabled ? <BlackFridayHero /> : <FactoryHero />}
+      {!blackFridayOffer.enabled && <CompanyStats />}
 
       {/* ── PRODUCTS ────────────────────────────────────────────── */}
       <section className="bg-background py-16">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="mb-2 font-heading text-xs font-bold uppercase tracking-[0.28em] text-accent">
-                Our Products
-              </p>
+              {!blackFridayOffer.enabled && (
+                <p className="mb-2 font-heading text-xs font-bold uppercase tracking-[0.28em] text-accent">
+                  Our Products
+                </p>
+              )}
               <h2 className="font-heading text-3xl font-bold uppercase leading-none tracking-tight md:text-4xl">
-                Built for Nigeria’s Climate
+                {blackFridayOffer.enabled ? "Explore our roofing range" : "Built for Nigeria’s Climate"}
               </h2>
             </div>
             <Button
@@ -177,6 +106,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {blackFridayOffer.enabled && <CompanyStats />}
 
       {/* ── CUT TO LENGTH ───────────────────────────────────────── */}
       {/* Portrait footage in a portrait frame — the clip is 480x848, so it is
@@ -474,7 +405,7 @@ export default function Home() {
                 <Link href="/contact">Contact Us Today</Link>
               </Button>
               <p className="text-xs opacity-75">
-                09150459964 · 07040249854 · 07060414466 · 08146074077
+                09150459964 · 07040249854 · 07060414466 · 08146074077
               </p>
             </div>
           </div>
@@ -620,5 +551,89 @@ function TestimonialCard({
         <p className="text-xs text-muted-foreground">{role}</p>
       </div>
     </div>
+  );
+}
+
+function FactoryHero() {
+  return (
+    <section className="relative min-h-[560px] overflow-hidden bg-primary text-primary-foreground lg:min-h-[680px]">
+      <HeroSlideshow clips={heroClips} className="z-0" />
+      <div className="absolute inset-0 z-1 bg-linear-to-r from-primary/95 via-primary/75 to-primary/30" />
+      <div className="absolute inset-0 z-1 bg-linear-to-t from-primary/70 via-transparent to-transparent" />
+      <div className="relative z-10 h-1 w-full bg-accent" />
+      <div className="relative z-10 mx-auto flex min-h-[calc(560px-4px)] max-w-7xl items-center px-6 py-14 md:px-10 lg:min-h-[calc(680px-4px)] lg:py-24">
+        <div className="max-w-xl">
+          <p className="mb-4 font-heading text-xs font-bold uppercase tracking-[0.28em] text-accent">
+            Lagos · Nigeria
+          </p>
+          <h1 className="font-heading text-5xl font-bold uppercase leading-none tracking-tight md:text-6xl lg:text-7xl">
+            We Build
+            <br />
+            <span className="text-accent">Roofs</span>
+            <br />
+            That Last
+          </h1>
+          <p className="mt-6 max-w-md text-sm leading-relaxed text-primary-foreground/75">
+            Gods Promise Aluminium is a trusted aluminium roofing company in
+            Lagos, manufacturing durable roofing sheets and stone-coated
+            tiles. Fast WhatsApp quotes, accurate gauges and delivery to every
+            state in Nigeria.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-sm bg-accent font-heading font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90"
+            >
+              <Link href="/store">Shop Online</Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="rounded-sm border-primary-foreground/30 bg-transparent font-heading font-bold uppercase tracking-wide text-primary-foreground hover:bg-primary-foreground/10"
+            >
+              <Link href="/contact">Get WhatsApp Quote</Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="rounded-sm border-primary-foreground/30 bg-transparent font-heading font-bold uppercase tracking-wide text-primary-foreground hover:bg-primary-foreground/10"
+            >
+              <Link href="/products">View Products</Link>
+            </Button>
+          </div>
+          {/* The three claims a buyer can actually check before ringing —
+              the same ones the meta description leads with. */}
+          <ul className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-primary-foreground/15 pt-6 font-heading text-[10px] font-bold uppercase tracking-[0.18em] text-primary-foreground/60">
+            <li>Authorised Gerard Dealer</li>
+            <li aria-hidden className="text-accent">
+              /
+            </li>
+            <li>0.40mm – 1.00mm</li>
+            <li aria-hidden className="text-accent">
+              /
+            </li>
+            <li>All 36 States</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CompanyStats() {
+  return (
+    <section className="bg-secondary">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-border md:grid-cols-4">
+        {/* Years derives from siteIdentity.foundedYear; the customer count
+            matches /about rather than rounding up to 1K+ separately. */}
+        <StatItem value={`${yearsTrading()}+`} label="Years in Business" />
+        <StatItem value="500K+" label="Sheets Sold" />
+        <StatItem value="36" label="States Served" />
+        <StatItem value="950+" label="Happy Customers" />
+      </div>
+    </section>
   );
 }

@@ -203,7 +203,7 @@ export function SiteFooter() {
                 <Mail className="h-4 w-4 shrink-0" />
                 <a
                   href="mailto:godspromisealuminumconceptltd@gmail.com"
-                  className="transition-colors hover:text-foreground"
+                  className="wrap-anywhere transition-colors hover:text-foreground"
                 >
                   godspromisealuminumconceptltd@gmail.com
                 </a>
