@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { MessageCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { blackFridayOffer } from "@/lib/promo";
 import {
   Table,
   TableBody,
@@ -122,10 +123,40 @@ export default function PricingPage() {
 
       <section className="py-12 md:py-16">
         <div className="container px-4 mx-auto max-w-4xl space-y-10">
+          {blackFridayOffer.enabled ? (
+            <div
+              id="black-friday"
+              className="scroll-mt-24 rounded-sm border border-accent/40 bg-accent/5 p-6"
+            >
+              <p className="font-heading text-xs font-bold uppercase tracking-widest text-accent">
+                From {blackFridayOffer.startsLabel}
+              </p>
+              <h2 className="font-heading uppercase font-bold text-2xl md:text-3xl mt-2">
+                {blackFridayOffer.name}: {blackFridayOffer.discountLabel}
+              </h2>
+              <p className="text-sm text-muted-foreground mt-2">
+                For example, on a {blackFridayOffer.example.purchaseDisplay}{" "}
+                purchase you save {blackFridayOffer.example.discountDisplay}.
+                Confirm your final price with us before you pay.
+              </p>
+              <Link
+                href={blackFridayOffer.path}
+                className="mt-3 inline-block text-sm font-semibold text-accent underline-offset-4 hover:underline"
+              >
+                About the {blackFridayOffer.name} offer
+              </Link>
+            </div>
+          ) : null}
+
           <div>
-            <span className="inline-flex items-center rounded-sm bg-primary px-3 py-1 font-heading text-xs font-bold uppercase tracking-widest text-primary-foreground">
-              Lagos Factory
-            </span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center rounded-sm bg-primary px-3 py-1 font-heading text-xs font-bold uppercase tracking-widest text-primary-foreground">
+                Lagos Factory
+              </span>
+              <span className="inline-flex items-center rounded-sm border border-border px-3 py-1 font-heading text-xs font-bold uppercase tracking-widest">
+                Market Standard
+              </span>
+            </div>
             <h2 className="font-heading uppercase font-bold text-2xl md:text-3xl mt-3">
               Lagos &amp; Ogun Prices
             </h2>
@@ -411,7 +442,7 @@ export default function PricingPage() {
               with no extra charge.
             </p>
             <p>
-              We offer two pricing tiers: our regular product line and a
+              We offer two pricing tiers: our market standard line and a
               caliper-verified standard range where gauge thickness is confirmed
               by physical caliper measurement before dispatch. The
               caliper-verified option is ideal for customers who require
@@ -423,7 +454,10 @@ export default function PricingPage() {
       </section>
 
       {/* Caliper Standard Prices */}
-      <section className="py-12 md:py-16 border-t-4 border-accent">
+      <section
+        id="caliper-standard"
+        className="scroll-mt-24 py-12 md:py-16 border-t-4 border-accent"
+      >
         <div className="container px-4 mx-auto max-w-4xl">
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
@@ -437,7 +471,8 @@ export default function PricingPage() {
             <p className="text-sm text-muted-foreground max-w-2xl">
               These prices are for aluminium roofing sheets with gauge thickness
               confirmed by caliper measurement. What you order is exactly what
-              you get.
+              you get. You can check the thickness yourself with a vernier or
+              digital caliper.
             </p>
           </div>
           <div className="space-y-10">

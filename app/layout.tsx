@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PromoStrip } from "@/components/promo-strip";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { localBusinessJsonLd, siteIdentity } from "@/lib/site-identity";
 import { CartProvider } from "@/lib/cart/cart-context";
@@ -103,6 +104,7 @@ export default function RootLayout({
               usePostHog() is used only by /anltks, which mounts its own. */}
           <CartProvider>
             <div className="flex min-h-screen flex-col">
+              <PromoStrip />
               <SiteHeader />
               <main className="flex-1">{children}</main>
               <SiteFooter />

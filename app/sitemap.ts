@@ -3,6 +3,7 @@ import type { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/blog-posts";
 import { locations } from "@/lib/locations-data";
 import { prisma } from "@/lib/prisma";
+import { blackFridayOffer } from "@/lib/promo";
 import { durationSeconds, watchPagePath, watchPageVideos } from "@/lib/videos-data";
 
 const BASE_URL =
@@ -41,6 +42,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    // Listed only while the offer runs; lib/promo.ts switches it off.
+    ...(blackFridayOffer.enabled
+      ? [
+          {
+            url: `${BASE_URL}${blackFridayOffer.path}`,
+            lastModified: new Date(),
+            changeFrequency: "weekly" as const,
+            priority: 0.8,
+          },
+        ]
+      : []),
     {
       url: `${BASE_URL}/roof-calculator`,
       lastModified: new Date(),

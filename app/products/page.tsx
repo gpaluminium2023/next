@@ -14,6 +14,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProductColors } from "@/components/product-colors";
+import { ProductHighlights } from "@/components/product-highlights";
 import { buildAggregateRating } from "@/lib/reviews/jsonld";
 import { EMPTY_RATING_SUMMARY, getRatingSummariesBySlug } from "@/lib/reviews/queries";
 import { siteIdentity } from "@/lib/site-identity";
@@ -406,6 +407,49 @@ export default async function ProductsPage() {
               </Button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* More products — text only until photos are supplied */}
+      <section
+        id="more-products"
+        aria-labelledby="more-products-heading"
+        className="mx-auto max-w-6xl scroll-mt-24 px-4 pb-12 sm:px-6 sm:pb-16 lg:px-8"
+      >
+        <div className="mb-8">
+          <p className="font-heading mb-2 text-xs font-bold uppercase tracking-widest text-accent">
+            Also Available
+          </p>
+          <h2
+            id="more-products-heading"
+            className="font-heading mb-3 text-2xl font-bold uppercase sm:text-3xl lg:text-4xl"
+          >
+            More Roofing Products
+          </h2>
+          <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+            Ask us for today&apos;s price on any of these.
+          </p>
+        </div>
+        <ProductHighlights />
+
+        {/* Lagos branch standards — labels as the owner uses them */}
+        <div className="mt-6 rounded-sm border border-border bg-secondary p-5 sm:p-6">
+          <h3 className="font-heading mb-2 text-xl font-bold uppercase">
+            Market Standard &amp; Caliper Standard
+          </h3>
+          <p className="text-sm text-muted-foreground sm:text-base">
+            At our Lagos branch, aluminium roofing sheets are offered as{" "}
+            <strong className="text-foreground">market standard</strong> and{" "}
+            <strong className="text-foreground">caliper standard</strong>.
+            Caliper standard thickness can be checked with a vernier or digital
+            caliper.{" "}
+            <Link
+              href="/pricing#caliper-standard"
+              className="font-semibold text-accent underline-offset-4 hover:underline"
+            >
+              Compare both price lists
+            </Link>
+          </p>
         </div>
       </section>
 
