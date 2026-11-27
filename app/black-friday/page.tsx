@@ -7,6 +7,7 @@ import { DirectContactLines } from "@/components/direct-contact-lines";
 import { ProductHighlights } from "@/components/product-highlights";
 import { blackFridayOffer } from "@/lib/promo";
 import { siteIdentity } from "@/lib/site-identity";
+import { roofingQuoteGuideSlug } from "@/lib/roofing-quote-guide";
 
 const { name, discountLabel, startsLabel, example } = blackFridayOffer;
 
@@ -36,6 +37,10 @@ const faqs = [
   {
     question: `When does the ${name} offer start?`,
     answer: `The offer starts on ${startsLabel}.`,
+  },
+  {
+    question: "How do I get a Black Friday roofing quote?",
+    answer: "Send the product name, quantity and delivery town to our team. For sheets, include the profile and lengths. For Gerard nails, give the carton count. Ask us to confirm which items qualify and your final price before paying.",
   },
   {
     question: `When does the ${name} offer end?`,
@@ -172,13 +177,21 @@ export default function BlackFridayPage() {
             id="bf-products-heading"
             className="font-heading mb-3 text-2xl font-bold uppercase md:text-3xl"
           >
-            Roofing Products to Ask About
+            Request a Black Friday Roofing Quote
           </h2>
           <p className="mb-6 text-sm text-muted-foreground md:text-base">
-            Alongside our aluminium long span, step tile and Metcopo sheets and
-            Gerard stone-coated tiles, we supply:
+            Choose a product to start a WhatsApp enquiry. Add your quantities
+            and delivery town so our team can check stock and confirm your savings.
           </p>
-          <ProductHighlights />
+          <ProductHighlights campaignEnquiries />
+
+          <p className="mt-6 text-sm text-muted-foreground">
+            Comparing quotes for the same job?{" "}
+            <Link href={`/blog/${roofingQuoteGuideSlug}`} className="font-semibold text-accent underline underline-offset-4">
+              Read the Black Friday roofing buyer’s guide
+            </Link>{" "}
+            for a product checklist and a sample enquiry.
+          </p>
 
           <div className="mt-6 rounded-sm border border-border bg-secondary p-5 sm:p-6">
             <h3 className="font-heading mb-2 text-xl font-bold uppercase">
