@@ -1,5 +1,6 @@
 import { gerardNails, gerardNailsUrl, gerardNailsWhatsAppUrl } from "@/lib/nails-content";
 import { siteIdentity } from "@/lib/site-identity";
+import { roofingQuoteGuide } from "@/lib/roofing-quote-guide";
 
 export type FaqItem = {
   question: string;
@@ -32,6 +33,7 @@ const nailsOrderCta = `<div class="blog-callout">
 </div>`;
 
 export const blogPosts: BlogPost[] = [
+  roofingQuoteGuide,
   {
     slug: "gerard-roofing-nails-wholesale-price-nigeria",
     title: `Gerard Roofing Nails Wholesale Price in Nigeria (2026): ${n.priceDisplay} per ${n.cartonKg}kg Carton`,
